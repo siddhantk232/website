@@ -11,4 +11,5 @@
 - build /blog
 - better seo
 - work on performance
-- animations and dark theme
+- animations and theme switch
+- analytics
