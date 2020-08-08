@@ -1,4 +1,6 @@
-<p align="center">[Siddhant.codes](www.siddhant.codes)</p>
+<p align="center">
+  <a href="www.siddhant.codes">Siddhant.codes</a>
+</p>
 
 ![website_performance](./score.png)
 
