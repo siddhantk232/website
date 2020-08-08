@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <link rel="stylesheet" href="{{'/css/base.css' | url}}">
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href="/">home</a>
+
+        <ul>
+          <li><a href="/blog">blog</a></li>
+          <li><a href="/work">work</a></li>
+          <li><a href="/about">about</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
+      {{ content | safe }}
+    </main>
+
+    <footer></footer>
+  </body>
+</html>
