@@ -7,6 +7,14 @@
   --hover-bg: #16191d;
   --highlight-color: #2d88ff;
   --roundness: 0.5em;
+  --text-selection: #fbf1c7;
+}
+
+::selection {
+  background: var(--text-selection); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: var(--text-selection); /* Gecko Browsers */
 }
 
 * {
@@ -38,8 +46,8 @@ header div {
 header div a {
   color: var(--font-color);
   text-decoration: none;
-  padding: 4px 0.5em;
-  font-size: 32px;
+  padding: 0.5em;
+  font-size: 28px;
   border-radius: var(--roundness);
 }
 
@@ -57,9 +65,4 @@ header div ul {
 
 header div ul li {
   margin: 0 0.5em;
-}
-
-main {
-  width: 90%;
-  margin: 0 auto;
 }
