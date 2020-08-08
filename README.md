@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="www.siddhant.codes">Siddhant.codes</a>
+  <a href="https://www.siddhant.codes">Siddhant.codes</a>
 </h1>
 
 ![website_performance](./score.png)
