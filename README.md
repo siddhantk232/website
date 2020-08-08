@@ -1,4 +1,6 @@
-# [Siddhant.codes](siddhant.codes)
+![website_performance](./score.png)
+
+# [Siddhant.codes](www.siddhant.codes)
 
 ### TODO:
 
