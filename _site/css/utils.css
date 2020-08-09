@@ -1,0 +1,19 @@
+main {
+  width: 95%;
+  margin: 0 auto;
+  padding: 0.5em 1em;
+}
+
+h1 {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 2.25em;
+  margin-top: 2em;
+}
+
+p {
+  font-size: 2em;
+}
+
+.highlight {
+  color: #67a3f1;
+}
