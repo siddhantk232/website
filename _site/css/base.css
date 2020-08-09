@@ -58,7 +58,6 @@ header div a {
 header div a:hover,
 .active {
   background-color: var(--hover-bg);
-  text-decoration: underline;
 }
 
 header div ul {

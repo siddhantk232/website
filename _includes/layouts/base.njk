@@ -18,16 +18,18 @@
   <body>
     <header>
       <div>
-        <a id="home_url" href="/">home</a>
+        <a {% if page.url == '/' %} class="active"{% endif %} id="home_url" href="/">home</a>
 
         <ul>
-          <li class='md-enable'><a href="/">home</a></li>
-          <li><a href="/blog">blog</a></li>
-          <li><a href="/work">work</a></li>
-          <li><a href="/about">about</a></li>
+          <li  class='md-enable'><a {% if page.url == '/' %} class="active"{% endif %} href="/">home</a></li>
+          <li><a {% if page.url == '/blog/' %} class="active"{% endif %} href="/blog">blog</a></li>
+          <li><a {% if page.url == '/work/' %} class="active"{% endif %} href="/work">work</a></li>
+          <li><a {% if page.url == '/about/' %} class="active"{% endif %} href="/about">about</a></li>
         </ul>
       </div>
     </header>
+
+    
 
     <main>
       {{ content | safe }}
