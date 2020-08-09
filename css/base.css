@@ -72,6 +72,10 @@ header div ul li {
   margin: 0 0.5em;
 }
 
+.md-enable {
+  display: none;
+}
+
 @media screen and (max-width: 1366px) {
   #home_url {
     display: none;
@@ -79,5 +83,13 @@ header div ul li {
 
   header div {
     justify-content: center;
+  }
+
+  .md-enable {
+    display: block;
+  }
+
+  body {
+    font-size: 10px;
   }
 }
