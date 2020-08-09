@@ -6,7 +6,7 @@
 
 ### TODO:
 
-- [ ] responsive for mobile screens
+- [x] responsive for mobile screens
 - [ ] build /about and /work pages
 - [ ] build /blog
 - [ ] better seo
