@@ -6,10 +6,10 @@
 
 ### TODO:
 
-- responsive for mobile screens
-- build /about and /work pages
-- build /blog
-- better seo
-- work on performance
-- animations and theme switch
-- analytics
+- [ ] responsive for mobile screens
+- [ ] build /about and /work pages
+- [ ] build /blog
+- [ ] better seo
+- [ ] work on performance
+- [ ] animations and theme switch
+- [ ] analytics
