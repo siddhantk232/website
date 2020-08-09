@@ -3,7 +3,7 @@
 main {
   width: 90%;
   margin: 0 auto;
-  margin-top: 10em;
+  margin-top: 15vh;
 
   display: flex;
   align-items: center;
@@ -23,17 +23,17 @@ main h3 {
 
 main h1 {
   font-family: "Luckiest Guy", cursive;
-  font-size: 6rem;
+  font-size: 6em;
   letter-spacing: 0.12em;
   color: var(--highlight-color);
 }
 
 main h2 {
-  font-size: 4rem;
+  font-size: 4em;
 }
 
 main h3 {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 .illustration {
@@ -41,7 +41,16 @@ main h3 {
   height: 700px;
 }
 
-.illustration img {
-  height: 100%;
-  width: 100%;
+@media screen and (max-width: 1366px) {
+  .illustration {
+    display: none;
+  }
+
+  .md-padded {
+    padding: 4rem;
+  }
+
+  body {
+    font-size: 12px;
+  }
 }
