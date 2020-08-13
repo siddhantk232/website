@@ -5,6 +5,4 @@ layout: layouts/base.njk
 
 ---
 
-<h1>
-  coming soon
-</h1>
+{{ collections.all | eleventyNavigation | eleventyNavigationToHtml | safe }}
