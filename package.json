@@ -14,6 +14,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
     "@11ty/eleventy-navigation": "^0.1.6",
+    "@quasibit/eleventy-plugin-sitemap": "^2.0.0",
     "eleventy-plugin-lazyimages": "^2.0.1",
     "eleventy-plugin-reading-time": "^0.0.1"
   }

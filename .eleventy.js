@@ -1,5 +1,6 @@
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
+const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
@@ -9,6 +10,11 @@ module.exports = function (eleventyConfig) {
     scriptSrc: "/assets/lazysizes.min.js"
   });
   eleventyConfig.addPlugin(pluginNavigation);
+  eleventyConfig.addPlugin(sitemap, {
+    sitemap: {
+      hostname: "https://www.siddhant.codes"
+    }
+  });
 
   return {
     markdownTemplateEngine: "njk"
