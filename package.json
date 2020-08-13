@@ -8,9 +8,11 @@
   "scripts": {
     "gen": "eleventy",
     "dev": "eleventy --watch",
-    "serve": "eleventy --serve"
+    "serve": "eleventy --serve",
+    "debug": "DEBUG=* eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0"
+    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy-navigation": "^0.1.6"
   }
 }
