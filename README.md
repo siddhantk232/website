@@ -7,9 +7,11 @@
 ### TODO:
 
 - [x] responsive for mobile screens
-- [ ] build /about and /work pages
-- [ ] build /blog
-- [ ] better seo
+- [x] build /about and,
+- [ ] /work
+- [x] blog setup
+- [x] image lazy loading
+- [ ] sitemap.xml
 - [ ] work on performance
 - [ ] animations and theme switch
 - [ ] analytics
