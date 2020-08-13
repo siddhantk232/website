@@ -1,9 +1,13 @@
 const pluginNavigation = require("@11ty/eleventy-navigation");
+const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPlugin(lazyImagesPlugin, {
+    imgSelector: ".post-content img",
+    scriptSrc: "/assets/lazysizes.min.js"
+  });
   eleventyConfig.addPlugin(pluginNavigation);
 
   return {
