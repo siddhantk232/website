@@ -8,7 +8,9 @@ layout: layouts/blog.njk
 
 {% set postList = collections.posts %}
 
-<h2>{{ postList | length }} posts</h2>
+<h2>
+  {{ postList | length }} {% if postList | length > 1 %}posts{% else %}post{% endif %}
+</h2>
 
 <ul>
   {% for item in  postList | reverse %}
