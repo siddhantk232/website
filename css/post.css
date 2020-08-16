@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
-
 /* container */
 main {
   padding: 0.5em 1em;
@@ -49,7 +47,6 @@ li {
   font-size: 0.95rem;
   color: var(--lead-color);
   margin-top: -16px;
-  margin-bottom: 2rem;
 }
 
 @media screen and (max-width: 768px) {

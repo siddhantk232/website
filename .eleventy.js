@@ -2,6 +2,7 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const readingTime = require("eleventy-plugin-reading-time");
 
 const { DateTime } = require("luxon");
 
@@ -20,6 +21,7 @@ module.exports = function (eleventyConfig) {
       hostname: "https://www.siddhant.codes"
     }
   });
+  eleventyConfig.addPlugin(readingTime);
 
   eleventyConfig.addFilter("htmlDateString", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(

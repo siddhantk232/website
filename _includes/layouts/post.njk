@@ -1,7 +1,51 @@
-{% extends 'layouts/base.njk' %} {% block styles %}
 
-<link rel="stylesheet" href="{{ '/css/base.css' | url }}" />
-<link rel="stylesheet" href="{{ '/css/post.css' | url }}" />
-<link rel="stylesheet" href="{{ '/css/prism-monokai.css' | url }}" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title or metadata.title }}</title>
+    <meta
+      name="description"
+      content="{{ description or metadata.description }}"
+    />
+    {% block styles %}
 
-{% endblock %}
+      <link rel="stylesheet" href="{{ '/css/base.css' | url }}" />
+      <link rel="stylesheet" href="{{ '/css/post.css' | url }}" />
+      <link rel="stylesheet" href="{{ '/css/prism-monokai.css' | url }}" />
+
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <div >
+        <a {% if page.url == '/' %} class="active"{% endif %} id="home_url" href="/">home</a>
+
+        <ul class="nav">
+          <li  class='md-enable'><a {% if page.url == '/' %} class="active"{% endif %} href="/">home</a></li>
+          <li><a {% if page.url == '/blog/' %} class="active"{% endif %} href="/blog">blog</a></li>
+          <li><a {% if page.url == '/work/' %} class="active"{% endif %} href="/work">work</a></li>
+          <li><a {% if page.url == '/about/' %} class="active"{% endif %} href="/about">about</a></li>
+        </ul>
+      </div>
+    </header>
+
+    
+
+    <main {% if cssclass %} class="{{ cssclass }}" {% endif %}>
+      <h1> {{title}}</h1>
+      <p class="lead">
+        <span>{{page.date | htmlDateString }}</span> ⌚ <span>{{content | readingTime}} read</span>
+      </p>
+      <hr />
+      <br />
+
+      {{ content | safe }}
+    </main>
+
+    <footer></footer>
+  </body>
+
+
+</html>

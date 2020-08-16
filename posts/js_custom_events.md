@@ -10,10 +10,6 @@ eleventyNavigation:
   title: "Notification service in webapps using custom javascript Events."
 ---
 
-# {{title}}
-
-<p class="lead">{{page.date | htmlDateString }}</p>
-
 Recently I came across this [article](https://flaviocopes.com/javascript-custom-events/) by **Flavio copes** on "Custom events in javascript" and after reading that I got the idea for this post.
 
 So today we will implement a simple notification service built using vanilla js :)
