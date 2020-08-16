@@ -3,9 +3,12 @@ const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
+const { DateTime } = require("luxon");
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("css");
+
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(lazyImagesPlugin, {
     imgSelector: ".post-content img",
@@ -16,6 +19,12 @@ module.exports = function (eleventyConfig) {
     sitemap: {
       hostname: "https://www.siddhant.codes"
     }
+  });
+
+  eleventyConfig.addFilter("htmlDateString", dateObj => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
+      "dd LLLL yyyy"
+    );
   });
 
   return {

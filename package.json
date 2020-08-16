@@ -17,6 +17,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
     "@quasibit/eleventy-plugin-sitemap": "^2.0.0",
     "eleventy-plugin-lazyimages": "^2.0.1",
-    "eleventy-plugin-reading-time": "^0.0.1"
+    "eleventy-plugin-reading-time": "^0.0.1",
+    "luxon": "^1.24.1"
   }
 }
