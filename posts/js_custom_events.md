@@ -1,6 +1,6 @@
 ---
-title: "Notification service in webapps using custom javascript Events."
-description: "Build custom notfications service using custom events in javascript."
+title: "Notification service in webapps using custom javascript Events"
+description: "Build custom notfications service using custom events in javascript"
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
 cssclass: "post-container"
