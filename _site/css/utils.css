@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 
 main {
-  width: 95%;
-  margin: 0 auto;
   padding: 0.5em 1em;
+  width: 90%;
+  margin: 0 auto;
 }
 
 h1 {
@@ -18,4 +18,15 @@ p {
 
 .highlight {
   color: #67a3f1;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+ul:not(.nav) li {
+  font-size: 2em;
 }

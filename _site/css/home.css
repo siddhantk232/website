@@ -3,7 +3,7 @@
 main {
   width: 90%;
   margin: 0 auto;
-  margin-top: 15vh;
+  margin-top: 10vh;
 
   display: flex;
   align-items: center;
@@ -42,7 +42,22 @@ main h3 {
 }
 
 @media screen and (max-width: 1366px) {
-  .illustration {
+  .illustration img {
     display: none;
+  }
+
+  .illustration {
+    width: 900px;
+    height: 500px;
+  }
+
+  main {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    margin-top: 8vh;
   }
 }
