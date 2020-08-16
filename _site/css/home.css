@@ -41,7 +41,7 @@ main h3 {
   height: 700px;
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 1280px) {
   .illustration img {
     display: none;
   }
