@@ -193,4 +193,4 @@ Well, I do not have an answer for how to pass something when dispatching the eve
 
 If I had to fire multiple notifications like `todo added`, `logged in`, and `logged out` I would create a new `Event` for each of them.
 
-If you are on twitter, consider following [me](twitter.com/siddhantk232).
+If you are on twitter, consider following [me](https://twitter.com/siddhantk232).
