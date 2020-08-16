@@ -16,6 +16,7 @@ pre[class*="language-"] {
   hyphens: none;
   background: #272822;
   color: #f8f8f2;
+  border-radius: calc(var(--roundness) / 2);
 }
 pre[class*="language-"] {
   padding: 1em;

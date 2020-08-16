@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+
+/* container */
+main {
+  padding: 0.5em 1em;
+  width: 60vw;
+  margin: 0 auto;
+}
+
+/* images */
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* typography */
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.35rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.8rem;
+}
+
+h6 {
+  font-size: 1.5rem;
+}
+
+p,
+li {
+  font-size: 1.25rem;
+}
+
+.lead {
+  font-size: 0.95rem;
+  color: var(--lead-color);
+  margin-top: -16px;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    width: 90vw;
+  }
+}

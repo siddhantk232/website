@@ -8,6 +8,7 @@
   --highlight-color: #2d88ff;
   --roundness: 0.5em;
   --text-selection: #fbf1c7;
+  --lead-color: #8c939b;
 }
 
 ::selection {
@@ -24,6 +25,8 @@
 html {
   height: 100vh;
   width: 100vw;
+  font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -51,7 +54,7 @@ header div a {
   color: var(--font-color);
   text-decoration: none;
   padding: 0.5em;
-  font-size: 1.75em;
+  font-size: 1.75rem;
   border-radius: var(--roundness);
 }
 
@@ -88,7 +91,13 @@ header div ul li {
     display: block;
   }
 
-  body {
-    font-size: 10px;
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
   }
 }
