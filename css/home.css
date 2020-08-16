@@ -55,4 +55,9 @@ main h3 {
   main {
     margin-top: 8vh;
   }
+
+  main h2,
+  main h3 {
+    margin-bottom: 0.4em;
+  }
 }
