@@ -1,7 +1,7 @@
----
-layout: layouts/base.njk
----
+{% extends 'layouts/base.njk' %} {% block styles %}
 
-<div class="post-content">
-  {{ content | safe }}
-</div>
+<link rel="stylesheet" href="{{ '/css/base.css' | url }}" />
+<link rel="stylesheet" href="{{ '/css/utils.css' | url }}" />
+<link rel="stylesheet" href="{{ '/css/prism-monokai.css' | url }}" />
+
+{% endblock %}

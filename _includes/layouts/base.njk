@@ -17,10 +17,10 @@
   </head>
   <body>
     <header>
-      <div>
+      <div >
         <a {% if page.url == '/' %} class="active"{% endif %} id="home_url" href="/">home</a>
 
-        <ul>
+        <ul class="nav">
           <li  class='md-enable'><a {% if page.url == '/' %} class="active"{% endif %} href="/">home</a></li>
           <li><a {% if page.url == '/blog/' %} class="active"{% endif %} href="/blog">blog</a></li>
           <li><a {% if page.url == '/work/' %} class="active"{% endif %} href="/work">work</a></li>
@@ -31,7 +31,7 @@
 
     
 
-    <main>
+    <main {% if cssclass %} class="{{ cssclass }}" {% endif %}>
       {{ content | safe }}
     </main>
 
