@@ -49,6 +49,10 @@ li {
   margin-top: -16px;
 }
 
+a {
+  color: var(--highlight-color);
+}
+
 @media screen and (max-width: 768px) {
   main {
     width: 95vw;
