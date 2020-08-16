@@ -1,4 +1,3 @@
-const pluginNavigation = require("@11ty/eleventy-navigation");
 const lazyImagesPlugin = require("eleventy-plugin-lazyimages");
 const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -15,7 +14,6 @@ module.exports = function (eleventyConfig) {
     imgSelector: ".post-content img",
     scriptSrc: "/assets/lazysizes.min.js"
   });
-  eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(sitemap, {
     sitemap: {
       hostname: "https://www.siddhant.codes"
@@ -23,7 +21,7 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addPlugin(readingTime);
 
-  eleventyConfig.addFilter("htmlDateString", dateObj => {
+  eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
       "dd LLLL yyyy"
     );

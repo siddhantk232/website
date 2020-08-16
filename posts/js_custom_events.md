@@ -4,10 +4,8 @@ description: "Build custom notfications service using custom events in javascrip
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
 cssclass: "post-container"
-
-eleventyNavigation:
-  key: posts
-  title: "Notification service in webapps using custom javascript Events."
+tags:
+  - posts
 ---
 
 Recently I came across this [article](https://flaviocopes.com/javascript-custom-events/) by **Flavio copes** on "Custom events in javascript" and after reading that I got the idea for this post.

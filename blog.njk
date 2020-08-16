@@ -5,4 +5,15 @@ layout: layouts/blog.njk
 
 ---
 
-{{ collections.all | eleventyNavigation | eleventyNavigationToHtml | safe }}
+
+{% set postList = collections.posts %}
+
+<h2>{{ postList | length }} posts</h2>
+
+<ul>
+  {% for item in  postList | reverse %}
+    <li>
+      <a href="{{ item.data.page.url }}">{{ item.data.title }}</a>
+    </li>
+  {%endfor%}
+</ul>

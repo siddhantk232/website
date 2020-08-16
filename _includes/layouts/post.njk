@@ -36,7 +36,7 @@
     <main {% if cssclass %} class="{{ cssclass }}" {% endif %}>
       <h1> {{title}}</h1>
       <p class="lead">
-        <span>{{page.date | htmlDateString }}</span> ⌚ <span>{{content | readingTime}} read</span>
+        <span>{{page.date | readableDate }}</span> ⌚ <span>{{content | readingTime}} read</span>
       </p>
       <hr />
       <br />
