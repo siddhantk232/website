@@ -46,6 +46,6 @@ They are relatively hard to configure and describe.
 
 ## Summary
 
-In this blog we learned about what is software testing, why it is important and some comman testing startegies.
+In this blog we learned about what is software testing, why it is important and some comman testing strategies.
 
 In the next blog in this series, we will learn about cypress which is a end-to-end testing framework for testing javscript application.
