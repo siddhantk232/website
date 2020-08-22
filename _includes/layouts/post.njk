@@ -40,7 +40,7 @@
       </div>
     </header>
 
-    
+
 
     <main {% if cssclass %} class="{{ cssclass }}" {% endif %}>
       <h1> {{title}}</h1>
@@ -51,7 +51,24 @@
       <br />
 
       {{ content | safe }}
+      <br />
+      <br />
+    <h2>Comments</h2>
     </main>
+
+
+
+    <!-- comments plugin -->
+
+    <script src="https://utteranc.es/client.js"
+        repo="siddhantk232/portfolio"
+        issue-term="title"
+        theme="dark-blue"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+    <br />
 
     <!-- Google Analytics -->
     <script>
