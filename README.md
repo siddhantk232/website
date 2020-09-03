@@ -11,7 +11,7 @@
 - [ ] /work
 - [x] blog setup
 - [x] image lazy loading
-- [ ] sitemap.xml
+- [x] sitemap.xml
 - [ ] work on performance
 - [ ] animations and theme switch
-- [ ] analytics
+- [x] google analytics
