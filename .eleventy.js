@@ -6,8 +6,8 @@ const readingTime = require("eleventy-plugin-reading-time");
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/css");
 
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(lazyImagesPlugin, {
@@ -28,6 +28,9 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
-    markdownTemplateEngine: "njk"
+    markdownTemplateEngine: "njk",
+    dir: {
+      input: "src"
+    }
   };
 };
