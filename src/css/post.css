@@ -53,6 +53,14 @@ a {
   color: var(--highlight-color);
 }
 
+blockquote {
+  background-color: var(--highlight-color);
+  padding: 0.5rem 1rem;
+  margin: 2rem 0;
+  border-radius: calc(var(--roundness) / 2 );
+  color: #fff;
+}
+
 @media screen and (max-width: 768px) {
   main {
     width: 95vw;
