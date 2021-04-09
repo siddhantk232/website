@@ -73,7 +73,7 @@ of columns of every table discussed so far.
 We want to run a procedure (also known as a function) after a row in the table
 `carts_books` is INSERTED or UPDATED.
 
-For this let's create two postgres triggers, one for UPDATE and other for INSERT.
+For this let's create two postgres triggers, one for UPDATE and the other for INSERT.
 
 ```sql
 CREATE TRIGGER update_cart_price
@@ -93,18 +93,18 @@ COMMENT ON TRIGGER calculate_cart_price ON public.carts_books IS
 'update the price of the related cart based on the updated cart item(s) in relation carts_books';
 ```
 Above is the code that creates two postgres triggers. Let's understand the syntax 
-and what each clause used above mean.
+and what each clause used above means.
 
 To create a postgres trigger, we want to tell postgres about the following things:
 
-1. Name of trigger. In this case, I have used names, `update_cart_price` and 
+1. Name of the trigger. In this case, I have used names, `update_cart_price` and 
   `calculate_cart_price`.
 
 2. When you want the code to run? I want to know the values that are inserted, 
-  for this I have to use the `AFTER INSERT` and the `AFTER UPDATE` clause.
+  for this, I have to use the `AFTER INSERT` and the `AFTER UPDATE` clause.
 
 3. How do you want to run this trigger? There are two options, one is to run this 
-  trigger for each affected row. Other option is to run the trigger `per-statement`.
+  trigger for each affected row. Another option is to run the trigger `per-statement`.
 
 4. What do you want to run? I have these triggers to run the procedure called 
   `update_cart_price()`. 
