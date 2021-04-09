@@ -109,7 +109,7 @@ To create a postgres trigger, we want to tell postgres about the following thing
 4. What do you want to run? I have these triggers to run the procedure called 
   `update_cart_price()`. 
 
-> You must create the function before using it in a function.
+> You must create the function before using it in a trigger.
 > A function must return `TRIGGER` in order to be used in a trigger.
 
 The function that I want to run on these triggers is defined as:
