@@ -34,7 +34,7 @@ of columns of every table discussed so far.
 
 ### The schema
 
-```
+```shell
                                Table "public.carts"
    Column    |           Type           | Collation | Nullable |      Default
 -------------+--------------------------+-----------+----------+--------------------
@@ -114,7 +114,7 @@ To create a postgres trigger, we want to tell postgres about the following thing
 
 The function that I want to run on these triggers is defined as:
 
-```sql
+```plsql
 CREATE OR REPLACE FUNCTION public.update_cart_price ()
   RETURNS TRIGGER
   AS $$
