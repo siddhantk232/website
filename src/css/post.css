@@ -54,11 +54,11 @@ a {
 }
 
 blockquote {
-  background-color: var(--highlight-color);
+  border-left: 6px solid var(--highlight-color);
   padding: 0.5rem 1rem;
   margin: 2rem 0;
   border-radius: calc(var(--roundness) / 2 );
-  color: #fff;
+  color: #ced6e0;
 }
 
 @media screen and (max-width: 768px) {
