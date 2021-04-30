@@ -12,14 +12,16 @@ layout: layouts/base.njk
 <h1>Tech Stack</h1>
 
 - javascript/typescript
+- nodejs
 - react.js
-- mongoDB
-- graphql
+- postgresql
 
-<h1>Things I want to learn</h1>
+<h1>Things I am currently learning</h1>
 
-- SQL (postgresql)
-- react native
-- rust
-- java
-- electron
+- postgresql
+- golang
+- devOps stuff
+
+<h1>Things I plan to learn</h1>
+
+- Andoroid Devlopment (React Native?)
