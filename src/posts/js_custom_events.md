@@ -3,6 +3,7 @@ title: "Notification service in webapps using custom javascript Events"
 date: "2020-07-01"
 description: "Build custom notfications service using custom events in javascript"
 layout: layouts/post.njk
+canonical: "/posts/notification-service-in-webapps-using-custom-javascript-events"
 permalink: "/posts/{{ title | slug }}/"
 cssclass: "post-container"
 tags:

@@ -4,6 +4,7 @@ date: "2020-08-06"
 description: "javascript testing series with cypress. In this series we will use cypress for end-to-end testing of our websites. We will also learn how to test react apps with cypress"
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
+canonical: "/posts/introduction-testing-websites-with-cypress"
 cssclass: "post-container"
 tags:
   - posts

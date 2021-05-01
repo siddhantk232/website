@@ -4,6 +4,7 @@ date: "2021-04-22"
 description: ""
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
+canonical: "/posts/postgres-full-text-search"
 cssclass: "post-container"
 tags:
   - posts

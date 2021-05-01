@@ -5,6 +5,7 @@ description: "Let's use postgres triggers to solve a pretty common problem of an
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
 cssclass: "post-container"
+canonical: "/posts/postgres-triggers"
 tags:
   - posts
   - postgres

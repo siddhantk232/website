@@ -4,6 +4,7 @@ date: "2021-02-28"
 description: "How I set up and use Hasura graphql engine for local development with pgadmin4 and pldebugger."
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
+canonical: "/posts/the-ultimate-hasura-development-setup"
 cssclass: "post-container"
 tags:
   - posts
