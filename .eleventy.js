@@ -30,7 +30,11 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("getog", (title = "") => {
-    return `/assets/og/${title.toLowerCase().replace(" ", "_")}.png`
+    if (!title) {
+      return "https://avatars0.githubusercontent.com/u/36407043?s=460&u=d69d346035fb6a4ddfa2f47f18399d5b205f4ed2&v=4";
+    }
+
+    return `/assets/og/${title.toLowerCase().replace(" ", "_")}.png`;
   });
 
   return {
