@@ -38,7 +38,7 @@ module.exports = function (eleventyConfig) {
 
     return `${siteUrl}/assets/og/${title
       .toLowerCase()
-      .replaceAll(" ", "_")}.png`;
+      .replace(/ /g, "_")}.png`;
   });
 
   return {
