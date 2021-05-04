@@ -1,7 +1,7 @@
 ---
 title: "Postgres Full Text Search"
 date: "2021-04-22"
-description: ""
+description: "Let's explore the full-text search functionality of postgres!"
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
 canonical: "/posts/postgres-full-text-search"
