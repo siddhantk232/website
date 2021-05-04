@@ -33,7 +33,8 @@ module.exports = function (eleventyConfig) {
     if (!title) {
       return "https://avatars0.githubusercontent.com/u/36407043?s=460&u=d69d346035fb6a4ddfa2f47f18399d5b205f4ed2&v=4";
     }
-    return `/assets/og/${title.toLowerCase().replace(" ", "_")}.png`;
+
+    return `/assets/og/${title.toLowerCase().replaceAll(" ", "_")}.png`;
   });
 
   return {
