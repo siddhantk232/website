@@ -29,6 +29,10 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  eleventyConfig.addFilter("getog", (title = "") => {
+    return `/assets/og/${title.toLowerCase().replace(" ", "_")}.png`
+  });
+
   return {
     markdownTemplateEngine: "njk",
     dir: {
