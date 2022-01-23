@@ -40,13 +40,10 @@
         <ul class="nav">
           <li  class='md-enable'><a {% if page.url == '/' %} class="active"{% endif %} href="/">home</a></li>
           <li><a {% if page.url == '/blog/' %} class="active"{% endif %} href="/blog">blog</a></li>
-          <li><a {% if page.url == '/work/' %} class="active"{% endif %} href="/work">work</a></li>
           <li><a {% if page.url == '/about/' %} class="active"{% endif %} href="/about">about</a></li>
         </ul>
       </div>
     </header>
-
-
 
     <main {% if cssclass %} class="{{ cssclass }}" {% endif %}>
       <h1> {{title}}</h1>
@@ -62,8 +59,6 @@
     <h2>Comments</h2>
     </main>
 
-
-
     <!-- comments plugin -->
 
     <script src="https://utteranc.es/client.js"
@@ -73,19 +68,6 @@
         crossorigin="anonymous"
         async>
     </script>
-
     <br />
-
-    <!-- Google Analytics -->
-    <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-174893388-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
-
   </body>
-
-
 </html>
