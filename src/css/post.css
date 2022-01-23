@@ -1,7 +1,7 @@
 /* container */
-main {
+.post-container {
   padding: 0.5em 1em;
-  width: 60vw;
+  max-width: 650px;
   margin: 0 auto;
 }
 

@@ -5,7 +5,6 @@ description: "How I set up and use Hasura graphql engine for local development w
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
 canonical: "/posts/the-ultimate-hasura-development-setup"
-cssclass: "post-container"
 tags:
   - posts
   - docker

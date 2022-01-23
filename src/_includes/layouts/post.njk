@@ -45,14 +45,13 @@
       </div>
     </header>
 
-    <main {% if cssclass %} class="{{ cssclass }}" {% endif %}>
-      <h1> {{title}}</h1>
+    <main {% if cssclass %} class="{{ cssclass }}" {% else %} class="post-container" {% endif %}>
+      <h1>{{title}}</h1>
       <p class="lead">
         <span>{{page.date | readableDate }}</span> ⌚ <span>{{content | readingTime}} read</span>
       </p>
       <hr />
       <br />
-
       {{ content | safe }}
       <br />
       <br />

@@ -5,7 +5,6 @@ description: "Let's explore the full-text search functionality of postgres!"
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
 canonical: "/posts/postgres-full-text-search"
-cssclass: "post-container"
 tags:
   - posts
   - docker

@@ -6,7 +6,7 @@
   --accent-color: #20252c;
   --hover-bg: #16191d;
   --highlight-color: #2d88ff;
-  --roundness: 0.5em;
+  --roundness: 0.35em;
   --text-selection: #fbf1c7;
   --lead-color: #8c939b;
 }
@@ -43,7 +43,7 @@ header div {
   margin-top: 2em;
   background-color: var(--accent-color);
   border-radius: var(--roundness);
-  padding: 0.5em 1em;
+  padding: 0 1rem;
 
   display: flex;
   align-items: center;
@@ -53,14 +53,15 @@ header div {
 header div a {
   color: var(--font-color);
   text-decoration: none;
-  padding: 0.5em;
-  font-size: 1.75rem;
+  padding: 0.25em;
+  font-size: 1.7rem;
   border-radius: var(--roundness);
 }
 
 header div a:hover,
 .active {
-  background-color: var(--hover-bg);
+  background-color: var(--highlight-color);
+  color: var(--bg-dark);
 }
 
 header div ul {

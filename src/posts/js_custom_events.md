@@ -5,7 +5,6 @@ description: "Build custom notfications service using custom events in javascrip
 layout: layouts/post.njk
 canonical: "/posts/notification-service-in-webapps-using-custom-javascript-events"
 permalink: "/posts/{{ title | slug }}/"
-cssclass: "post-container"
 tags:
   - posts
 ---

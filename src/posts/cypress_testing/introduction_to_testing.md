@@ -5,7 +5,6 @@ description: "javascript testing series with cypress. In this series we will use
 layout: layouts/post.njk
 permalink: "/posts/{{ title | slug }}/"
 canonical: "/posts/introduction-testing-websites-with-cypress"
-cssclass: "post-container"
 tags:
   - posts
   - cypress
