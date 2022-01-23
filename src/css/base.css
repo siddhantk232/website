@@ -21,6 +21,12 @@
 * {
   box-sizing: border-box;
 }
+.post-container {
+  padding: 0.5em 1em;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
 
 html {
   height: 100vh;

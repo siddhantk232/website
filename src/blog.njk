@@ -15,8 +15,9 @@ cssclass: 'blogs'
 
 <ul>
   {% for item in  postList | reverse %}
-    <li>
-      <a href="{{ item.data.page.url }}">{{ item.data.title }}</a>
-    </li>
+      <li>
+        <h3><a href="{{ item.data.page.url }}">{{ item.data.title }}</a></h3>
+        <p>{{ item.data.description }}</p>
+      </li>
   {%endfor%}
 </ul>

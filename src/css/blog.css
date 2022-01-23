@@ -2,7 +2,7 @@
 
 main {
   padding: 0.5em 1em;
-  width: 60vw;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -10,10 +10,6 @@ h1 {
   font-family: "Luckiest Guy", cursive;
   font-size: 2.25em;
   margin-top: 2em;
-}
-
-p {
-  font-size: 2em;
 }
 
 ul:not(.nav) {
@@ -25,18 +21,21 @@ ul:not(.nav) li {
   font-size: 1.8em;
   margin: 2rem 0;
   background-color: var(--accent-color);
-  padding: 10px 20px;
-  border-radius: calc(var(--roundness) / 3);
-  border: 1px solid var(--text-selection);
+  padding: 0.5em 1em;
+  border-radius: var(--roundness);
+  border: 1px solid var(--highlight-color);
+}
+
+ul:not(.nav) li h3 {
+  margin: 0 0 0.7rem 0;
+  font-size: 1.8rem;
+}
+
+ul:not(.nav) li p {
+  margin: 0;
+  font-size: 1rem;
 }
 
 ul:not(.nav) li a {
   color: var(--highlight-color);
-  text-decoration: none;
-}
-
-@media screen and (max-width: 768px) {
-  main {
-    width: 95vw;
-  }
 }

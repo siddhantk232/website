@@ -1,27 +1,25 @@
 ---
 title: "About | Siddhant Kumar"
 layout: layouts/base.njk
+cssclass: post-container
 ---
 
 <h1>About Me</h1>
 
 <p>
-  Hey 👋, I’m a <span class='highlight'>software developer</span> based in 🇮🇳 who likes building amazing and useful software products.
+  Hey 👋, I’m a <span class='highlight'>software developer</span> based
+  in 🇮🇳 who likes building amazing and useful software products.
 </p>
 
-<h1>Tech Stack</h1>
-
-- javascript/typescript
-- nodejs
-- react.js
-- postgresql
+<p>My interests are:</p>
+<ul>
+  <li>Functonal Programming</li>
+  <li>Developer tools</li>
+  <li>Web applications</li>
+</ul>
 
 <h1>Things I am currently learning</h1>
 
-- postgresql
-- golang
-- devOps stuff
+- Haskell
+- ruby and rails
 
-<h1>Things I plan to learn</h1>
-
-- Andoroid Devlopment (React Native?)
