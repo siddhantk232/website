@@ -12,12 +12,13 @@
     "debug": "DEBUG=* eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
-    "@11ty/eleventy-plugin-rss": "^1.1.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
-    "@quasibit/eleventy-plugin-sitemap": "^2.0.0",
-    "eleventy-plugin-lazyimages": "^2.0.1",
+    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy-plugin-rss": "^1.1.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.2.2",
+    "@quasibit/eleventy-plugin-sitemap": "^2.1.4",
+    "eleventy-plugin-lazyimages": "^2.1.2",
     "eleventy-plugin-reading-time": "^0.0.1",
-    "luxon": "^1.24.1"
+    "luxon": "^2.3.0",
+    "typescript": "^4.5.5"
   }
 }
