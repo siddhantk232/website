@@ -3,6 +3,7 @@ const sitemap = require("@quasibit/eleventy-plugin-sitemap");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const readingTime = require("eleventy-plugin-reading-time");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const util = require("util");
 
 const { DateTime } = require("luxon");
 
@@ -29,6 +30,10 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
       "dd LLLL yyyy"
     );
+  });
+
+  eleventyConfig.addFilter('console', function(value) {
+        return util.inspect(value);
   });
 
   eleventyConfig.addFilter("getog", (title = "") => {
