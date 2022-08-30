@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-23 Tue 16:45 -->
+<!-- 2022-08-31 Wed 00:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>CPP (for CP)</title>
 <meta name="author" content="Siddhant Kumar" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -196,25 +196,28 @@
 </head>
 <body>
 <div id="content" class="content">
+<h1 class="title">CPP (for CP)</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4f03ad7">1. CPP (for CP)</a></li>
-<li><a href="#org3a764ed">2. Tips</a></li>
-<li><a href="#org67fe69d">3. Basic data types</a>
+<li><a href="#org3244dde">1. CPP (for CP)</a></li>
+<li><a href="#orgd880601">2. Tips</a></li>
+<li><a href="#org12b4eac">3. Basic data types</a>
 <ul>
-<li><a href="#org1728b12">3.1. Ranges (rough estimation)</a></li>
-<li><a href="#org6eb23e6">3.2. Calculation precedence (increasing -&gt; decreasing)</a></li>
-<li><a href="#org7fb2bd8">3.3. Operator precedence and associativity</a></li>
+<li><a href="#org142a1e0">3.1. Ranges (rough estimation)</a></li>
+<li><a href="#org2064486">3.2. Calculation precedence (increasing -&gt; decreasing)</a></li>
+<li><a href="#org88244e6">3.3. Operator precedence and associativity</a></li>
 </ul>
 </li>
-<li><a href="#orgd4f65f2">4. CPP References</a></li>
+<li><a href="#org74604e0">4. CPP References</a></li>
+<li><a href="#org8ca8f4b">5. Short long long double</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4f03ad7" class="outline-2">
-<h2 id="org4f03ad7"><span class="section-number-2">1.</span> CPP (for CP)</h2>
+
+<div id="outline-container-org3244dde" class="outline-2">
+<h2 id="org3244dde"><span class="section-number-2">1.</span> CPP (for CP)</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Basic syntax and prior C knowledge is assumed</li>
@@ -222,8 +225,8 @@
 </div>
 </div>
 
-<div id="outline-container-org3a764ed" class="outline-2">
-<h2 id="org3a764ed"><span class="section-number-2">2.</span> Tips</h2>
+<div id="outline-container-orgd880601" class="outline-2">
+<h2 id="orgd880601"><span class="section-number-2">2.</span> Tips</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 include <code>bits/stdc++.h</code> can save time including specific header files.
@@ -231,8 +234,8 @@ include <code>bits/stdc++.h</code> can save time including specific header files
 </div>
 </div>
 
-<div id="outline-container-org67fe69d" class="outline-2">
-<h2 id="org67fe69d"><span class="section-number-2">3.</span> Basic data types</h2>
+<div id="outline-container-org12b4eac" class="outline-2">
+<h2 id="org12b4eac"><span class="section-number-2">3.</span> Basic data types</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>data types (int, char, float, double, bool)</li>
@@ -269,8 +272,8 @@ concat (+), comparison (==) and, <code>size()</code> etc.
 </ul>
 </div>
 
-<div id="outline-container-org1728b12" class="outline-3">
-<h3 id="org1728b12"><span class="section-number-3">3.1.</span> Ranges (rough estimation)</h3>
+<div id="outline-container-org142a1e0" class="outline-3">
+<h3 id="org142a1e0"><span class="section-number-3">3.1.</span> Ranges (rough estimation)</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>-10<sup>9</sup> &lt; int &lt; 10<sup>9</sup></li>
@@ -293,8 +296,8 @@ calculation is required.</li>
 </div>
 </div>
 
-<div id="outline-container-org6eb23e6" class="outline-3">
-<h3 id="org6eb23e6"><span class="section-number-3">3.2.</span> Calculation precedence (increasing -&gt; decreasing)</h3>
+<div id="outline-container-org2064486" class="outline-3">
+<h3 id="org2064486"><span class="section-number-3">3.2.</span> Calculation precedence (increasing -&gt; decreasing)</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Types lower in this list will be converted to higher data types in expressions
@@ -325,8 +328,8 @@ and outputs.
 
 
 
-<div id="outline-container-org7fb2bd8" class="outline-3">
-<h3 id="org7fb2bd8"><span class="section-number-3">3.3.</span> Operator precedence and associativity</h3>
+<div id="outline-container-org88244e6" class="outline-3">
+<h3 id="org88244e6"><span class="section-number-3">3.3.</span> Operator precedence and associativity</h3>
 <div class="outline-text-3" id="text-3-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -440,8 +443,8 @@ and outputs.
 </div>
 </div>
 
-<div id="outline-container-orgd4f65f2" class="outline-2">
-<h2 id="orgd4f65f2"><span class="section-number-2">4.</span> CPP References</h2>
+<div id="outline-container-org74604e0" class="outline-2">
+<h2 id="org74604e0"><span class="section-number-2">4.</span> CPP References</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 References can be used to ignore variable copying when calling functions. This
@@ -473,10 +476,40 @@ Example:
 </div>
 </div>
 </div>
+<div id="outline-container-org8ca8f4b" class="outline-2">
+<h2 id="org8ca8f4b"><span class="section-number-2">5.</span> Short long long double</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">climits</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span> <span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">char</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">float</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">double</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    <span style="color: #fabd2f;">short</span> <span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">3</span>;
+    <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">b</span> = <span style="color: #d3869b; font-weight: bold;">69</span>;
+    <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">c</span> = <span style="color: #d3869b; font-weight: bold;">69</span>;
+    <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">double</span> <span style="color: #83a598;">d</span> = <span style="color: #d3869b; font-weight: bold;">2.0</span>;
+
+    cout &lt;&lt; a &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>a<span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>b<span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>c<span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>d<span style="color: #cc241d;">)</span> &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-08-23 Tue 16:45</p>
+<p class="date">Created: 2022-08-31 Wed 00:05</p>
 </div>
 </body>
 </html>
