@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-31 Wed 01:01 -->
+<!-- 2022-08-31 Wed 19:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DSA in C</title>
@@ -201,37 +201,43 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb25b01b">1. Arrays</a>
+<li><a href="#orgeed08bf">1. Arrays</a>
 <ul>
-<li><a href="#org45067f0">1.1. Array representation</a></li>
-<li><a href="#org46ac540">1.2. Inserting elements</a>
+<li><a href="#org512983d">1.1. Array representation</a></li>
+<li><a href="#orge60317e">1.2. Inserting elements</a>
 <ul>
-<li><a href="#org38017b9">1.2.1. Inserting at index <code>n</code></a></li>
+<li><a href="#org4d56fcf">1.2.1. Inserting at index <code>n</code></a></li>
+<li><a href="#org3333ec6">1.2.2. Append element</a></li>
+<li><a href="#org2ff1b94">1.2.3. Prepend element</a></li>
 </ul>
 </li>
-<li><a href="#org68a5975">1.3. <span class="todo TODO">TODO</span> Deleting elements</a></li>
-<li><a href="#org0286a2a">1.4. <span class="todo TODO">TODO</span> Resizing arrays</a></li>
+<li><a href="#org258ee40">1.3. Deleting elements</a></li>
 </ul>
 </li>
-<li><a href="#org1f18689">2. String as an array of characters</a></li>
-<li><a href="#org5425f82">3. Linked list</a></li>
-<li><a href="#org78f20c6">4. <span class="todo TODO">TODO</span> Stacks</a></li>
-<li><a href="#orge6daa77">5. <span class="todo TODO">TODO</span> Queues</a></li>
-<li><a href="#org281ccdd">6. <span class="todo TODO">TODO</span> Trees</a></li>
-<li><a href="#orgd36073c">7. <span class="todo TODO">TODO</span> Graphs</a></li>
-<li><a href="#org99b5639">8. <span class="todo TODO">TODO</span> Sorting</a></li>
-<li><a href="#org4f27bfa">9. <span class="todo TODO">TODO</span> Searching</a></li>
-<li><a href="#orgfd5c529">10. <span class="todo TODO">TODO</span> File Handling</a></li>
+<li><a href="#org99f6388">2. String as an array of characters</a></li>
+<li><a href="#orgb179f1b">3. Linked list</a></li>
+<li><a href="#org4e5ddcf">4. <span class="todo TODO">TODO</span> Stacks</a></li>
+<li><a href="#orgd7925bb">5. <span class="todo TODO">TODO</span> Queues</a></li>
+<li><a href="#orgfe18f80">6. <span class="todo TODO">TODO</span> Trees</a></li>
+<li><a href="#org2338381">7. <span class="todo TODO">TODO</span> Graphs</a></li>
+<li><a href="#org40dca98">8. <span class="todo TODO">TODO</span> Sorting</a></li>
+<li><a href="#orgcb74f3c">9. Searching</a>
+<ul>
+<li><a href="#org7d51e0d">9.1. Linear search</a></li>
+<li><a href="#org5321890">9.2. Binary Search</a></li>
+</ul>
+</li>
+<li><a href="#org39965c9">10. <span class="todo TODO">TODO</span> File Handling</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb25b01b" class="outline-2">
-<h2 id="orgb25b01b"><span class="section-number-2">1.</span> Arrays</h2>
+<div id="outline-container-orgeed08bf" class="outline-2">
+<h2 id="orgeed08bf"><span class="section-number-2">1.</span> Arrays</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org45067f0" class="outline-3">
-<h3 id="org45067f0"><span class="section-number-3">1.1.</span> Array representation</h3>
+<div id="outline-container-org512983d" class="outline-3">
+<h3 id="org512983d"><span class="section-number-3">1.1.</span> Array representation</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -300,12 +306,12 @@ to get the third element, we can do <code>(arr+3)</code>.
 </pre>
 </div>
 </div>
-<div id="outline-container-org46ac540" class="outline-3">
-<h3 id="org46ac540"><span class="section-number-3">1.2.</span> Inserting elements</h3>
+<div id="outline-container-orge60317e" class="outline-3">
+<h3 id="orge60317e"><span class="section-number-3">1.2.</span> Inserting elements</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org38017b9" class="outline-4">
-<h4 id="org38017b9"><span class="section-number-4">1.2.1.</span> Inserting at index <code>n</code></h4>
+<div id="outline-container-org4d56fcf" class="outline-4">
+<h4 id="org4d56fcf"><span class="section-number-4">1.2.1.</span> Inserting at index <code>n</code></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The code below initiliases an array of size 100 to ignore any resizing that may
@@ -330,27 +336,38 @@ The code below shows this algorithm in action. It also prints after insertion.
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
 
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">insert</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span>* <span style="color: #83a598;">arr</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = size - <span style="color: #d3869b; font-weight: bold;">1</span>; i &gt;= pos - <span style="color: #d3869b; font-weight: bold;">1</span>; --i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    arr<span style="color: #b8bb26;">[</span>i + <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">]</span> = arr<span style="color: #b8bb26;">[</span>i<span style="color: #b8bb26;">]</span>;
+  <span style="color: #cc241d;">}</span>
+
+  arr<span style="color: #cc241d;">[</span>pos - <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">]</span> = elem;
+  <span style="color: #fb4934;">return</span> size + <span style="color: #d3869b; font-weight: bold;">1</span>;
+<span style="color: #fe8019;">}</span>
+
 <span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">100</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span>,<span style="color: #d3869b; font-weight: bold;">6</span>,<span style="color: #d3869b; font-weight: bold;">7</span><span style="color: #cc241d;">}</span>;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">4</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">5</span>;
+  <span style="color: #928374;">//            </span><span style="color: #928374;">0 1 2 3 4</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">7</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">}</span>;
 
-    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">98</span>; i &gt;= n; --i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-        arr<span style="color: #b8bb26;">[</span>i + <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">]</span> = arr<span style="color: #b8bb26;">[</span>i<span style="color: #b8bb26;">]</span>;
-    <span style="color: #cc241d;">}</span>
+  <span style="color: #928374;">// </span><span style="color: #928374;">last position</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span> = <span style="color: #d3869b; font-weight: bold;">3</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span> = <span style="color: #d3869b; font-weight: bold;">999</span>;
 
-    arr<span style="color: #cc241d;">[</span>n<span style="color: #cc241d;">]</span> = <span style="color: #d3869b; font-weight: bold;">69</span>;
+  n = insert<span style="color: #cc241d;">(</span>arr, n, pos, elem<span style="color: #cc241d;">)</span>;
 
-    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; <span style="color: #d3869b; font-weight: bold;">10</span>; ++i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
-    <span style="color: #cc241d;">}</span>
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #cc241d;">)</span>;
 
-    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #cc241d;">)</span>;
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
 <span style="color: #fe8019;">}</span>
 </pre>
 </div>
 
 <pre class="example">
-1 2 3 4 69 5 6 7 0 0
+1 2 999 3 4 5
 </pre>
 
 
@@ -418,18 +435,145 @@ References:
 </ul>
 </div>
 </div>
+<div id="outline-container-org3333ec6" class="outline-4">
+<h4 id="org3333ec6"><span class="section-number-4">1.2.2.</span> Append element</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Appending an element is just inserting a new element at the end of the array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">insert</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span>* <span style="color: #83a598;">arr</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = size - <span style="color: #d3869b; font-weight: bold;">1</span>; i &gt;= pos - <span style="color: #d3869b; font-weight: bold;">1</span>; --i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    arr<span style="color: #b8bb26;">[</span>i + <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">]</span> = arr<span style="color: #b8bb26;">[</span>i<span style="color: #b8bb26;">]</span>;
+  <span style="color: #cc241d;">}</span>
+
+  arr<span style="color: #cc241d;">[</span>pos - <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">]</span> = elem;
+  <span style="color: #fb4934;">return</span> size + <span style="color: #d3869b; font-weight: bold;">1</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">5</span>;
+  <span style="color: #928374;">//            </span><span style="color: #928374;">0 1 2 3 4</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">7</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">}</span>;
+
+  <span style="color: #928374;">// </span><span style="color: #928374;">last position</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span> = n + <span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span> = <span style="color: #d3869b; font-weight: bold;">999</span>;
+
+  n = insert<span style="color: #cc241d;">(</span>arr, n, pos, elem<span style="color: #cc241d;">)</span>;
+
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #cc241d;">)</span>;
+
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
 </div>
 
-<div id="outline-container-org68a5975" class="outline-3">
-<h3 id="org68a5975"><span class="section-number-3">1.3.</span> <span class="todo TODO">TODO</span> Deleting elements</h3>
-</div>
-<div id="outline-container-org0286a2a" class="outline-3">
-<h3 id="org0286a2a"><span class="section-number-3">1.4.</span> <span class="todo TODO">TODO</span> Resizing arrays</h3>
+<pre class="example">
+1 2 3 4 5 999
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org1f18689" class="outline-2">
-<h2 id="org1f18689"><span class="section-number-2">2.</span> String as an array of characters</h2>
+<div id="outline-container-org2ff1b94" class="outline-4">
+<h4 id="org2ff1b94"><span class="section-number-4">1.2.3.</span> Prepend element</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Prepending an element is just inserting a new element at the beginning of the
+array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">insert</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span>* <span style="color: #83a598;">arr</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = size - <span style="color: #d3869b; font-weight: bold;">1</span>; i &gt;= pos - <span style="color: #d3869b; font-weight: bold;">1</span>; --i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    arr<span style="color: #b8bb26;">[</span>i + <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">]</span> = arr<span style="color: #b8bb26;">[</span>i<span style="color: #b8bb26;">]</span>;
+  <span style="color: #cc241d;">}</span>
+
+  arr<span style="color: #cc241d;">[</span>pos - <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">]</span> = elem;
+  <span style="color: #fb4934;">return</span> size + <span style="color: #d3869b; font-weight: bold;">1</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">5</span>;
+  <span style="color: #928374;">//            </span><span style="color: #928374;">0 1 2 3 4</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">7</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">}</span>;
+
+  <span style="color: #928374;">// </span><span style="color: #928374;">last position</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span> = <span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span> = <span style="color: #d3869b; font-weight: bold;">999</span>;
+
+  n = insert<span style="color: #cc241d;">(</span>arr, n, pos, elem<span style="color: #cc241d;">)</span>;
+
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #cc241d;">)</span>;
+
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+999 1 2 3 4 5
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org258ee40" class="outline-3">
+<h3 id="org258ee40"><span class="section-number-3">1.3.</span> Deleting elements</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+We do exactly the opposite of what we did in the <a href="#org4d56fcf">Inserting at index <code>n</code></a>
+section.  Instead of iterating from the last element till the position <code>n</code>, we
+iterate from postion <code>n</code> till the last and shift every element one index back
+from it&rsquo;s original position.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span> = <span style="color: #d3869b; font-weight: bold;">3</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">5</span>;
+  <span style="color: #928374;">//            </span><span style="color: #928374;">0 1 2 3 4</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">7</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">}</span>;
+
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = pos - <span style="color: #d3869b; font-weight: bold;">1</span>; i &lt; n - <span style="color: #d3869b; font-weight: bold;">1</span>; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    arr<span style="color: #b8bb26;">[</span>i<span style="color: #b8bb26;">]</span> = arr<span style="color: #b8bb26;">[</span>i+<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">]</span>;
+  <span style="color: #cc241d;">}</span>
+
+  n--;
+
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #cc241d;">)</span>;
+
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+1 2 4 5
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org99f6388" class="outline-2">
+<h2 id="org99f6388"><span class="section-number-2">2.</span> String as an array of characters</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -494,8 +638,8 @@ Take string input from user
 </div>
 </div>
 
-<div id="outline-container-org5425f82" class="outline-2">
-<h2 id="org5425f82"><span class="section-number-2">3.</span> Linked list</h2>
+<div id="outline-container-orgb179f1b" class="outline-2">
+<h2 id="orgb179f1b"><span class="section-number-2">3.</span> Linked list</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A simple Linked List implementation that contains integer data elements.
@@ -542,31 +686,109 @@ A simple Linked List implementation that contains integer data elements.
 </div>
 </div>
 
-<div id="outline-container-org78f20c6" class="outline-2">
-<h2 id="org78f20c6"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Stacks</h2>
+<div id="outline-container-org4e5ddcf" class="outline-2">
+<h2 id="org4e5ddcf"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Stacks</h2>
 </div>
-<div id="outline-container-orge6daa77" class="outline-2">
-<h2 id="orge6daa77"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Queues</h2>
+<div id="outline-container-orgd7925bb" class="outline-2">
+<h2 id="orgd7925bb"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Queues</h2>
 </div>
-<div id="outline-container-org281ccdd" class="outline-2">
-<h2 id="org281ccdd"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Trees</h2>
+<div id="outline-container-orgfe18f80" class="outline-2">
+<h2 id="orgfe18f80"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Trees</h2>
 </div>
-<div id="outline-container-orgd36073c" class="outline-2">
-<h2 id="orgd36073c"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Graphs</h2>
+<div id="outline-container-org2338381" class="outline-2">
+<h2 id="org2338381"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Graphs</h2>
 </div>
-<div id="outline-container-org99b5639" class="outline-2">
-<h2 id="org99b5639"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Sorting</h2>
+<div id="outline-container-org40dca98" class="outline-2">
+<h2 id="org40dca98"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Sorting</h2>
 </div>
-<div id="outline-container-org4f27bfa" class="outline-2">
-<h2 id="org4f27bfa"><span class="section-number-2">9.</span> <span class="todo TODO">TODO</span> Searching</h2>
+<div id="outline-container-orgcb74f3c" class="outline-2">
+<h2 id="orgcb74f3c"><span class="section-number-2">9.</span> Searching</h2>
+<div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orgfd5c529" class="outline-2">
-<h2 id="orgfd5c529"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> File Handling</h2>
+<div id="outline-container-org7d51e0d" class="outline-3">
+<h3 id="org7d51e0d"><span class="section-number-3">9.1.</span> Linear search</h3>
+<div class="outline-text-3" id="text-9-1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">99</span>,<span style="color: #d3869b; font-weight: bold;">2389</span>,<span style="color: #d3869b; font-weight: bold;">21</span><span style="color: #cc241d;">}</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span> = <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>arr<span style="color: #cc241d;">)</span> / <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">)</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">target</span> = <span style="color: #d3869b; font-weight: bold;">99</span>;
+
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">found_index</span> = -<span style="color: #d3869b; font-weight: bold;">1</span>;
+
+  <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; size; ++i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span> == target<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+      found_index = i;
+    <span style="color: #b8bb26;">}</span>
+  <span style="color: #cc241d;">}</span>
+
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>found_index &gt;= <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"Element %d found at index %d\n"</span>, arr<span style="color: #83a598;">[</span>found_index<span style="color: #83a598;">]</span>, found_index<span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"element not found"</span><span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span>
+
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5321890" class="outline-3">
+<h3 id="org5321890"><span class="section-number-3">9.2.</span> Binary Search</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Using recursion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">isearch</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">arr</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">target</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">left</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">right</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">mid</span> = <span style="color: #cc241d;">(</span>left + right<span style="color: #cc241d;">)</span> / <span style="color: #d3869b; font-weight: bold;">2</span>;
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>arr<span style="color: #b8bb26;">[</span>mid<span style="color: #b8bb26;">]</span> == target<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #fb4934;">return</span> mid;
+  <span style="color: #cc241d;">}</span>
+  <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>arr<span style="color: #b8bb26;">[</span>mid<span style="color: #b8bb26;">]</span> &gt; target<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">search left</span>
+    <span style="color: #fb4934;">return</span> isearch<span style="color: #b8bb26;">(</span>arr, target, left, mid<span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">search right</span>
+    <span style="color: #fb4934;">return</span> isearch<span style="color: #b8bb26;">(</span>arr, target, mid, right<span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span>
+
+  <span style="color: #fb4934;">return</span> -<span style="color: #d3869b; font-weight: bold;">1</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span>,<span style="color: #d3869b; font-weight: bold;">8</span>,<span style="color: #d3869b; font-weight: bold;">12</span><span style="color: #cc241d;">}</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">target</span> = <span style="color: #d3869b; font-weight: bold;">8</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span> = <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>arr<span style="color: #cc241d;">)</span> / <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">)</span>;
+
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">index</span> = isearch<span style="color: #cc241d;">(</span>arr, target, <span style="color: #d3869b; font-weight: bold;">0</span>,size - <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">)</span>;
+
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>index &gt;= <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"Element %d found at index %d\n"</span>, arr<span style="color: #83a598;">[</span>index<span style="color: #83a598;">]</span>, index<span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"element not found"</span><span style="color: #b8bb26;">)</span>;
+  <span style="color: #cc241d;">}</span>
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org39965c9" class="outline-2">
+<h2 id="org39965c9"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> File Handling</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-08-31 Wed 01:01</p>
+<p class="date">Created: 2022-08-31 Wed 19:47</p>
 </div>
 </body>
 </html>
