@@ -1,4 +1,5 @@
 (require 'ox-publish)
+(require 'htmlize)
 
 ;; Define the publishing project
 (setq org-publish-project-alist
