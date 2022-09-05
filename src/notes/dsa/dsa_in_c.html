@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-31 Wed 19:47 -->
+<!-- 2022-09-05 Mon 18:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DSA in C</title>
@@ -201,43 +201,62 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgeed08bf">1. Arrays</a>
+<li><a href="#org490f69a">1. Arrays</a>
 <ul>
-<li><a href="#org512983d">1.1. Array representation</a></li>
-<li><a href="#orge60317e">1.2. Inserting elements</a>
+<li><a href="#orgbe01cfd">1.1. Array representation</a></li>
+<li><a href="#org80320ad">1.2. Inserting elements</a>
 <ul>
-<li><a href="#org4d56fcf">1.2.1. Inserting at index <code>n</code></a></li>
-<li><a href="#org3333ec6">1.2.2. Append element</a></li>
-<li><a href="#org2ff1b94">1.2.3. Prepend element</a></li>
+<li><a href="#org9f5e1ee">1.2.1. Inserting at index <code>n</code></a></li>
+<li><a href="#org0b53b88">1.2.2. Append element</a></li>
+<li><a href="#orgfe6ae12">1.2.3. Prepend element</a></li>
 </ul>
 </li>
-<li><a href="#org258ee40">1.3. Deleting elements</a></li>
+<li><a href="#orgd039e4c">1.3. Deleting elements</a></li>
+<li><a href="#org7105671">1.4. 2D Arrays</a></li>
 </ul>
 </li>
-<li><a href="#org99f6388">2. String as an array of characters</a></li>
-<li><a href="#orgb179f1b">3. Linked list</a></li>
-<li><a href="#org4e5ddcf">4. <span class="todo TODO">TODO</span> Stacks</a></li>
-<li><a href="#orgd7925bb">5. <span class="todo TODO">TODO</span> Queues</a></li>
-<li><a href="#orgfe18f80">6. <span class="todo TODO">TODO</span> Trees</a></li>
-<li><a href="#org2338381">7. <span class="todo TODO">TODO</span> Graphs</a></li>
-<li><a href="#org40dca98">8. <span class="todo TODO">TODO</span> Sorting</a></li>
-<li><a href="#orgcb74f3c">9. Searching</a>
+<li><a href="#org7b4d561">2. String as an array of characters</a></li>
+<li><a href="#orgad4c780">3. Linked list</a>
 <ul>
-<li><a href="#org7d51e0d">9.1. Linear search</a></li>
-<li><a href="#org5321890">9.2. Binary Search</a></li>
+<li><a href="#org2649cf6">3.1. Searching in a linked list</a></li>
+<li><a href="#orgd1954f4">3.2. insertion</a></li>
+<li><a href="#org7fe783b">3.3. Deletion</a></li>
+<li><a href="#org1dc37b2">3.4. Mergin two linked lists</a></li>
+<li><a href="#org0742531">3.5. Circular linked lists</a></li>
 </ul>
 </li>
-<li><a href="#org39965c9">10. <span class="todo TODO">TODO</span> File Handling</a></li>
+<li><a href="#org91cc323">4. <span class="todo TODO">TODO</span> Stacks</a></li>
+<li><a href="#orgfef7e3f">5. <span class="todo TODO">TODO</span> Queues</a></li>
+<li><a href="#org12e0def">6. <span class="todo TODO">TODO</span> Trees</a></li>
+<li><a href="#orgfc0cbc6">7. <span class="todo TODO">TODO</span> Graphs</a></li>
+<li><a href="#orge90fc77">8. <span class="todo TODO">TODO</span> Sorting</a>
+<ul>
+<li><a href="#org8f60a19">8.1. Bubble Sort</a></li>
+<li><a href="#org59ba71e">8.2. <span class="todo TODO">TODO</span> Insertion Sort</a></li>
+<li><a href="#org4fdeb7f">8.3. <span class="todo TODO">TODO</span> Quick Sort</a></li>
+<li><a href="#orgf349962">8.4. <span class="todo TODO">TODO</span> Selection Sort</a></li>
+<li><a href="#org2fc1c90">8.5. <span class="todo TODO">TODO</span> Merge Sort</a></li>
+<li><a href="#orga6aefbc">8.6. <span class="todo TODO">TODO</span> Heap Sort</a></li>
+<li><a href="#org6b09ace">8.7. <span class="todo TODO">TODO</span> Hashing Techniques</a></li>
+</ul>
+</li>
+<li><a href="#org052a675">9. Searching</a>
+<ul>
+<li><a href="#orgc694c7a">9.1. Linear search</a></li>
+<li><a href="#orgb644051">9.2. Binary Search</a></li>
+</ul>
+</li>
+<li><a href="#org3ddfd72">10. <span class="todo TODO">TODO</span> File Handling</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgeed08bf" class="outline-2">
-<h2 id="orgeed08bf"><span class="section-number-2">1.</span> Arrays</h2>
+<div id="outline-container-org490f69a" class="outline-2">
+<h2 id="org490f69a"><span class="section-number-2">1.</span> Arrays</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org512983d" class="outline-3">
-<h3 id="org512983d"><span class="section-number-3">1.1.</span> Array representation</h3>
+<div id="outline-container-orgbe01cfd" class="outline-3">
+<h3 id="orgbe01cfd"><span class="section-number-3">1.1.</span> Array representation</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -306,12 +325,12 @@ to get the third element, we can do <code>(arr+3)</code>.
 </pre>
 </div>
 </div>
-<div id="outline-container-orge60317e" class="outline-3">
-<h3 id="orge60317e"><span class="section-number-3">1.2.</span> Inserting elements</h3>
+<div id="outline-container-org80320ad" class="outline-3">
+<h3 id="org80320ad"><span class="section-number-3">1.2.</span> Inserting elements</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org4d56fcf" class="outline-4">
-<h4 id="org4d56fcf"><span class="section-number-4">1.2.1.</span> Inserting at index <code>n</code></h4>
+<div id="outline-container-org9f5e1ee" class="outline-4">
+<h4 id="org9f5e1ee"><span class="section-number-4">1.2.1.</span> Inserting at index <code>n</code></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The code below initiliases an array of size 100 to ignore any resizing that may
@@ -435,8 +454,8 @@ References:
 </ul>
 </div>
 </div>
-<div id="outline-container-org3333ec6" class="outline-4">
-<h4 id="org3333ec6"><span class="section-number-4">1.2.2.</span> Append element</h4>
+<div id="outline-container-org0b53b88" class="outline-4">
+<h4 id="org0b53b88"><span class="section-number-4">1.2.2.</span> Append element</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Appending an element is just inserting a new element at the end of the array.
@@ -481,8 +500,8 @@ Appending an element is just inserting a new element at the end of the array.
 </div>
 </div>
 
-<div id="outline-container-org2ff1b94" class="outline-4">
-<h4 id="org2ff1b94"><span class="section-number-4">1.2.3.</span> Prepend element</h4>
+<div id="outline-container-orgfe6ae12" class="outline-4">
+<h4 id="orgfe6ae12"><span class="section-number-4">1.2.3.</span> Prepend element</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Prepending an element is just inserting a new element at the beginning of the
@@ -529,11 +548,11 @@ array.
 </div>
 </div>
 
-<div id="outline-container-org258ee40" class="outline-3">
-<h3 id="org258ee40"><span class="section-number-3">1.3.</span> Deleting elements</h3>
+<div id="outline-container-orgd039e4c" class="outline-3">
+<h3 id="orgd039e4c"><span class="section-number-3">1.3.</span> Deleting elements</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-We do exactly the opposite of what we did in the <a href="#org4d56fcf">Inserting at index <code>n</code></a>
+We do exactly the opposite of what we did in the <a href="#org9f5e1ee">Inserting at index <code>n</code></a>
 section.  Instead of iterating from the last element till the position <code>n</code>, we
 iterate from postion <code>n</code> till the last and shift every element one index back
 from it&rsquo;s original position.
@@ -570,10 +589,61 @@ from it&rsquo;s original position.
 </pre>
 </div>
 </div>
+
+<div id="outline-container-org7105671" class="outline-3">
+<h3 id="org7105671"><span class="section-number-3">1.4.</span> 2D Arrays</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Square matrix multiplication using 2D arrays in c.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">matrix1</span><span style="color: #cc241d;">[][</span><span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #b8bb26;">}</span>
+                       ,<span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span>,<span style="color: #d3869b; font-weight: bold;">6</span><span style="color: #b8bb26;">}</span>
+                       ,<span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">7</span>,<span style="color: #d3869b; font-weight: bold;">8</span>,<span style="color: #d3869b; font-weight: bold;">9</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">}</span>;
+
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">matrix2</span><span style="color: #cc241d;">[][</span><span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">}</span>
+                       ,<span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #b8bb26;">}</span>
+                       ,<span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">}</span>;
+
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">result</span><span style="color: #cc241d;">[][</span><span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #b8bb26;">}</span>
+                      ,<span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #b8bb26;">}</span>
+                      ,<span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">0</span>,<span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">}</span>;
+
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n_matrix1</span> = <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>matrix1<span style="color: #cc241d;">)</span> / <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>matrix1<span style="color: #b8bb26;">[</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #b8bb26;">]</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; n_matrix1; ++i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">j</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; j &lt; n_matrix1; ++j<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            <span style="color: #fb4934;">for</span> <span style="color: #83a598;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">k</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; k &lt; n_matrix1; ++k<span style="color: #83a598;">)</span> <span style="color: #83a598;">{</span>
+                result<span style="color: #fe8019;">[</span>i<span style="color: #fe8019;">][</span>j<span style="color: #fe8019;">]</span> += matrix1<span style="color: #fe8019;">[</span>i<span style="color: #fe8019;">][</span>k<span style="color: #fe8019;">]</span> * matrix2<span style="color: #fe8019;">[</span>k<span style="color: #fe8019;">][</span>j<span style="color: #fe8019;">]</span>;
+            <span style="color: #83a598;">}</span>
+        <span style="color: #b8bb26;">}</span>
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; n_matrix1; ++i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">j</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; j &lt; n_matrix1; ++j<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            printf<span style="color: #83a598;">(</span><span style="color: #b8bb26;">"%d "</span>, result<span style="color: #fe8019;">[</span>i<span style="color: #fe8019;">][</span>j<span style="color: #fe8019;">]</span><span style="color: #83a598;">)</span>;
+        <span style="color: #b8bb26;">}</span>
+        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #b8bb26;">)</span>;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
 </div>
 
-<div id="outline-container-org99f6388" class="outline-2">
-<h2 id="org99f6388"><span class="section-number-2">2.</span> String as an array of characters</h2>
+<pre class="example">
+3 2 4 
+9 5 10 
+15 8 16 
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7b4d561" class="outline-2">
+<h2 id="org7b4d561"><span class="section-number-2">2.</span> String as an array of characters</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -638,8 +708,8 @@ Take string input from user
 </div>
 </div>
 
-<div id="outline-container-orgb179f1b" class="outline-2">
-<h2 id="orgb179f1b"><span class="section-number-2">3.</span> Linked list</h2>
+<div id="outline-container-orgad4c780" class="outline-2">
+<h2 id="orgad4c780"><span class="section-number-2">3.</span> Linked list</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A simple Linked List implementation that contains integer data elements.
@@ -684,29 +754,99 @@ A simple Linked List implementation that contains integer data elements.
 69 100 101 102 103 104 105 106 107 108 109 110
 </pre>
 </div>
+
+<div id="outline-container-org2649cf6" class="outline-3">
+<h3 id="org2649cf6"><span class="section-number-3">3.1.</span> Searching in a linked list</h3>
+</div>
+<div id="outline-container-orgd1954f4" class="outline-3">
+<h3 id="orgd1954f4"><span class="section-number-3">3.2.</span> insertion</h3>
+</div>
+<div id="outline-container-org7fe783b" class="outline-3">
+<h3 id="org7fe783b"><span class="section-number-3">3.3.</span> Deletion</h3>
+</div>
+<div id="outline-container-org1dc37b2" class="outline-3">
+<h3 id="org1dc37b2"><span class="section-number-3">3.4.</span> Mergin two linked lists</h3>
+</div>
+<div id="outline-container-org0742531" class="outline-3">
+<h3 id="org0742531"><span class="section-number-3">3.5.</span> Circular linked lists</h3>
+</div>
 </div>
 
-<div id="outline-container-org4e5ddcf" class="outline-2">
-<h2 id="org4e5ddcf"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Stacks</h2>
+<div id="outline-container-org91cc323" class="outline-2">
+<h2 id="org91cc323"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Stacks</h2>
 </div>
-<div id="outline-container-orgd7925bb" class="outline-2">
-<h2 id="orgd7925bb"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Queues</h2>
+<div id="outline-container-orgfef7e3f" class="outline-2">
+<h2 id="orgfef7e3f"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Queues</h2>
 </div>
-<div id="outline-container-orgfe18f80" class="outline-2">
-<h2 id="orgfe18f80"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Trees</h2>
+<div id="outline-container-org12e0def" class="outline-2">
+<h2 id="org12e0def"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Trees</h2>
 </div>
-<div id="outline-container-org2338381" class="outline-2">
-<h2 id="org2338381"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Graphs</h2>
+<div id="outline-container-orgfc0cbc6" class="outline-2">
+<h2 id="orgfc0cbc6"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Graphs</h2>
 </div>
-<div id="outline-container-org40dca98" class="outline-2">
-<h2 id="org40dca98"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Sorting</h2>
+<div id="outline-container-orge90fc77" class="outline-2">
+<h2 id="orge90fc77"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Sorting</h2>
+<div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orgcb74f3c" class="outline-2">
-<h2 id="orgcb74f3c"><span class="section-number-2">9.</span> Searching</h2>
+<div id="outline-container-org8f60a19" class="outline-3">
+<h3 id="org8f60a19"><span class="section-number-3">8.1.</span> Bubble Sort</h3>
+<div class="outline-text-3" id="text-8-1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">swap</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">a</span>, <span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">b</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">6</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">9</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">}</span>;
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span> = <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>arr<span style="color: #cc241d;">)</span> / <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; <span style="color: #b8bb26;">(</span>size<span style="color: #b8bb26;">)</span>; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">j</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; j &lt; <span style="color: #83a598;">(</span>size - <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #83a598;">)</span>; j++<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            <span style="color: #fb4934;">if</span> <span style="color: #83a598;">(</span>arr<span style="color: #fe8019;">[</span>j<span style="color: #fe8019;">]</span> &gt; arr<span style="color: #fe8019;">[</span>j + <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #fe8019;">]</span><span style="color: #83a598;">)</span> <span style="color: #83a598;">{</span>
+                swap<span style="color: #fe8019;">(</span>&amp;arr<span style="color: #cc241d;">[</span>j<span style="color: #cc241d;">]</span>, &amp;arr<span style="color: #cc241d;">[</span>j + <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">]</span><span style="color: #fe8019;">)</span>;
+            <span style="color: #83a598;">}</span>
+        <span style="color: #b8bb26;">}</span>
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; <span style="color: #b8bb26;">(</span>size<span style="color: #b8bb26;">)</span>; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
+    <span style="color: #cc241d;">}</span>
+
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org59ba71e" class="outline-3">
+<h3 id="org59ba71e"><span class="section-number-3">8.2.</span> <span class="todo TODO">TODO</span> Insertion Sort</h3>
+</div>
+<div id="outline-container-org4fdeb7f" class="outline-3">
+<h3 id="org4fdeb7f"><span class="section-number-3">8.3.</span> <span class="todo TODO">TODO</span> Quick Sort</h3>
+</div>
+<div id="outline-container-orgf349962" class="outline-3">
+<h3 id="orgf349962"><span class="section-number-3">8.4.</span> <span class="todo TODO">TODO</span> Selection Sort</h3>
+</div>
+<div id="outline-container-org2fc1c90" class="outline-3">
+<h3 id="org2fc1c90"><span class="section-number-3">8.5.</span> <span class="todo TODO">TODO</span> Merge Sort</h3>
+</div>
+<div id="outline-container-orga6aefbc" class="outline-3">
+<h3 id="orga6aefbc"><span class="section-number-3">8.6.</span> <span class="todo TODO">TODO</span> Heap Sort</h3>
+</div>
+<div id="outline-container-org6b09ace" class="outline-3">
+<h3 id="org6b09ace"><span class="section-number-3">8.7.</span> <span class="todo TODO">TODO</span> Hashing Techniques</h3>
+</div>
+</div>
+<div id="outline-container-org052a675" class="outline-2">
+<h2 id="org052a675"><span class="section-number-2">9.</span> Searching</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org7d51e0d" class="outline-3">
-<h3 id="org7d51e0d"><span class="section-number-3">9.1.</span> Linear search</h3>
+<div id="outline-container-orgc694c7a" class="outline-3">
+<h3 id="orgc694c7a"><span class="section-number-3">9.1.</span> Linear search</h3>
 <div class="outline-text-3" id="text-9-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -734,11 +874,39 @@ A simple Linked List implementation that contains integer data elements.
 <span style="color: #fe8019;">}</span>
 </pre>
 </div>
+
+<p>
+Count number of occurences in an array
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">count</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">arr</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">target</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">count</span> = <span style="color: #d3869b; font-weight: bold;">0</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; size; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span> == target<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            count++;
+        <span style="color: #b8bb26;">}</span>
+    <span style="color: #cc241d;">}</span>
+    <span style="color: #fb4934;">return</span> count;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #d3869b; font-weight: bold;">3</span>, <span style="color: #d3869b; font-weight: bold;">4</span>, <span style="color: #d3869b; font-weight: bold;">4</span>, <span style="color: #d3869b; font-weight: bold;">6</span>, <span style="color: #d3869b; font-weight: bold;">9</span>, <span style="color: #d3869b; font-weight: bold;">4</span><span style="color: #cc241d;">}</span>;
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">target</span> = <span style="color: #d3869b; font-weight: bold;">4</span>;
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span> = <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>arr<span style="color: #cc241d;">)</span> / <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">)</span>;
+
+    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"%d occurs %d times in the array"</span>, target, count<span style="color: #b8bb26;">(</span>arr, size, target<span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org5321890" class="outline-3">
-<h3 id="org5321890"><span class="section-number-3">9.2.</span> Binary Search</h3>
+<div id="outline-container-orgb644051" class="outline-3">
+<h3 id="orgb644051"><span class="section-number-3">9.2.</span> Binary Search</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 Using recursion.
@@ -782,13 +950,13 @@ Using recursion.
 </div>
 </div>
 </div>
-<div id="outline-container-org39965c9" class="outline-2">
-<h2 id="org39965c9"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> File Handling</h2>
+<div id="outline-container-org3ddfd72" class="outline-2">
+<h2 id="org3ddfd72"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> File Handling</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-08-31 Wed 19:47</p>
+<p class="date">Created: 2022-09-05 Mon 18:15</p>
 </div>
 </body>
 </html>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-05 Mon 18:15 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4d62e01">1. Hello world program in C.</a></li>
+<li><a href="#orgfd2dd64">2. Data types and Variables</a></li>
+<li><a href="#orgb93b251">3. I/O (Input/Output) in C</a></li>
+<li><a href="#org4f88aa9">4. <span class="todo TODO">TODO</span> Operators</a>
+<ul>
+<li><a href="#orgbbd9834">4.1. <span class="todo TODO">TODO</span> Arithmetic</a></li>
+<li><a href="#orgec4490b">4.2. <span class="todo TODO">TODO</span> Logical</a></li>
+<li><a href="#org77ab3f0">4.3. <span class="todo TODO">TODO</span> Relational</a></li>
+<li><a href="#orgc863c60">4.4. <span class="todo TODO">TODO</span> Address of</a></li>
+<li><a href="#org2000aea">4.5. <span class="todo TODO">TODO</span> Increment/Decrement</a></li>
+</ul>
+</li>
+<li><a href="#org5bdfe77">5. Control Statements/Structures</a>
+<ul>
+<li><a href="#orgead1fbc">5.1. if/else/else if</a></li>
+<li><a href="#org37d03b6">5.2. for loop</a></li>
+<li><a href="#org3adfa47">5.3. while</a></li>
+<li><a href="#org576947a">5.4. do while</a></li>
+<li><a href="#org861e1e8">5.5. switch</a></li>
+</ul>
+</li>
+<li><a href="#orgfe60d8a">6. <span class="todo TODO">TODO</span> Pointers</a></li>
+<li><a href="#orgc8a5bbc">7. <span class="todo TODO">TODO</span> Array</a></li>
+<li><a href="#org6b7791f">8. <span class="todo TODO">TODO</span> Memory Management</a></li>
+<li><a href="#orgdac897f">9. <span class="todo TODO">TODO</span> Structs</a></li>
+<li><a href="#org580fb82">10. <span class="todo TODO">TODO</span> Union</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4d62e01" class="outline-2">
+<h2 id="org4d62e01"><span class="section-number-2">1.</span> Hello world program in C.</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"hello world"</span><span style="color: #cc241d;">)</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfd2dd64" class="outline-2">
+<h2 id="orgfd2dd64"><span class="section-number-2">2.</span> Data types and Variables</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">var_name</span> = <span style="color: #d3869b; font-weight: bold;">69</span>;
+    <span style="color: #fabd2f;">char</span> <span style="color: #83a598;">a</span> = <span style="color: #b8bb26;">'a'</span>;
+    <span style="color: #928374;">// </span><span style="color: #928374;">string reprsentation in C</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">char *name = "siddhant";</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">char name[] = "siddhant";</span>
+    <span style="color: #fabd2f;">char</span> <span style="color: #83a598;">name</span><span style="color: #cc241d;">[]</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">'s'</span>, <span style="color: #b8bb26;">'i'</span>, <span style="color: #b8bb26;">'d'</span>, <span style="color: #b8bb26;">'d'</span>, <span style="color: #b8bb26;">'h'</span>, <span style="color: #b8bb26;">'a'</span>, <span style="color: #b8bb26;">'n'</span>, <span style="color: #b8bb26;">'t'</span>, <span style="color: #b8bb26;">'\0'</span><span style="color: #cc241d;">}</span>;
+
+    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"%s\n"</span>, name<span style="color: #cc241d;">)</span>;
+
+    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"%d\n"</span>, <span style="color: #fb4934;">sizeof</span><span style="color: #b8bb26;">(</span>var_name<span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span>;
+    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"%d\n"</span>, <span style="color: #fb4934;">sizeof</span><span style="color: #b8bb26;">(</span>name<span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span>;
+    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"%d\n"</span>, <span style="color: #fb4934;">sizeof</span><span style="color: #b8bb26;">(</span>a<span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb93b251" class="outline-2">
+<h2 id="orgb93b251"><span class="section-number-2">3.</span> I/O (Input/Output) in C</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">num</span>;
+    scanf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"%d"</span>, &amp;num<span style="color: #cc241d;">)</span>;
+    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"%d"</span>, num<span style="color: #cc241d;">)</span>;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f88aa9" class="outline-2">
+<h2 id="org4f88aa9"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Operators</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgbbd9834" class="outline-3">
+<h3 id="orgbbd9834"><span class="section-number-3">4.1.</span> <span class="todo TODO">TODO</span> Arithmetic</h3>
+</div>
+<div id="outline-container-orgec4490b" class="outline-3">
+<h3 id="orgec4490b"><span class="section-number-3">4.2.</span> <span class="todo TODO">TODO</span> Logical</h3>
+</div>
+<div id="outline-container-org77ab3f0" class="outline-3">
+<h3 id="org77ab3f0"><span class="section-number-3">4.3.</span> <span class="todo TODO">TODO</span> Relational</h3>
+</div>
+<div id="outline-container-orgc863c60" class="outline-3">
+<h3 id="orgc863c60"><span class="section-number-3">4.4.</span> <span class="todo TODO">TODO</span> Address of</h3>
+</div>
+<div id="outline-container-org2000aea" class="outline-3">
+<h3 id="org2000aea"><span class="section-number-3">4.5.</span> <span class="todo TODO">TODO</span> Increment/Decrement</h3>
+</div>
+</div>
+
+<div id="outline-container-org5bdfe77" class="outline-2">
+<h2 id="org5bdfe77"><span class="section-number-2">5.</span> Control Statements/Structures</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgead1fbc" class="outline-3">
+<h3 id="orgead1fbc"><span class="section-number-3">5.1.</span> if/else/else if</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Odd/Even program
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">68</span>;
+    <span style="color: #928374;">// </span><span style="color: #928374;">modulus operator returns remainder of the division operation</span>
+    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>n % <span style="color: #d3869b; font-weight: bold;">2</span> == <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"even\n"</span><span style="color: #b8bb26;">)</span>;
+    <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #cc241d;">{</span>
+        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"odd\n"</span><span style="color: #b8bb26;">)</span>;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org37d03b6" class="outline-3">
+<h3 id="org37d03b6"><span class="section-number-3">5.2.</span> for loop</h3>
+</div>
+<div id="outline-container-org3adfa47" class="outline-3">
+<h3 id="org3adfa47"><span class="section-number-3">5.3.</span> while</h3>
+</div>
+<div id="outline-container-org576947a" class="outline-3">
+<h3 id="org576947a"><span class="section-number-3">5.4.</span> do while</h3>
+</div>
+<div id="outline-container-org861e1e8" class="outline-3">
+<h3 id="org861e1e8"><span class="section-number-3">5.5.</span> switch</h3>
+</div>
+</div>
+
+<div id="outline-container-orgfe60d8a" class="outline-2">
+<h2 id="orgfe60d8a"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Pointers</h2>
+</div>
+<div id="outline-container-orgc8a5bbc" class="outline-2">
+<h2 id="orgc8a5bbc"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Array</h2>
+</div>
+<div id="outline-container-org6b7791f" class="outline-2">
+<h2 id="org6b7791f"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Memory Management</h2>
+</div>
+<div id="outline-container-orgdac897f" class="outline-2">
+<h2 id="orgdac897f"><span class="section-number-2">9.</span> <span class="todo TODO">TODO</span> Structs</h2>
+</div>
+<div id="outline-container-org580fb82" class="outline-2">
+<h2 id="org580fb82"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> Union</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Siddhant Kumar</p>
+<p class="date">Created: 2022-09-05 Mon 18:15</p>
+</div>
+</body>
+</html>
