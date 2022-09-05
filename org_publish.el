@@ -10,10 +10,13 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
+(require 'ox-publish)
+
 ;; Install dependencies
 (package-install 'htmlize)
 
-(require 'ox-publish)
+(setq org-export-htmlize-output-type 'css)
+(setq org-html-htmlize-output-type 'css)
 
 ;; Define the publishing project
 (setq org-publish-project-alist
@@ -23,6 +26,7 @@
              :recursive t
              :base-directory "/home/sidd/vimwiki/studies/"
              :publishing-directory "./src/notes"
+             :html-html5-fancy t
              :publishing-function 'org-html-publish-to-html)
        (list "static"
         :recursive t
