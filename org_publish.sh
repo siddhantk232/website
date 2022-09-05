@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TODO fix publishing from command line
+# TODO fix publishing from command line
 # emacs -Q --script org_publish.el
 
 mv src/notes/theindex.html src/notes/index.html
