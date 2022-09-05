@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-05 Mon 22:31 -->
+<!-- 2022-09-05 Mon 22:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C language quickstart</title>
@@ -247,132 +247,132 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgee90e1b">1. Hello world program in C.</a></li>
-<li><a href="#org367aa7e">2. Data types and Variables</a></li>
-<li><a href="#org922b780">3. I/O (Input/Output) in C</a></li>
-<li><a href="#orga37ea43">4. <span class="todo TODO">TODO</span> Operators</a>
+<li><a href="#org6612454">1. Hello world program in C.</a></li>
+<li><a href="#org14bb9a2">2. Data types and Variables</a></li>
+<li><a href="#org98e30b2">3. I/O (Input/Output) in C</a></li>
+<li><a href="#org7de246a">4. <span class="todo TODO">TODO</span> Operators</a>
 <ul>
-<li><a href="#orgeb4c993">4.1. <span class="todo TODO">TODO</span> Arithmetic</a></li>
-<li><a href="#org40e430d">4.2. <span class="todo TODO">TODO</span> Logical</a></li>
-<li><a href="#org3ad4f3f">4.3. <span class="todo TODO">TODO</span> Relational</a></li>
-<li><a href="#org8a5a976">4.4. <span class="todo TODO">TODO</span> Address of</a></li>
-<li><a href="#orgf794eef">4.5. <span class="todo TODO">TODO</span> Increment/Decrement</a></li>
+<li><a href="#orgd3df400">4.1. <span class="todo TODO">TODO</span> Arithmetic</a></li>
+<li><a href="#org2bab9f4">4.2. <span class="todo TODO">TODO</span> Logical</a></li>
+<li><a href="#orgb24735b">4.3. <span class="todo TODO">TODO</span> Relational</a></li>
+<li><a href="#org8f84c6f">4.4. <span class="todo TODO">TODO</span> Address of</a></li>
+<li><a href="#orge01d05d">4.5. <span class="todo TODO">TODO</span> Increment/Decrement</a></li>
 </ul>
 </li>
-<li><a href="#orgb43cd3d">5. Control Statements/Structures</a>
+<li><a href="#org950536a">5. Control Statements/Structures</a>
 <ul>
-<li><a href="#org9a4319e">5.1. if/else/else if</a></li>
-<li><a href="#org11a0339">5.2. for loop</a></li>
-<li><a href="#org7461867">5.3. while</a></li>
-<li><a href="#org42b9b21">5.4. do while</a></li>
-<li><a href="#org1645437">5.5. switch</a></li>
+<li><a href="#orgbd78162">5.1. if/else/else if</a></li>
+<li><a href="#org1b22794">5.2. for loop</a></li>
+<li><a href="#orgb2147b0">5.3. while</a></li>
+<li><a href="#org732832c">5.4. do while</a></li>
+<li><a href="#org5aced2b">5.5. switch</a></li>
 </ul>
 </li>
-<li><a href="#org7869496">6. <span class="todo TODO">TODO</span> Pointers</a></li>
-<li><a href="#orgd215605">7. <span class="todo TODO">TODO</span> Array</a></li>
-<li><a href="#orgca43c55">8. <span class="todo TODO">TODO</span> Memory Management</a></li>
-<li><a href="#org50347cc">9. <span class="todo TODO">TODO</span> Structs</a></li>
-<li><a href="#orgb3023e6">10. <span class="todo TODO">TODO</span> Union</a></li>
+<li><a href="#org670a33a">6. <span class="todo TODO">TODO</span> Pointers</a></li>
+<li><a href="#orgf4e25c6">7. <span class="todo TODO">TODO</span> Array</a></li>
+<li><a href="#org0310fc9">8. <span class="todo TODO">TODO</span> Memory Management</a></li>
+<li><a href="#org46e3a36">9. <span class="todo TODO">TODO</span> Structs</a></li>
+<li><a href="#org8352950">10. <span class="todo TODO">TODO</span> Union</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgee90e1b" class="outline-2">
-<h2 id="orgee90e1b"><span class="section-number-2">1</span> Hello world program in C.</h2>
+<div id="outline-container-org6612454" class="outline-2">
+<h2 id="org6612454"><span class="section-number-2">1</span> Hello world program in C.</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    printf("hello world");
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    printf(<span style="font-style: italic;">"hello world"</span>);
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org367aa7e" class="outline-2">
-<h2 id="org367aa7e"><span class="section-number-2">2</span> Data types and Variables</h2>
+<div id="outline-container-org14bb9a2" class="outline-2">
+<h2 id="org14bb9a2"><span class="section-number-2">2</span> Data types and Variables</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    int var_name = 69;
-    char a = 'a';
-    // string reprsentation in C
-    // char *name = "siddhant";
-    // char name[] = "siddhant";
-    char name[] = {'s', 'i', 'd', 'd', 'h', 'a', 'n', 't', '\0'};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">var_name</span> = 69;
+    <span style="font-weight: bold; text-decoration: underline;">char</span> <span style="font-weight: bold; font-style: italic;">a</span> = <span style="font-style: italic;">'a'</span>;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">string reprsentation in C</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">char *name = "siddhant";</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">char name[] = "siddhant";</span>
+    <span style="font-weight: bold; text-decoration: underline;">char</span> <span style="font-weight: bold; font-style: italic;">name</span>[] = {<span style="font-style: italic;">'s'</span>, <span style="font-style: italic;">'i'</span>, <span style="font-style: italic;">'d'</span>, <span style="font-style: italic;">'d'</span>, <span style="font-style: italic;">'h'</span>, <span style="font-style: italic;">'a'</span>, <span style="font-style: italic;">'n'</span>, <span style="font-style: italic;">'t'</span>, <span style="font-style: italic;">'\0'</span>};
 
-    printf("%s\n", name);
+    printf(<span style="font-style: italic;">"%s\n"</span>, name);
 
-    printf("%d\n", sizeof(var_name));
-    printf("%d\n", sizeof(name));
-    printf("%d\n", sizeof(a));
+    printf(<span style="font-style: italic;">"%d\n"</span>, <span style="font-weight: bold;">sizeof</span>(var_name));
+    printf(<span style="font-style: italic;">"%d\n"</span>, <span style="font-weight: bold;">sizeof</span>(name));
+    printf(<span style="font-style: italic;">"%d\n"</span>, <span style="font-weight: bold;">sizeof</span>(a));
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org922b780" class="outline-2">
-<h2 id="org922b780"><span class="section-number-2">3</span> I/O (Input/Output) in C</h2>
+<div id="outline-container-org98e30b2" class="outline-2">
+<h2 id="org98e30b2"><span class="section-number-2">3</span> I/O (Input/Output) in C</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    int num;
-    scanf("%d", &amp;num);
-    printf("%d", num);
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">num</span>;
+    scanf(<span style="font-style: italic;">"%d"</span>, &amp;num);
+    printf(<span style="font-style: italic;">"%d"</span>, num);
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga37ea43" class="outline-2">
-<h2 id="orga37ea43"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Operators</h2>
+<div id="outline-container-org7de246a" class="outline-2">
+<h2 id="org7de246a"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Operators</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgeb4c993" class="outline-3">
-<h3 id="orgeb4c993"><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Arithmetic</h3>
+<div id="outline-container-orgd3df400" class="outline-3">
+<h3 id="orgd3df400"><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> Arithmetic</h3>
 </div>
-<div id="outline-container-org40e430d" class="outline-3">
-<h3 id="org40e430d"><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> Logical</h3>
+<div id="outline-container-org2bab9f4" class="outline-3">
+<h3 id="org2bab9f4"><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> Logical</h3>
 </div>
-<div id="outline-container-org3ad4f3f" class="outline-3">
-<h3 id="org3ad4f3f"><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> Relational</h3>
+<div id="outline-container-orgb24735b" class="outline-3">
+<h3 id="orgb24735b"><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> Relational</h3>
 </div>
-<div id="outline-container-org8a5a976" class="outline-3">
-<h3 id="org8a5a976"><span class="section-number-3">4.4</span> <span class="todo TODO">TODO</span> Address of</h3>
+<div id="outline-container-org8f84c6f" class="outline-3">
+<h3 id="org8f84c6f"><span class="section-number-3">4.4</span> <span class="todo TODO">TODO</span> Address of</h3>
 </div>
-<div id="outline-container-orgf794eef" class="outline-3">
-<h3 id="orgf794eef"><span class="section-number-3">4.5</span> <span class="todo TODO">TODO</span> Increment/Decrement</h3>
+<div id="outline-container-orge01d05d" class="outline-3">
+<h3 id="orge01d05d"><span class="section-number-3">4.5</span> <span class="todo TODO">TODO</span> Increment/Decrement</h3>
 </div>
 </div>
 
-<div id="outline-container-orgb43cd3d" class="outline-2">
-<h2 id="orgb43cd3d"><span class="section-number-2">5</span> Control Statements/Structures</h2>
+<div id="outline-container-org950536a" class="outline-2">
+<h2 id="org950536a"><span class="section-number-2">5</span> Control Statements/Structures</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org9a4319e" class="outline-3">
-<h3 id="org9a4319e"><span class="section-number-3">5.1</span> if/else/else if</h3>
+<div id="outline-container-orgbd78162" class="outline-3">
+<h3 id="orgbd78162"><span class="section-number-3">5.1</span> if/else/else if</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Odd/Even program
 </p>
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    int n = 68;
-    // modulus operator returns remainder of the division operation
-    if (n % 2 == 0) {
-	printf("even\n");
-    } else {
-	printf("odd\n");
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">n</span> = 68;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">modulus operator returns remainder of the division operation</span>
+    <span style="font-weight: bold;">if</span> (n % 2 == 0) {
+        printf(<span style="font-style: italic;">"even\n"</span>);
+    } <span style="font-weight: bold;">else</span> {
+        printf(<span style="font-style: italic;">"odd\n"</span>);
     }
 }
 </pre>
@@ -380,39 +380,39 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org11a0339" class="outline-3">
-<h3 id="org11a0339"><span class="section-number-3">5.2</span> for loop</h3>
+<div id="outline-container-org1b22794" class="outline-3">
+<h3 id="org1b22794"><span class="section-number-3">5.2</span> for loop</h3>
 </div>
-<div id="outline-container-org7461867" class="outline-3">
-<h3 id="org7461867"><span class="section-number-3">5.3</span> while</h3>
+<div id="outline-container-orgb2147b0" class="outline-3">
+<h3 id="orgb2147b0"><span class="section-number-3">5.3</span> while</h3>
 </div>
-<div id="outline-container-org42b9b21" class="outline-3">
-<h3 id="org42b9b21"><span class="section-number-3">5.4</span> do while</h3>
+<div id="outline-container-org732832c" class="outline-3">
+<h3 id="org732832c"><span class="section-number-3">5.4</span> do while</h3>
 </div>
-<div id="outline-container-org1645437" class="outline-3">
-<h3 id="org1645437"><span class="section-number-3">5.5</span> switch</h3>
+<div id="outline-container-org5aced2b" class="outline-3">
+<h3 id="org5aced2b"><span class="section-number-3">5.5</span> switch</h3>
 </div>
 </div>
 
-<div id="outline-container-org7869496" class="outline-2">
-<h2 id="org7869496"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> Pointers</h2>
+<div id="outline-container-org670a33a" class="outline-2">
+<h2 id="org670a33a"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> Pointers</h2>
 </div>
-<div id="outline-container-orgd215605" class="outline-2">
-<h2 id="orgd215605"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> Array</h2>
+<div id="outline-container-orgf4e25c6" class="outline-2">
+<h2 id="orgf4e25c6"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> Array</h2>
 </div>
-<div id="outline-container-orgca43c55" class="outline-2">
-<h2 id="orgca43c55"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> Memory Management</h2>
+<div id="outline-container-org0310fc9" class="outline-2">
+<h2 id="org0310fc9"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> Memory Management</h2>
 </div>
-<div id="outline-container-org50347cc" class="outline-2">
-<h2 id="org50347cc"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> Structs</h2>
+<div id="outline-container-org46e3a36" class="outline-2">
+<h2 id="org46e3a36"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> Structs</h2>
 </div>
-<div id="outline-container-orgb3023e6" class="outline-2">
-<h2 id="orgb3023e6"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> Union</h2>
+<div id="outline-container-org8352950" class="outline-2">
+<h2 id="org8352950"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> Union</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-09-05 Mon 22:31</p>
+<p class="date">Created: 2022-09-05 Mon 22:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

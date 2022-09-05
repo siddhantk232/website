@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-05 Mon 22:31 -->
+<!-- 2022-09-05 Mon 22:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>STL (Standard Template Library)</title>
@@ -247,52 +247,52 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdd84c4a">1. Containers</a>
+<li><a href="#org1b89e70">1. Containers</a>
 <ul>
-<li><a href="#orgcd1d0e5">1.1. Nested Containers</a></li>
-<li><a href="#orgb202bfd">1.2. Pairs</a></li>
-<li><a href="#orgc1dccee">1.3. Vectors</a></li>
-<li><a href="#org2abe7c0">1.4. Maps</a>
+<li><a href="#org2c7d091">1.1. Nested Containers</a></li>
+<li><a href="#org0e54085">1.2. Pairs</a></li>
+<li><a href="#org00fb5b3">1.3. Vectors</a></li>
+<li><a href="#org1d6cdae">1.4. Maps</a>
 <ul>
-<li><a href="#org2de8746">1.4.1. Unordered Maps</a></li>
-<li><a href="#org936d22b">1.4.2. Multimaps</a></li>
+<li><a href="#org6f2fb49">1.4.1. Unordered Maps</a></li>
+<li><a href="#org496fb61">1.4.2. Multimaps</a></li>
 </ul>
 </li>
-<li><a href="#org49ded37">1.5. Sets</a></li>
-<li><a href="#org0439bda">1.6. Stack</a>
+<li><a href="#org8d98537">1.5. Sets</a></li>
+<li><a href="#orgabf0fcb">1.6. Stack</a>
 <ul>
-<li><a href="#org20f9dda">1.6.1. Operations:</a></li>
-<li><a href="#orge3f4870">1.6.2. LC question (valid parens)</a></li>
+<li><a href="#org84fd61d">1.6.1. Operations:</a></li>
+<li><a href="#orgaf229b0">1.6.2. LC question (valid parens)</a></li>
 </ul>
 </li>
-<li><a href="#org11db65d">1.7. Queues</a>
+<li><a href="#org13fb33d">1.7. Queues</a>
 <ul>
-<li><a href="#org13b3f25">1.7.1. Operations:</a></li>
+<li><a href="#orgf8f274c">1.7.1. Operations:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org769d94d">2. Iterators</a></li>
-<li><a href="#orgc2ffef7">3. Algorithms</a>
+<li><a href="#org8148cec">2. Iterators</a></li>
+<li><a href="#org36d5c4b">3. Algorithms</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgd470614">3.0.1. Sort (O(nlog(n)))</a></li>
-<li><a href="#orga979ca9">3.0.2. Lower/Upper Bound (O(log(n)))</a></li>
-<li><a href="#org446c8a6">3.0.3. min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</a></li>
-<li><a href="#org7a2bbcf">3.0.4. cpp lambdas</a></li>
-<li><a href="#orgea41a49">3.0.5. <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></a></li>
+<li><a href="#org2644585">3.0.1. Sort (O(nlog(n)))</a></li>
+<li><a href="#org7918b69">3.0.2. Lower/Upper Bound (O(log(n)))</a></li>
+<li><a href="#orgb1f1ab4">3.0.3. min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</a></li>
+<li><a href="#orgdde78d4">3.0.4. cpp lambdas</a></li>
+<li><a href="#org5090281">3.0.5. <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org75a6abb">4. Functors</a></li>
+<li><a href="#org9e56c77">4. Functors</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdd84c4a" class="outline-2">
-<h2 id="orgdd84c4a"><span class="section-number-2">1</span> Containers</h2>
+<div id="outline-container-org1b89e70" class="outline-2">
+<h2 id="org1b89e70"><span class="section-number-2">1</span> Containers</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Containers are data structures that are already implemented in STL.
@@ -329,8 +329,8 @@ Above list does <b>not</b> include all the containers but most relevant ones. Se
 </p>
 </div>
 
-<div id="outline-container-orgcd1d0e5" class="outline-3">
-<h3 id="orgcd1d0e5"><span class="section-number-3">1.1</span> Nested Containers</h3>
+<div id="outline-container-org2c7d091" class="outline-3">
+<h3 id="org2c7d091"><span class="section-number-3">1.1</span> Nested Containers</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Cotainers can be nested. Some examples are given below.
@@ -344,8 +344,8 @@ Cotainers can be nested. Some examples are given below.
 </div>
 </div>
 
-<div id="outline-container-orgb202bfd" class="outline-3">
-<h3 id="orgb202bfd"><span class="section-number-3">1.2</span> Pairs</h3>
+<div id="outline-container-org0e54085" class="outline-3">
+<h3 id="org0e54085"><span class="section-number-3">1.2</span> Pairs</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 pair is defined in the <code>utility</code> header file. Pairs are copied when passed as
@@ -354,36 +354,36 @@ refer to a pair if needed.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;utility&gt;
-#include &lt;string&gt;
-#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;utility&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;string&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-int main() {
-    std::pair&lt;int, std::string&gt; p = {1, "string"};
-    std::cout &lt;&lt; p.first &lt;&lt; ":" &lt;&lt; p.second &lt;&lt; std::endl;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">std</span>::string&gt; <span style="font-weight: bold; font-style: italic;">p</span> = {1, <span style="font-style: italic;">"string"</span>};
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="font-style: italic;">":"</span> &lt;&lt; p.second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 
-    // pairs are copied
-    std::pair&lt;int,std::string&gt; p1 = p;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">pairs are copied</span>
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>,<span style="font-weight: bold; text-decoration: underline;">std</span>::string&gt; <span style="font-weight: bold; font-style: italic;">p1</span> = p;
     p1.first = 43;
-    std::cout &lt;&lt; p.first &lt;&lt; ":" &lt;&lt; p.second &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="font-style: italic;">":"</span> &lt;&lt; p.second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 
-    // cpp references use with pairs
-    std::pair&lt;int,std::string&gt; &amp;p2 = p;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">cpp references use with pairs</span>
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>,<span style="font-weight: bold; text-decoration: underline;">std</span>::string&gt; &amp;<span style="font-weight: bold; font-style: italic;">p2</span> = p;
     p2.first = 69;
-    std::cout &lt;&lt; p.first &lt;&lt; ":" &lt;&lt; p.second &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="font-style: italic;">":"</span> &lt;&lt; p.second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 
-    // with pointers
-    std::pair &lt;int, std::string&gt; *p3 = &amp;p;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">with pointers</span>
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">pair</span> &lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">std</span>::string&gt; *<span style="font-weight: bold; font-style: italic;">p3</span> = &amp;p;
     p3-&gt;first = 990;
-    std::cout &lt;&lt; p.first &lt;&lt; ":" &lt;&lt; p.second &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="font-style: italic;">":"</span> &lt;&lt; p.second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc1dccee" class="outline-3">
-<h3 id="orgc1dccee"><span class="section-number-3">1.3</span> Vectors</h3>
+<div id="outline-container-org00fb5b3" class="outline-3">
+<h3 id="org00fb5b3"><span class="section-number-3">1.3</span> Vectors</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Dynmaically sized contiguous memory blocks. Defined in <code>vector</code> header file.
@@ -394,32 +394,32 @@ vectors.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;vector&gt;
-#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;vector&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-int main() {
-    std::vector&lt;int&gt; v = {1,2,3};
-    // vector of initial size 10 with all values set to 3
-    // std::vector&lt;int&gt; x(10) will set all 10 values to 0 (data type's zero value)
-    std::vector&lt;int&gt; x(10,3);
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">v</span> = {1,2,3};
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">vector of initial size 10 with all values set to 3</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">std::vector&lt;int&gt; x(10) will set all 10 values to 0 (data type's zero value)</span>
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">x</span>(10,3);
 
-    for (int i : x) {
-	std::cout &lt;&lt; i &lt;&lt; " ";
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> : x) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; i &lt;&lt; <span style="font-style: italic;">" "</span>;
     }
 
-    std::cout &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 
-    for (int i : v) {
-	std::cout &lt;&lt; i &lt;&lt; std::endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> : v) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; i &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 
-    v.push_back(69); // O(1)
+    v.push_back(69); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">O(1)</span>
 
-    std::cout &lt;&lt; v[3] &lt;&lt; std::endl;
-    std::cout &lt;&lt; v.size() &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; v[3] &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; v.size() &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 
-    v.pop_back(); // O(1)
-    std::cout &lt;&lt; v.size() &lt;&lt; std::endl;
+    v.pop_back(); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">O(1)</span>
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; v.size() &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 }
 
 </pre>
@@ -431,28 +431,28 @@ reference to a vector.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;vector&gt;
-#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;vector&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-int main() {
-    std::vector&lt;int&gt; v = {1,2,3};
-    std::vector&lt;int&gt; v1 = v;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">v</span> = {1,2,3};
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">v1</span> = v;
 
     v1.push_back(10);
 
-    for (int i : v) {
-	std::cout &lt;&lt; i &lt;&lt; " ";
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> : v) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; i &lt;&lt; <span style="font-style: italic;">" "</span>;
     }
 
-    std::cout &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 
-    std::vector&lt;int&gt; &amp;v2 = v;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; &amp;<span style="font-weight: bold; font-style: italic;">v2</span> = v;
     v2[0] = 99;
-    std::cout &lt;&lt; v[0] &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; v[0] &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 
-    std::vector&lt;int&gt; *v3 = &amp;v;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; *<span style="font-weight: bold; font-style: italic;">v3</span> = &amp;v;
     (*v3)[0] = 32;
-    std::cout &lt;&lt; v[0] &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; v[0] &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 }
 </pre>
 </div>
@@ -462,15 +462,15 @@ Vectors can be nested to created multi-dimensional vectors (2d, 3d, &#x2026;). V
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;utility&gt;
-#include &lt;vector&gt;
-#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;utility&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;vector&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-int main() {
-    std::vector&lt;std::pair&lt;int, int&gt;&gt; v = {{1,2}, {2,9}};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">int</span>&gt;&gt; <span style="font-weight: bold; font-style: italic;">v</span> = {{1,2}, {2,9}};
 
-    for (std::pair&lt;int, int&gt; p : v) {
-	std::cout &lt;&lt; p.first &lt;&lt; " : " &lt;&lt; p.second &lt;&lt; std::endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">p</span> : v) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="font-style: italic;">" : "</span> &lt;&lt; p.second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 }
 
@@ -479,8 +479,8 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org2abe7c0" class="outline-3">
-<h3 id="org2abe7c0"><span class="section-number-3">1.4</span> Maps</h3>
+<div id="outline-container-org1d6cdae" class="outline-3">
+<h3 id="org1d6cdae"><span class="section-number-3">1.4</span> Maps</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 A data structure to store collection of <code>key:value</code> pairs. Pairs are stored in
@@ -508,40 +508,40 @@ Use <code>map.clear()</code> to clear the map.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include&lt;iostream&gt;
-#include&lt;map&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span><span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span><span style="font-style: italic;">&lt;map&gt;</span>
 
-int main() {
-    std::map&lt;int, std::string&gt; m;
-    m[1] = "abc";
-    m.insert({2, "dewf"});
-    m[9] = "jsf";
-    m[5] = "jsklfjlks";
-    m[99]; // insertion will still happen even if we didn't assign anything
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">map</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">std</span>::string&gt; <span style="font-weight: bold; font-style: italic;">m</span>;
+    m[1] = <span style="font-style: italic;">"abc"</span>;
+    m.insert({2, <span style="font-style: italic;">"dewf"</span>});
+    m[9] = <span style="font-style: italic;">"jsf"</span>;
+    m[5] = <span style="font-style: italic;">"jsklfjlks"</span>;
+    m[99]; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">insertion will still happen even if we didn't assign anything</span>
 
-    for (auto i : m) {
-	std::cout &lt;&lt;  i.first &lt;&lt; " : " &lt;&lt; i.second &lt;&lt; std::endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">i</span> : m) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt;  i.first &lt;&lt; <span style="font-style: italic;">" : "</span> &lt;&lt; i.second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 
-    auto el = m.find(5);
+    <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">el</span> = m.find(5);
 
-    if (el != m.end()) {
-	std::cout &lt;&lt; el-&gt;second &lt;&lt; std::endl;
+    <span style="font-weight: bold;">if</span> (el != m.end()) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; el-&gt;second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 
-    m.erase(m.find(1)); // O(log(n)) + O(log(n)) for find and then erase
-    m.erase(9); // O(log(n))
+    m.erase(m.find(1)); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">O(log(n)) + O(log(n)) for find and then erase</span>
+    m.erase(9); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">O(log(n))</span>
 
-    for (auto i : m) {
-	std::cout &lt;&lt;  i.first &lt;&lt; " : " &lt;&lt; i.second &lt;&lt; std::endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">i</span> : m) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt;  i.first &lt;&lt; <span style="font-style: italic;">" : "</span> &lt;&lt; i.second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 }
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org2de8746" class="outline-4">
-<h4 id="org2de8746"><span class="section-number-4">1.4.1</span> Unordered Maps</h4>
+<div id="outline-container-org6f2fb49" class="outline-4">
+<h4 id="org6f2fb49"><span class="section-number-4">1.4.1</span> Unordered Maps</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 Difference from normal normal maps:
@@ -560,19 +560,19 @@ standard data types (including std::string) can be used.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include&lt;iostream&gt;
-#include&lt;unordered_map&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span><span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span><span style="font-style: italic;">&lt;unordered_map&gt;</span>
 
-int main() {
-    std::unordered_map&lt;int, std::string&gt; m;
-    m[1] = "abc";
-    m.insert({2, "dewf"});
-    m[9] = "jsf";
-    m[5] = "jsklfjlks";
-    m[99]; // insertion will still happen even if we didn't assign anything
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">unordered_map</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">std</span>::string&gt; <span style="font-weight: bold; font-style: italic;">m</span>;
+    m[1] = <span style="font-style: italic;">"abc"</span>;
+    m.insert({2, <span style="font-style: italic;">"dewf"</span>});
+    m[9] = <span style="font-style: italic;">"jsf"</span>;
+    m[5] = <span style="font-style: italic;">"jsklfjlks"</span>;
+    m[99]; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">insertion will still happen even if we didn't assign anything</span>
 
-    for (auto i : m) {
-	std::cout &lt;&lt;  i.first &lt;&lt; " : " &lt;&lt; i.second &lt;&lt; std::endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">i</span> : m) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt;  i.first &lt;&lt; <span style="font-style: italic;">" : "</span> &lt;&lt; i.second &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 }
 </pre>
@@ -580,8 +580,8 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org936d22b" class="outline-4">
-<h4 id="org936d22b"><span class="section-number-4">1.4.2</span> Multimaps</h4>
+<div id="outline-container-org496fb61" class="outline-4">
+<h4 id="org496fb61"><span class="section-number-4">1.4.2</span> Multimaps</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 Pairs with same keys can exist in a <code>multimap</code>.
@@ -590,8 +590,8 @@ Pairs with same keys can exist in a <code>multimap</code>.
 </div>
 </div>
 
-<div id="outline-container-org49ded37" class="outline-3">
-<h3 id="org49ded37"><span class="section-number-3">1.5</span> Sets</h3>
+<div id="outline-container-org8d98537" class="outline-3">
+<h3 id="org8d98537"><span class="section-number-3">1.5</span> Sets</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Collection of unique elements.
@@ -612,56 +612,56 @@ only delete the element that's pointed by the iterator.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;set&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;set&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    set&lt;string&gt; s = {"gh", "asdf"};
-    s.insert("abc");
-    s.insert("abc"); // stores unique element
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">set</span>&lt;<span style="font-weight: bold; text-decoration: underline;">string</span>&gt; <span style="font-weight: bold; font-style: italic;">s</span> = {<span style="font-style: italic;">"gh"</span>, <span style="font-style: italic;">"asdf"</span>};
+    s.insert(<span style="font-style: italic;">"abc"</span>);
+    s.insert(<span style="font-style: italic;">"abc"</span>); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">stores unique element</span>
 
-    auto res = s.find("asdf"); // return s.end() if not found
+    <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">res</span> = s.find(<span style="font-style: italic;">"asdf"</span>); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">return s.end() if not found</span>
     cout &lt;&lt; *res &lt;&lt; endl;
 
-    for (auto val : s) {
-	cout &lt;&lt; val &lt;&lt; endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">val</span> : s) {
+        cout &lt;&lt; val &lt;&lt; endl;
     }
 }
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;unordered_set&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;unordered_set&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    unordered_set&lt;string&gt; s = {"sidd"};
-    s.insert("sidd"); // stores unique element
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">unordered_set</span>&lt;<span style="font-weight: bold; text-decoration: underline;">string</span>&gt; <span style="font-weight: bold; font-style: italic;">s</span> = {<span style="font-style: italic;">"sidd"</span>};
+    s.insert(<span style="font-style: italic;">"sidd"</span>); <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">stores unique element</span>
 
     cout &lt;&lt; s.size() &lt;&lt; endl;
 
-    for (auto &amp;val : s) {
-	cout &lt;&lt; val &lt;&lt; endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">auto</span> &amp;<span style="font-weight: bold; font-style: italic;">val</span> : s) {
+        cout &lt;&lt; val &lt;&lt; endl;
     }
 }
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0439bda" class="outline-3">
-<h3 id="org0439bda"><span class="section-number-3">1.6</span> Stack</h3>
+<div id="outline-container-orgabf0fcb" class="outline-3">
+<h3 id="orgabf0fcb"><span class="section-number-3">1.6</span> Stack</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 LIFO
 </p>
 </div>
 
-<div id="outline-container-org20f9dda" class="outline-4">
-<h4 id="org20f9dda"><span class="section-number-4">1.6.1</span> Operations:</h4>
+<div id="outline-container-org84fd61d" class="outline-4">
+<h4 id="org84fd61d"><span class="section-number-4">1.6.1</span> Operations:</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <ul class="org-ul">
 <li>push (element on top of the stack)</li>
@@ -670,13 +670,13 @@ LIFO
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;stack&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stack&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    stack&lt;int&gt; s;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">stack</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">s</span>;
     s.push(2);
     s.push(9);
     s.push(8);
@@ -684,9 +684,9 @@ int main() {
     s.push(99);
     s.push(10);
 
-    while(!s.empty()) {
-	cout &lt;&lt; s.top() &lt;&lt; endl;
-	s.pop();
+    <span style="font-weight: bold;">while</span>(!s.empty()) {
+        cout &lt;&lt; s.top() &lt;&lt; endl;
+        s.pop();
     }
 }
 </pre>
@@ -694,8 +694,8 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-orge3f4870" class="outline-4">
-<h4 id="orge3f4870"><span class="section-number-4">1.6.2</span> LC question (valid parens)</h4>
+<div id="outline-container-orgaf229b0" class="outline-4">
+<h4 id="orgaf229b0"><span class="section-number-4">1.6.2</span> LC question (valid parens)</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <p>
 <a href="https://leetcode.com/problems/valid-parentheses">https://leetcode.com/problems/valid-parentheses</a>
@@ -703,67 +703,67 @@ int main() {
 </div>
 
 <ol class="org-ol">
-<li><a id="org7280bb9"></a>Solution 1<br />
+<li><a id="org7c1d3d7"></a>Solution 1<br />
 <div class="outline-text-5" id="text-1-6-2-1">
 <div class="org-src-container">
-<pre class="src src-cpp" id="org06c1d19">class Solution1 {
-public:
-    bool isValid(string s) {
-	stack&lt;char&gt; st;
-	bool res = true;
-	for (char &amp;c : s) {
-	    if (c == '(' || c == '[' || c == '{') {
-		st.push(c);
-	    } else {
-		if (st.empty()) {
-		    res = false;
-		} else {
-		    auto top = st.top();
-		    st.pop();
+<pre class="src src-cpp" id="org85a40f6"><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">Solution1</span> {
+<span style="font-weight: bold;">public</span>:
+    <span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">isValid</span>(<span style="font-weight: bold; text-decoration: underline;">string</span> <span style="font-weight: bold; font-style: italic;">s</span>) {
+        <span style="font-weight: bold; text-decoration: underline;">stack</span>&lt;<span style="font-weight: bold; text-decoration: underline;">char</span>&gt; <span style="font-weight: bold; font-style: italic;">st</span>;
+        <span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold; font-style: italic;">res</span> = <span style="font-weight: bold; text-decoration: underline;">true</span>;
+        <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">char</span> &amp;<span style="font-weight: bold; font-style: italic;">c</span> : s) {
+            <span style="font-weight: bold;">if</span> (c == <span style="font-style: italic;">'('</span> || c == <span style="font-style: italic;">'['</span> || c == <span style="font-style: italic;">'{'</span>) {
+                st.push(c);
+            } <span style="font-weight: bold;">else</span> {
+                <span style="font-weight: bold;">if</span> (st.empty()) {
+                    res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                } <span style="font-weight: bold;">else</span> {
+                    <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">top</span> = st.top();
+                    st.pop();
 
-		    if (c == ')' &amp;&amp; top != '(') {
-			res = false;
-		    } else if (c == '}' &amp;&amp; top != '{') {
-			res = false;
-		    } else if (c == ']' &amp;&amp; top != '[') {
-			res = false;
-		    }
-		}
-	    }
-	}
+                    <span style="font-weight: bold;">if</span> (c == <span style="font-style: italic;">')'</span> &amp;&amp; top != <span style="font-style: italic;">'('</span>) {
+                        res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                    } <span style="font-weight: bold;">else</span> <span style="font-weight: bold;">if</span> (c == <span style="font-style: italic;">'}'</span> &amp;&amp; top != <span style="font-style: italic;">'{'</span>) {
+                        res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                    } <span style="font-weight: bold;">else</span> <span style="font-weight: bold;">if</span> (c == <span style="font-style: italic;">']'</span> &amp;&amp; top != <span style="font-style: italic;">'['</span>) {
+                        res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                    }
+                }
+            }
+        }
 
-	if (!st.empty()) {
-	    res = false;
-	}
+        <span style="font-weight: bold;">if</span> (!st.empty()) {
+            res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+        }
 
-	return res;
+        <span style="font-weight: bold;">return</span> res;
     }
 };
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-cpp" id="org66e5dc3">class Solution2 {
-public:
-    unordered_map&lt;char, int&gt; mp = {{'(', -1}, {'{', -2}, {'[', -3}, {')', 1}, {'}', 2}, {']', 3}};
-    bool isValid(string s) {
-	stack&lt;char&gt; st;
-	for (char &amp;c : s) {
-	    if (mp[c] &lt; 0) {
-		st.push(c);
-	    } else {
-		if (st.empty()) {
-		    return false;
-		}
-		auto top = st.top();
-		st.pop();
-		if (mp[top] + mp[c] != 0) {
-		    return false;
-		}
-	    }
-	}
+<pre class="src src-cpp" id="orge968cbe"><span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">Solution2</span> {
+<span style="font-weight: bold;">public</span>:
+    <span style="font-weight: bold; text-decoration: underline;">unordered_map</span>&lt;<span style="font-weight: bold; text-decoration: underline;">char</span>, <span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">mp</span> = {{<span style="font-style: italic;">'('</span>, -1}, {<span style="font-style: italic;">'{'</span>, -2}, {<span style="font-style: italic;">'['</span>, -3}, {<span style="font-style: italic;">')'</span>, 1}, {<span style="font-style: italic;">'}'</span>, 2}, {<span style="font-style: italic;">']'</span>, 3}};
+    <span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">isValid</span>(<span style="font-weight: bold; text-decoration: underline;">string</span> <span style="font-weight: bold; font-style: italic;">s</span>) {
+        <span style="font-weight: bold; text-decoration: underline;">stack</span>&lt;<span style="font-weight: bold; text-decoration: underline;">char</span>&gt; <span style="font-weight: bold; font-style: italic;">st</span>;
+        <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">char</span> &amp;<span style="font-weight: bold; font-style: italic;">c</span> : s) {
+            <span style="font-weight: bold;">if</span> (mp[c] &lt; 0) {
+                st.push(c);
+            } <span style="font-weight: bold;">else</span> {
+                <span style="font-weight: bold;">if</span> (st.empty()) {
+                    <span style="font-weight: bold;">return</span> <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                }
+                <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">top</span> = st.top();
+                st.pop();
+                <span style="font-weight: bold;">if</span> (mp[top] + mp[c] != 0) {
+                    <span style="font-weight: bold;">return</span> <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                }
+            }
+        }
 
-	return st.empty();
+        <span style="font-weight: bold;">return</span> st.empty();
     }
 };
 </pre>
@@ -774,85 +774,85 @@ Driver Code with both the solutions
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;stack&gt;
-#include &lt;unordered_map&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stack&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;unordered_map&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-class Solution1 {
-public:
-    bool isValid(string s) {
-	stack&lt;char&gt; st;
-	bool res = true;
-	for (char &amp;c : s) {
-	    if (c == '(' || c == '[' || c == '{') {
-		st.push(c);
-	    } else {
-		if (st.empty()) {
-		    res = false;
-		} else {
-		    auto top = st.top();
-		    st.pop();
+<span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">Solution1</span> {
+<span style="font-weight: bold;">public</span>:
+    <span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">isValid</span>(<span style="font-weight: bold; text-decoration: underline;">string</span> <span style="font-weight: bold; font-style: italic;">s</span>) {
+        <span style="font-weight: bold; text-decoration: underline;">stack</span>&lt;<span style="font-weight: bold; text-decoration: underline;">char</span>&gt; <span style="font-weight: bold; font-style: italic;">st</span>;
+        <span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold; font-style: italic;">res</span> = <span style="font-weight: bold; text-decoration: underline;">true</span>;
+        <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">char</span> &amp;<span style="font-weight: bold; font-style: italic;">c</span> : s) {
+            <span style="font-weight: bold;">if</span> (c == <span style="font-style: italic;">'('</span> || c == <span style="font-style: italic;">'['</span> || c == <span style="font-style: italic;">'{'</span>) {
+                st.push(c);
+            } <span style="font-weight: bold;">else</span> {
+                <span style="font-weight: bold;">if</span> (st.empty()) {
+                    res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                } <span style="font-weight: bold;">else</span> {
+                    <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">top</span> = st.top();
+                    st.pop();
 
-		    if (c == ')' &amp;&amp; top != '(') {
-			res = false;
-		    } else if (c == '}' &amp;&amp; top != '{') {
-			res = false;
-		    } else if (c == ']' &amp;&amp; top != '[') {
-			res = false;
-		    }
-		}
-	    }
-	}
+                    <span style="font-weight: bold;">if</span> (c == <span style="font-style: italic;">')'</span> &amp;&amp; top != <span style="font-style: italic;">'('</span>) {
+                        res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                    } <span style="font-weight: bold;">else</span> <span style="font-weight: bold;">if</span> (c == <span style="font-style: italic;">'}'</span> &amp;&amp; top != <span style="font-style: italic;">'{'</span>) {
+                        res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                    } <span style="font-weight: bold;">else</span> <span style="font-weight: bold;">if</span> (c == <span style="font-style: italic;">']'</span> &amp;&amp; top != <span style="font-style: italic;">'['</span>) {
+                        res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                    }
+                }
+            }
+        }
 
-	if (!st.empty()) {
-	    res = false;
-	}
+        <span style="font-weight: bold;">if</span> (!st.empty()) {
+            res = <span style="font-weight: bold; text-decoration: underline;">false</span>;
+        }
 
-	return res;
+        <span style="font-weight: bold;">return</span> res;
     }
 };
 
-class Solution2 {
-public:
-    unordered_map&lt;char, int&gt; mp = {{'(', -1}, {'{', -2}, {'[', -3}, {')', 1}, {'}', 2}, {']', 3}};
-    bool isValid(string s) {
-	stack&lt;char&gt; st;
-	for (char &amp;c : s) {
-	    if (mp[c] &lt; 0) {
-		st.push(c);
-	    } else {
-		if (st.empty()) {
-		    return false;
-		}
-		auto top = st.top();
-		st.pop();
-		if (mp[top] + mp[c] != 0) {
-		    return false;
-		}
-	    }
-	}
+<span style="font-weight: bold;">class</span> <span style="font-weight: bold; text-decoration: underline;">Solution2</span> {
+<span style="font-weight: bold;">public</span>:
+    <span style="font-weight: bold; text-decoration: underline;">unordered_map</span>&lt;<span style="font-weight: bold; text-decoration: underline;">char</span>, <span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">mp</span> = {{<span style="font-style: italic;">'('</span>, -1}, {<span style="font-style: italic;">'{'</span>, -2}, {<span style="font-style: italic;">'['</span>, -3}, {<span style="font-style: italic;">')'</span>, 1}, {<span style="font-style: italic;">'}'</span>, 2}, {<span style="font-style: italic;">']'</span>, 3}};
+    <span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">isValid</span>(<span style="font-weight: bold; text-decoration: underline;">string</span> <span style="font-weight: bold; font-style: italic;">s</span>) {
+        <span style="font-weight: bold; text-decoration: underline;">stack</span>&lt;<span style="font-weight: bold; text-decoration: underline;">char</span>&gt; <span style="font-weight: bold; font-style: italic;">st</span>;
+        <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">char</span> &amp;<span style="font-weight: bold; font-style: italic;">c</span> : s) {
+            <span style="font-weight: bold;">if</span> (mp[c] &lt; 0) {
+                st.push(c);
+            } <span style="font-weight: bold;">else</span> {
+                <span style="font-weight: bold;">if</span> (st.empty()) {
+                    <span style="font-weight: bold;">return</span> <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                }
+                <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">top</span> = st.top();
+                st.pop();
+                <span style="font-weight: bold;">if</span> (mp[top] + mp[c] != 0) {
+                    <span style="font-weight: bold;">return</span> <span style="font-weight: bold; text-decoration: underline;">false</span>;
+                }
+            }
+        }
 
-	return st.empty();
+        <span style="font-weight: bold;">return</span> st.empty();
     }
 };
 
-int main() {
-    auto sol1 = new Solution1();
-    auto sol2 = new Solution2();
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">sol1</span> = <span style="font-weight: bold;">new</span> <span style="font-weight: bold; text-decoration: underline;">Solution1</span>();
+    <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">sol2</span> = <span style="font-weight: bold;">new</span> <span style="font-weight: bold; text-decoration: underline;">Solution2</span>();
 
-    cout &lt;&lt; sol1-&gt;isValid("((()))") &lt;&lt; endl;
-    cout &lt;&lt; sol1-&gt;isValid("({[]})") &lt;&lt; endl;
+    cout &lt;&lt; sol1-&gt;isValid(<span style="font-style: italic;">"((()))"</span>) &lt;&lt; endl;
+    cout &lt;&lt; sol1-&gt;isValid(<span style="font-style: italic;">"({[]})"</span>) &lt;&lt; endl;
 
-    cout &lt;&lt; sol1-&gt;isValid("(]") &lt;&lt; endl;
-    cout &lt;&lt; sol1-&gt;isValid("[](()") &lt;&lt; endl;
+    cout &lt;&lt; sol1-&gt;isValid(<span style="font-style: italic;">"(]"</span>) &lt;&lt; endl;
+    cout &lt;&lt; sol1-&gt;isValid(<span style="font-style: italic;">"[](()"</span>) &lt;&lt; endl;
 
-    cout &lt;&lt; sol2-&gt;isValid("((()))") &lt;&lt; endl;
-    cout &lt;&lt; sol2-&gt;isValid("({[]})") &lt;&lt; endl;
+    cout &lt;&lt; sol2-&gt;isValid(<span style="font-style: italic;">"((()))"</span>) &lt;&lt; endl;
+    cout &lt;&lt; sol2-&gt;isValid(<span style="font-style: italic;">"({[]})"</span>) &lt;&lt; endl;
 
-    cout &lt;&lt; sol2-&gt;isValid("(]") &lt;&lt; endl;
-    cout &lt;&lt; sol2-&gt;isValid("[](()") &lt;&lt; endl;
+    cout &lt;&lt; sol2-&gt;isValid(<span style="font-style: italic;">"(]"</span>) &lt;&lt; endl;
+    cout &lt;&lt; sol2-&gt;isValid(<span style="font-style: italic;">"[](()"</span>) &lt;&lt; endl;
 }
 </pre>
 </div>
@@ -862,15 +862,15 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org11db65d" class="outline-3">
-<h3 id="org11db65d"><span class="section-number-3">1.7</span> Queues</h3>
+<div id="outline-container-org13fb33d" class="outline-3">
+<h3 id="org13fb33d"><span class="section-number-3">1.7</span> Queues</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 FIFO
 </p>
 </div>
-<div id="outline-container-org13b3f25" class="outline-4">
-<h4 id="org13b3f25"><span class="section-number-4">1.7.1</span> Operations:</h4>
+<div id="outline-container-orgf8f274c" class="outline-4">
+<h4 id="orgf8f274c"><span class="section-number-4">1.7.1</span> Operations:</h4>
 <div class="outline-text-4" id="text-1-7-1">
 <ul class="org-ul">
 <li>push (element to the back of the queue)</li>
@@ -879,22 +879,22 @@ FIFO
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;queue&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;queue&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    queue&lt;string&gt; q;
-    q.push("abc");
-    q.push("def");
-    q.push("ghi");
-    q.push("jkl");
-    q.push("mno");
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">queue</span>&lt;<span style="font-weight: bold; text-decoration: underline;">string</span>&gt; <span style="font-weight: bold; font-style: italic;">q</span>;
+    q.push(<span style="font-style: italic;">"abc"</span>);
+    q.push(<span style="font-style: italic;">"def"</span>);
+    q.push(<span style="font-style: italic;">"ghi"</span>);
+    q.push(<span style="font-style: italic;">"jkl"</span>);
+    q.push(<span style="font-style: italic;">"mno"</span>);
 
-    while(!q.empty()) {
-	cout &lt;&lt; q.front() &lt;&lt; endl;
-	q.pop();
+    <span style="font-weight: bold;">while</span>(!q.empty()) {
+        cout &lt;&lt; q.front() &lt;&lt; endl;
+        q.pop();
     }
 }
 </pre>
@@ -904,8 +904,8 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org769d94d" class="outline-2">
-<h2 id="org769d94d"><span class="section-number-2">2</span> Iterators</h2>
+<div id="outline-container-org8148cec" class="outline-2">
+<h2 id="org8148cec"><span class="section-number-2">2</span> Iterators</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Pointer like structures. <code>.begin()</code> points at the first element of a data
@@ -921,19 +921,19 @@ contiguous memory block so this does not work.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;vector&gt;</span>
 
-int main() {
-    std::vector&lt;int&gt; v = {1,2,3,4};
-    std::vector&lt;int&gt;::iterator it = v.begin();
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">v</span> = {1,2,3,4};
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt;::<span style="font-weight: bold; text-decoration: underline;">iterator</span> <span style="font-weight: bold; font-style: italic;">it</span> = v.begin();
 
-    std::cout &lt;&lt; (*it) &lt;&lt; std::endl;
-    std::cout &lt;&lt; (*(it + 1)) &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; (*it) &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; (*(it + 1)) &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 
-    // i++/++i -&gt; next iterator
-    for (auto i = v.begin(); i != v.end(); ++i) {
-	std::cout &lt;&lt; (*i) &lt;&lt; std::endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">i++/++i -&gt; next iterator</span>
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">i</span> = v.begin(); i != v.end(); ++i) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; (*i) &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 }
 </pre>
@@ -945,25 +945,25 @@ syntax required for iterator usage.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;vector&gt;</span>
 
-int main() {
-    std::vector&lt;int&gt; v = {1,2,3,4};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">v</span> = {1,2,3,4};
 
-    // uses iterators under the hood
-    // the value inside identifier `i` is copied
-    // use cpp references (int &amp;i) when copying is not desired
-    for (int i : v) {
-	std::cout &lt;&lt; i &lt;&lt; std::endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">uses iterators under the hood</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">the value inside identifier `i` is copied</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">use cpp references (int &amp;i) when copying is not desired</span>
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> : v) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; i &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 
-    std::vector&lt;std::pair&lt;int,int&gt;&gt; p = {{1,2}, {3,4}};
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">std</span>::<span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>,<span style="font-weight: bold; text-decoration: underline;">int</span>&gt;&gt; <span style="font-weight: bold; font-style: italic;">p</span> = {{1,2}, {3,4}};
 
-    // pi :: pair&lt;int,int&gt;
-    // pari&lt;int,int&gt; -&gt; auto!
-    for (auto pi : p) {
-	std::cout &lt;&lt; pi.first &lt;&lt; std::endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">pi :: pair&lt;int,int&gt;</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">pari&lt;int,int&gt; -&gt; auto!</span>
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">pi</span> : p) {
+        <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; pi.first &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
     }
 }
 </pre>
@@ -971,16 +971,16 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-orgc2ffef7" class="outline-2">
-<h2 id="orgc2ffef7"><span class="section-number-2">3</span> Algorithms</h2>
+<div id="outline-container-org36d5c4b" class="outline-2">
+<h2 id="org36d5c4b"><span class="section-number-2">3</span> Algorithms</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>{next,prev}<sub>permutations</sub></li>
 </ul>
 </div>
 
-<div id="outline-container-orgd470614" class="outline-4">
-<h4 id="orgd470614"><span class="section-number-4">3.0.1</span> Sort (O(nlog(n)))</h4>
+<div id="outline-container-org2644585" class="outline-4">
+<h4 id="org2644585"><span class="section-number-4">3.0.1</span> Sort (O(nlog(n)))</h4>
 <div class="outline-text-4" id="text-3-0-1">
 <p>
 <code>std::sort</code> takes in the first iterator (pointer to the first element) and
@@ -988,18 +988,18 @@ pointer to the next element after the last element.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;algorithm&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    int a[5] = {3,34,2,61,3};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>[5] = {3,34,2,61,3};
 
     sort(a, a+5);
 
-    for (int i : a) {
-	cout &lt;&lt; i &lt;&lt; endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> : a) {
+        cout &lt;&lt; i &lt;&lt; endl;
     }
 }
 </pre>
@@ -1010,18 +1010,18 @@ Usage with vectors:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;algorithm&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    vector&lt;int&gt; a = {1,99,3,4,10, 8};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">a</span> = {1,99,3,4,10, 8};
 
     sort(a.begin(), a.end());
 
-    for (int i : a) {
-	cout &lt;&lt; i &lt;&lt; endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> : a) {
+        cout &lt;&lt; i &lt;&lt; endl;
     }
 }
 </pre>
@@ -1029,7 +1029,7 @@ int main() {
 </div>
 
 <ol class="org-ol">
-<li><a id="org6b1526f"></a>Comparator Function in Sort<br />
+<li><a id="org244975a"></a>Comparator Function in Sort<br />
 <div class="outline-text-5" id="text-3-0-1-1">
 <p>
 The default logic for sort is to rearrange container elements in ascending
@@ -1043,25 +1043,25 @@ Return <code>false</code> from the comparator function if you want to swap, else
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;algorithm&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-bool cmp(pair&lt;int, int&gt; a, pair&lt;int, int&gt; b) {
-    if (a.first != b.first) {
-	return a.first &lt; b.first;
+<span style="font-weight: bold; text-decoration: underline;">bool</span> <span style="font-weight: bold;">cmp</span>(<span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">a</span>, <span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">b</span>) {
+    <span style="font-weight: bold;">if</span> (a.first != b.first) {
+        <span style="font-weight: bold;">return</span> a.first &lt; b.first;
     }
-    return a.second &gt; b.second;
+    <span style="font-weight: bold;">return</span> a.second &gt; b.second;
 }
 
-int main() {
-    vector&lt;pair&lt;int, int&gt;&gt; a = {{4,3}, {5,5}, {5,3}, {25, 6}, {7, 9}, {8, 5}};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">pair</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>, <span style="font-weight: bold; text-decoration: underline;">int</span>&gt;&gt; <span style="font-weight: bold; font-style: italic;">a</span> = {{4,3}, {5,5}, {5,3}, {25, 6}, {7, 9}, {8, 5}};
 
     sort(a.begin(), a.end(), cmp);
 
-    for (auto i : a) {
-	cout &lt;&lt; i.first &lt;&lt; " " &lt;&lt; i.second &lt;&lt; endl;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">i</span> : a) {
+        cout &lt;&lt; i.first &lt;&lt; <span style="font-style: italic;">" "</span> &lt;&lt; i.second &lt;&lt; endl;
     }
 }
 </pre>
@@ -1070,8 +1070,8 @@ int main() {
 </li>
 </ol>
 </div>
-<div id="outline-container-orga979ca9" class="outline-4">
-<h4 id="orga979ca9"><span class="section-number-4">3.0.2</span> Lower/Upper Bound (O(log(n)))</h4>
+<div id="outline-container-org7918b69" class="outline-4">
+<h4 id="org7918b69"><span class="section-number-4">3.0.2</span> Lower/Upper Bound (O(log(n)))</h4>
 <div class="outline-text-4" id="text-3-0-2">
 <p>
 The input to lower/upper bound should be sorted to get O(log(n)) perf. If the
@@ -1096,13 +1096,13 @@ the search argument passed.
 
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;algorithm&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    int a[5] = {3,34,2,61,3};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>[5] = {3,34,2,61,3};
 
     sort(a, a+5);
 
@@ -1110,12 +1110,12 @@ int main() {
     cout &lt;&lt; *lower_bound(a, a+5, 34) &lt;&lt; endl;
     cout &lt;&lt; *lower_bound(a, a+5, 61) &lt;&lt; endl;
 
-    // neither 69 nor any value greater than 69 exist so we get .end()
-    if (lower_bound(a, a+5, 69) == (a+5)) {
-	cout &lt;&lt; "yes" &lt;&lt; endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">neither 69 nor any value greater than 69 exist so we get .end()</span>
+    <span style="font-weight: bold;">if</span> (lower_bound(a, a+5, 69) == (a+5)) {
+        cout &lt;&lt; <span style="font-style: italic;">"yes"</span> &lt;&lt; endl;
     }
 
-    // we get 34 as 5 doesn't exist in `a`` and 34 is the next bigger element
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">we get 34 as 5 doesn't exist in `a`` and 34 is the next bigger element</span>
     cout &lt;&lt; *lower_bound(a, a+5, 5) &lt;&lt; endl;
 }
 </pre>
@@ -1131,29 +1131,29 @@ the search argument passed.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;algorithm&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    int a[5] = {3,34,2,61,3};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>[5] = {3,34,2,61,3};
 
     sort(a, a+5);
 
     cout &lt;&lt; *upper_bound(a, a+5, 3) &lt;&lt; endl;
     cout &lt;&lt; *upper_bound(a, a+5, 34) &lt;&lt; endl;
 
-    if (upper_bound(a, a+5, 61) == (a+5)) {
-	cout &lt;&lt; "no element bigger than " &lt;&lt; 61 &lt;&lt; " found" &lt;&lt; endl;
+    <span style="font-weight: bold;">if</span> (upper_bound(a, a+5, 61) == (a+5)) {
+        cout &lt;&lt; <span style="font-style: italic;">"no element bigger than "</span> &lt;&lt; 61 &lt;&lt; <span style="font-style: italic;">" found"</span> &lt;&lt; endl;
     }
 
-    // neither 69 nor any value greater than 69 exist so we get .end()
-    if (upper_bound(a, a+5, 69) == (a+5)) {
-	cout &lt;&lt; "no eleme bigger than 69 found" &lt;&lt; endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">neither 69 nor any value greater than 69 exist so we get .end()</span>
+    <span style="font-weight: bold;">if</span> (upper_bound(a, a+5, 69) == (a+5)) {
+        cout &lt;&lt; <span style="font-style: italic;">"no eleme bigger than 69 found"</span> &lt;&lt; endl;
     }
 
-    // we get 34 as 5 doesn't exist in `a`` and 34 is the next bigger element
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">we get 34 as 5 doesn't exist in `a`` and 34 is the next bigger element</span>
     cout &lt;&lt; *upper_bound(a, a+5, 5) &lt;&lt; endl;
 }
 </pre>
@@ -1163,44 +1163,44 @@ int main() {
 
 
 
-<div id="outline-container-org446c8a6" class="outline-4">
-<h4 id="org446c8a6"><span class="section-number-4">3.0.3</span> min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</h4>
+<div id="outline-container-orgb1f1ab4" class="outline-4">
+<h4 id="orgb1f1ab4"><span class="section-number-4">3.0.3</span> min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</h4>
 <div class="outline-text-4" id="text-3-0-3">
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
-#include &lt;numeric&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;vector&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;algorithm&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;numeric&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    vector&lt;int&gt; v = {1,3,932,342,4,1};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">v</span> = {1,3,932,342,4,1};
 
     cout &lt;&lt; *min_element(v.begin(), v.end()) &lt;&lt; endl;
     cout &lt;&lt; *max_element(v.begin(), v.end()) &lt;&lt; endl;
 
-    // accumulate gives sum of all elements in a container
-    // defined in the `numeric` header file
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">accumulate gives sum of all elements in a container</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">defined in the `numeric` header file</span>
     cout &lt;&lt; accumulate(v.begin(), v.end(), 0) &lt;&lt; endl;
 
-    // count returns the number of occurrence of some element in a container
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">count returns the number of occurrence of some element in a container</span>
     cout &lt;&lt; count(v.begin(), v.end(), 1) &lt;&lt; endl;
 
-    // find
-    auto it = find(v.begin(), v.end(), 69);
-    if (it != v.end()) cout &lt;&lt; *it &lt;&lt; endl;
-    else cout &lt;&lt; "not found" &lt;&lt; endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">find</span>
+    <span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">it</span> = find(v.begin(), v.end(), 69);
+    <span style="font-weight: bold;">if</span> (it != v.end()) cout &lt;&lt; *it &lt;&lt; endl;
+    <span style="font-weight: bold;">else</span> cout &lt;&lt; <span style="font-style: italic;">"not found"</span> &lt;&lt; endl;
 
-    // reverse
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">reverse</span>
     reverse(v.begin(), v.end());
 
-    for (int &amp;i:v) {
-	cout &lt;&lt; i &lt;&lt; " ";
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> &amp;<span style="font-weight: bold; font-style: italic;">i</span>:v) {
+        cout &lt;&lt; i &lt;&lt; <span style="font-style: italic;">" "</span>;
     }
     cout &lt;&lt; endl;
 
-    string s = "abcdef";
+    <span style="font-weight: bold; text-decoration: underline;">string</span> <span style="font-weight: bold; font-style: italic;">s</span> = <span style="font-style: italic;">"abcdef"</span>;
     reverse(s.begin(), s.end());
     cout &lt;&lt; s &lt;&lt; endl;
 }
@@ -1208,8 +1208,8 @@ int main() {
 </div>
 </div>
 </div>
-<div id="outline-container-org7a2bbcf" class="outline-4">
-<h4 id="org7a2bbcf"><span class="section-number-4">3.0.4</span> cpp lambdas</h4>
+<div id="outline-container-orgdde78d4" class="outline-4">
+<h4 id="orgdde78d4"><span class="section-number-4">3.0.4</span> cpp lambdas</h4>
 <div class="outline-text-4" id="text-3-0-4">
 <p>
 Lambdas in cpp can be used to create functions that are created for one time
@@ -1217,37 +1217,37 @@ use. Lambda funcs can be assigned too.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;vector&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;algorithm&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    vector&lt;int&gt; v = {1,3,932,342,4,1};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">v</span> = {1,3,932,342,4,1};
 
-    for (int i : v) {
-	cout &lt;&lt; i &lt;&lt; " ";
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> : v) {
+        cout &lt;&lt; i &lt;&lt; <span style="font-style: italic;">" "</span>;
     }
     cout &lt;&lt; endl;
 
-    // sort in descending order using cpp lambdas
-    sort(v.begin(), v.end(), [](int a, int b){ return a &gt; b; });
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">sort in descending order using cpp lambdas</span>
+    sort(v.begin(), v.end(), [](<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">b</span>){ <span style="font-weight: bold;">return</span> a &gt; b; });
 
-    for (int i : v) {
-	cout &lt;&lt; i &lt;&lt; " ";
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> : v) {
+        cout &lt;&lt; i &lt;&lt; <span style="font-style: italic;">" "</span>;
     }
     cout &lt;&lt; endl;
 
-    cout &lt;&lt; [](int x){ return x*2; }(10) &lt;&lt; endl;
+    cout &lt;&lt; [](<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">x</span>){ <span style="font-weight: bold;">return</span> x*2; }(10) &lt;&lt; endl;
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgea41a49" class="outline-4">
-<h4 id="orgea41a49"><span class="section-number-4">3.0.5</span> <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></h4>
+<div id="outline-container-org5090281" class="outline-4">
+<h4 id="org5090281"><span class="section-number-4">3.0.5</span> <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></h4>
 <div class="outline-text-4" id="text-3-0-5">
 <p>
 <b><code>all_of</code></b>: returns true if the provided function returns true for all the
@@ -1259,20 +1259,20 @@ int main() {
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;algorithm&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;vector&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;algorithm&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    vector&lt;int&gt; v = {1,3,932,342,4,1};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">vector</span>&lt;<span style="font-weight: bold; text-decoration: underline;">int</span>&gt; <span style="font-weight: bold; font-style: italic;">v</span> = {1,3,932,342,4,1};
 
-    // checks if all the elements are greater than 10 (they're not)
-    cout &lt;&lt; all_of(v.begin(), v.end(), [](auto a) { return a &gt; 10; }) &lt;&lt; endl;
-    cout &lt;&lt; any_of(v.begin(), v.end(), [](auto a) { return a &gt; 10; }) &lt;&lt; endl;
-    // since none of the elments are negative, it prints 1 (true)
-    cout &lt;&lt; none_of(v.begin(), v.end(), [](auto a) { return a &lt; 0; }) &lt;&lt; endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">checks if all the elements are greater than 10 (they're not)</span>
+    cout &lt;&lt; all_of(v.begin(), v.end(), [](<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">a</span>) { <span style="font-weight: bold;">return</span> a &gt; 10; }) &lt;&lt; endl;
+    cout &lt;&lt; any_of(v.begin(), v.end(), [](<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">a</span>) { <span style="font-weight: bold;">return</span> a &gt; 10; }) &lt;&lt; endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">since none of the elments are negative, it prints 1 (true)</span>
+    cout &lt;&lt; none_of(v.begin(), v.end(), [](<span style="font-weight: bold;">auto</span> <span style="font-weight: bold; font-style: italic;">a</span>) { <span style="font-weight: bold;">return</span> a &lt; 0; }) &lt;&lt; endl;
 }
 </pre>
 </div>
@@ -1280,8 +1280,8 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org75a6abb" class="outline-2">
-<h2 id="org75a6abb"><span class="section-number-2">4</span> Functors</h2>
+<div id="outline-container-org9e56c77" class="outline-2">
+<h2 id="org9e56c77"><span class="section-number-2">4</span> Functors</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 TODO look more into this topic (not important for LC)
@@ -1292,7 +1292,7 @@ Classes that act as functions?
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-09-05 Mon 22:31</p>
+<p class="date">Created: 2022-09-05 Mon 22:49</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

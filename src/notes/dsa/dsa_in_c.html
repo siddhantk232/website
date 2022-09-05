@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-05 Mon 22:31 -->
+<!-- 2022-09-05 Mon 22:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DSA in C</title>
@@ -247,78 +247,78 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org422d774">1. Arrays</a>
+<li><a href="#org3803b31">1. Arrays</a>
 <ul>
-<li><a href="#org3d05474">1.1. Array representation</a></li>
-<li><a href="#orgc46ff25">1.2. Inserting elements</a>
+<li><a href="#org916239e">1.1. Array representation</a></li>
+<li><a href="#orgddb2070">1.2. Inserting elements</a>
 <ul>
-<li><a href="#orgebe6fd4">1.2.1. Inserting at index <code>n</code></a></li>
-<li><a href="#org5120682">1.2.2. Append element</a></li>
-<li><a href="#org2d39459">1.2.3. Prepend element</a></li>
+<li><a href="#orgc281070">1.2.1. Inserting at index <code>n</code></a></li>
+<li><a href="#org107d2fc">1.2.2. Append element</a></li>
+<li><a href="#orgdaf6212">1.2.3. Prepend element</a></li>
 </ul>
 </li>
-<li><a href="#org5caa2be">1.3. Deleting elements</a></li>
-<li><a href="#org74caaf5">1.4. 2D Arrays</a></li>
+<li><a href="#org338c042">1.3. Deleting elements</a></li>
+<li><a href="#org49bf66b">1.4. 2D Arrays</a></li>
 </ul>
 </li>
-<li><a href="#org151256e">2. String as an array of characters</a></li>
-<li><a href="#orgefa525b">3. Linked list</a>
+<li><a href="#orgcb44114">2. String as an array of characters</a></li>
+<li><a href="#org4062b65">3. Linked list</a>
 <ul>
-<li><a href="#org1b51655">3.1. Searching in a linked list</a></li>
-<li><a href="#orgd336a70">3.2. insertion</a></li>
-<li><a href="#org0bad06e">3.3. Deletion</a></li>
-<li><a href="#orgd8fb352">3.4. Mergin two linked lists</a></li>
-<li><a href="#org5ba5ced">3.5. Circular linked lists</a></li>
+<li><a href="#org0bbdf95">3.1. Searching in a linked list</a></li>
+<li><a href="#org38a618c">3.2. insertion</a></li>
+<li><a href="#org174c38c">3.3. Deletion</a></li>
+<li><a href="#orgb2cc381">3.4. Mergin two linked lists</a></li>
+<li><a href="#org493889d">3.5. Circular linked lists</a></li>
 </ul>
 </li>
-<li><a href="#org78757e2">4. <span class="todo TODO">TODO</span> Stacks</a></li>
-<li><a href="#org5c2c61a">5. <span class="todo TODO">TODO</span> Queues</a></li>
-<li><a href="#orgdf551b5">6. <span class="todo TODO">TODO</span> Trees</a></li>
-<li><a href="#org582d756">7. <span class="todo TODO">TODO</span> Graphs</a></li>
-<li><a href="#orgec3e50b">8. <span class="todo TODO">TODO</span> Sorting</a>
+<li><a href="#org74b4ef1">4. <span class="todo TODO">TODO</span> Stacks</a></li>
+<li><a href="#org9c9bd49">5. <span class="todo TODO">TODO</span> Queues</a></li>
+<li><a href="#org6d2343a">6. <span class="todo TODO">TODO</span> Trees</a></li>
+<li><a href="#org9095e64">7. <span class="todo TODO">TODO</span> Graphs</a></li>
+<li><a href="#org2a53fd4">8. <span class="todo TODO">TODO</span> Sorting</a>
 <ul>
-<li><a href="#orga8a6d67">8.1. Bubble Sort</a></li>
-<li><a href="#org1daef65">8.2. <span class="todo TODO">TODO</span> Insertion Sort</a></li>
-<li><a href="#orgc751bd0">8.3. <span class="todo TODO">TODO</span> Quick Sort</a></li>
-<li><a href="#orge689f32">8.4. <span class="todo TODO">TODO</span> Selection Sort</a></li>
-<li><a href="#orga2fb55d">8.5. <span class="todo TODO">TODO</span> Merge Sort</a></li>
-<li><a href="#orgd3ed419">8.6. <span class="todo TODO">TODO</span> Heap Sort</a></li>
-<li><a href="#orga56b8ef">8.7. <span class="todo TODO">TODO</span> Hashing Techniques</a></li>
+<li><a href="#orgf8627dd">8.1. Bubble Sort</a></li>
+<li><a href="#org658b169">8.2. <span class="todo TODO">TODO</span> Insertion Sort</a></li>
+<li><a href="#org6f9760f">8.3. <span class="todo TODO">TODO</span> Quick Sort</a></li>
+<li><a href="#org57decff">8.4. <span class="todo TODO">TODO</span> Selection Sort</a></li>
+<li><a href="#org4885018">8.5. <span class="todo TODO">TODO</span> Merge Sort</a></li>
+<li><a href="#org1a7cf37">8.6. <span class="todo TODO">TODO</span> Heap Sort</a></li>
+<li><a href="#org54f1b6b">8.7. <span class="todo TODO">TODO</span> Hashing Techniques</a></li>
 </ul>
 </li>
-<li><a href="#org6ef831a">9. Searching</a>
+<li><a href="#org44bd3c9">9. Searching</a>
 <ul>
-<li><a href="#orgab4ff49">9.1. Linear search</a></li>
-<li><a href="#orgb5e045c">9.2. Binary Search</a></li>
+<li><a href="#orgf6f22d1">9.1. Linear search</a></li>
+<li><a href="#org766838a">9.2. Binary Search</a></li>
 </ul>
 </li>
-<li><a href="#orgaf15c00">10. <span class="todo TODO">TODO</span> File Handling</a></li>
+<li><a href="#org5912ce8">10. <span class="todo TODO">TODO</span> File Handling</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org422d774" class="outline-2">
-<h2 id="org422d774"><span class="section-number-2">1</span> Arrays</h2>
+<div id="outline-container-org3803b31" class="outline-2">
+<h2 id="org3803b31"><span class="section-number-2">1</span> Arrays</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org3d05474" class="outline-3">
-<h3 id="org3d05474"><span class="section-number-3">1.1</span> Array representation</h3>
+<div id="outline-container-org916239e" class="outline-3">
+<h3 id="org916239e"><span class="section-number-3">1.1</span> Array representation</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    // array of size 10 initialised with first
-    // three elements set to 1, 2 and, 3 respectively.
-    int arr[10] = {1,2,3};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">array of size 10 initialised with first</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">three elements set to 1, 2 and, 3 respectively.</span>
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[10] = {1,2,3};
 
-    // rest of the elements set using a for loop
-    for (int i = 3; i &lt; 10; ++i) {
-	arr[i] = i + 1;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">rest of the elements set using a for loop</span>
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 3; i &lt; 10; ++i) {
+        arr[i] = i + 1;
     }
 
-    for (int i = 0; i &lt; 10; ++i) {
-	printf("%d ", arr[i]);
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; 10; ++i) {
+        printf(<span style="font-style: italic;">"%d "</span>, arr[i]);
     }
 }
 </pre>
@@ -347,20 +347,20 @@ to get the third element, we can do <code>(arr+3)</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    // array of size 10 initialised with first
-    // three elements set to 1, 2 and, 3 respectively.
-    int arr[10] = {1,2,3};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">array of size 10 initialised with first</span>
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">three elements set to 1, 2 and, 3 respectively.</span>
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[10] = {1,2,3};
 
-    // rest of the elements set using a for loop
-    for (int i = 3; i &lt; 10; ++i) {
-	*(arr+i) = i + 1;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">rest of the elements set using a for loop</span>
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 3; i &lt; 10; ++i) {
+        *(arr+i) = i + 1;
     }
 
-    for (int i = 0; i &lt; 10; ++i) {
-	printf("%d ", *(arr+i));
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; 10; ++i) {
+        printf(<span style="font-style: italic;">"%d "</span>, *(arr+i));
     }
 }
 </pre>
@@ -371,12 +371,12 @@ int main() {
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc46ff25" class="outline-3">
-<h3 id="orgc46ff25"><span class="section-number-3">1.2</span> Inserting elements</h3>
+<div id="outline-container-orgddb2070" class="outline-3">
+<h3 id="orgddb2070"><span class="section-number-3">1.2</span> Inserting elements</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-orgebe6fd4" class="outline-4">
-<h4 id="orgebe6fd4"><span class="section-number-4">1.2.1</span> Inserting at index <code>n</code></h4>
+<div id="outline-container-orgc281070" class="outline-4">
+<h4 id="orgc281070"><span class="section-number-4">1.2.1</span> Inserting at index <code>n</code></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The code below initiliases an array of size 100 to ignore any resizing that may
@@ -399,34 +399,34 @@ The code below shows this algorithm in action. It also prints after insertion.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int insert(int* arr, int size, int pos, int elem) {
-  for (int i = size - 1; i &gt;= pos - 1; --i) {
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">insert</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>* <span style="font-weight: bold; font-style: italic;">arr</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">size</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">pos</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">elem</span>) {
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = size - 1; i &gt;= pos - 1; --i) {
     arr[i + 1] = arr[i];
   }
 
   arr[pos - 1] = elem;
-  return size + 1;
+  <span style="font-weight: bold;">return</span> size + 1;
 }
 
-int main() {
-  int n = 5;
-  //            0 1 2 3 4
-  int arr[7] = {1,2,3,4,5};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">n</span> = 5;
+  <span style="font-weight: bold; font-style: italic;">//            </span><span style="font-weight: bold; font-style: italic;">0 1 2 3 4</span>
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[7] = {1,2,3,4,5};
 
-  // last position
-  int pos = 3;
-  int elem = 999;
+  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">last position</span>
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">pos</span> = 3;
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">elem</span> = 999;
 
   n = insert(arr, n, pos, elem);
 
-  for (int i = 0; i &lt; n; i++) {
-    printf("%d ", arr[i]);
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; n; i++) {
+    printf(<span style="font-style: italic;">"%d "</span>, arr[i]);
   }
-  printf("\n");
+  printf(<span style="font-style: italic;">"\n"</span>);
 
-  return 0;
+  <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
@@ -447,32 +447,32 @@ Let's look at a program that uses <code>realloc</code> to resize the array for i
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdlib.h&gt;</span>
 
 
-int main() {
-    // array of size 7
-    int* arr =  (int *) malloc(7 * sizeof(int));
-    int n = 4;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">array of size 7</span>
+    <span style="font-weight: bold; text-decoration: underline;">int</span>* <span style="font-weight: bold; font-style: italic;">arr</span> =  (<span style="font-weight: bold; text-decoration: underline;">int</span> *) malloc(7 * <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>));
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">n</span> = 4;
 
-    // initilalize elems
-    for (int i = 0; i &lt; 7; i++) {
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">initilalize elems</span>
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; 7; i++) {
       arr[i] = i + 1;
     }
 
-    // increase size of insertion (doubling)
-    *arr = *(int*) realloc(arr, 2 * 7 * sizeof(int));
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">increase size of insertion (doubling)</span>
+    *arr = *(<span style="font-weight: bold; text-decoration: underline;">int</span>*) realloc(arr, 2 * 7 * <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>));
 
-    // shift elems to the right by 1
-    for (int i = 12; i &gt;= n; --i) {
-	arr[i + 1] = arr[i];
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">shift elems to the right by 1</span>
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 12; i &gt;= n; --i) {
+        arr[i + 1] = arr[i];
     }
 
     *(arr+n) = 69;
 
-    for (int i = 0; i &lt; 14; ++i) {
-	printf("%d ", arr[i]);
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; 14; ++i) {
+        printf(<span style="font-style: italic;">"%d "</span>, arr[i]);
     }
 }
 </pre>
@@ -500,42 +500,42 @@ References:
 </ul>
 </div>
 </div>
-<div id="outline-container-org5120682" class="outline-4">
-<h4 id="org5120682"><span class="section-number-4">1.2.2</span> Append element</h4>
+<div id="outline-container-org107d2fc" class="outline-4">
+<h4 id="org107d2fc"><span class="section-number-4">1.2.2</span> Append element</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Appending an element is just inserting a new element at the end of the array.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int insert(int* arr, int size, int pos, int elem) {
-  for (int i = size - 1; i &gt;= pos - 1; --i) {
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">insert</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>* <span style="font-weight: bold; font-style: italic;">arr</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">size</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">pos</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">elem</span>) {
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = size - 1; i &gt;= pos - 1; --i) {
     arr[i + 1] = arr[i];
   }
 
   arr[pos - 1] = elem;
-  return size + 1;
+  <span style="font-weight: bold;">return</span> size + 1;
 }
 
-int main() {
-  int n = 5;
-  //            0 1 2 3 4
-  int arr[7] = {1,2,3,4,5};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">n</span> = 5;
+  <span style="font-weight: bold; font-style: italic;">//            </span><span style="font-weight: bold; font-style: italic;">0 1 2 3 4</span>
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[7] = {1,2,3,4,5};
 
-  // last position
-  int pos = n + 1;
-  int elem = 999;
+  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">last position</span>
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">pos</span> = n + 1;
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">elem</span> = 999;
 
   n = insert(arr, n, pos, elem);
 
-  for (int i = 0; i &lt; n; i++) {
-    printf("%d ", arr[i]);
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; n; i++) {
+    printf(<span style="font-style: italic;">"%d "</span>, arr[i]);
   }
-  printf("\n");
+  printf(<span style="font-style: italic;">"\n"</span>);
 
-  return 0;
+  <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
@@ -546,8 +546,8 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org2d39459" class="outline-4">
-<h4 id="org2d39459"><span class="section-number-4">1.2.3</span> Prepend element</h4>
+<div id="outline-container-orgdaf6212" class="outline-4">
+<h4 id="orgdaf6212"><span class="section-number-4">1.2.3</span> Prepend element</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Prepending an element is just inserting a new element at the beginning of the
@@ -555,34 +555,34 @@ array.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int insert(int* arr, int size, int pos, int elem) {
-  for (int i = size - 1; i &gt;= pos - 1; --i) {
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">insert</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>* <span style="font-weight: bold; font-style: italic;">arr</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">size</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">pos</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">elem</span>) {
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = size - 1; i &gt;= pos - 1; --i) {
     arr[i + 1] = arr[i];
   }
 
   arr[pos - 1] = elem;
-  return size + 1;
+  <span style="font-weight: bold;">return</span> size + 1;
 }
 
-int main() {
-  int n = 5;
-  //            0 1 2 3 4
-  int arr[7] = {1,2,3,4,5};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">n</span> = 5;
+  <span style="font-weight: bold; font-style: italic;">//            </span><span style="font-weight: bold; font-style: italic;">0 1 2 3 4</span>
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[7] = {1,2,3,4,5};
 
-  // last position
-  int pos = 1;
-  int elem = 999;
+  <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">last position</span>
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">pos</span> = 1;
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">elem</span> = 999;
 
   n = insert(arr, n, pos, elem);
 
-  for (int i = 0; i &lt; n; i++) {
-    printf("%d ", arr[i]);
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; n; i++) {
+    printf(<span style="font-style: italic;">"%d "</span>, arr[i]);
   }
-  printf("\n");
+  printf(<span style="font-style: italic;">"\n"</span>);
 
-  return 0;
+  <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
@@ -594,38 +594,38 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org5caa2be" class="outline-3">
-<h3 id="org5caa2be"><span class="section-number-3">1.3</span> Deleting elements</h3>
+<div id="outline-container-org338c042" class="outline-3">
+<h3 id="org338c042"><span class="section-number-3">1.3</span> Deleting elements</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-We do exactly the opposite of what we did in the <a href="#orgebe6fd4">Inserting at index <code>n</code></a>
+We do exactly the opposite of what we did in the <a href="#orgc281070">Inserting at index <code>n</code></a>
 section.  Instead of iterating from the last element till the position <code>n</code>, we
 iterate from postion <code>n</code> till the last and shift every element one index back
 from it's original position.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-  int pos = 3;
-  int elem;
-  int n = 5;
-  //            0 1 2 3 4
-  int arr[7] = {1,2,3,4,5};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">pos</span> = 3;
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">elem</span>;
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">n</span> = 5;
+  <span style="font-weight: bold; font-style: italic;">//            </span><span style="font-weight: bold; font-style: italic;">0 1 2 3 4</span>
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[7] = {1,2,3,4,5};
 
-  for (int i = pos - 1; i &lt; n - 1; i++) {
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = pos - 1; i &lt; n - 1; i++) {
     arr[i] = arr[i+1];
   }
 
   n--;
 
-  for (int i = 0; i &lt; n; i++) {
-    printf("%d ", arr[i]);
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; n; i++) {
+    printf(<span style="font-style: italic;">"%d "</span>, arr[i]);
   }
-  printf("\n");
+  printf(<span style="font-style: italic;">"\n"</span>);
 
-  return 0;
+  <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
@@ -636,44 +636,44 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org74caaf5" class="outline-3">
-<h3 id="org74caaf5"><span class="section-number-3">1.4</span> 2D Arrays</h3>
+<div id="outline-container-org49bf66b" class="outline-3">
+<h3 id="org49bf66b"><span class="section-number-3">1.4</span> 2D Arrays</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Square matrix multiplication using 2D arrays in c.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    int matrix1[][3] = {{1,2,3}
-		       ,{4,5,6}
-		       ,{7,8,9}};
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">matrix1</span>[][3] = {{1,2,3}
+                       ,{4,5,6}
+                       ,{7,8,9}};
 
-    int matrix2[][3] = {{1,0,1}
-		       ,{1,1,0}
-		       ,{0,0,1}};
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">matrix2</span>[][3] = {{1,0,1}
+                       ,{1,1,0}
+                       ,{0,0,1}};
 
-    int result[][3] = {{0,0,0}
-		      ,{0,0,0}
-		      ,{0,0,0}};
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">result</span>[][3] = {{0,0,0}
+                      ,{0,0,0}
+                      ,{0,0,0}};
 
-    int n_matrix1 = sizeof(matrix1) / sizeof(matrix1[0]);
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">n_matrix1</span> = <span style="font-weight: bold;">sizeof</span>(matrix1) / <span style="font-weight: bold;">sizeof</span>(matrix1[0]);
 
-    for (int i = 0; i &lt; n_matrix1; ++i) {
-	for (int j = 0; j &lt; n_matrix1; ++j) {
-	    for (int k = 0; k &lt; n_matrix1; ++k) {
-		result[i][j] += matrix1[i][k] * matrix2[k][j];
-	    }
-	}
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; n_matrix1; ++i) {
+        <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">j</span> = 0; j &lt; n_matrix1; ++j) {
+            <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">k</span> = 0; k &lt; n_matrix1; ++k) {
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
+        }
     }
 
-    for (int i = 0; i &lt; n_matrix1; ++i) {
-	for (int j = 0; j &lt; n_matrix1; ++j) {
-	    printf("%d ", result[i][j]);
-	}
-	printf("\n");
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; n_matrix1; ++i) {
+        <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">j</span> = 0; j &lt; n_matrix1; ++j) {
+            printf(<span style="font-style: italic;">"%d "</span>, result[i][j]);
+        }
+        printf(<span style="font-style: italic;">"\n"</span>);
     }
 }
 </pre>
@@ -688,17 +688,17 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org151256e" class="outline-2">
-<h2 id="org151256e"><span class="section-number-2">2</span> String as an array of characters</h2>
+<div id="outline-container-orgcb44114" class="outline-2">
+<h2 id="orgcb44114"><span class="section-number-2">2</span> String as an array of characters</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    // char *s = "this is a string!";
-    char s[] = "this is a string";
-    printf("%s", s);
-    return 0;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">char *s = "this is a string!";</span>
+    <span style="font-weight: bold; text-decoration: underline;">char</span> <span style="font-weight: bold; font-style: italic;">s</span>[] = <span style="font-style: italic;">"this is a string"</span>;
+    printf(<span style="font-style: italic;">"%s"</span>, s);
+    <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
@@ -713,18 +713,18 @@ Iterate through each character of a string and print it with a space afterwards.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-    char *s = "print this!";
-    int string_size = strlen(s);
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">s</span> = <span style="font-style: italic;">"print this!"</span>;
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">string_size</span> = strlen(s);
 
-    for (int i = 0; i &lt; string_size; ++i) {
-	// *(s + i) -&gt; s[i]
-	printf("%c ", *(s + i));
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; string_size; ++i) {
+        <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">*(s + i) -&gt; s[i]</span>
+        printf(<span style="font-style: italic;">"%c "</span>, *(s + i));
     }
 
-    return 0;
+    <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
@@ -734,59 +734,59 @@ Take string input from user
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-  char *str;
-  size_t len = 0;
-  ssize_t line_size = 0;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">str</span>;
+  <span style="font-weight: bold; text-decoration: underline;">size_t</span> <span style="font-weight: bold; font-style: italic;">len</span> = 0;
+  <span style="font-weight: bold; text-decoration: underline;">ssize_t</span> <span style="font-weight: bold; font-style: italic;">line_size</span> = 0;
 
   getline(&amp;str, &amp;len, stdin);
-  printf("%s", str);
+  printf(<span style="font-style: italic;">"%s"</span>, str);
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgefa525b" class="outline-2">
-<h2 id="orgefa525b"><span class="section-number-2">3</span> Linked list</h2>
+<div id="outline-container-org4062b65" class="outline-2">
+<h2 id="org4062b65"><span class="section-number-2">3</span> Linked list</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A simple Linked List implementation that contains integer data elements.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-// linked list node declaration
-struct Node {
-    int val;
-    struct Node* next;
+<span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">linked list node declaration</span>
+<span style="font-weight: bold;">struct</span> <span style="font-weight: bold; text-decoration: underline;">Node</span> {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">val</span>;
+    <span style="font-weight: bold;">struct</span> <span style="font-weight: bold; text-decoration: underline;">Node</span>* <span style="font-weight: bold; font-style: italic;">next</span>;
 };
 
-int main() {
-    struct Node* head = malloc(sizeof(struct Node));
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold;">struct</span> <span style="font-weight: bold; text-decoration: underline;">Node</span>* <span style="font-weight: bold; font-style: italic;">head</span> = malloc(<span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold;">struct</span> <span style="font-weight: bold; text-decoration: underline;">Node</span>));
     head-&gt;val = 69;
 
-    struct Node* last = head;
-    for (int i = 100; i &lt;= 110; ++i) {
-	// create a node
-	struct Node* temp = malloc(sizeof(struct Node));
-	temp-&gt;val = i;
+    <span style="font-weight: bold;">struct</span> <span style="font-weight: bold; text-decoration: underline;">Node</span>* <span style="font-weight: bold; font-style: italic;">last</span> = head;
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 100; i &lt;= 110; ++i) {
+        <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">create a node</span>
+        <span style="font-weight: bold;">struct</span> <span style="font-weight: bold; text-decoration: underline;">Node</span>* <span style="font-weight: bold; font-style: italic;">temp</span> = malloc(<span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold;">struct</span> <span style="font-weight: bold; text-decoration: underline;">Node</span>));
+        temp-&gt;val = i;
 
-	// append
-	last-&gt;next = temp;
-	last = last-&gt;next;
+        <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">append</span>
+        last-&gt;next = temp;
+        last = last-&gt;next;
     }
 
-    struct Node* iter = head;
+    <span style="font-weight: bold;">struct</span> <span style="font-weight: bold; text-decoration: underline;">Node</span>* <span style="font-weight: bold; font-style: italic;">iter</span> = head;
 
-    while(iter != NULL) {
-	printf("%d ", iter-&gt;val);
-	iter = iter-&gt;next;
+    <span style="font-weight: bold;">while</span>(iter != <span style="font-weight: bold; text-decoration: underline;">NULL</span>) {
+        printf(<span style="font-style: italic;">"%d "</span>, iter-&gt;val);
+        iter = iter-&gt;next;
     }
-    printf("\n");
+    printf(<span style="font-style: italic;">"\n"</span>);
 }
 </pre>
 </div>
@@ -796,65 +796,65 @@ int main() {
 </pre>
 </div>
 
-<div id="outline-container-org1b51655" class="outline-3">
-<h3 id="org1b51655"><span class="section-number-3">3.1</span> Searching in a linked list</h3>
+<div id="outline-container-org0bbdf95" class="outline-3">
+<h3 id="org0bbdf95"><span class="section-number-3">3.1</span> Searching in a linked list</h3>
 </div>
-<div id="outline-container-orgd336a70" class="outline-3">
-<h3 id="orgd336a70"><span class="section-number-3">3.2</span> insertion</h3>
+<div id="outline-container-org38a618c" class="outline-3">
+<h3 id="org38a618c"><span class="section-number-3">3.2</span> insertion</h3>
 </div>
-<div id="outline-container-org0bad06e" class="outline-3">
-<h3 id="org0bad06e"><span class="section-number-3">3.3</span> Deletion</h3>
+<div id="outline-container-org174c38c" class="outline-3">
+<h3 id="org174c38c"><span class="section-number-3">3.3</span> Deletion</h3>
 </div>
-<div id="outline-container-orgd8fb352" class="outline-3">
-<h3 id="orgd8fb352"><span class="section-number-3">3.4</span> Mergin two linked lists</h3>
+<div id="outline-container-orgb2cc381" class="outline-3">
+<h3 id="orgb2cc381"><span class="section-number-3">3.4</span> Mergin two linked lists</h3>
 </div>
-<div id="outline-container-org5ba5ced" class="outline-3">
-<h3 id="org5ba5ced"><span class="section-number-3">3.5</span> Circular linked lists</h3>
+<div id="outline-container-org493889d" class="outline-3">
+<h3 id="org493889d"><span class="section-number-3">3.5</span> Circular linked lists</h3>
 </div>
 </div>
 
-<div id="outline-container-org78757e2" class="outline-2">
-<h2 id="org78757e2"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Stacks</h2>
+<div id="outline-container-org74b4ef1" class="outline-2">
+<h2 id="org74b4ef1"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Stacks</h2>
 </div>
-<div id="outline-container-org5c2c61a" class="outline-2">
-<h2 id="org5c2c61a"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> Queues</h2>
+<div id="outline-container-org9c9bd49" class="outline-2">
+<h2 id="org9c9bd49"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> Queues</h2>
 </div>
-<div id="outline-container-orgdf551b5" class="outline-2">
-<h2 id="orgdf551b5"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> Trees</h2>
+<div id="outline-container-org6d2343a" class="outline-2">
+<h2 id="org6d2343a"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> Trees</h2>
 </div>
-<div id="outline-container-org582d756" class="outline-2">
-<h2 id="org582d756"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> Graphs</h2>
+<div id="outline-container-org9095e64" class="outline-2">
+<h2 id="org9095e64"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> Graphs</h2>
 </div>
-<div id="outline-container-orgec3e50b" class="outline-2">
-<h2 id="orgec3e50b"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> Sorting</h2>
+<div id="outline-container-org2a53fd4" class="outline-2">
+<h2 id="org2a53fd4"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> Sorting</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orga8a6d67" class="outline-3">
-<h3 id="orga8a6d67"><span class="section-number-3">8.1</span> Bubble Sort</h3>
+<div id="outline-container-orgf8627dd" class="outline-3">
+<h3 id="orgf8627dd"><span class="section-number-3">8.1</span> Bubble Sort</h3>
 <div class="outline-text-3" id="text-8-1">
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-void swap(int *a, int *b) {
-    int temp = *a;
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">swap</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">a</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">b</span>) {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">temp</span> = *a;
     *a = *b;
     *b = temp;
 }
 
-int main() {
-    int arr[] = {1,6,3,9,2,0};
-    int size = sizeof(arr) / sizeof(int);
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[] = {1,6,3,9,2,0};
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">size</span> = <span style="font-weight: bold;">sizeof</span>(arr) / <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>);
 
-    for (int i = 0; i &lt; (size); i++) {
-	for (int j = 0; j &lt; (size - 1); j++) {
-	    if (arr[j] &gt; arr[j + 1]) {
-		swap(&amp;arr[j], &amp;arr[j + 1]);
-	    }
-	}
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; (size); i++) {
+        <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">j</span> = 0; j &lt; (size - 1); j++) {
+            <span style="font-weight: bold;">if</span> (arr[j] &gt; arr[j + 1]) {
+                swap(&amp;arr[j], &amp;arr[j + 1]);
+            }
+        }
     }
 
-    for (int i = 0; i &lt; (size); i++) {
-	printf("%d ", arr[i]);
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; (size); i++) {
+        printf(<span style="font-style: italic;">"%d "</span>, arr[i]);
     }
 
 }
@@ -863,55 +863,55 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org1daef65" class="outline-3">
-<h3 id="org1daef65"><span class="section-number-3">8.2</span> <span class="todo TODO">TODO</span> Insertion Sort</h3>
+<div id="outline-container-org658b169" class="outline-3">
+<h3 id="org658b169"><span class="section-number-3">8.2</span> <span class="todo TODO">TODO</span> Insertion Sort</h3>
 </div>
-<div id="outline-container-orgc751bd0" class="outline-3">
-<h3 id="orgc751bd0"><span class="section-number-3">8.3</span> <span class="todo TODO">TODO</span> Quick Sort</h3>
+<div id="outline-container-org6f9760f" class="outline-3">
+<h3 id="org6f9760f"><span class="section-number-3">8.3</span> <span class="todo TODO">TODO</span> Quick Sort</h3>
 </div>
-<div id="outline-container-orge689f32" class="outline-3">
-<h3 id="orge689f32"><span class="section-number-3">8.4</span> <span class="todo TODO">TODO</span> Selection Sort</h3>
+<div id="outline-container-org57decff" class="outline-3">
+<h3 id="org57decff"><span class="section-number-3">8.4</span> <span class="todo TODO">TODO</span> Selection Sort</h3>
 </div>
-<div id="outline-container-orga2fb55d" class="outline-3">
-<h3 id="orga2fb55d"><span class="section-number-3">8.5</span> <span class="todo TODO">TODO</span> Merge Sort</h3>
+<div id="outline-container-org4885018" class="outline-3">
+<h3 id="org4885018"><span class="section-number-3">8.5</span> <span class="todo TODO">TODO</span> Merge Sort</h3>
 </div>
-<div id="outline-container-orgd3ed419" class="outline-3">
-<h3 id="orgd3ed419"><span class="section-number-3">8.6</span> <span class="todo TODO">TODO</span> Heap Sort</h3>
+<div id="outline-container-org1a7cf37" class="outline-3">
+<h3 id="org1a7cf37"><span class="section-number-3">8.6</span> <span class="todo TODO">TODO</span> Heap Sort</h3>
 </div>
-<div id="outline-container-orga56b8ef" class="outline-3">
-<h3 id="orga56b8ef"><span class="section-number-3">8.7</span> <span class="todo TODO">TODO</span> Hashing Techniques</h3>
+<div id="outline-container-org54f1b6b" class="outline-3">
+<h3 id="org54f1b6b"><span class="section-number-3">8.7</span> <span class="todo TODO">TODO</span> Hashing Techniques</h3>
 </div>
 </div>
-<div id="outline-container-org6ef831a" class="outline-2">
-<h2 id="org6ef831a"><span class="section-number-2">9</span> Searching</h2>
+<div id="outline-container-org44bd3c9" class="outline-2">
+<h2 id="org44bd3c9"><span class="section-number-2">9</span> Searching</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orgab4ff49" class="outline-3">
-<h3 id="orgab4ff49"><span class="section-number-3">9.1</span> Linear search</h3>
+<div id="outline-container-orgf6f22d1" class="outline-3">
+<h3 id="orgf6f22d1"><span class="section-number-3">9.1</span> Linear search</h3>
 <div class="outline-text-3" id="text-9-1">
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int main() {
-  int arr[] = {1,2,3,99,2389,21};
-  int size = sizeof(arr) / sizeof(int);
-  int target = 99;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[] = {1,2,3,99,2389,21};
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">size</span> = <span style="font-weight: bold;">sizeof</span>(arr) / <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>);
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">target</span> = 99;
 
-  int found_index = -1;
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">found_index</span> = -1;
 
-  for (int i = 0; i &lt; size; ++i) {
-    if (arr[i] == target) {
+  <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; size; ++i) {
+    <span style="font-weight: bold;">if</span> (arr[i] == target) {
       found_index = i;
     }
   }
 
-  if (found_index &gt;= 0) {
-    printf("Element %d found at index %d\n", arr[found_index], found_index);
-  } else {
-    printf("element not found");
+  <span style="font-weight: bold;">if</span> (found_index &gt;= 0) {
+    printf(<span style="font-style: italic;">"Element %d found at index %d\n"</span>, arr[found_index], found_index);
+  } <span style="font-weight: bold;">else</span> {
+    printf(<span style="font-style: italic;">"element not found"</span>);
   }
 
-  return 0;
+  <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
@@ -921,83 +921,83 @@ Count number of occurences in an array
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int count(int *arr, int size, int target) {
-    int count = 0;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">count</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">arr</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">size</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">target</span>) {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">count</span> = 0;
 
-    for (int i = 0; i &lt; size; i++) {
-	if (arr[i] == target) {
-	    count++;
-	}
+    <span style="font-weight: bold;">for</span> (<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 0; i &lt; size; i++) {
+        <span style="font-weight: bold;">if</span> (arr[i] == target) {
+            count++;
+        }
     }
-    return count;
+    <span style="font-weight: bold;">return</span> count;
 }
 
-int main() {
-    int arr[] = {1, 3, 4, 4, 6, 9, 4};
-    int target = 4;
-    int size = sizeof(arr) / sizeof(int);
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[] = {1, 3, 4, 4, 6, 9, 4};
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">target</span> = 4;
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">size</span> = <span style="font-weight: bold;">sizeof</span>(arr) / <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>);
 
-    printf("%d occurs %d times in the array", target, count(arr, size, target));
+    printf(<span style="font-style: italic;">"%d occurs %d times in the array"</span>, target, count(arr, size, target));
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb5e045c" class="outline-3">
-<h3 id="orgb5e045c"><span class="section-number-3">9.2</span> Binary Search</h3>
+<div id="outline-container-org766838a" class="outline-3">
+<h3 id="org766838a"><span class="section-number-3">9.2</span> Binary Search</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 Using recursion.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">#include &lt;stdio.h&gt;
+<pre class="src src-C"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;stdio.h&gt;</span>
 
-int isearch(int *arr, int target, int left, int right) {
-  int mid = (left + right) / 2;
-  if (arr[mid] == target) {
-    return mid;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">isearch</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> *<span style="font-weight: bold; font-style: italic;">arr</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">target</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">left</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">right</span>) {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">mid</span> = (left + right) / 2;
+  <span style="font-weight: bold;">if</span> (arr[mid] == target) {
+    <span style="font-weight: bold;">return</span> mid;
   }
-  else if (arr[mid] &gt; target) {
-    // search left
-    return isearch(arr, target, left, mid);
-  } else {
-    // search right
-    return isearch(arr, target, mid, right);
+  <span style="font-weight: bold;">else</span> <span style="font-weight: bold;">if</span> (arr[mid] &gt; target) {
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">search left</span>
+    <span style="font-weight: bold;">return</span> isearch(arr, target, left, mid);
+  } <span style="font-weight: bold;">else</span> {
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">search right</span>
+    <span style="font-weight: bold;">return</span> isearch(arr, target, mid, right);
   }
 
-  return -1;
+  <span style="font-weight: bold;">return</span> -1;
 }
 
-int main() {
-  int arr[] = {1,2,3,4,5,8,12};
-  int target = 8;
-  int size = sizeof(arr) / sizeof(int);
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">arr</span>[] = {1,2,3,4,5,8,12};
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">target</span> = 8;
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">size</span> = <span style="font-weight: bold;">sizeof</span>(arr) / <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>);
 
-  int index = isearch(arr, target, 0,size - 1);
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">index</span> = isearch(arr, target, 0,size - 1);
 
-  if (index &gt;= 0) {
-    printf("Element %d found at index %d\n", arr[index], index);
-  } else {
-    printf("element not found");
+  <span style="font-weight: bold;">if</span> (index &gt;= 0) {
+    printf(<span style="font-style: italic;">"Element %d found at index %d\n"</span>, arr[index], index);
+  } <span style="font-weight: bold;">else</span> {
+    printf(<span style="font-style: italic;">"element not found"</span>);
   }
-  return 0;
+  <span style="font-weight: bold;">return</span> 0;
 }
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgaf15c00" class="outline-2">
-<h2 id="orgaf15c00"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> File Handling</h2>
+<div id="outline-container-org5912ce8" class="outline-2">
+<h2 id="org5912ce8"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> File Handling</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-09-05 Mon 22:31</p>
+<p class="date">Created: 2022-09-05 Mon 22:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-05 Mon 22:31 -->
+<!-- 2022-09-05 Mon 22:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CPP (for CP)</title>
@@ -247,23 +247,23 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd199d84">1. CPP (for CP)</a></li>
-<li><a href="#org75dc300">2. Tips</a></li>
-<li><a href="#orga126213">3. Basic data types</a>
+<li><a href="#orge7cf6f1">1. CPP (for CP)</a></li>
+<li><a href="#orge2cdc89">2. Tips</a></li>
+<li><a href="#orgb1a2add">3. Basic data types</a>
 <ul>
-<li><a href="#orgc644bd2">3.1. Ranges (rough estimation)</a></li>
-<li><a href="#org334ad2d">3.2. Calculation precedence (increasing -&gt; decreasing)</a></li>
-<li><a href="#orgb995c9f">3.3. Operator precedence and associativity</a></li>
+<li><a href="#orgf05100d">3.1. Ranges (rough estimation)</a></li>
+<li><a href="#org9d5e871">3.2. Calculation precedence (increasing -&gt; decreasing)</a></li>
+<li><a href="#org325b9e1">3.3. Operator precedence and associativity</a></li>
 </ul>
 </li>
-<li><a href="#org06de450">4. CPP References</a></li>
-<li><a href="#orgf917c1f">5. Short long long double</a></li>
+<li><a href="#orgf4b68ca">4. CPP References</a></li>
+<li><a href="#org6310585">5. Short long long double</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd199d84" class="outline-2">
-<h2 id="orgd199d84"><span class="section-number-2">1</span> CPP (for CP)</h2>
+<div id="outline-container-orge7cf6f1" class="outline-2">
+<h2 id="orge7cf6f1"><span class="section-number-2">1</span> CPP (for CP)</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Basic syntax and prior C knowledge is assumed</li>
@@ -271,8 +271,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org75dc300" class="outline-2">
-<h2 id="org75dc300"><span class="section-number-2">2</span> Tips</h2>
+<div id="outline-container-orge2cdc89" class="outline-2">
+<h2 id="orge2cdc89"><span class="section-number-2">2</span> Tips</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 include <code>bits/stdc++.h</code> can save time including specific header files.
@@ -280,8 +280,8 @@ include <code>bits/stdc++.h</code> can save time including specific header files
 </div>
 </div>
 
-<div id="outline-container-orga126213" class="outline-2">
-<h2 id="orga126213"><span class="section-number-2">3</span> Basic data types</h2>
+<div id="outline-container-orgb1a2add" class="outline-2">
+<h2 id="orgb1a2add"><span class="section-number-2">3</span> Basic data types</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>data types (int, char, float, double, bool)</li>
@@ -290,15 +290,15 @@ include <code>bits/stdc++.h</code> can save time including specific header files
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-int main() {
-    int a;
-    long int b;
-    long long int c;
-    std::cout &lt;&lt; sizeof(a) &lt;&lt; std::endl;
-    std::cout &lt;&lt; sizeof(b) &lt;&lt; std::endl;
-    std::cout &lt;&lt; sizeof(c) &lt;&lt; std::endl;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>;
+    <span style="font-weight: bold; text-decoration: underline;">long</span> <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">b</span>;
+    <span style="font-weight: bold; text-decoration: underline;">long</span> <span style="font-weight: bold; text-decoration: underline;">long</span> <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">c</span>;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(a) &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(b) &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(c) &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 }
 </pre>
 </div>
@@ -318,8 +318,8 @@ concat (+), comparison (==) and, <code>size()</code> etc.
 </ul>
 </div>
 
-<div id="outline-container-orgc644bd2" class="outline-3">
-<h3 id="orgc644bd2"><span class="section-number-3">3.1</span> Ranges (rough estimation)</h3>
+<div id="outline-container-orgf05100d" class="outline-3">
+<h3 id="orgf05100d"><span class="section-number-3">3.1</span> Ranges (rough estimation)</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>-10<sup>9</sup> &lt; int &lt; 10<sup>9</sup></li>
@@ -331,19 +331,19 @@ calculation is required.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;climits&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;climits&gt;</span>
 
-int main() {
-    std::cout &lt;&lt; INT_MIN &lt;&lt; " &lt; int &lt; " &lt;&lt; INT_MAX &lt;&lt; std::endl;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; INT_MIN &lt;&lt; <span style="font-style: italic;">" &lt; int &lt; "</span> &lt;&lt; INT_MAX &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org334ad2d" class="outline-3">
-<h3 id="org334ad2d"><span class="section-number-3">3.2</span> Calculation precedence (increasing -&gt; decreasing)</h3>
+<div id="outline-container-org9d5e871" class="outline-3">
+<h3 id="org9d5e871"><span class="section-number-3">3.2</span> Calculation precedence (increasing -&gt; decreasing)</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Types lower in this list will be converted to higher data types in expressions
@@ -360,12 +360,12 @@ and outputs.
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-int main() {
-    std::cout &lt;&lt; 7 / 2 &lt;&lt; std::endl; // outputs int
-    std::cout &lt;&lt; 7 / 2.0 &lt;&lt; std::endl; // outputs float
-    std::cout &lt;&lt; 'a' + 1 &lt;&lt; std::endl; // outputs int (ascii values)
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; 7 / 2 &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">outputs int</span>
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; 7 / 2.0 &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">outputs float</span>
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; <span style="font-style: italic;">'a'</span> + 1 &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl; <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">outputs int (ascii values)</span>
 }
 </pre>
 </div>
@@ -374,8 +374,8 @@ int main() {
 
 
 
-<div id="outline-container-orgb995c9f" class="outline-3">
-<h3 id="orgb995c9f"><span class="section-number-3">3.3</span> Operator precedence and associativity</h3>
+<div id="outline-container-org325b9e1" class="outline-3">
+<h3 id="org325b9e1"><span class="section-number-3">3.3</span> Operator precedence and associativity</h3>
 <div class="outline-text-3" id="text-3-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -489,8 +489,8 @@ int main() {
 </div>
 </div>
 
-<div id="outline-container-org06de450" class="outline-2">
-<h2 id="org06de450"><span class="section-number-2">4</span> CPP References</h2>
+<div id="outline-container-orgf4b68ca" class="outline-2">
+<h2 id="orgf4b68ca"><span class="section-number-2">4</span> CPP References</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 References can be used to ignore variable copying when calling functions. This
@@ -502,51 +502,51 @@ Example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-// swap takes in references a and b
-void swap(int &amp;a, int &amp;b) {
-    int temp = a;
+<span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">swap takes in references a and b</span>
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">swap</span>(<span style="font-weight: bold; text-decoration: underline;">int</span> &amp;<span style="font-weight: bold; font-style: italic;">a</span>, <span style="font-weight: bold; text-decoration: underline;">int</span> &amp;<span style="font-weight: bold; font-style: italic;">b</span>) {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">temp</span> = a;
     a = b;
     b = temp;
 }
 
-int main() {
-    int a = 4, b = 3;
-    std::cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b &lt;&lt; std::endl;
-    // this utility function is already declared in &lt;algorithm&gt; header file
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span> = 4, <span style="font-weight: bold; font-style: italic;">b</span> = 3;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; a &lt;&lt; <span style="font-style: italic;">" "</span> &lt;&lt; b &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
+    <span style="font-weight: bold; font-style: italic;">// </span><span style="font-weight: bold; font-style: italic;">this utility function is already declared in &lt;algorithm&gt; header file</span>
     swap(a,b);
-    std::cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b &lt;&lt; std::endl;
+    <span style="font-weight: bold; text-decoration: underline;">std</span>::cout &lt;&lt; a &lt;&lt; <span style="font-style: italic;">" "</span> &lt;&lt; b &lt;&lt; <span style="font-weight: bold; text-decoration: underline;">std</span>::endl;
 }
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf917c1f" class="outline-2">
-<h2 id="orgf917c1f"><span class="section-number-2">5</span> Short long long double</h2>
+<div id="outline-container-org6310585" class="outline-2">
+<h2 id="org6310585"><span class="section-number-2">5</span> Short long long double</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-#include &lt;climits&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;climits&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main () {
-    cout &lt;&lt; sizeof(int) &lt;&lt; endl;
-    cout &lt;&lt; sizeof(char) &lt;&lt; endl;
-    cout &lt;&lt; sizeof(float) &lt;&lt; endl;
-    cout &lt;&lt; sizeof(double) &lt;&lt; endl;
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span> () {
+    cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">int</span>) &lt;&lt; endl;
+    cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">char</span>) &lt;&lt; endl;
+    cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">float</span>) &lt;&lt; endl;
+    cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(<span style="font-weight: bold; text-decoration: underline;">double</span>) &lt;&lt; endl;
 
-    short a = 3;
-    long int b = 69;
-    long long int c = 69;
-    long double d = 2.0;
+    <span style="font-weight: bold; text-decoration: underline;">short</span> <span style="font-weight: bold; font-style: italic;">a</span> = 3;
+    <span style="font-weight: bold; text-decoration: underline;">long</span> <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">b</span> = 69;
+    <span style="font-weight: bold; text-decoration: underline;">long</span> <span style="font-weight: bold; text-decoration: underline;">long</span> <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">c</span> = 69;
+    <span style="font-weight: bold; text-decoration: underline;">long</span> <span style="font-weight: bold; text-decoration: underline;">double</span> <span style="font-weight: bold; font-style: italic;">d</span> = 2.0;
 
     cout &lt;&lt; a &lt;&lt; endl;
-    cout &lt;&lt; sizeof(a) &lt;&lt; endl;
-    cout &lt;&lt; sizeof(b) &lt;&lt; endl;
-    cout &lt;&lt; sizeof(c) &lt;&lt; endl;
-    cout &lt;&lt; sizeof(d) &lt;&lt; endl;
+    cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(a) &lt;&lt; endl;
+    cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(b) &lt;&lt; endl;
+    cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(c) &lt;&lt; endl;
+    cout &lt;&lt; <span style="font-weight: bold;">sizeof</span>(d) &lt;&lt; endl;
 }
 </pre>
 </div>
@@ -555,7 +555,7 @@ int main () {
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-09-05 Mon 22:31</p>
+<p class="date">Created: 2022-09-05 Mon 22:48</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

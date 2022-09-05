@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-05 Mon 22:31 -->
+<!-- 2022-09-05 Mon 22:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -247,12 +247,12 @@ for the JavaScript code in this tag.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-    cout &lt;&lt; "hello world";
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+    cout &lt;&lt; <span style="font-style: italic;">"hello world"</span>;
 }
 </pre>
 </div>
@@ -262,58 +262,58 @@ int main() {
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
 
-using namespace std;
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-void print_prompt();
-void reset_choice(char *choice);
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">print_prompt</span>();
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">reset_choice</span>(<span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">choice</span>);
 
-int main() {
-  char choice;
-  do {
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">char</span> <span style="font-weight: bold; font-style: italic;">choice</span>;
+  <span style="font-weight: bold;">do</span> {
     print_prompt();
     cin &gt;&gt; choice;
-    int a,b;
-    cout &lt;&lt; "Enter two numbers for " &lt;&lt; choice &lt;&lt; " operation: ";
+    <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">a</span>,<span style="font-weight: bold; font-style: italic;">b</span>;
+    cout &lt;&lt; <span style="font-style: italic;">"Enter two numbers for "</span> &lt;&lt; choice &lt;&lt; <span style="font-style: italic;">" operation: "</span>;
     cin &gt;&gt; a &gt;&gt; b;
-    switch(choice) {
-      case '+':
-	cout &lt;&lt; "Sum is: " &lt;&lt; a + b &lt;&lt; endl;
-	reset_choice(&amp;choice);
-	break;
-      case '-':
-	cout &lt;&lt; "Difference is: " &lt;&lt; a - b &lt;&lt; endl;
-	reset_choice(&amp;choice);
-	break;
-      case '*':
-	cout &lt;&lt; "Product is: " &lt;&lt; a * b &lt;&lt; endl;
-	reset_choice(&amp;choice);
-	break;
-      case '/':
-	cout &lt;&lt; "Quotient is: " &lt;&lt; a / b &lt;&lt; endl;
-	cout &lt;&lt; "Remainder is: " &lt;&lt; a % b &lt;&lt; endl;
-	reset_choice(&amp;choice);
-	break;
-      default:
-	cout &lt;&lt; "Invalid operation." &lt;&lt; endl &lt;&lt; endl;
-	reset_choice(&amp;choice);
+    <span style="font-weight: bold;">switch</span>(choice) {
+      <span style="font-weight: bold;">case</span> <span style="font-style: italic;">'+'</span>:
+        cout &lt;&lt; <span style="font-style: italic;">"Sum is: "</span> &lt;&lt; a + b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+        <span style="font-weight: bold;">break</span>;
+      <span style="font-weight: bold;">case</span> <span style="font-style: italic;">'-'</span>:
+        cout &lt;&lt; <span style="font-style: italic;">"Difference is: "</span> &lt;&lt; a - b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+        <span style="font-weight: bold;">break</span>;
+      <span style="font-weight: bold;">case</span> <span style="font-style: italic;">'*'</span>:
+        cout &lt;&lt; <span style="font-style: italic;">"Product is: "</span> &lt;&lt; a * b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+        <span style="font-weight: bold;">break</span>;
+      <span style="font-weight: bold;">case</span> <span style="font-style: italic;">'/'</span>:
+        cout &lt;&lt; <span style="font-style: italic;">"Quotient is: "</span> &lt;&lt; a / b &lt;&lt; endl;
+        cout &lt;&lt; <span style="font-style: italic;">"Remainder is: "</span> &lt;&lt; a % b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+        <span style="font-weight: bold;">break</span>;
+      <span style="font-weight: bold;">default</span>:
+        cout &lt;&lt; <span style="font-style: italic;">"Invalid operation."</span> &lt;&lt; endl &lt;&lt; endl;
+        reset_choice(&amp;choice);
     }
-  } while (choice == 'y' || choice == 'Y');
+  } <span style="font-weight: bold;">while</span> (choice == <span style="font-style: italic;">'y'</span> || choice == <span style="font-style: italic;">'Y'</span>);
 }
 
-void print_prompt() {
-  cout &lt;&lt; "Enter your choice of operation: " &lt;&lt; endl;
-  cout &lt;&lt; "+: Addition" &lt;&lt; endl;
-  cout &lt;&lt; "-: Subtraction" &lt;&lt; endl;
-  cout &lt;&lt; "*: Multiplication" &lt;&lt; endl;
-  cout &lt;&lt; "/: Division" &lt;&lt; endl;
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">print_prompt</span>() {
+  cout &lt;&lt; <span style="font-style: italic;">"Enter your choice of operation: "</span> &lt;&lt; endl;
+  cout &lt;&lt; <span style="font-style: italic;">"+: Addition"</span> &lt;&lt; endl;
+  cout &lt;&lt; <span style="font-style: italic;">"-: Subtraction"</span> &lt;&lt; endl;
+  cout &lt;&lt; <span style="font-style: italic;">"*: Multiplication"</span> &lt;&lt; endl;
+  cout &lt;&lt; <span style="font-style: italic;">"/: Division"</span> &lt;&lt; endl;
 
-  cout &lt;&lt; "Choice (+ / - / * / /): ";
+  cout &lt;&lt; <span style="font-style: italic;">"Choice (+ / - / * / /): "</span>;
 }
 
-void reset_choice(char *choice) {
-  cout &lt;&lt; "Do you want to perform more operations? (y/n): ";
+<span style="font-weight: bold; text-decoration: underline;">void</span> <span style="font-weight: bold;">reset_choice</span>(<span style="font-weight: bold; text-decoration: underline;">char</span> *<span style="font-weight: bold; font-style: italic;">choice</span>) {
+  cout &lt;&lt; <span style="font-style: italic;">"Do you want to perform more operations? (y/n): "</span>;
   cin &gt;&gt; *choice;
 }
 </pre>
@@ -331,26 +331,26 @@ void reset_choice(char *choice) {
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp">#include &lt;iostream&gt;
-using namespace std;
+<pre class="src src-cpp"><span style="font-weight: bold;">#include</span> <span style="font-style: italic;">&lt;iostream&gt;</span>
+<span style="font-weight: bold;">using</span> <span style="font-weight: bold;">namespace</span> <span style="font-weight: bold; text-decoration: underline;">std</span>;
 
-int main() {
-  int n;
-  cout &lt;&lt; "Enter number: ";
+<span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold;">main</span>() {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">n</span>;
+  cout &lt;&lt; <span style="font-style: italic;">"Enter number: "</span>;
   cin &gt;&gt; n;
 
-  int i = 2;
-  while (i &lt; n) {
+  <span style="font-weight: bold; text-decoration: underline;">int</span> <span style="font-weight: bold; font-style: italic;">i</span> = 2;
+  <span style="font-weight: bold;">while</span> (i &lt; n) {
     i++;
-    if (n % i == 0) {
-      break;
+    <span style="font-weight: bold;">if</span> (n % i == 0) {
+      <span style="font-weight: bold;">break</span>;
     }
   }
 
-  if (n == i) {
-    cout &lt;&lt; n &lt;&lt; " is prime." &lt;&lt; endl;
-  } else {
-    cout &lt;&lt; n &lt;&lt; " is not prime." &lt;&lt; endl;
+  <span style="font-weight: bold;">if</span> (n == i) {
+    cout &lt;&lt; n &lt;&lt; <span style="font-style: italic;">" is prime."</span> &lt;&lt; endl;
+  } <span style="font-weight: bold;">else</span> {
+    cout &lt;&lt; n &lt;&lt; <span style="font-style: italic;">" is not prime."</span> &lt;&lt; endl;
   }
 }
 </pre>
