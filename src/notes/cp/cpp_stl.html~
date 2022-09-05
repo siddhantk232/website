@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-05 Mon 22:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STL (Standard Template Library)</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">STL (Standard Template Library)</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org63b9132">1. Containers</a>
+<ul>
+<li><a href="#orgea47e18">1.1. Nested Containers</a></li>
+<li><a href="#orgf48b05e">1.2. Pairs</a></li>
+<li><a href="#org6d85756">1.3. Vectors</a></li>
+<li><a href="#orgabbc85f">1.4. Maps</a>
+<ul>
+<li><a href="#org8ccc513">1.4.1. Unordered Maps</a></li>
+<li><a href="#org59e4fe5">1.4.2. Multimaps</a></li>
+</ul>
+</li>
+<li><a href="#org6779cfd">1.5. Sets</a></li>
+<li><a href="#orgbeafb1a">1.6. Stack</a>
+<ul>
+<li><a href="#org842c591">1.6.1. Operations:</a></li>
+<li><a href="#org80d2f06">1.6.2. LC question (valid parens)</a></li>
+</ul>
+</li>
+<li><a href="#org252774b">1.7. Queues</a>
+<ul>
+<li><a href="#org061fd3c">1.7.1. Operations:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgdf0ce87">2. Iterators</a></li>
+<li><a href="#orgb013935">3. Algorithms</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org767aeb0">3.0.1. Sort (O(nlog(n)))</a></li>
+<li><a href="#org639f40b">3.0.2. Lower/Upper Bound (O(log(n)))</a></li>
+<li><a href="#org22063c3">3.0.3. min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</a></li>
+<li><a href="#org87333f8">3.0.4. cpp lambdas</a></li>
+<li><a href="#org19293ad">3.0.5. <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga08a7d7">4. Functors</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org63b9132" class="outline-2">
+<h2 id="org63b9132"><span class="section-number-2">1.</span> Containers</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Containers are data structures that are already implemented in STL.
+</p>
+
+<p>
+Container is further divided into the following data structure types:
+</p>
+
+<ul class="org-ul">
+<li>Sequential
+<ul class="org-ul">
+<li>vectors</li>
+<li>stack</li>
+<li>queue</li>
+</ul></li>
+<li>Ordered
+<ul class="org-ul">
+<li>maps</li>
+<li>multimap</li>
+<li>set</li>
+<li>multiset</li>
+</ul></li>
+<li>Unordered
+<ul class="org-ul">
+<li>unordered map</li>
+<li>unordered set</li>
+</ul></li>
+</ul>
+
+<p>
+Above list does <b>not</b> include all the containers but most relevant ones. See
+<a href="https://cplusplus.com/reference/stl/">https://cplusplus.com/reference/stl/</a> for more information on STL containers.
+</p>
+</div>
+
+<div id="outline-container-orgea47e18" class="outline-3">
+<h3 id="orgea47e18"><span class="section-number-3">1.1.</span> Nested Containers</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Cotainers can be nested. Some examples are given below.
+</p>
+
+<ul class="org-ul">
+<li><code>vector&lt;vector&lt;int&gt;&gt;</code></li>
+<li><code>map&lt;int, vector&lt;int&gt;&gt;</code></li>
+<li><code>set&lt;pair&lt;int, string&gt;&gt;</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf48b05e" class="outline-3">
+<h3 id="orgf48b05e"><span class="section-number-3">1.2.</span> Pairs</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+pair is defined in the <code>utility</code> header file. Pairs are copied when passed as
+arguments or assigned to some other variable. Use cpp references or pointers to
+refer to a pair if needed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">utility</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">string</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">pair</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #d3869b;">std</span>::string<span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">p</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>, <span style="color: #b8bb26;">"string"</span><span style="color: #cc241d;">}</span>;
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="color: #b8bb26;">":"</span> &lt;&lt; p.second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">pairs are copied</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">pair</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span>,<span style="color: #d3869b;">std</span>::string<span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">p1</span> = p;
+    p1.first = <span style="color: #d3869b; font-weight: bold;">43</span>;
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="color: #b8bb26;">":"</span> &lt;&lt; p.second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">cpp references use with pairs</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">pair</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span>,<span style="color: #d3869b;">std</span>::string<span style="color: #cc241d;">&gt;</span> &amp;<span style="color: #83a598;">p2</span> = p;
+    p2.first = <span style="color: #d3869b; font-weight: bold;">69</span>;
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="color: #b8bb26;">":"</span> &lt;&lt; p.second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">with pointers</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">pair</span> <span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #d3869b;">std</span>::string<span style="color: #cc241d;">&gt;</span> *<span style="color: #83a598;">p3</span> = &amp;p;
+    p3-&gt;first = <span style="color: #d3869b; font-weight: bold;">990</span>;
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="color: #b8bb26;">":"</span> &lt;&lt; p.second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6d85756" class="outline-3">
+<h3 id="org6d85756"><span class="section-number-3">1.3.</span> Vectors</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Dynmaically sized contiguous memory blocks. Defined in <code>vector</code> header file.
+Vector has same size limits as arrays in cpp. Local vector can&rsquo;t be more than
+10<sup>5</sup> in size and global vector can&rsquo;t be more than 10<sup>7</sup> in size. This limit is on
+the contiguous memory allocation that&rsquo;s why it&rsquo;s same for both arrays and
+vectors.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">vector</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">}</span>;
+    <span style="color: #928374;">// </span><span style="color: #928374;">vector of initial size 10 with all values set to 3</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">std::vector&lt;int&gt; x(10) will set all 10 values to 0 (data type's zero value)</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">x</span><span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">10</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> : x<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt; i &lt;&lt; <span style="color: #b8bb26;">" "</span>;
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> : v<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt; i &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+
+    v.push_back<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">69</span><span style="color: #cc241d;">)</span>; <span style="color: #928374;">// </span><span style="color: #928374;">O(1)</span>
+
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; v<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">]</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; v.size<span style="color: #cc241d;">()</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+
+    v.pop_back<span style="color: #cc241d;">()</span>; <span style="color: #928374;">// </span><span style="color: #928374;">O(1)</span>
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; v.size<span style="color: #cc241d;">()</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+<span style="color: #fe8019;">}</span>
+
+</pre>
+</div>
+
+<p>
+Vectors can be copied unlike arrays. Use cpp references or pointers to get a
+reference to a vector.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">vector</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">}</span>;
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v1</span> = v;
+
+    v1.push_back<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">10</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> : v<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt; i &lt;&lt; <span style="color: #b8bb26;">" "</span>;
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> &amp;<span style="color: #83a598;">v2</span> = v;
+    v2<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">]</span> = <span style="color: #d3869b; font-weight: bold;">99</span>;
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; v<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">]</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> *<span style="color: #83a598;">v3</span> = &amp;v;
+    <span style="color: #cc241d;">(</span>*v3<span style="color: #cc241d;">)[</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">]</span> = <span style="color: #d3869b; font-weight: bold;">32</span>;
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; v<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">]</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+<p>
+Vectors can be nested to created multi-dimensional vectors (2d, 3d, &#x2026;). Vector of pairs is also common in use.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">utility</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">vector</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">pair</span><span style="color: #b8bb26;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #fabd2f;">int</span><span style="color: #b8bb26;">&gt;</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">9</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">}</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">pair</span><span style="color: #b8bb26;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #fabd2f;">int</span><span style="color: #b8bb26;">&gt;</span> <span style="color: #83a598;">p</span> : v<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt; p.first &lt;&lt; <span style="color: #b8bb26;">" : "</span> &lt;&lt; p.second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgabbc85f" class="outline-3">
+<h3 id="orgabbc85f"><span class="section-number-3">1.4.</span> Maps</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+A data structure to store collection of <code>key:value</code> pairs. Pairs are stored in
+sorted order in a normal Map, use unordered map for storing unordered pairs.
+</p>
+
+<p>
+<b>Insertion</b> and <b>access</b> in map is O(log(n)). Keys in a map are unique. It&rsquo;ll
+replace the old value in case of an overwrite operation.
+</p>
+
+<p>
+Find operation (O(log(n))) returns an iterator that points to the found pair or
+the <code>.end()</code> if the pair does not exist.
+</p>
+
+<p>
+Erase (<code>map.erase()</code>) (O(log(n))), takes in either the key or the iterator to
+the pair we want to erase from the map. You can&rsquo;t pass <code>m.end()</code> to erase as
+it&rsquo;s points to the element which is after the last element.
+</p>
+
+<p>
+Use <code>map.clear()</code> to clear the map.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">map</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">map</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #d3869b;">std</span>::string<span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">m</span>;
+    m<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">]</span> = <span style="color: #b8bb26;">"abc"</span>;
+    m.insert<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #b8bb26;">"dewf"</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">)</span>;
+    m<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">9</span><span style="color: #cc241d;">]</span> = <span style="color: #b8bb26;">"jsf"</span>;
+    m<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">]</span> = <span style="color: #b8bb26;">"jsklfjlks"</span>;
+    m<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">99</span><span style="color: #cc241d;">]</span>; <span style="color: #928374;">// </span><span style="color: #928374;">insertion will still happen even if we didn't assign anything</span>
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">i</span> : m<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt;  i.first &lt;&lt; <span style="color: #b8bb26;">" : "</span> &lt;&lt; i.second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">el</span> = m.find<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>el != m.end<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt; el-&gt;second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+
+    m.erase<span style="color: #cc241d;">(</span>m.find<span style="color: #b8bb26;">(</span><span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span>; <span style="color: #928374;">// </span><span style="color: #928374;">O(log(n)) + O(log(n)) for find and then erase</span>
+    m.erase<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">9</span><span style="color: #cc241d;">)</span>; <span style="color: #928374;">// </span><span style="color: #928374;">O(log(n))</span>
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">i</span> : m<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt;  i.first &lt;&lt; <span style="color: #b8bb26;">" : "</span> &lt;&lt; i.second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8ccc513" class="outline-4">
+<h4 id="org8ccc513"><span class="section-number-4">1.4.1.</span> Unordered Maps</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Difference from normal normal maps:
+</p>
+
+<ul class="org-ul">
+<li><b>Inbuilt implementation</b>: uses hash tables. Each key&rsquo;s hash values is
+calculated for comparison</li>
+
+<li><b>time complexity</b>: Insertion/Access time is O(1) (average time complexity).
+<code>.erase()</code> happens in O(1) when given an iterator.</li>
+
+<li><b>valid key data types</b>: <code>vector&lt;int&gt;</code> or <code>pair&lt;int, int&gt;</code> can&rsquo;t be used as key
+of a pair in unordered<sub>maps</sub> as their hash is not predefined by default. All
+standard data types (including std::string) can be used.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">unordered_map</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">unordered_map</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #d3869b;">std</span>::string<span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">m</span>;
+    m<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">]</span> = <span style="color: #b8bb26;">"abc"</span>;
+    m.insert<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">2</span>, <span style="color: #b8bb26;">"dewf"</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">)</span>;
+    m<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">9</span><span style="color: #cc241d;">]</span> = <span style="color: #b8bb26;">"jsf"</span>;
+    m<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">]</span> = <span style="color: #b8bb26;">"jsklfjlks"</span>;
+    m<span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">99</span><span style="color: #cc241d;">]</span>; <span style="color: #928374;">// </span><span style="color: #928374;">insertion will still happen even if we didn't assign anything</span>
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">i</span> : m<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt;  i.first &lt;&lt; <span style="color: #b8bb26;">" : "</span> &lt;&lt; i.second &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org59e4fe5" class="outline-4">
+<h4 id="org59e4fe5"><span class="section-number-4">1.4.2.</span> Multimaps</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Pairs with same keys can exist in a <code>multimap</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6779cfd" class="outline-3">
+<h3 id="org6779cfd"><span class="section-number-3">1.5.</span> Sets</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Collection of unique elements.
+</p>
+
+<ul class="org-ul">
+<li><b>Normal Sets</b>: Stores elements in sorted order. <b>Insertion/Access</b> takes
+<b>O(log(n))</b> time. <b>Find</b> is also <b>O(log(n))</b>. <code>=set.erase()=</code> is same as it was in
+maps.</li>
+
+<li><b>Unordered Sets</b>: Stores elements in random order. <b>Insert</b> take <b>O(1)</b> time.
+Standard data types (including) strings can be used by default (uses hash for
+uniq check).</li>
+
+<li><b>Multisets</b>: allows for duplicate elements. If passed a value to
+<code>set.erase()</code>, it&rsquo;ll delete all the occurence of it. With an iterator, it&rsquo;ll
+only delete the element that&rsquo;s pointed by the iterator.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">set</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">set</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">string</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">s</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">"gh"</span>, <span style="color: #b8bb26;">"asdf"</span><span style="color: #cc241d;">}</span>;
+    s.insert<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"abc"</span><span style="color: #cc241d;">)</span>;
+    s.insert<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"abc"</span><span style="color: #cc241d;">)</span>; <span style="color: #928374;">// </span><span style="color: #928374;">stores unique element</span>
+
+    <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">res</span> = s.find<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"asdf"</span><span style="color: #cc241d;">)</span>; <span style="color: #928374;">// </span><span style="color: #928374;">return s.end() if not found</span>
+    cout &lt;&lt; *res &lt;&lt; endl;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">val</span> : s<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; val &lt;&lt; endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">unordered_set</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">unordered_set</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">string</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">s</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">"sidd"</span><span style="color: #cc241d;">}</span>;
+    s.insert<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"sidd"</span><span style="color: #cc241d;">)</span>; <span style="color: #928374;">// </span><span style="color: #928374;">stores unique element</span>
+
+    cout &lt;&lt; s.size<span style="color: #cc241d;">()</span> &lt;&lt; endl;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fb4934;">auto</span> &amp;<span style="color: #83a598;">val</span> : s<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; val &lt;&lt; endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbeafb1a" class="outline-3">
+<h3 id="orgbeafb1a"><span class="section-number-3">1.6.</span> Stack</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+LIFO
+</p>
+</div>
+
+<div id="outline-container-org842c591" class="outline-4">
+<h4 id="org842c591"><span class="section-number-4">1.6.1.</span> Operations:</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<ul class="org-ul">
+<li>push (element on top of the stack)</li>
+<li>pop (element from top of the stack)</li>
+<li>top (get the top element of the stack)</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stack</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">stack</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">s</span>;
+    s.push<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #cc241d;">)</span>;
+    s.push<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">9</span><span style="color: #cc241d;">)</span>;
+    s.push<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">8</span><span style="color: #cc241d;">)</span>;
+    s.push<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">)</span>;
+    s.push<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">99</span><span style="color: #cc241d;">)</span>;
+    s.push<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">10</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">while</span><span style="color: #cc241d;">(</span><span style="color: #ebdbb2; font-weight: bold;">!</span>s.empty<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; s.top<span style="color: #b8bb26;">()</span> &lt;&lt; endl;
+        s.pop<span style="color: #b8bb26;">()</span>;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80d2f06" class="outline-4">
+<h4 id="org80d2f06"><span class="section-number-4">1.6.2.</span> LC question (valid parens)</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<p>
+<a href="https://leetcode.com/problems/valid-parentheses">https://leetcode.com/problems/valid-parentheses</a>
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org3946388"></a>Solution 1<br />
+<div class="outline-text-5" id="text-1-6-2-1">
+<div class="org-src-container">
+<pre class="src src-cpp" id="org1f7c16c"><span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Solution1</span> <span style="color: #fe8019;">{</span>
+<span style="color: #fb4934;">public</span>:
+    <span style="color: #fabd2f;">bool</span> <span style="color: #b8bb26;">isValid</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">string</span> <span style="color: #83a598;">s</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fabd2f;">stack</span><span style="color: #b8bb26;">&lt;</span><span style="color: #fabd2f;">char</span><span style="color: #b8bb26;">&gt;</span> <span style="color: #83a598;">st</span>;
+        <span style="color: #fabd2f;">bool</span> <span style="color: #83a598;">res</span> = <span style="color: #d3869b;">true</span>;
+        <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">char</span> &amp;<span style="color: #83a598;">c</span> : s<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            <span style="color: #fb4934;">if</span> <span style="color: #83a598;">(</span>c == <span style="color: #b8bb26;">'('</span> || c == <span style="color: #b8bb26;">'['</span> || c == <span style="color: #b8bb26;">'{'</span><span style="color: #83a598;">)</span> <span style="color: #83a598;">{</span>
+                st.push<span style="color: #fe8019;">(</span>c<span style="color: #fe8019;">)</span>;
+            <span style="color: #83a598;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #83a598;">{</span>
+                <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st.empty<span style="color: #cc241d;">()</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+                    res = <span style="color: #d3869b;">false</span>;
+                <span style="color: #fe8019;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fe8019;">{</span>
+                    <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">top</span> = st.top<span style="color: #cc241d;">()</span>;
+                    st.pop<span style="color: #cc241d;">()</span>;
+
+                    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>c == <span style="color: #b8bb26;">')'</span> &amp;&amp; top != <span style="color: #b8bb26;">'('</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+                        res = <span style="color: #d3869b;">false</span>;
+                    <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>c == <span style="color: #b8bb26;">'}'</span> &amp;&amp; top != <span style="color: #b8bb26;">'{'</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+                        res = <span style="color: #d3869b;">false</span>;
+                    <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>c == <span style="color: #b8bb26;">']'</span> &amp;&amp; top != <span style="color: #b8bb26;">'['</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+                        res = <span style="color: #d3869b;">false</span>;
+                    <span style="color: #cc241d;">}</span>
+                <span style="color: #fe8019;">}</span>
+            <span style="color: #83a598;">}</span>
+        <span style="color: #b8bb26;">}</span>
+
+        <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span><span style="color: #ebdbb2; font-weight: bold;">!</span>st.empty<span style="color: #83a598;">()</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            res = <span style="color: #d3869b;">false</span>;
+        <span style="color: #b8bb26;">}</span>
+
+        <span style="color: #fb4934;">return</span> res;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp" id="org95e0384"><span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Solution2</span> <span style="color: #fe8019;">{</span>
+<span style="color: #fb4934;">public</span>:
+    <span style="color: #fabd2f;">unordered_map</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">char</span>, <span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">mp</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">'('</span>, -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">'{'</span>, -<span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">'['</span>, -<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">')'</span>, <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">'}'</span>, <span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">']'</span>, <span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">}</span>;
+    <span style="color: #fabd2f;">bool</span> <span style="color: #b8bb26;">isValid</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">string</span> <span style="color: #83a598;">s</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fabd2f;">stack</span><span style="color: #b8bb26;">&lt;</span><span style="color: #fabd2f;">char</span><span style="color: #b8bb26;">&gt;</span> <span style="color: #83a598;">st</span>;
+        <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">char</span> &amp;<span style="color: #83a598;">c</span> : s<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            <span style="color: #fb4934;">if</span> <span style="color: #83a598;">(</span>mp<span style="color: #fe8019;">[</span>c<span style="color: #fe8019;">]</span> &lt; <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #83a598;">)</span> <span style="color: #83a598;">{</span>
+                st.push<span style="color: #fe8019;">(</span>c<span style="color: #fe8019;">)</span>;
+            <span style="color: #83a598;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #83a598;">{</span>
+                <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st.empty<span style="color: #cc241d;">()</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+                    <span style="color: #fb4934;">return</span> <span style="color: #d3869b;">false</span>;
+                <span style="color: #fe8019;">}</span>
+                <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">top</span> = st.top<span style="color: #fe8019;">()</span>;
+                st.pop<span style="color: #fe8019;">()</span>;
+                <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>mp<span style="color: #cc241d;">[</span>top<span style="color: #cc241d;">]</span> + mp<span style="color: #cc241d;">[</span>c<span style="color: #cc241d;">]</span> != <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+                    <span style="color: #fb4934;">return</span> <span style="color: #d3869b;">false</span>;
+                <span style="color: #fe8019;">}</span>
+            <span style="color: #83a598;">}</span>
+        <span style="color: #b8bb26;">}</span>
+
+        <span style="color: #fb4934;">return</span> st.empty<span style="color: #b8bb26;">()</span>;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>;
+</pre>
+</div>
+
+<p>
+Driver Code with both the solutions
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stack</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">unordered_map</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Solution1</span> <span style="color: #fe8019;">{</span>
+<span style="color: #fb4934;">public</span>:
+    <span style="color: #fabd2f;">bool</span> <span style="color: #b8bb26;">isValid</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">string</span> <span style="color: #83a598;">s</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fabd2f;">stack</span><span style="color: #b8bb26;">&lt;</span><span style="color: #fabd2f;">char</span><span style="color: #b8bb26;">&gt;</span> <span style="color: #83a598;">st</span>;
+        <span style="color: #fabd2f;">bool</span> <span style="color: #83a598;">res</span> = <span style="color: #d3869b;">true</span>;
+        <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">char</span> &amp;<span style="color: #83a598;">c</span> : s<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            <span style="color: #fb4934;">if</span> <span style="color: #83a598;">(</span>c == <span style="color: #b8bb26;">'('</span> || c == <span style="color: #b8bb26;">'['</span> || c == <span style="color: #b8bb26;">'{'</span><span style="color: #83a598;">)</span> <span style="color: #83a598;">{</span>
+                st.push<span style="color: #fe8019;">(</span>c<span style="color: #fe8019;">)</span>;
+            <span style="color: #83a598;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #83a598;">{</span>
+                <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st.empty<span style="color: #cc241d;">()</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+                    res = <span style="color: #d3869b;">false</span>;
+                <span style="color: #fe8019;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fe8019;">{</span>
+                    <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">top</span> = st.top<span style="color: #cc241d;">()</span>;
+                    st.pop<span style="color: #cc241d;">()</span>;
+
+                    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>c == <span style="color: #b8bb26;">')'</span> &amp;&amp; top != <span style="color: #b8bb26;">'('</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+                        res = <span style="color: #d3869b;">false</span>;
+                    <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>c == <span style="color: #b8bb26;">'}'</span> &amp;&amp; top != <span style="color: #b8bb26;">'{'</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+                        res = <span style="color: #d3869b;">false</span>;
+                    <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>c == <span style="color: #b8bb26;">']'</span> &amp;&amp; top != <span style="color: #b8bb26;">'['</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+                        res = <span style="color: #d3869b;">false</span>;
+                    <span style="color: #cc241d;">}</span>
+                <span style="color: #fe8019;">}</span>
+            <span style="color: #83a598;">}</span>
+        <span style="color: #b8bb26;">}</span>
+
+        <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span><span style="color: #ebdbb2; font-weight: bold;">!</span>st.empty<span style="color: #83a598;">()</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            res = <span style="color: #d3869b;">false</span>;
+        <span style="color: #b8bb26;">}</span>
+
+        <span style="color: #fb4934;">return</span> res;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>;
+
+<span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Solution2</span> <span style="color: #fe8019;">{</span>
+<span style="color: #fb4934;">public</span>:
+    <span style="color: #fabd2f;">unordered_map</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">char</span>, <span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">mp</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">'('</span>, -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">'{'</span>, -<span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">'['</span>, -<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">')'</span>, <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">'}'</span>, <span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #b8bb26;">']'</span>, <span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">}</span>;
+    <span style="color: #fabd2f;">bool</span> <span style="color: #b8bb26;">isValid</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">string</span> <span style="color: #83a598;">s</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fabd2f;">stack</span><span style="color: #b8bb26;">&lt;</span><span style="color: #fabd2f;">char</span><span style="color: #b8bb26;">&gt;</span> <span style="color: #83a598;">st</span>;
+        <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">char</span> &amp;<span style="color: #83a598;">c</span> : s<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+            <span style="color: #fb4934;">if</span> <span style="color: #83a598;">(</span>mp<span style="color: #fe8019;">[</span>c<span style="color: #fe8019;">]</span> &lt; <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #83a598;">)</span> <span style="color: #83a598;">{</span>
+                st.push<span style="color: #fe8019;">(</span>c<span style="color: #fe8019;">)</span>;
+            <span style="color: #83a598;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #83a598;">{</span>
+                <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st.empty<span style="color: #cc241d;">()</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+                    <span style="color: #fb4934;">return</span> <span style="color: #d3869b;">false</span>;
+                <span style="color: #fe8019;">}</span>
+                <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">top</span> = st.top<span style="color: #fe8019;">()</span>;
+                st.pop<span style="color: #fe8019;">()</span>;
+                <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>mp<span style="color: #cc241d;">[</span>top<span style="color: #cc241d;">]</span> + mp<span style="color: #cc241d;">[</span>c<span style="color: #cc241d;">]</span> != <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+                    <span style="color: #fb4934;">return</span> <span style="color: #d3869b;">false</span>;
+                <span style="color: #fe8019;">}</span>
+            <span style="color: #83a598;">}</span>
+        <span style="color: #b8bb26;">}</span>
+
+        <span style="color: #fb4934;">return</span> st.empty<span style="color: #b8bb26;">()</span>;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">sol1</span> = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">Solution1</span><span style="color: #cc241d;">()</span>;
+    <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">sol2</span> = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">Solution2</span><span style="color: #cc241d;">()</span>;
+
+    cout &lt;&lt; sol1-&gt;isValid<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"((()))"</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; sol1-&gt;isValid<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"({[]})"</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    cout &lt;&lt; sol1-&gt;isValid<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"(]"</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; sol1-&gt;isValid<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"[](()"</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    cout &lt;&lt; sol2-&gt;isValid<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"((()))"</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; sol2-&gt;isValid<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"({[]})"</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    cout &lt;&lt; sol2-&gt;isValid<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"(]"</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; sol2-&gt;isValid<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"[](()"</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org252774b" class="outline-3">
+<h3 id="org252774b"><span class="section-number-3">1.7.</span> Queues</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+FIFO
+</p>
+</div>
+<div id="outline-container-org061fd3c" class="outline-4">
+<h4 id="org061fd3c"><span class="section-number-4">1.7.1.</span> Operations:</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<ul class="org-ul">
+<li>push (element to the back of the queue)</li>
+<li>pop (remove the first element)</li>
+<li>front (get the first element of the queue)</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">queue</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">queue</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">string</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">q</span>;
+    q.push<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"abc"</span><span style="color: #cc241d;">)</span>;
+    q.push<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"def"</span><span style="color: #cc241d;">)</span>;
+    q.push<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"ghi"</span><span style="color: #cc241d;">)</span>;
+    q.push<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"jkl"</span><span style="color: #cc241d;">)</span>;
+    q.push<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"mno"</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">while</span><span style="color: #cc241d;">(</span><span style="color: #ebdbb2; font-weight: bold;">!</span>q.empty<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; q.front<span style="color: #b8bb26;">()</span> &lt;&lt; endl;
+        q.pop<span style="color: #b8bb26;">()</span>;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdf0ce87" class="outline-2">
+<h2 id="orgdf0ce87"><span class="section-number-2">2.</span> Iterators</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Pointer like structures. <code>.begin()</code> points at the first element of a data
+structure. <code>.end()</code> points at the element after the last element.
+</p>
+
+<p>
+Increment operator (++) works for any iterator but adding 1 (<code>it + 1</code>) only
+works for vectors.
+(+1) moves to the next memory location which, in case of vectors is the location
+of the next element. Maps and other data structure do no store elements in
+contiguous memory block so this does not work.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">vector</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span><span style="color: #cc241d;">}</span>;
+    <span style="color: #d3869b;">std</span>::<span style="color: #d3869b;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span>::<span style="color: #fabd2f;">iterator</span> <span style="color: #83a598;">it</span> = v.begin<span style="color: #cc241d;">()</span>;
+
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #cc241d;">(</span>*it<span style="color: #cc241d;">)</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #cc241d;">(</span>*<span style="color: #b8bb26;">(</span>it + <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">i++/++i -&gt; next iterator</span>
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">i</span> = v.begin<span style="color: #b8bb26;">()</span>; i != v.end<span style="color: #b8bb26;">()</span>; ++i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #b8bb26;">(</span>*i<span style="color: #b8bb26;">)</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+<p>
+C++11 introduced range based loops and the <code>auto</code> keyword that shortens the
+syntax required for iterator usage.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">vector</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span><span style="color: #cc241d;">}</span>;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">uses iterators under the hood</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">the value inside identifier `i` is copied</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">use cpp references (int &amp;i) when copying is not desired</span>
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> : v<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt; i &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #d3869b;">std</span>::<span style="color: #fabd2f;">pair</span><span style="color: #b8bb26;">&lt;</span><span style="color: #fabd2f;">int</span>,<span style="color: #fabd2f;">int</span><span style="color: #b8bb26;">&gt;</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">p</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">}</span>;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">pi :: pair&lt;int,int&gt;</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">pari&lt;int,int&gt; -&gt; auto!</span>
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">pi</span> : p<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #d3869b;">std</span>::cout &lt;&lt; pi.first &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb013935" class="outline-2">
+<h2 id="orgb013935"><span class="section-number-2">3.</span> Algorithms</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>{next,prev}<sub>permutations</sub></li>
+</ul>
+</div>
+
+<div id="outline-container-org767aeb0" class="outline-4">
+<h4 id="org767aeb0"><span class="section-number-4">3.0.1.</span> Sort (O(nlog(n)))</h4>
+<div class="outline-text-4" id="text-3-0-1">
+<p>
+<code>std::sort</code> takes in the first iterator (pointer to the first element) and
+pointer to the next element after the last element.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">algorithm</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">34</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">61</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">}</span>;
+
+    sort<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> : a<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; i &lt;&lt; endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+<p>
+Usage with vectors:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">algorithm</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">a</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">99</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">10</span>, <span style="color: #d3869b; font-weight: bold;">8</span><span style="color: #cc241d;">}</span>;
+
+    sort<span style="color: #cc241d;">(</span>a.begin<span style="color: #b8bb26;">()</span>, a.end<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> : a<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; i &lt;&lt; endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+
+<ol class="org-ol">
+<li><a id="orge161426"></a>Comparator Function in Sort<br />
+<div class="outline-text-5" id="text-3-0-1-1">
+<p>
+The default logic for sort is to rearrange container elements in ascending
+order. We can change this behaviour
+</p>
+
+<p>
+Return <code>false</code> from the comparator function if you want to swap, else return
+<code>true</code>. We typically pass a comparison expression that when evaluated to
+<code>false</code>, triggers the swap operation.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">algorithm</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">bool</span> <span style="color: #b8bb26;">cmp</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">pair</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">a</span>, <span style="color: #fabd2f;">pair</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">b</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>a.first != b.first<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        <span style="color: #fb4934;">return</span> a.first &lt; b.first;
+    <span style="color: #cc241d;">}</span>
+    <span style="color: #fb4934;">return</span> a.second &gt; b.second;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">pair</span><span style="color: #b8bb26;">&lt;</span><span style="color: #fabd2f;">int</span>, <span style="color: #fabd2f;">int</span><span style="color: #b8bb26;">&gt;</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">a</span> = <span style="color: #cc241d;">{</span><span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">5</span>,<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">5</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">25</span>, <span style="color: #d3869b; font-weight: bold;">6</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">7</span>, <span style="color: #d3869b; font-weight: bold;">9</span><span style="color: #b8bb26;">}</span>, <span style="color: #b8bb26;">{</span><span style="color: #d3869b; font-weight: bold;">8</span>, <span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #b8bb26;">}</span><span style="color: #cc241d;">}</span>;
+
+    sort<span style="color: #cc241d;">(</span>a.begin<span style="color: #b8bb26;">()</span>, a.end<span style="color: #b8bb26;">()</span>, cmp<span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">i</span> : a<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; i.first &lt;&lt; <span style="color: #b8bb26;">" "</span> &lt;&lt; i.second &lt;&lt; endl;
+    <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org639f40b" class="outline-4">
+<h4 id="org639f40b"><span class="section-number-4">3.0.2.</span> Lower/Upper Bound (O(log(n)))</h4>
+<div class="outline-text-4" id="text-3-0-2">
+<p>
+The input to lower/upper bound should be sorted to get O(log(n)) perf. If the
+input isn&rsquo;t sorted, it&rsquo;ll take O(n) time.
+</p>
+
+<p>
+Use <code>set.lower_bound</code> or <code>set.upper_bound</code> and <code>map.lower_bound</code> or
+<code>map.upper_bound</code> to get O(log(n)) with sets and maps.
+</p>
+
+<p>
+<b>Lower bound</b> returns pointer (or iterator) to the given element or next element
+bigger than the given element. If both (given element and any element bigger
+than the given element) is not found, it&rsquo;ll return <code>.end()</code>.
+</p>
+
+<p>
+<code>lower_bound</code> searches for element x in a container such that i &lt;= x, where i is
+the search argument passed.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">algorithm</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">34</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">61</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">}</span>;
+
+    sort<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">)</span>;
+
+    cout &lt;&lt; *lower_bound<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; *lower_bound<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">34</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; *lower_bound<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">61</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">neither 69 nor any value greater than 69 exist so we get .end()</span>
+    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>lower_bound<span style="color: #b8bb26;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">69</span><span style="color: #b8bb26;">)</span> == <span style="color: #b8bb26;">(</span>a+<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; <span style="color: #b8bb26;">"yes"</span> &lt;&lt; endl;
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">we get 34 as 5 doesn't exist in `a`` and 34 is the next bigger element</span>
+    cout &lt;&lt; *lower_bound<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+<p>
+<b>Upper bound</b> returns pointer (or iterator) to the element which is greater than the given element.
+</p>
+
+<p>
+<code>upper_bound</code> searches for element x in a container such that i &lt; x, where i is
+the search argument passed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">algorithm</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">34</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">61</span>,<span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">}</span>;
+
+    sort<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">)</span>;
+
+    cout &lt;&lt; *upper_bound<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; *upper_bound<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">34</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>upper_bound<span style="color: #b8bb26;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">61</span><span style="color: #b8bb26;">)</span> == <span style="color: #b8bb26;">(</span>a+<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; <span style="color: #b8bb26;">"no element bigger than "</span> &lt;&lt; <span style="color: #d3869b; font-weight: bold;">61</span> &lt;&lt; <span style="color: #b8bb26;">" found"</span> &lt;&lt; endl;
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">neither 69 nor any value greater than 69 exist so we get .end()</span>
+    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>upper_bound<span style="color: #b8bb26;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">69</span><span style="color: #b8bb26;">)</span> == <span style="color: #b8bb26;">(</span>a+<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; <span style="color: #b8bb26;">"no eleme bigger than 69 found"</span> &lt;&lt; endl;
+    <span style="color: #cc241d;">}</span>
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">we get 34 as 5 doesn't exist in `a`` and 34 is the next bigger element</span>
+    cout &lt;&lt; *upper_bound<span style="color: #cc241d;">(</span>a, a+<span style="color: #d3869b; font-weight: bold;">5</span>, <span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org22063c3" class="outline-4">
+<h4 id="org22063c3"><span class="section-number-4">3.0.3.</span> min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</h4>
+<div class="outline-text-4" id="text-3-0-3">
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">vector</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">algorithm</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">numeric</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">932</span>,<span style="color: #d3869b; font-weight: bold;">342</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">}</span>;
+
+    cout &lt;&lt; *min_element<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; *max_element<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">accumulate gives sum of all elements in a container</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">defined in the `numeric` header file</span>
+    cout &lt;&lt; accumulate<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span>, <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">count returns the number of occurrence of some element in a container</span>
+    cout &lt;&lt; count<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span>, <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">find</span>
+    <span style="color: #fb4934;">auto</span> <span style="color: #83a598;">it</span> = find<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span>, <span style="color: #d3869b; font-weight: bold;">69</span><span style="color: #cc241d;">)</span>;
+    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>it != v.end<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span> cout &lt;&lt; *it &lt;&lt; endl;
+    <span style="color: #fb4934;">else</span> cout &lt;&lt; <span style="color: #b8bb26;">"not found"</span> &lt;&lt; endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">reverse</span>
+    reverse<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> &amp;<span style="color: #83a598;">i</span>:v<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; i &lt;&lt; <span style="color: #b8bb26;">" "</span>;
+    <span style="color: #cc241d;">}</span>
+    cout &lt;&lt; endl;
+
+    <span style="color: #fabd2f;">string</span> <span style="color: #83a598;">s</span> = <span style="color: #b8bb26;">"abcdef"</span>;
+    reverse<span style="color: #cc241d;">(</span>s.begin<span style="color: #b8bb26;">()</span>, s.end<span style="color: #b8bb26;">()</span><span style="color: #cc241d;">)</span>;
+    cout &lt;&lt; s &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org87333f8" class="outline-4">
+<h4 id="org87333f8"><span class="section-number-4">3.0.4.</span> cpp lambdas</h4>
+<div class="outline-text-4" id="text-3-0-4">
+<p>
+Lambdas in cpp can be used to create functions that are created for one time
+use. Lambda funcs can be assigned too.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">vector</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">algorithm</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">932</span>,<span style="color: #d3869b; font-weight: bold;">342</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">}</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> : v<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; i &lt;&lt; <span style="color: #b8bb26;">" "</span>;
+    <span style="color: #cc241d;">}</span>
+    cout &lt;&lt; endl;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">sort in descending order using cpp lambdas</span>
+    sort<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span>, <span style="color: #b8bb26;">[](</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">b</span><span style="color: #b8bb26;">){</span> <span style="color: #fb4934;">return</span> a &gt; b; <span style="color: #b8bb26;">}</span><span style="color: #cc241d;">)</span>;
+
+    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> : v<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+        cout &lt;&lt; i &lt;&lt; <span style="color: #b8bb26;">" "</span>;
+    <span style="color: #cc241d;">}</span>
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; <span style="color: #cc241d;">[](</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">x</span><span style="color: #cc241d;">){</span> <span style="color: #fb4934;">return</span> x*<span style="color: #d3869b; font-weight: bold;">2</span>; <span style="color: #cc241d;">}(</span><span style="color: #d3869b; font-weight: bold;">10</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org19293ad" class="outline-4">
+<h4 id="org19293ad"><span class="section-number-4">3.0.5.</span> <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></h4>
+<div class="outline-text-4" id="text-3-0-5">
+<p>
+<b><code>all_of</code></b>: returns true if the provided function returns true for all the
+ elements.
+<b><code>any_of</code></b>: returns true if the provided function returns true for at least one
+ element.
+<b><code>none_of</code></b>: returns true if the provided function returns false for all the
+ elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">vector</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">algorithm</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">vector</span><span style="color: #cc241d;">&lt;</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">&gt;</span> <span style="color: #83a598;">v</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">932</span>,<span style="color: #d3869b; font-weight: bold;">342</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">}</span>;
+
+    <span style="color: #928374;">// </span><span style="color: #928374;">checks if all the elements are greater than 10 (they're not)</span>
+    cout &lt;&lt; all_of<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span>, <span style="color: #b8bb26;">[](</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">a</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span> <span style="color: #fb4934;">return</span> a &gt; <span style="color: #d3869b; font-weight: bold;">10</span>; <span style="color: #b8bb26;">}</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; any_of<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span>, <span style="color: #b8bb26;">[](</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">a</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span> <span style="color: #fb4934;">return</span> a &gt; <span style="color: #d3869b; font-weight: bold;">10</span>; <span style="color: #b8bb26;">}</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    <span style="color: #928374;">// </span><span style="color: #928374;">since none of the elments are negative, it prints 1 (true)</span>
+    cout &lt;&lt; none_of<span style="color: #cc241d;">(</span>v.begin<span style="color: #b8bb26;">()</span>, v.end<span style="color: #b8bb26;">()</span>, <span style="color: #b8bb26;">[](</span><span style="color: #fb4934;">auto</span> <span style="color: #83a598;">a</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span> <span style="color: #fb4934;">return</span> a &lt; <span style="color: #d3869b; font-weight: bold;">0</span>; <span style="color: #b8bb26;">}</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga08a7d7" class="outline-2">
+<h2 id="orga08a7d7"><span class="section-number-2">4.</span> Functors</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+TODO look more into this topic (not important for LC)
+Classes that act as functions?
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Siddhant Kumar</p>
+<p class="date">Created: 2022-09-05 Mon 22:29</p>
+</div>
+</body>
+</html>
