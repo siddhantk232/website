@@ -12,6 +12,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("src/notes");
+  eleventyConfig.ignores.add("src/notes/**");
+
 
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(lazyImagesPlugin, {
