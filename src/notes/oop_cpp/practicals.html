@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-05 Mon 23:50 -->
+<!-- 2022-09-06 Tue 18:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -212,7 +212,44 @@
 </div>
 
 <p>
-(practical 2) <b>Aim</b>: Write a program to create a basic calculator.
+(practical 2) <b>Aim</b>: Write a program to check if a given number is prime.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span>;
+  cout &lt;&lt; <span style="color: #b8bb26;">"Enter number: "</span>;
+  cin &gt;&gt; n;
+
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">2</span>;
+  <span style="color: #fb4934;">while</span> <span style="color: #cc241d;">(</span>i &lt; n<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    i++;
+    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>n % i == <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+      <span style="color: #fb4934;">break</span>;
+    <span style="color: #b8bb26;">}</span>
+  <span style="color: #cc241d;">}</span>
+
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>n == i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    cout &lt;&lt; n &lt;&lt; <span style="color: #b8bb26;">" is prime."</span> &lt;&lt; endl;
+  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #cc241d;">{</span>
+    cout &lt;&lt; n &lt;&lt; <span style="color: #b8bb26;">" is not prime."</span> &lt;&lt; endl;
+  <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+
+<div id="orgf9f3510" class="figure">
+<p><img src="./prime_output.png" alt="prime_output.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Output</p>
+</div>
+
+<p>
+(practical 3) <b>Aim</b>: Write a program to create a basic calculator.
 </p>
 
 <div class="org-src-container">
@@ -274,47 +311,52 @@
 </div>
 
 
-<div id="org98ec891" class="figure">
+<div id="orgf998659" class="figure">
 <p><img src="./calc_output.png" alt="calc_output.png" />
 </p>
-<p><span class="figure-number">Figure 1: </span>Output</p>
+<p><span class="figure-number">Figure 2: </span>Output</p>
 </div>
 
+
 <p>
-(practical 3) <b>Aim</b>: Write a program to check if a given number is prime.
+(practical 4) <b>Aim</b>: Write a program to create a basic calculator without using
+switch statements.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+
 <span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
 
 <span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span>;
-  cout &lt;&lt; <span style="color: #b8bb26;">"Enter number: "</span>;
-  cin &gt;&gt; n;
+  <span style="color: #fabd2f;">char</span> <span style="color: #83a598;">choice</span>;
+  <span style="color: #fb4934;">do</span> <span style="color: #cc241d;">{</span>
+    print_prompt<span style="color: #b8bb26;">()</span>;
+    cin &gt;&gt; choice;
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span>,<span style="color: #83a598;">b</span>;
+    cout &lt;&lt; <span style="color: #b8bb26;">"Enter two numbers for "</span> &lt;&lt; choice &lt;&lt; <span style="color: #b8bb26;">" operation: "</span>;
+    cin &gt;&gt; a &gt;&gt; b;
 
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">2</span>;
-  <span style="color: #fb4934;">while</span> <span style="color: #cc241d;">(</span>i &lt; n<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-    i++;
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>n % i == <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-      <span style="color: #fb4934;">break</span>;
+    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>choice == <span style="color: #b8bb26;">'+'</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+        cout &lt;&lt; <span style="color: #b8bb26;">"Sum is: "</span> &lt;&lt; a + b &lt;&lt; endl;
+        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
+    <span style="color: #b8bb26;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>choice == <span style="color: #b8bb26;">'-'</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+        cout &lt;&lt; <span style="color: #b8bb26;">"Difference is: "</span> &lt;&lt; a - b &lt;&lt; endl;
+        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
+    <span style="color: #b8bb26;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>choice == <span style="color: #b8bb26;">'*'</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+        cout &lt;&lt; <span style="color: #b8bb26;">"Product is: "</span> &lt;&lt; a * b &lt;&lt; endl;
+        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
+    <span style="color: #b8bb26;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>choice == <span style="color: #b8bb26;">'/'</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+        cout &lt;&lt; <span style="color: #b8bb26;">"Quotient is: "</span> &lt;&lt; a / b &lt;&lt; endl;
+        cout &lt;&lt; <span style="color: #b8bb26;">"Remainder is: "</span> &lt;&lt; a % b &lt;&lt; endl;
+        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
+    <span style="color: #b8bb26;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #b8bb26;">{</span>
+        cout &lt;&lt; <span style="color: #b8bb26;">"Invalid operation."</span> &lt;&lt; endl &lt;&lt; endl;
+        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
     <span style="color: #b8bb26;">}</span>
-  <span style="color: #cc241d;">}</span>
-
-  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>n == i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-    cout &lt;&lt; n &lt;&lt; <span style="color: #b8bb26;">" is prime."</span> &lt;&lt; endl;
-  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #cc241d;">{</span>
-    cout &lt;&lt; n &lt;&lt; <span style="color: #b8bb26;">" is not prime."</span> &lt;&lt; endl;
-  <span style="color: #cc241d;">}</span>
+  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">while</span> <span style="color: #cc241d;">(</span>choice == <span style="color: #b8bb26;">'y'</span> || choice == <span style="color: #b8bb26;">'Y'</span><span style="color: #cc241d;">)</span>;
 <span style="color: #fe8019;">}</span>
 </pre>
-</div>
-
-
-<div id="orgdc2aead" class="figure">
-<p><img src="./prime_output.png" alt="prime_output.png" />
-</p>
-<p><span class="figure-number">Figure 2: </span>Output</p>
 </div>
 </div>
 </body>

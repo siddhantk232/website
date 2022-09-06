@@ -15,7 +15,6 @@
 ;; Install dependencies
 (package-install 'htmlize)
 
-(setq org-export-htmlize-output-type 'css)
 (setq org-html-htmlize-output-type 'css)
 
 ;; Define the publishing project
