@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-07 Wed 00:57 -->
+<!-- 2022-09-07 Wed 01:03 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DSA in C</title>
@@ -201,62 +201,62 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgff50b9f">1. Arrays</a>
+<li><a href="#orgef2a545">1. Arrays</a>
 <ul>
-<li><a href="#org4a7f3b3">1.1. Array representation</a></li>
-<li><a href="#org87eb4bc">1.2. Inserting elements</a>
+<li><a href="#orgdb6fb96">1.1. Array representation</a></li>
+<li><a href="#org1d76683">1.2. Inserting elements</a>
 <ul>
-<li><a href="#org80c19a6">1.2.1. Inserting at index <code>n</code></a></li>
-<li><a href="#org0837382">1.2.2. Append element</a></li>
-<li><a href="#org9f6105f">1.2.3. Prepend element</a></li>
+<li><a href="#orge6716ac">1.2.1. Inserting at index <code>n</code></a></li>
+<li><a href="#org824a268">1.2.2. Append element</a></li>
+<li><a href="#org0177602">1.2.3. Prepend element</a></li>
 </ul>
 </li>
-<li><a href="#orgb3fba22">1.3. Deleting elements</a></li>
-<li><a href="#org14978e0">1.4. 2D Arrays</a></li>
+<li><a href="#org2843cf1">1.3. Deleting elements</a></li>
+<li><a href="#orgc436700">1.4. 2D Arrays</a></li>
 </ul>
 </li>
-<li><a href="#org8c1fc1c">2. String as an array of characters</a></li>
-<li><a href="#org5df01a5">3. Linked list</a>
+<li><a href="#org375fa21">2. String as an array of characters</a></li>
+<li><a href="#org65f9546">3. Linked list</a>
 <ul>
-<li><a href="#org964a2ae">3.1. Searching in a linked list</a></li>
-<li><a href="#org20c0b1a">3.2. insertion</a></li>
-<li><a href="#orgb39a60d">3.3. Deletion</a></li>
-<li><a href="#org7277a28">3.4. Mergin two linked lists</a></li>
-<li><a href="#org13dd20d">3.5. Circular linked lists</a></li>
+<li><a href="#org0f38522">3.1. Searching in a linked list</a></li>
+<li><a href="#orgcd55d7c">3.2. insertion</a></li>
+<li><a href="#org2307ab5">3.3. Deletion</a></li>
+<li><a href="#org0832458">3.4. Mergin two linked lists</a></li>
+<li><a href="#orgbceb917">3.5. Circular linked lists</a></li>
 </ul>
 </li>
-<li><a href="#orgab817bc">4. <span class="todo TODO">TODO</span> Stacks</a></li>
-<li><a href="#orgbe625e7">5. <span class="todo TODO">TODO</span> Queues</a></li>
-<li><a href="#orgacbb7b4">6. <span class="todo TODO">TODO</span> Trees</a></li>
-<li><a href="#org80e1558">7. <span class="todo TODO">TODO</span> Graphs</a></li>
-<li><a href="#org38acd9d">8. <span class="todo TODO">TODO</span> Sorting</a>
+<li><a href="#org251b317">4. <span class="todo TODO">TODO</span> Stacks</a></li>
+<li><a href="#orgf9b756e">5. <span class="todo TODO">TODO</span> Queues</a></li>
+<li><a href="#orgbb9200c">6. <span class="todo TODO">TODO</span> Trees</a></li>
+<li><a href="#org01ad919">7. <span class="todo TODO">TODO</span> Graphs</a></li>
+<li><a href="#org6f11dd8">8. <span class="todo TODO">TODO</span> Sorting</a>
 <ul>
-<li><a href="#orgd513cff">8.1. Bubble Sort</a></li>
-<li><a href="#org327caeb">8.2. Insertion Sort</a></li>
-<li><a href="#orgcba2d36">8.3. <span class="todo TODO">TODO</span> Quick Sort</a></li>
-<li><a href="#orgf3291f5">8.4. Selection Sort</a></li>
-<li><a href="#org309c9a3">8.5. <span class="todo TODO">TODO</span> Merge Sort</a></li>
-<li><a href="#orgbfe6a0c">8.6. <span class="todo TODO">TODO</span> Heap Sort</a></li>
-<li><a href="#orgdaf76cb">8.7. <span class="todo TODO">TODO</span> Hashing Techniques</a></li>
+<li><a href="#org7f0febe">8.1. Bubble Sort</a></li>
+<li><a href="#orgf350254">8.2. Insertion Sort</a></li>
+<li><a href="#org0b12935">8.3. <span class="todo TODO">TODO</span> Quick Sort</a></li>
+<li><a href="#org993c240">8.4. Selection Sort</a></li>
+<li><a href="#orgc6a3a5d">8.5. <span class="todo TODO">TODO</span> Merge Sort</a></li>
+<li><a href="#orga52137d">8.6. <span class="todo TODO">TODO</span> Heap Sort</a></li>
+<li><a href="#orgf2ff842">8.7. <span class="todo TODO">TODO</span> Hashing Techniques</a></li>
 </ul>
 </li>
-<li><a href="#org64717cc">9. Searching</a>
+<li><a href="#org6b3a9d2">9. Searching</a>
 <ul>
-<li><a href="#org56da9cd">9.1. Linear search</a></li>
-<li><a href="#orgdd7e3c1">9.2. Binary Search</a></li>
+<li><a href="#org174d12c">9.1. Linear search</a></li>
+<li><a href="#org8b8fa23">9.2. Binary Search</a></li>
 </ul>
 </li>
-<li><a href="#org3920e53">10. <span class="todo TODO">TODO</span> File Handling</a></li>
+<li><a href="#orgaf73921">10. <span class="todo TODO">TODO</span> File Handling</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgff50b9f" class="outline-2">
-<h2 id="orgff50b9f"><span class="section-number-2">1.</span> Arrays</h2>
+<div id="outline-container-orgef2a545" class="outline-2">
+<h2 id="orgef2a545"><span class="section-number-2">1.</span> Arrays</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org4a7f3b3" class="outline-3">
-<h3 id="org4a7f3b3"><span class="section-number-3">1.1.</span> Array representation</h3>
+<div id="outline-container-orgdb6fb96" class="outline-3">
+<h3 id="orgdb6fb96"><span class="section-number-3">1.1.</span> Array representation</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -325,12 +325,12 @@ to get the third element, we can do <code>(arr+3)</code>.
 </pre>
 </div>
 </div>
-<div id="outline-container-org87eb4bc" class="outline-3">
-<h3 id="org87eb4bc"><span class="section-number-3">1.2.</span> Inserting elements</h3>
+<div id="outline-container-org1d76683" class="outline-3">
+<h3 id="org1d76683"><span class="section-number-3">1.2.</span> Inserting elements</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-org80c19a6" class="outline-4">
-<h4 id="org80c19a6"><span class="section-number-4">1.2.1.</span> Inserting at index <code>n</code></h4>
+<div id="outline-container-orge6716ac" class="outline-4">
+<h4 id="orge6716ac"><span class="section-number-4">1.2.1.</span> Inserting at index <code>n</code></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The code below initiliases an array of size 100 to ignore any resizing that may
@@ -454,8 +454,8 @@ References:
 </ul>
 </div>
 </div>
-<div id="outline-container-org0837382" class="outline-4">
-<h4 id="org0837382"><span class="section-number-4">1.2.2.</span> Append element</h4>
+<div id="outline-container-org824a268" class="outline-4">
+<h4 id="org824a268"><span class="section-number-4">1.2.2.</span> Append element</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Appending an element is just inserting a new element at the end of the array.
@@ -500,8 +500,8 @@ Appending an element is just inserting a new element at the end of the array.
 </div>
 </div>
 
-<div id="outline-container-org9f6105f" class="outline-4">
-<h4 id="org9f6105f"><span class="section-number-4">1.2.3.</span> Prepend element</h4>
+<div id="outline-container-org0177602" class="outline-4">
+<h4 id="org0177602"><span class="section-number-4">1.2.3.</span> Prepend element</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Prepending an element is just inserting a new element at the beginning of the
@@ -548,11 +548,11 @@ array.
 </div>
 </div>
 
-<div id="outline-container-orgb3fba22" class="outline-3">
-<h3 id="orgb3fba22"><span class="section-number-3">1.3.</span> Deleting elements</h3>
+<div id="outline-container-org2843cf1" class="outline-3">
+<h3 id="org2843cf1"><span class="section-number-3">1.3.</span> Deleting elements</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-We do exactly the opposite of what we did in the <a href="#org80c19a6">Inserting at index <code>n</code></a>
+We do exactly the opposite of what we did in the <a href="#orge6716ac">Inserting at index <code>n</code></a>
 section.  Instead of iterating from the last element till the position <code>n</code>, we
 iterate from postion <code>n</code> till the last and shift every element one index back
 from it&rsquo;s original position.
@@ -590,8 +590,8 @@ from it&rsquo;s original position.
 </div>
 </div>
 
-<div id="outline-container-org14978e0" class="outline-3">
-<h3 id="org14978e0"><span class="section-number-3">1.4.</span> 2D Arrays</h3>
+<div id="outline-container-orgc436700" class="outline-3">
+<h3 id="orgc436700"><span class="section-number-3">1.4.</span> 2D Arrays</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Square matrix multiplication using 2D arrays in c.
@@ -642,8 +642,8 @@ Square matrix multiplication using 2D arrays in c.
 </div>
 </div>
 
-<div id="outline-container-org8c1fc1c" class="outline-2">
-<h2 id="org8c1fc1c"><span class="section-number-2">2.</span> String as an array of characters</h2>
+<div id="outline-container-org375fa21" class="outline-2">
+<h2 id="org375fa21"><span class="section-number-2">2.</span> String as an array of characters</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -708,8 +708,8 @@ Take string input from user
 </div>
 </div>
 
-<div id="outline-container-org5df01a5" class="outline-2">
-<h2 id="org5df01a5"><span class="section-number-2">3.</span> Linked list</h2>
+<div id="outline-container-org65f9546" class="outline-2">
+<h2 id="org65f9546"><span class="section-number-2">3.</span> Linked list</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A simple Linked List implementation that contains integer data elements.
@@ -755,49 +755,49 @@ A simple Linked List implementation that contains integer data elements.
 </pre>
 </div>
 
-<div id="outline-container-org964a2ae" class="outline-3">
-<h3 id="org964a2ae"><span class="section-number-3">3.1.</span> Searching in a linked list</h3>
+<div id="outline-container-org0f38522" class="outline-3">
+<h3 id="org0f38522"><span class="section-number-3">3.1.</span> Searching in a linked list</h3>
 </div>
-<div id="outline-container-org20c0b1a" class="outline-3">
-<h3 id="org20c0b1a"><span class="section-number-3">3.2.</span> insertion</h3>
+<div id="outline-container-orgcd55d7c" class="outline-3">
+<h3 id="orgcd55d7c"><span class="section-number-3">3.2.</span> insertion</h3>
 </div>
-<div id="outline-container-orgb39a60d" class="outline-3">
-<h3 id="orgb39a60d"><span class="section-number-3">3.3.</span> Deletion</h3>
+<div id="outline-container-org2307ab5" class="outline-3">
+<h3 id="org2307ab5"><span class="section-number-3">3.3.</span> Deletion</h3>
 </div>
-<div id="outline-container-org7277a28" class="outline-3">
-<h3 id="org7277a28"><span class="section-number-3">3.4.</span> Mergin two linked lists</h3>
+<div id="outline-container-org0832458" class="outline-3">
+<h3 id="org0832458"><span class="section-number-3">3.4.</span> Mergin two linked lists</h3>
 </div>
-<div id="outline-container-org13dd20d" class="outline-3">
-<h3 id="org13dd20d"><span class="section-number-3">3.5.</span> Circular linked lists</h3>
+<div id="outline-container-orgbceb917" class="outline-3">
+<h3 id="orgbceb917"><span class="section-number-3">3.5.</span> Circular linked lists</h3>
 </div>
 </div>
 
-<div id="outline-container-orgab817bc" class="outline-2">
-<h2 id="orgab817bc"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Stacks</h2>
+<div id="outline-container-org251b317" class="outline-2">
+<h2 id="org251b317"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Stacks</h2>
 <div class="outline-text-2" id="text-4">
 </div>
 </div>
-<div id="outline-container-orgbe625e7" class="outline-2">
-<h2 id="orgbe625e7"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Queues</h2>
+<div id="outline-container-orgf9b756e" class="outline-2">
+<h2 id="orgf9b756e"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Queues</h2>
 <div class="outline-text-2" id="text-5">
 </div>
 </div>
-<div id="outline-container-orgacbb7b4" class="outline-2">
-<h2 id="orgacbb7b4"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Trees</h2>
+<div id="outline-container-orgbb9200c" class="outline-2">
+<h2 id="orgbb9200c"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Trees</h2>
 <div class="outline-text-2" id="text-6">
 </div>
 </div>
-<div id="outline-container-org80e1558" class="outline-2">
-<h2 id="org80e1558"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Graphs</h2>
+<div id="outline-container-org01ad919" class="outline-2">
+<h2 id="org01ad919"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Graphs</h2>
 <div class="outline-text-2" id="text-7">
 </div>
 </div>
-<div id="outline-container-org38acd9d" class="outline-2">
-<h2 id="org38acd9d"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Sorting</h2>
+<div id="outline-container-org6f11dd8" class="outline-2">
+<h2 id="org6f11dd8"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Sorting</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orgd513cff" class="outline-3">
-<h3 id="orgd513cff"><span class="section-number-3">8.1.</span> Bubble Sort</h3>
+<div id="outline-container-org7f0febe" class="outline-3">
+<h3 id="org7f0febe"><span class="section-number-3">8.1.</span> Bubble Sort</h3>
 <div class="outline-text-3" id="text-8-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -834,13 +834,13 @@ A simple Linked List implementation that contains integer data elements.
 </div>
 
 <ol class="org-ol">
-<li><a id="orgf473b7e"></a><span class="todo TODO">TODO</span> draw each pass of sorting<br /></li>
-<li><a id="orgea28a65"></a><span class="todo TODO">TODO</span> optimise (check for swap and terminate early (premature termination))<br /></li>
+<li><a id="org9e8227b"></a><span class="todo TODO">TODO</span> draw each pass of sorting<br /></li>
+<li><a id="orga178417"></a><span class="todo TODO">TODO</span> optimise (check for swap and terminate early (premature termination))<br /></li>
 </ol>
 </div>
 
-<div id="outline-container-org327caeb" class="outline-3">
-<h3 id="org327caeb"><span class="section-number-3">8.2.</span> Insertion Sort</h3>
+<div id="outline-container-orgf350254" class="outline-3">
+<h3 id="orgf350254"><span class="section-number-3">8.2.</span> Insertion Sort</h3>
 <div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -887,11 +887,11 @@ Sorted: 3 5 6 7 9 9 10
 </div>
 </div>
 
-<div id="outline-container-orgcba2d36" class="outline-3">
-<h3 id="orgcba2d36"><span class="section-number-3">8.3.</span> <span class="todo TODO">TODO</span> Quick Sort</h3>
+<div id="outline-container-org0b12935" class="outline-3">
+<h3 id="org0b12935"><span class="section-number-3">8.3.</span> <span class="todo TODO">TODO</span> Quick Sort</h3>
 </div>
-<div id="outline-container-orgf3291f5" class="outline-3">
-<h3 id="orgf3291f5"><span class="section-number-3">8.4.</span> Selection Sort</h3>
+<div id="outline-container-org993c240" class="outline-3">
+<h3 id="org993c240"><span class="section-number-3">8.4.</span> Selection Sort</h3>
 <div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -943,22 +943,22 @@ Sorted: 1 2 4 9 10 20
 </div>
 </div>
 
-<div id="outline-container-org309c9a3" class="outline-3">
-<h3 id="org309c9a3"><span class="section-number-3">8.5.</span> <span class="todo TODO">TODO</span> Merge Sort</h3>
+<div id="outline-container-orgc6a3a5d" class="outline-3">
+<h3 id="orgc6a3a5d"><span class="section-number-3">8.5.</span> <span class="todo TODO">TODO</span> Merge Sort</h3>
 </div>
-<div id="outline-container-orgbfe6a0c" class="outline-3">
-<h3 id="orgbfe6a0c"><span class="section-number-3">8.6.</span> <span class="todo TODO">TODO</span> Heap Sort</h3>
+<div id="outline-container-orga52137d" class="outline-3">
+<h3 id="orga52137d"><span class="section-number-3">8.6.</span> <span class="todo TODO">TODO</span> Heap Sort</h3>
 </div>
-<div id="outline-container-orgdaf76cb" class="outline-3">
-<h3 id="orgdaf76cb"><span class="section-number-3">8.7.</span> <span class="todo TODO">TODO</span> Hashing Techniques</h3>
+<div id="outline-container-orgf2ff842" class="outline-3">
+<h3 id="orgf2ff842"><span class="section-number-3">8.7.</span> <span class="todo TODO">TODO</span> Hashing Techniques</h3>
 </div>
 </div>
-<div id="outline-container-org64717cc" class="outline-2">
-<h2 id="org64717cc"><span class="section-number-2">9.</span> Searching</h2>
+<div id="outline-container-org6b3a9d2" class="outline-2">
+<h2 id="org6b3a9d2"><span class="section-number-2">9.</span> Searching</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org56da9cd" class="outline-3">
-<h3 id="org56da9cd"><span class="section-number-3">9.1.</span> Linear search</h3>
+<div id="outline-container-org174d12c" class="outline-3">
+<h3 id="org174d12c"><span class="section-number-3">9.1.</span> Linear search</h3>
 <div class="outline-text-3" id="text-9-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -987,6 +987,11 @@ Sorted: 1 2 4 9 10 20
 </pre>
 </div>
 
+<pre class="example">
+Element 99 found at index 3
+</pre>
+
+
 <p>
 Count number of occurences in an array
 </p>
@@ -1014,11 +1019,15 @@ Count number of occurences in an array
 <span style="color: #fe8019;">}</span>
 </pre>
 </div>
+
+<pre class="example">
+4 occurs 3 times in the array
+</pre>
 </div>
 </div>
 
-<div id="outline-container-orgdd7e3c1" class="outline-3">
-<h3 id="orgdd7e3c1"><span class="section-number-3">9.2.</span> Binary Search</h3>
+<div id="outline-container-org8b8fa23" class="outline-3">
+<h3 id="org8b8fa23"><span class="section-number-3">9.2.</span> Binary Search</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 Using recursion.
@@ -1059,16 +1068,20 @@ Using recursion.
 <span style="color: #fe8019;">}</span>
 </pre>
 </div>
+
+<pre class="example">
+Element 8 found at index 5
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3920e53" class="outline-2">
-<h2 id="org3920e53"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> File Handling</h2>
+<div id="outline-container-orgaf73921" class="outline-2">
+<h2 id="orgaf73921"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> File Handling</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-09-07 Wed 00:57</p>
+<p class="date">Created: 2022-09-07 Wed 01:03</p>
 </div>
 </body>
 </html>
