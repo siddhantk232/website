@@ -6,7 +6,7 @@
 <!-- 2022-09-11 Sun 20:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Index</title>
+<title>&lrm;</title>
 <meta name="author" content="Siddhant Kumar" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -196,58 +196,71 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Index</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgad78dc7">1. C</a></li>
-<li><a href="#orgefd0a12">2. D</a></li>
-<li><a href="#org6e21433">3. O</a></li>
-</ul>
-</div>
+<p>
+(practical 5) <b>Aim</b>: Study the bitwise operators.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">climits</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">10</span>;
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">b</span> = <span style="color: #d3869b; font-weight: bold;">2</span>;
+
+    cout &lt;&lt; <span style="color: #cc241d;">(</span>a &amp; b<span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #cc241d;">(</span>a | b<span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #cc241d;">(</span>a ^ b<span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #cc241d;">(</span>~a<span style="color: #cc241d;">)</span> &lt;&lt; endl;
+
+    cout &lt;&lt; <span style="color: #cc241d;">(</span>a &lt;&lt; <span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #cc241d;">(</span>a &gt;&gt; <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
 </div>
 
-<div id="outline-container-orgad78dc7" class="outline-2">
-<h2 id="orgad78dc7"><span class="section-number-2">1.</span> C</h2>
-<div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>CP
-<ul class="org-ul">
-<li><a href="cp/cpp_quickstart.html">cpp quickstart</a></li>
-<li><a href="cp/cpp_stl.html">cpp STL (Standard Template Library)</a></li>
-</ul></li>
-</ul>
+<p>
+(practical 6) <b>Aim</b>: Program to understand identifiers in cpp.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">main</span> = <span style="color: #d3869b; font-weight: bold;">20</span>;
+    cout &lt;&lt; main &lt;&lt; endl;
+<span style="color: #fe8019;">}</span>
+</pre>
 </div>
+
+<p>
+(practical 7) <b>Aim</b>: Program to understand increment/decrement operator.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">3</span>;
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">b</span> = a++;
+
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">c</span> = <span style="color: #d3869b; font-weight: bold;">10</span>;
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">d</span> = ++c;
+
+    cout &lt;&lt; <span style="color: #b8bb26;">"a: "</span> &lt;&lt; a &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #b8bb26;">"b: "</span> &lt;&lt; b &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #b8bb26;">"c: "</span> &lt;&lt; c &lt;&lt; endl;
+    cout &lt;&lt; <span style="color: #b8bb26;">"d: "</span> &lt;&lt; d &lt;&lt; endl;
+
+<span style="color: #fe8019;">}</span>
+</pre>
 </div>
-<div id="outline-container-orgefd0a12" class="outline-2">
-<h2 id="orgefd0a12"><span class="section-number-2">2.</span> D</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li><a href="dsa/dsa_in_c.html">DSA in C</a>
-<ul class="org-ul">
-<li><a href="dsa/c_quickstart.html">C quickstart</a></li>
-<li><a href="dsa/prac1.html">practical 1</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org6e21433" class="outline-2">
-<h2 id="org6e21433"><span class="section-number-2">3.</span> O</h2>
-<div class="outline-text-2" id="text-3">
-<ul class="org-ul">
-<li><a href="oop_cpp/oop_cpp.html">OOP in CPP</a>
-<ul class="org-ul">
-<li><a href="oop_cpp/prac1.html">prac1</a></li>
-<li><a href="oop_cpp/prac2.html">prac2</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-09-11 Sun 20:00</p>
 </div>
 </body>
 </html>
