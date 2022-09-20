@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-15 Thu 23:44 -->
+<!-- 2022-09-20 Tue 13:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DSA in C</title>
@@ -201,58 +201,58 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org23d29a8">1. Arrays</a>
+<li><a href="#org8bfd180">1. Arrays</a>
 <ul>
-<li><a href="#org3f94955">1.1. Array representation</a></li>
-<li><a href="#orgd8f9c2d">1.2. Inserting elements</a>
+<li><a href="#orgddff19f">1.1. Array representation</a></li>
+<li><a href="#org5b4a171">1.2. Inserting elements</a>
 <ul>
-<li><a href="#orga3f2d97">1.2.1. Inserting at index <code>n</code></a></li>
-<li><a href="#orgde000aa">1.2.2. Append element</a></li>
-<li><a href="#orga7fe5d3">1.2.3. Prepend element</a></li>
+<li><a href="#orgb328071">1.2.1. Inserting at index <code>n</code></a></li>
+<li><a href="#org7ebbc1c">1.2.2. Append element</a></li>
+<li><a href="#org687656b">1.2.3. Prepend element</a></li>
 </ul>
 </li>
-<li><a href="#orgc227bde">1.3. Deleting elements</a></li>
-<li><a href="#org5827cb4">1.4. 2D Arrays</a></li>
+<li><a href="#orgafcde5a">1.3. Deleting elements</a></li>
+<li><a href="#org2d4754f">1.4. 2D Arrays</a></li>
 </ul>
 </li>
-<li><a href="#orgdb44be4">2. String as an array of characters</a></li>
-<li><a href="#orgf7d33fe">3. <span class="todo TODO">TODO</span> Linked list</a>
+<li><a href="#org83f7bc9">2. String as an array of characters</a></li>
+<li><a href="#org71d74db">3. Linked list</a>
 <ul>
-<li><a href="#org76e5cc3">3.1. Searching in a linked list</a></li>
-<li><a href="#orgf55124a">3.2. insertion</a></li>
-<li><a href="#orga528187">3.3. Deletion</a></li>
-<li><a href="#orgf40281b">3.4. Mergin two linked lists</a></li>
-<li><a href="#org106c971">3.5. Circular linked lists</a></li>
+<li><a href="#orgb8613bf">3.1. Searching in a linked list</a></li>
+<li><a href="#org65b237f">3.2. insertion</a></li>
+<li><a href="#org9d4560d">3.3. Deletion</a></li>
+<li><a href="#org4cfd98c">3.4. Mergin two linked lists</a></li>
+<li><a href="#org918832f">3.5. Circular linked lists</a></li>
 </ul>
 </li>
-<li><a href="#org19a7d42">4. <span class="todo TODO">TODO</span> Stacks</a></li>
-<li><a href="#org7db69e5">5. <span class="todo TODO">TODO</span> Queues</a></li>
-<li><a href="#org3198d01">6. <span class="todo TODO">TODO</span> Trees</a></li>
-<li><a href="#org008c714">7. <span class="todo TODO">TODO</span> Graphs</a></li>
-<li><a href="#org7af858f">8. <span class="todo TODO">TODO</span> Sorting</a>
+<li><a href="#org92e77bd">4. Stacks</a></li>
+<li><a href="#org490d189">5. Queues</a></li>
+<li><a href="#org2aa92e4">6. <span class="todo TODO">TODO</span> Trees</a></li>
+<li><a href="#org375ef85">7. <span class="todo TODO">TODO</span> Graphs</a></li>
+<li><a href="#org249697a">8. <span class="todo TODO">TODO</span> Sorting</a>
 <ul>
-<li><a href="#org152b83e">8.1. Bubble Sort</a></li>
-<li><a href="#orgd238447">8.2. Insertion Sort</a></li>
-<li><a href="#org26c5aac">8.3. Quick Sort</a></li>
-<li><a href="#org5b2da1a">8.4. Selection Sort</a></li>
-<li><a href="#orgb685ea3">8.5. <span class="todo TODO">TODO</span> Merge Sort</a></li>
-<li><a href="#orgef930fb">8.6. <span class="todo TODO">TODO</span> Heap Sort</a></li>
-<li><a href="#org5eb81f4">8.7. <span class="todo TODO">TODO</span> Hashing Techniques</a></li>
+<li><a href="#org5f40621">8.1. Bubble Sort</a></li>
+<li><a href="#orgce89683">8.2. Insertion Sort</a></li>
+<li><a href="#orgeeff665">8.3. Quick Sort</a></li>
+<li><a href="#org5fa5d63">8.4. Selection Sort</a></li>
+<li><a href="#org1b12e42">8.5. <span class="todo TODO">TODO</span> Merge Sort</a></li>
+<li><a href="#orgbd545e1">8.6. <span class="todo TODO">TODO</span> Heap Sort</a></li>
+<li><a href="#org8ee42b1">8.7. <span class="todo TODO">TODO</span> Hashing Techniques</a></li>
 </ul>
 </li>
-<li><a href="#org9d110fa">9. Searching</a>
+<li><a href="#org9e9615e">9. Searching</a>
 <ul>
-<li><a href="#org02496a8">9.1. Linear search</a></li>
-<li><a href="#orgc517a1a">9.2. Binary Search</a></li>
+<li><a href="#orga839ba1">9.1. Linear search</a></li>
+<li><a href="#org0f8acc7">9.2. Binary Search</a></li>
 </ul>
 </li>
-<li><a href="#org60aefa3">10. <span class="todo TODO">TODO</span> File Handling</a></li>
+<li><a href="#orgd6021ab">10. <span class="todo TODO">TODO</span> File Handling</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org23d29a8" class="outline-2">
-<h2 id="org23d29a8"><span class="section-number-2">1.</span> Arrays</h2>
+<div id="outline-container-org8bfd180" class="outline-2">
+<h2 id="org8bfd180"><span class="section-number-2">1.</span> Arrays</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Array is a contiguous space in memory that is meant to store elements of similar
@@ -338,8 +338,8 @@ pointers (their memory adresses)
 </pre>
 </div>
 
-<div id="outline-container-org3f94955" class="outline-3">
-<h3 id="org3f94955"><span class="section-number-3">1.1.</span> Array representation</h3>
+<div id="outline-container-orgddff19f" class="outline-3">
+<h3 id="orgddff19f"><span class="section-number-3">1.1.</span> Array representation</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -380,7 +380,7 @@ the array.
 Adding (or incrementing/decrementing) pointers value can give access to the
 elements of the array. In case of integer arrays, adding 1 adds size of <code>int</code> to
 the address of first element in array to get the address of second element. So,
-to get the third element, we can do <code>(arr+3)</code>.
+to get the fourth element, we can do <code>(arr+3)</code>.
 </p>
 
 <div class="org-src-container">
@@ -408,12 +408,12 @@ to get the third element, we can do <code>(arr+3)</code>.
 </pre>
 </div>
 </div>
-<div id="outline-container-orgd8f9c2d" class="outline-3">
-<h3 id="orgd8f9c2d"><span class="section-number-3">1.2.</span> Inserting elements</h3>
+<div id="outline-container-org5b4a171" class="outline-3">
+<h3 id="org5b4a171"><span class="section-number-3">1.2.</span> Inserting elements</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-orga3f2d97" class="outline-4">
-<h4 id="orga3f2d97"><span class="section-number-4">1.2.1.</span> Inserting at index <code>n</code></h4>
+<div id="outline-container-orgb328071" class="outline-4">
+<h4 id="orgb328071"><span class="section-number-4">1.2.1.</span> Inserting at index <code>n</code></h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 The code below initiliases an array of size 100 to ignore any resizing that may
@@ -537,8 +537,8 @@ References:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgde000aa" class="outline-4">
-<h4 id="orgde000aa"><span class="section-number-4">1.2.2.</span> Append element</h4>
+<div id="outline-container-org7ebbc1c" class="outline-4">
+<h4 id="org7ebbc1c"><span class="section-number-4">1.2.2.</span> Append element</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 Appending an element is just inserting a new element at the end of the array.
@@ -583,8 +583,8 @@ Appending an element is just inserting a new element at the end of the array.
 </div>
 </div>
 
-<div id="outline-container-orga7fe5d3" class="outline-4">
-<h4 id="orga7fe5d3"><span class="section-number-4">1.2.3.</span> Prepend element</h4>
+<div id="outline-container-org687656b" class="outline-4">
+<h4 id="org687656b"><span class="section-number-4">1.2.3.</span> Prepend element</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Prepending an element is just inserting a new element at the beginning of the
@@ -631,11 +631,11 @@ array.
 </div>
 </div>
 
-<div id="outline-container-orgc227bde" class="outline-3">
-<h3 id="orgc227bde"><span class="section-number-3">1.3.</span> Deleting elements</h3>
+<div id="outline-container-orgafcde5a" class="outline-3">
+<h3 id="orgafcde5a"><span class="section-number-3">1.3.</span> Deleting elements</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-We do exactly the opposite of what we did in the <a href="#orga3f2d97">Inserting at index <code>n</code></a>
+We do exactly the opposite of what we did in the <a href="#orgb328071">Inserting at index <code>n</code></a>
 section.  Instead of iterating from the last element till the position <code>n</code>, we
 iterate from postion <code>n</code> till the last and shift every element one index back
 from it&rsquo;s original position.
@@ -673,8 +673,8 @@ from it&rsquo;s original position.
 </div>
 </div>
 
-<div id="outline-container-org5827cb4" class="outline-3">
-<h3 id="org5827cb4"><span class="section-number-3">1.4.</span> 2D Arrays</h3>
+<div id="outline-container-org2d4754f" class="outline-3">
+<h3 id="org2d4754f"><span class="section-number-3">1.4.</span> 2D Arrays</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Square matrix multiplication using 2D arrays in c.
@@ -725,8 +725,8 @@ Square matrix multiplication using 2D arrays in c.
 </div>
 </div>
 
-<div id="outline-container-orgdb44be4" class="outline-2">
-<h2 id="orgdb44be4"><span class="section-number-2">2.</span> String as an array of characters</h2>
+<div id="outline-container-org83f7bc9" class="outline-2">
+<h2 id="org83f7bc9"><span class="section-number-2">2.</span> String as an array of characters</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -791,8 +791,8 @@ Take string input from user
 </div>
 </div>
 
-<div id="outline-container-orgf7d33fe" class="outline-2">
-<h2 id="orgf7d33fe"><span class="section-number-2">3.</span> <span class="todo TODO">TODO</span> Linked list</h2>
+<div id="outline-container-org71d74db" class="outline-2">
+<h2 id="org71d74db"><span class="section-number-2">3.</span> Linked list</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A simple Linked List implementation that contains integer data elements.
@@ -838,49 +838,323 @@ A simple Linked List implementation that contains integer data elements.
 </pre>
 </div>
 
-<div id="outline-container-org76e5cc3" class="outline-3">
-<h3 id="org76e5cc3"><span class="section-number-3">3.1.</span> Searching in a linked list</h3>
+<div id="outline-container-orgb8613bf" class="outline-3">
+<h3 id="orgb8613bf"><span class="section-number-3">3.1.</span> Searching in a linked list</h3>
 </div>
-<div id="outline-container-orgf55124a" class="outline-3">
-<h3 id="orgf55124a"><span class="section-number-3">3.2.</span> insertion</h3>
+<div id="outline-container-org65b237f" class="outline-3">
+<h3 id="org65b237f"><span class="section-number-3">3.2.</span> insertion</h3>
 </div>
-<div id="outline-container-orga528187" class="outline-3">
-<h3 id="orga528187"><span class="section-number-3">3.3.</span> Deletion</h3>
+<div id="outline-container-org9d4560d" class="outline-3">
+<h3 id="org9d4560d"><span class="section-number-3">3.3.</span> Deletion</h3>
 </div>
-<div id="outline-container-orgf40281b" class="outline-3">
-<h3 id="orgf40281b"><span class="section-number-3">3.4.</span> Mergin two linked lists</h3>
+<div id="outline-container-org4cfd98c" class="outline-3">
+<h3 id="org4cfd98c"><span class="section-number-3">3.4.</span> Mergin two linked lists</h3>
 </div>
-<div id="outline-container-org106c971" class="outline-3">
-<h3 id="org106c971"><span class="section-number-3">3.5.</span> Circular linked lists</h3>
+<div id="outline-container-org918832f" class="outline-3">
+<h3 id="org918832f"><span class="section-number-3">3.5.</span> Circular linked lists</h3>
 </div>
 </div>
 
-<div id="outline-container-org19a7d42" class="outline-2">
-<h2 id="org19a7d42"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Stacks</h2>
+<div id="outline-container-org92e77bd" class="outline-2">
+<h2 id="org92e77bd"><span class="section-number-2">4.</span> Stacks</h2>
 <div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdbool.h</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdlib.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #83a598;">top</span> = -<span style="color: #d3869b; font-weight: bold;">1</span>;
+<span style="color: #fabd2f;">int</span> <span style="color: #83a598;">stack</span><span style="color: #fe8019;">[</span><span style="color: #d3869b; font-weight: bold;">100</span><span style="color: #fe8019;">]</span>;
+<span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">100</span>;
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">push</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">el</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>top == n<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">overflow</span>
+    <span style="color: #fb4934;">return</span> -<span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #cc241d;">}</span>
+  stack<span style="color: #cc241d;">[</span>++top<span style="color: #cc241d;">]</span> = el;
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">pop</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>top &lt; <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">underflow</span>
+    <span style="color: #fb4934;">return</span> -<span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #cc241d;">}</span>
+
+  <span style="color: #fb4934;">return</span> stack<span style="color: #cc241d;">[</span>top--<span style="color: #cc241d;">]</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">display</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = top;
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"========================\n"</span><span style="color: #cc241d;">)</span>;
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"Stack: \n"</span><span style="color: #cc241d;">)</span>;
+  <span style="color: #fb4934;">while</span><span style="color: #cc241d;">(</span>i &gt;= <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d\n"</span>, stack<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
+    i--;
+  <span style="color: #cc241d;">}</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"========================\n"</span><span style="color: #cc241d;">)</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">while</span><span style="color: #cc241d;">(</span><span style="color: #d3869b;">true</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"Enter choice: \n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"1. Push element in stack\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"2. Pop element in stack\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"3. Display stack\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"4. Exit\n"</span><span style="color: #b8bb26;">)</span>;
+
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">option</span>;
+    scanf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d"</span>, &amp;option<span style="color: #b8bb26;">)</span>;
+
+    <span style="color: #fb4934;">switch</span><span style="color: #b8bb26;">(</span>option<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">1</span>: <span style="color: #83a598;">{</span>
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">el</span>;
+        printf<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"Enter element to push: "</span><span style="color: #fe8019;">)</span>;
+        scanf<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"%d"</span>, &amp;el<span style="color: #fe8019;">)</span>;
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">st</span> = push<span style="color: #fe8019;">(</span>el<span style="color: #fe8019;">)</span>;
+
+        <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st == -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+          printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"failed to push element in stack (overflow)\n"</span><span style="color: #cc241d;">)</span>;
+        <span style="color: #fe8019;">}</span>
+        <span style="color: #fb4934;">break</span>;
+      <span style="color: #83a598;">}</span>
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">2</span>: <span style="color: #83a598;">{</span>
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">st</span> = pop<span style="color: #fe8019;">()</span>;
+        <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st == -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+          printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"failed to pop element from stack (underflow)\n"</span><span style="color: #cc241d;">)</span>;
+        <span style="color: #fe8019;">}</span>
+        <span style="color: #fb4934;">break</span>;
+      <span style="color: #83a598;">}</span>
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">3</span>:
+        display<span style="color: #83a598;">()</span>;
+        <span style="color: #fb4934;">break</span>;
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">4</span>:
+        exit<span style="color: #83a598;">(</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #83a598;">)</span>;
+        <span style="color: #fb4934;">break</span>;
+
+      <span style="color: #fb4934;">default</span>:
+        exit<span style="color: #83a598;">(</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #83a598;">)</span>;
+        <span style="color: #fb4934;">break</span>;
+    <span style="color: #b8bb26;">}</span>
+  <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
+</div>
+
+<p>
+Using pointers
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdbool.h</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdlib.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">push</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">stack</span>, <span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">top</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">el</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>*top == n<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">overflow</span>
+    <span style="color: #fb4934;">return</span> -<span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #cc241d;">}</span>
+  *top = *top + <span style="color: #d3869b; font-weight: bold;">1</span>;
+  stack<span style="color: #cc241d;">[</span>*top<span style="color: #cc241d;">]</span> = el;
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">pop</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">stack</span>, <span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">top</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>*top &lt; <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">underflow</span>
+    <span style="color: #fb4934;">return</span> -<span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #cc241d;">}</span>
+
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">el</span> = stack<span style="color: #cc241d;">[</span>*top<span style="color: #cc241d;">]</span>;
+  *top = *top - <span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #fb4934;">return</span> el;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">display</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">stack</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">top</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"========================\n"</span><span style="color: #cc241d;">)</span>;
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"Stack: \n"</span><span style="color: #cc241d;">)</span>;
+  <span style="color: #fb4934;">while</span><span style="color: #cc241d;">(</span>top &gt;= <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d\n"</span>, stack<span style="color: #83a598;">[</span>top<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
+    top--;
+  <span style="color: #cc241d;">}</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"========================\n"</span><span style="color: #cc241d;">)</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">top</span> = -<span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">100</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">stack</span><span style="color: #cc241d;">[</span>n<span style="color: #cc241d;">]</span>;
+
+  <span style="color: #fb4934;">while</span><span style="color: #cc241d;">(</span><span style="color: #d3869b;">true</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"Enter choice: \n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"1. Push element in stack\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"2. Pop element in stack\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"3. Display stack\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"4. Exit\n"</span><span style="color: #b8bb26;">)</span>;
+
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">option</span>;
+    scanf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d"</span>, &amp;option<span style="color: #b8bb26;">)</span>;
+
+    <span style="color: #fb4934;">switch</span><span style="color: #b8bb26;">(</span>option<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">1</span>: <span style="color: #83a598;">{</span>
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">el</span>;
+        printf<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"Enter element to push: "</span><span style="color: #fe8019;">)</span>;
+        scanf<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"%d"</span>, &amp;el<span style="color: #fe8019;">)</span>;
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">st</span> = push<span style="color: #fe8019;">(</span>stack, &amp;top, n, el<span style="color: #fe8019;">)</span>;
+
+        <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st == -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+          printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"failed to push element in stack (overflow)\n"</span><span style="color: #cc241d;">)</span>;
+        <span style="color: #fe8019;">}</span>
+        <span style="color: #fb4934;">break</span>;
+      <span style="color: #83a598;">}</span>
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">2</span>: <span style="color: #83a598;">{</span>
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">st</span> = pop<span style="color: #fe8019;">(</span>stack, &amp;top<span style="color: #fe8019;">)</span>;
+        <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st == -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+          printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"failed to pop element from stack (underflow)\n"</span><span style="color: #cc241d;">)</span>;
+        <span style="color: #fe8019;">}</span>
+        <span style="color: #fb4934;">break</span>;
+      <span style="color: #83a598;">}</span>
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">3</span>:
+        display<span style="color: #83a598;">(</span>stack, top<span style="color: #83a598;">)</span>;
+        <span style="color: #fb4934;">break</span>;
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">4</span>:
+        exit<span style="color: #83a598;">(</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #83a598;">)</span>;
+        <span style="color: #fb4934;">break</span>;
+
+      <span style="color: #fb4934;">default</span>:
+        exit<span style="color: #83a598;">(</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #83a598;">)</span>;
+        <span style="color: #fb4934;">break</span>;
+    <span style="color: #b8bb26;">}</span>
+  <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
 </div>
 </div>
-<div id="outline-container-org7db69e5" class="outline-2">
-<h2 id="org7db69e5"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Queues</h2>
+</div>
+
+<div id="outline-container-org490d189" class="outline-2">
+<h2 id="org490d189"><span class="section-number-2">5.</span> Queues</h2>
 <div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdlib.h</span><span style="color: #fe8019;">&gt;</span>
+<span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdbool.h</span><span style="color: #fe8019;">&gt;</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">enqueue</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">arr</span>, <span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">rear</span>, <span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">front</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">el</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>*rear == <span style="color: #b8bb26;">(</span>n - <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">)</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #928374;">// </span><span style="color: #928374;">overflow</span>
+    <span style="color: #fb4934;">return</span> -<span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #cc241d;">}</span>
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>*front == -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    *front = <span style="color: #d3869b; font-weight: bold;">0</span>;
+  <span style="color: #cc241d;">}</span>
+  arr<span style="color: #cc241d;">[</span>++<span style="color: #b8bb26;">(</span>*rear<span style="color: #b8bb26;">)</span><span style="color: #cc241d;">]</span> = el;
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">dequeue</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">rear</span>, <span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">front</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #928374;">// </span><span style="color: #928374;">underflow</span>
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>*front == -<span style="color: #d3869b; font-weight: bold;">1</span> || *front &gt; *rear<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    <span style="color: #fb4934;">return</span> -<span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #cc241d;">}</span>
+
+  *front = *front + <span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">display</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">arr</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">rear</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">front</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>front == -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"empty queue\n"</span><span style="color: #b8bb26;">)</span>;
+    <span style="color: #fb4934;">return</span>;
+  <span style="color: #cc241d;">}</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"Queue: "</span><span style="color: #cc241d;">)</span>;
+  <span style="color: #fb4934;">while</span> <span style="color: #cc241d;">(</span>rear &gt;= front<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>rear<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
+    rear--;
+  <span style="color: #cc241d;">}</span>
+  printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #cc241d;">)</span>;
+<span style="color: #fe8019;">}</span>
+
+<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">100</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">queue</span><span style="color: #cc241d;">[</span>n<span style="color: #cc241d;">]</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">front</span> = -<span style="color: #d3869b; font-weight: bold;">1</span>;
+  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">rear</span> = -<span style="color: #d3869b; font-weight: bold;">1</span>;
+
+  <span style="color: #fb4934;">while</span><span style="color: #cc241d;">(</span><span style="color: #d3869b;">true</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"Enter choice: \n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"1. Push element in queue\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"2. Pop element in queue\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"3. Display queue\n"</span><span style="color: #b8bb26;">)</span>;
+    printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"4. Exit\n"</span><span style="color: #b8bb26;">)</span>;
+
+    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">option</span>;
+    scanf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d"</span>, &amp;option<span style="color: #b8bb26;">)</span>;
+
+    <span style="color: #fb4934;">switch</span><span style="color: #b8bb26;">(</span>option<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">1</span>: <span style="color: #83a598;">{</span>
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">el</span>;
+        printf<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"Enter element to push: "</span><span style="color: #fe8019;">)</span>;
+        scanf<span style="color: #fe8019;">(</span><span style="color: #b8bb26;">"%d"</span>, &amp;el<span style="color: #fe8019;">)</span>;
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">st</span> = enqueue<span style="color: #fe8019;">(</span>queue, &amp;rear, &amp;front, n, el<span style="color: #fe8019;">)</span>;
+
+        <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st == -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+          printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"failed to push element in queue (overflow)\n"</span><span style="color: #cc241d;">)</span>;
+        <span style="color: #fe8019;">}</span>
+        <span style="color: #fb4934;">break</span>;
+      <span style="color: #83a598;">}</span>
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">2</span>: <span style="color: #83a598;">{</span>
+        <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">st</span> = dequeue<span style="color: #fe8019;">(</span>&amp;rear, &amp;front<span style="color: #fe8019;">)</span>;
+        <span style="color: #fb4934;">if</span> <span style="color: #fe8019;">(</span>st == -<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
+          printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"failed to pop element from queue (underflow)\n"</span><span style="color: #cc241d;">)</span>;
+        <span style="color: #fe8019;">}</span>
+        <span style="color: #fb4934;">break</span>;
+      <span style="color: #83a598;">}</span>
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">3</span>:
+        display<span style="color: #83a598;">(</span>queue, rear, front<span style="color: #83a598;">)</span>;
+        <span style="color: #fb4934;">break</span>;
+
+      <span style="color: #fb4934;">case</span> <span style="color: #d3869b; font-weight: bold;">4</span>:
+        exit<span style="color: #83a598;">(</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #83a598;">)</span>;
+        <span style="color: #fb4934;">break</span>;
+
+      <span style="color: #fb4934;">default</span>:
+        exit<span style="color: #83a598;">(</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #83a598;">)</span>;
+        <span style="color: #fb4934;">break</span>;
+    <span style="color: #b8bb26;">}</span>
+  <span style="color: #cc241d;">}</span>
+<span style="color: #fe8019;">}</span>
+</pre>
 </div>
 </div>
-<div id="outline-container-org3198d01" class="outline-2">
-<h2 id="org3198d01"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Trees</h2>
+</div>
+
+<div id="outline-container-org2aa92e4" class="outline-2">
+<h2 id="org2aa92e4"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Trees</h2>
 <div class="outline-text-2" id="text-6">
 </div>
 </div>
-<div id="outline-container-org008c714" class="outline-2">
-<h2 id="org008c714"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Graphs</h2>
+<div id="outline-container-org375ef85" class="outline-2">
+<h2 id="org375ef85"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Graphs</h2>
 <div class="outline-text-2" id="text-7">
 </div>
 </div>
-<div id="outline-container-org7af858f" class="outline-2">
-<h2 id="org7af858f"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Sorting</h2>
+<div id="outline-container-org249697a" class="outline-2">
+<h2 id="org249697a"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Sorting</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-org152b83e" class="outline-3">
-<h3 id="org152b83e"><span class="section-number-3">8.1.</span> Bubble Sort</h3>
+<div id="outline-container-org5f40621" class="outline-3">
+<h3 id="org5f40621"><span class="section-number-3">8.1.</span> Bubble Sort</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 Bubble the biggest element to the end. Do it till n (size of array). The array
@@ -922,12 +1196,12 @@ is sorted.
 </div>
 
 <ol class="org-ol">
-<li><a id="org7c5da05"></a><span class="todo TODO">TODO</span> draw each pass of sorting<br /></li>
-<li><a id="org3afea1f"></a><span class="todo TODO">TODO</span> optimise (check for swap and terminate early (premature termination))<br /></li>
+<li><a id="org560de20"></a><span class="todo TODO">TODO</span> draw each pass of sorting<br /></li>
+<li><a id="org75000be"></a><span class="todo TODO">TODO</span> optimise (check for swap and terminate early (premature termination))<br /></li>
 </ol>
 </div>
-<div id="outline-container-orgd238447" class="outline-3">
-<h3 id="orgd238447"><span class="section-number-3">8.2.</span> Insertion Sort</h3>
+<div id="outline-container-orgce89683" class="outline-3">
+<h3 id="orgce89683"><span class="section-number-3">8.2.</span> Insertion Sort</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 Maintain a sorted subarray inside array. Iterate over array elements and put
@@ -977,8 +1251,8 @@ Sorted: 3 5 6 7 9 9 10
 </div>
 </div>
 
-<div id="outline-container-org26c5aac" class="outline-3">
-<h3 id="org26c5aac"><span class="section-number-3">8.3.</span> Quick Sort</h3>
+<div id="outline-container-orgeeff665" class="outline-3">
+<h3 id="orgeeff665"><span class="section-number-3">8.3.</span> Quick Sort</h3>
 <div class="outline-text-3" id="text-8-3">
 <p>
 Take a pivot point. Everything smaller than pivot element goes to the left and
@@ -1051,8 +1325,8 @@ Sorted: 2 3 4 5 6 7 8 9
 </div>
 </div>
 
-<div id="outline-container-org5b2da1a" class="outline-3">
-<h3 id="org5b2da1a"><span class="section-number-3">8.4.</span> Selection Sort</h3>
+<div id="outline-container-org5fa5d63" class="outline-3">
+<h3 id="org5fa5d63"><span class="section-number-3">8.4.</span> Selection Sort</h3>
 <div class="outline-text-3" id="text-8-4">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -1104,22 +1378,22 @@ Sorted: 1 2 4 9 10 20
 </div>
 </div>
 
-<div id="outline-container-orgb685ea3" class="outline-3">
-<h3 id="orgb685ea3"><span class="section-number-3">8.5.</span> <span class="todo TODO">TODO</span> Merge Sort</h3>
+<div id="outline-container-org1b12e42" class="outline-3">
+<h3 id="org1b12e42"><span class="section-number-3">8.5.</span> <span class="todo TODO">TODO</span> Merge Sort</h3>
 </div>
-<div id="outline-container-orgef930fb" class="outline-3">
-<h3 id="orgef930fb"><span class="section-number-3">8.6.</span> <span class="todo TODO">TODO</span> Heap Sort</h3>
+<div id="outline-container-orgbd545e1" class="outline-3">
+<h3 id="orgbd545e1"><span class="section-number-3">8.6.</span> <span class="todo TODO">TODO</span> Heap Sort</h3>
 </div>
-<div id="outline-container-org5eb81f4" class="outline-3">
-<h3 id="org5eb81f4"><span class="section-number-3">8.7.</span> <span class="todo TODO">TODO</span> Hashing Techniques</h3>
+<div id="outline-container-org8ee42b1" class="outline-3">
+<h3 id="org8ee42b1"><span class="section-number-3">8.7.</span> <span class="todo TODO">TODO</span> Hashing Techniques</h3>
 </div>
 </div>
-<div id="outline-container-org9d110fa" class="outline-2">
-<h2 id="org9d110fa"><span class="section-number-2">9.</span> Searching</h2>
+<div id="outline-container-org9e9615e" class="outline-2">
+<h2 id="org9e9615e"><span class="section-number-2">9.</span> Searching</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org02496a8" class="outline-3">
-<h3 id="org02496a8"><span class="section-number-3">9.1.</span> Linear search</h3>
+<div id="outline-container-orga839ba1" class="outline-3">
+<h3 id="orga839ba1"><span class="section-number-3">9.1.</span> Linear search</h3>
 <div class="outline-text-3" id="text-9-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
@@ -1187,8 +1461,8 @@ Count number of occurences in an array
 </div>
 </div>
 
-<div id="outline-container-orgc517a1a" class="outline-3">
-<h3 id="orgc517a1a"><span class="section-number-3">9.2.</span> Binary Search</h3>
+<div id="outline-container-org0f8acc7" class="outline-3">
+<h3 id="org0f8acc7"><span class="section-number-3">9.2.</span> Binary Search</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 Using recursion.
@@ -1236,13 +1510,13 @@ Element 8 found at index 5
 </div>
 </div>
 </div>
-<div id="outline-container-org60aefa3" class="outline-2">
-<h2 id="org60aefa3"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> File Handling</h2>
+<div id="outline-container-orgd6021ab" class="outline-2">
+<h2 id="orgd6021ab"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> File Handling</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-09-15 Thu 23:44</p>
+<p class="date">Created: 2022-09-20 Tue 13:48</p>
 </div>
 </body>
 </html>
