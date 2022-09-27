@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-25 Sun 18:07 -->
+<!-- 2022-09-28 Wed 02:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CPP (for CP)</title>
@@ -201,23 +201,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc4dea08">1. CPP (for CP)</a></li>
-<li><a href="#org119c34b">2. Tips</a></li>
-<li><a href="#org1690817">3. Basic data types</a>
+<li><a href="#org5fc7093">1. CPP (for CP)</a></li>
+<li><a href="#org0627edb">2. Tips</a></li>
+<li><a href="#org331404e">3. Basic data types</a>
 <ul>
-<li><a href="#orgf5dbcc8">3.1. Ranges (rough estimation)</a></li>
-<li><a href="#org53413c7">3.2. Calculation precedence (increasing -&gt; decreasing)</a></li>
-<li><a href="#orgd7cc7ca">3.3. Operator precedence and associativity</a></li>
+<li><a href="#orgec9d293">3.1. Ranges (rough estimation)</a></li>
+<li><a href="#org66e4579">3.2. Calculation precedence (increasing -&gt; decreasing)</a></li>
+<li><a href="#org8170a8e">3.3. Operator precedence and associativity</a></li>
 </ul>
 </li>
-<li><a href="#orgcd88723">4. CPP References</a></li>
-<li><a href="#org794cb57">5. Short long long double</a></li>
+<li><a href="#org2435d49">4. CPP References</a></li>
+<li><a href="#orgdade887">5. Short long long double</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc4dea08" class="outline-2">
-<h2 id="orgc4dea08"><span class="section-number-2">1.</span> CPP (for CP)</h2>
+<div id="outline-container-org5fc7093" class="outline-2">
+<h2 id="org5fc7093"><span class="section-number-2">1.</span> CPP (for CP)</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Basic syntax and prior C knowledge is assumed</li>
@@ -225,8 +225,8 @@
 </div>
 </div>
 
-<div id="outline-container-org119c34b" class="outline-2">
-<h2 id="org119c34b"><span class="section-number-2">2.</span> Tips</h2>
+<div id="outline-container-org0627edb" class="outline-2">
+<h2 id="org0627edb"><span class="section-number-2">2.</span> Tips</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 include <code>bits/stdc++.h</code> can save time including specific header files.
@@ -234,8 +234,8 @@ include <code>bits/stdc++.h</code> can save time including specific header files
 </div>
 </div>
 
-<div id="outline-container-org1690817" class="outline-2">
-<h2 id="org1690817"><span class="section-number-2">3.</span> Basic data types</h2>
+<div id="outline-container-org331404e" class="outline-2">
+<h2 id="org331404e"><span class="section-number-2">3.</span> Basic data types</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>data types (int, char, float, double, bool)</li>
@@ -272,8 +272,8 @@ concat (+), comparison (==) and, <code>size()</code> etc.
 </ul>
 </div>
 
-<div id="outline-container-orgf5dbcc8" class="outline-3">
-<h3 id="orgf5dbcc8"><span class="section-number-3">3.1.</span> Ranges (rough estimation)</h3>
+<div id="outline-container-orgec9d293" class="outline-3">
+<h3 id="orgec9d293"><span class="section-number-3">3.1.</span> Ranges (rough estimation)</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>-10<sup>9</sup> &lt; int &lt; 10<sup>9</sup></li>
@@ -296,8 +296,8 @@ calculation is required.</li>
 </div>
 </div>
 
-<div id="outline-container-org53413c7" class="outline-3">
-<h3 id="org53413c7"><span class="section-number-3">3.2.</span> Calculation precedence (increasing -&gt; decreasing)</h3>
+<div id="outline-container-org66e4579" class="outline-3">
+<h3 id="org66e4579"><span class="section-number-3">3.2.</span> Calculation precedence (increasing -&gt; decreasing)</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Types lower in this list will be converted to higher data types in expressions
@@ -328,8 +328,8 @@ and outputs.
 
 
 
-<div id="outline-container-orgd7cc7ca" class="outline-3">
-<h3 id="orgd7cc7ca"><span class="section-number-3">3.3.</span> Operator precedence and associativity</h3>
+<div id="outline-container-org8170a8e" class="outline-3">
+<h3 id="org8170a8e"><span class="section-number-3">3.3.</span> Operator precedence and associativity</h3>
 <div class="outline-text-3" id="text-3-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -443,8 +443,8 @@ and outputs.
 </div>
 </div>
 
-<div id="outline-container-orgcd88723" class="outline-2">
-<h2 id="orgcd88723"><span class="section-number-2">4.</span> CPP References</h2>
+<div id="outline-container-org2435d49" class="outline-2">
+<h2 id="org2435d49"><span class="section-number-2">4.</span> CPP References</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 References can be used to ignore variable copying when calling functions. This
@@ -476,8 +476,8 @@ Example:
 </div>
 </div>
 </div>
-<div id="outline-container-org794cb57" class="outline-2">
-<h2 id="org794cb57"><span class="section-number-2">5.</span> Short long long double</h2>
+<div id="outline-container-orgdade887" class="outline-2">
+<h2 id="orgdade887"><span class="section-number-2">5.</span> Short long long double</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
@@ -509,7 +509,7 @@ Example:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-09-25 Sun 18:07</p>
+<p class="date">Created: 2022-09-28 Wed 02:14</p>
 </div>
 </body>
 </html>
