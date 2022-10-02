@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-02 Sun 18:08 -->
+<!-- 2022-10-02 Sun 18:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -258,6 +258,14 @@
 </pre>
 </div>
 
+<pre class="example">
+s1: 1 2 3 
+s2: 1 3 5 
+s3: 1 3 5 
+s4: 1 3 5 
+</pre>
+
+
 <p>
 (practical 12) <b>Aim</b>: WAP to demonstrate <code>static</code> class attributes.
 </p>
@@ -295,6 +303,14 @@
 <span style="color: #fe8019;">}</span>
 </pre>
 </div>
+
+<pre class="example">
+non-static data member: 19
+static data member: 30
+non-static data member: 29
+static data member: 30
+</pre>
+
 
 <p>
 (practical 13) <b>Aim</b>: WAP to count class instances.
@@ -352,6 +368,18 @@
 </pre>
 </div>
 
+<pre class="example">
+Count class has 4 instances
+Class ids are:
+a: 0
+b: 1
+c: 2
+d: 3
+Count class has 3 instances after deletion
+Count class has 0 instances after deleting all objects
+</pre>
+
+
 <p>
 (practical 14) <b>Aim</b>: WAP to demonstrate lifetime of a static object in cpp.
 </p>
@@ -391,6 +419,17 @@
 <span style="color: #fe8019;">}</span>
 </pre>
 </div>
+
+<pre class="example">
+main starts
+constructor called. id: 0
+constructor called. id: 1
+constructor called. id: 2
+main ends
+destructor called. id: 2
+destructor called. id: 0
+destructor called. id: 1
+</pre>
 </div>
 </body>
 </html>
