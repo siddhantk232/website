@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-02 Sun 18:12 -->
+<!-- 2022-10-04 Tue 00:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bit Manipulation</title>
@@ -201,41 +201,41 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org535f74e">1. Find ith bit</a></li>
-<li><a href="#org99457b1">2. Set ith bit</a>
+<li><a href="#orgb76dfbb">1. Find ith bit</a></li>
+<li><a href="#org15d0aaa">2. Set ith bit</a>
 <ul>
-<li><a href="#org5f2e968">2.1. set 2nd bit in 5 (101)</a></li>
-<li><a href="#org42d19c0">2.2. set 4th bit in 10 (1010) (already set!)</a></li>
+<li><a href="#org078b828">2.1. set 2nd bit in 5 (101)</a></li>
+<li><a href="#orgf0e3fe1">2.2. set 4th bit in 10 (1010) (already set!)</a></li>
 </ul>
 </li>
-<li><a href="#org081fda9">3. clear (or unset) ith bit</a>
+<li><a href="#org7fc6926">3. clear (or unset) ith bit</a>
 <ul>
-<li><a href="#org348a450">3.1. clear 3rd bit in 5 (101)</a></li>
-<li><a href="#org655a557">3.2. clear 4th bit in 10 (1010)</a></li>
+<li><a href="#org02405bc">3.1. clear 3rd bit in 5 (101)</a></li>
+<li><a href="#orgbac875a">3.2. clear 4th bit in 10 (1010)</a></li>
 </ul>
 </li>
-<li><a href="#org5bad3d4">4. count set bits in a number</a></li>
-<li><a href="#org9a74bff">5. Find number of bits that have to change to convert a number <code>a</code> to number <code>b</code></a></li>
-<li><a href="#org25f489c">6. The XOR operator</a>
+<li><a href="#org702a6ff">4. count set bits in a number</a></li>
+<li><a href="#orgd9e8d69">5. Find number of bits that have to change to convert a number <code>a</code> to number <code>b</code></a></li>
+<li><a href="#orga260afd">6. The XOR operator</a>
 <ul>
-<li><a href="#orgb5091af">6.1. Properties</a></li>
-<li><a href="#org9d4dd25">6.2. Find the only non repeating element in an array where every element repeats twice</a>
+<li><a href="#orgc115ec2">6.1. Properties</a></li>
+<li><a href="#orgc675347">6.2. Find the only non repeating element in an array where every element repeats twice</a>
 <ul>
-<li><a href="#orgd39b5e0">6.2.1. Approach one (O(n<sup>2</sup>) time and O(1) space)</a></li>
-<li><a href="#org29bfef8">6.2.2. Approach two (O(n) time and O(n - 1) space)</a></li>
-<li><a href="#orga7f5b85">6.2.3. Approach three: using XOR (O(n) time and O(1) space)</a></li>
+<li><a href="#org66132b1">6.2.1. Approach one (O(n<sup>2</sup>) time and O(1) space)</a></li>
+<li><a href="#orgfb984ef">6.2.2. Approach two (O(n) time and O(n - 1) space)</a></li>
+<li><a href="#org3279739">6.2.3. Approach three: using XOR (O(n) time and O(1) space)</a></li>
 </ul>
 </li>
-<li><a href="#org6d6fa54">6.3. Find two non repeating element in an array where every element repeats twice</a></li>
-<li><a href="#org4f5f513">6.4. <span class="todo TODO">TODO</span> Find the only non repeating element in an array where every element repeats k times.</a></li>
+<li><a href="#org0484554">6.3. Find two non repeating element in an array where every element repeats twice</a></li>
+<li><a href="#org6b8ec23">6.4. <span class="todo TODO">TODO</span> Find the only non repeating element in an array where every element repeats k times.</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org535f74e" class="outline-2">
-<h2 id="org535f74e"><span class="section-number-2">1.</span> Find ith bit</h2>
+<div id="outline-container-orgb76dfbb" class="outline-2">
+<h2 id="orgb76dfbb"><span class="section-number-2">1.</span> Find ith bit</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 5 -&gt; 101
@@ -281,12 +281,12 @@
 </div>
 </div>
 
-<div id="outline-container-org99457b1" class="outline-2">
-<h2 id="org99457b1"><span class="section-number-2">2.</span> Set ith bit</h2>
+<div id="outline-container-org15d0aaa" class="outline-2">
+<h2 id="org15d0aaa"><span class="section-number-2">2.</span> Set ith bit</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org5f2e968" class="outline-3">
-<h3 id="org5f2e968"><span class="section-number-3">2.1.</span> set 2nd bit in 5 (101)</h3>
+<div id="outline-container-org078b828" class="outline-3">
+<h3 id="org078b828"><span class="section-number-3">2.1.</span> set 2nd bit in 5 (101)</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 101 | 010 -&gt; 111 (7)
@@ -311,8 +311,8 @@
 </div>
 </div>
 
-<div id="outline-container-org42d19c0" class="outline-3">
-<h3 id="org42d19c0"><span class="section-number-3">2.2.</span> set 4th bit in 10 (1010) (already set!)</h3>
+<div id="outline-container-orgf0e3fe1" class="outline-3">
+<h3 id="orgf0e3fe1"><span class="section-number-3">2.2.</span> set 4th bit in 10 (1010) (already set!)</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 1010 | 1000 -&gt; 1010
@@ -338,12 +338,12 @@
 </div>
 </div>
 
-<div id="outline-container-org081fda9" class="outline-2">
-<h2 id="org081fda9"><span class="section-number-2">3.</span> clear (or unset) ith bit</h2>
+<div id="outline-container-org7fc6926" class="outline-2">
+<h2 id="org7fc6926"><span class="section-number-2">3.</span> clear (or unset) ith bit</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org348a450" class="outline-3">
-<h3 id="org348a450"><span class="section-number-3">3.1.</span> clear 3rd bit in 5 (101)</h3>
+<div id="outline-container-org02405bc" class="outline-3">
+<h3 id="org02405bc"><span class="section-number-3">3.1.</span> clear 3rd bit in 5 (101)</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 101 &amp; 011 -&gt; 001 (1)
@@ -367,8 +367,8 @@
 </div>
 </div>
 
-<div id="outline-container-org655a557" class="outline-3">
-<h3 id="org655a557"><span class="section-number-3">3.2.</span> clear 4th bit in 10 (1010)</h3>
+<div id="outline-container-orgbac875a" class="outline-3">
+<h3 id="orgbac875a"><span class="section-number-3">3.2.</span> clear 4th bit in 10 (1010)</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 1010 | 0111 -&gt; 0010
@@ -392,8 +392,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org5bad3d4" class="outline-2">
-<h2 id="org5bad3d4"><span class="section-number-2">4.</span> count set bits in a number</h2>
+<div id="outline-container-org702a6ff" class="outline-2">
+<h2 id="org702a6ff"><span class="section-number-2">4.</span> count set bits in a number</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 101 (5) has 2 set bits
@@ -476,8 +476,8 @@ The above algorithm runs only <code>n</code> times where <code>n</code> is the n
 </div>
 </div>
 
-<div id="outline-container-org9a74bff" class="outline-2">
-<h2 id="org9a74bff"><span class="section-number-2">5.</span> Find number of bits that have to change to convert a number <code>a</code> to number <code>b</code></h2>
+<div id="outline-container-orgd9e8d69" class="outline-2">
+<h2 id="orgd9e8d69"><span class="section-number-2">5.</span> Find number of bits that have to change to convert a number <code>a</code> to number <code>b</code></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 We can simply ^(XOR) the two numbers to find out different bits in the two
@@ -511,12 +511,12 @@ the XOR operation to find the number of bits that have to be changed.
 </pre>
 </div>
 </div>
-<div id="outline-container-org25f489c" class="outline-2">
-<h2 id="org25f489c"><span class="section-number-2">6.</span> The XOR operator</h2>
+<div id="outline-container-orga260afd" class="outline-2">
+<h2 id="orga260afd"><span class="section-number-2">6.</span> The XOR operator</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgb5091af" class="outline-3">
-<h3 id="orgb5091af"><span class="section-number-3">6.1.</span> Properties</h3>
+<div id="outline-container-orgc115ec2" class="outline-3">
+<h3 id="orgc115ec2"><span class="section-number-3">6.1.</span> Properties</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li><code>n ^ n</code> is 0. E.g. 5 ^ 5 = 0.</li>
@@ -524,8 +524,8 @@ the XOR operation to find the number of bits that have to be changed.
 </ul>
 </div>
 </div>
-<div id="outline-container-org9d4dd25" class="outline-3">
-<h3 id="org9d4dd25"><span class="section-number-3">6.2.</span> Find the only non repeating element in an array where every element repeats twice</h3>
+<div id="outline-container-orgc675347" class="outline-3">
+<h3 id="orgc675347"><span class="section-number-3">6.2.</span> Find the only non repeating element in an array where every element repeats twice</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 Given. arr = [5, 4, 1, 3, 1, 4, 5]
@@ -536,8 +536,8 @@ Expected answer: 3
 </p>
 </div>
 
-<div id="outline-container-orgd39b5e0" class="outline-4">
-<h4 id="orgd39b5e0"><span class="section-number-4">6.2.1.</span> Approach one (O(n<sup>2</sup>) time and O(1) space)</h4>
+<div id="outline-container-org66132b1" class="outline-4">
+<h4 id="org66132b1"><span class="section-number-4">6.2.1.</span> Approach one (O(n<sup>2</sup>) time and O(1) space)</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <p>
 two loops (nested), for every arr[i] check if there exists another number at
@@ -570,8 +570,8 @@ on, else arr[i] would be the answer.
 </pre>
 </div>
 </div>
-<div id="outline-container-org29bfef8" class="outline-4">
-<h4 id="org29bfef8"><span class="section-number-4">6.2.2.</span> Approach two (O(n) time and O(n - 1) space)</h4>
+<div id="outline-container-orgfb984ef" class="outline-4">
+<h4 id="orgfb984ef"><span class="section-number-4">6.2.2.</span> Approach two (O(n) time and O(n - 1) space)</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <p>
 Use a hash set. Find element in set for every n. If found, remove n from set,
@@ -609,8 +609,8 @@ that should be the answer.
 </pre>
 </div>
 </div>
-<div id="outline-container-orga7f5b85" class="outline-4">
-<h4 id="orga7f5b85"><span class="section-number-4">6.2.3.</span> Approach three: using XOR (O(n) time and O(1) space)</h4>
+<div id="outline-container-org3279739" class="outline-4">
+<h4 id="org3279739"><span class="section-number-4">6.2.3.</span> Approach three: using XOR (O(n) time and O(1) space)</h4>
 <div class="outline-text-4" id="text-6-2-3">
 <p>
 arr = [5, 4, 1, 3, 1, 4, 5]
@@ -674,8 +674,8 @@ Then
 </div>
 </div>
 </div>
-<div id="outline-container-org6d6fa54" class="outline-3">
-<h3 id="org6d6fa54"><span class="section-number-3">6.3.</span> Find two non repeating element in an array where every element repeats twice</h3>
+<div id="outline-container-org0484554" class="outline-3">
+<h3 id="org0484554"><span class="section-number-3">6.3.</span> Find two non repeating element in an array where every element repeats twice</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 Given. arr = [5, 4, 1, 4, 3, 5, 1, 2]
@@ -686,7 +686,7 @@ Expected answer: 3, 2
 </p>
 
 <p>
-If we follow the approach from <a href="#org9d4dd25">the previous question</a>, we&rsquo;ll get:
+If we follow the approach from <a href="#orgc675347">the previous question</a>, we&rsquo;ll get:
 </p>
 
 <p>
@@ -744,8 +744,8 @@ We want to separate these two operands to the XOR op. To do that, we do:
 </div>
 </div>
 
-<div id="outline-container-org4f5f513" class="outline-3">
-<h3 id="org4f5f513"><span class="section-number-3">6.4.</span> <span class="todo TODO">TODO</span> Find the only non repeating element in an array where every element repeats k times.</h3>
+<div id="outline-container-org6b8ec23" class="outline-3">
+<h3 id="org6b8ec23"><span class="section-number-3">6.4.</span> <span class="todo TODO">TODO</span> Find the only non repeating element in an array where every element repeats k times.</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Given. arr = [2, 2, 1, 5, 1, 1, 2]
@@ -760,7 +760,7 @@ Expected answer: 5
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-10-02 Sun 18:12</p>
+<p class="date">Created: 2022-10-04 Tue 00:43</p>
 </div>
 </body>
 </html>
