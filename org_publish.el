@@ -30,7 +30,7 @@
        (list "static"
         :recursive t
         :base-directory "/home/sidd/vimwiki/studies/"
-        :base-extension "jpg\\|gif\\|png"
+        :base-extension "jpg\\|gif\\|png\\|c\\|cpp\\|py"
         :publishing-directory "./src/notes"
         :publishing-function 'org-publish-attachment)))
 
