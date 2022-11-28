@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-20 Thu 02:49 -->
+<!-- 2022-11-29 Tue 01:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
-<meta name="author" content="Siddhant Kumar" />
+<meta name="author" content="siddhant" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -212,33 +212,33 @@ To insert an element at position <code>n</code>:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">insert</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span>* <span style="color: #83a598;">arr</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span>, <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = size - <span style="color: #d3869b; font-weight: bold;">1</span>; i &gt;= pos - <span style="color: #d3869b; font-weight: bold;">1</span>; --i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-        arr<span style="color: #b8bb26;">[</span>i + <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">]</span> = arr<span style="color: #b8bb26;">[</span>i<span style="color: #b8bb26;">]</span>;
-    <span style="color: #cc241d;">}</span>
+<span class="org-type">int</span> <span class="org-function-name">insert</span>(<span class="org-type">int</span>* <span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> <span class="org-variable-name">elem</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = size - 1; i &gt;= pos - 1; --i) {
+        arr[i + 1] = arr[i];
+    }
 
-    arr<span style="color: #cc241d;">[</span>pos - <span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #cc241d;">]</span> = elem;
-    <span style="color: #fb4934;">return</span> size + <span style="color: #d3869b; font-weight: bold;">1</span>;
-<span style="color: #fe8019;">}</span>
+    arr[pos - 1] = elem;
+    <span class="org-keyword">return</span> size + 1;
+}
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">5</span>;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">7</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">}</span>;
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[7] = {1,2,3,4,5};
 
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span> = <span style="color: #d3869b; font-weight: bold;">3</span>;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span> = <span style="color: #d3869b; font-weight: bold;">999</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">pos</span> = 3;
+    <span class="org-type">int</span> <span class="org-variable-name">elem</span> = 999;
 
-    n = insert<span style="color: #cc241d;">(</span>arr, n, pos, elem<span style="color: #cc241d;">)</span>;
+    n = insert(arr, n, pos, elem);
 
-    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
-    <span style="color: #cc241d;">}</span>
-    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #cc241d;">)</span>;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
 
-    <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
-<span style="color: #fe8019;">}</span>
+    <span class="org-keyword">return</span> 0;
+}
 </pre>
 </div>
 
@@ -248,32 +248,32 @@ To insert an element at position <code>n</code>:
 
 
 <ul class="org-ul">
-<li>we iterate from postion <code>n</code> till the last and shift every element one index back from it&rsquo;s original position.</li>
+<li>we iterate from postion <code>n</code> till the last and shift every element one index back from it's original position.</li>
 <li>The size of array (<code>n</code>) is decremented by 1 after the above operation.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">pos</span> = <span style="color: #d3869b; font-weight: bold;">3</span>;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">elem</span>;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">5</span>;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[</span><span style="color: #d3869b; font-weight: bold;">7</span><span style="color: #cc241d;">]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">4</span>,<span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #cc241d;">}</span>;
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">pos</span> = 3;
+    <span class="org-type">int</span> <span class="org-variable-name">elem</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[7] = {1,2,3,4,5};
 
-    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = pos - <span style="color: #d3869b; font-weight: bold;">1</span>; i &lt; n - <span style="color: #d3869b; font-weight: bold;">1</span>; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-        arr<span style="color: #b8bb26;">[</span>i<span style="color: #b8bb26;">]</span> = arr<span style="color: #b8bb26;">[</span>i+<span style="color: #d3869b; font-weight: bold;">1</span><span style="color: #b8bb26;">]</span>;
-    <span style="color: #cc241d;">}</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = pos - 1; i &lt; n - 1; i++) {
+        arr[i] = arr[i+1];
+    }
 
     n--;
 
-    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; n; i++<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"%d "</span>, arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span><span style="color: #b8bb26;">)</span>;
-    <span style="color: #cc241d;">}</span>
-    printf<span style="color: #cc241d;">(</span><span style="color: #b8bb26;">"\n"</span><span style="color: #cc241d;">)</span>;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
 
-    <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
-<span style="color: #fe8019;">}</span>
+    <span class="org-keyword">return</span> 0;
+}
 </pre>
 </div>
 
@@ -294,29 +294,29 @@ The below program prints the index of the found target or, exits with a failure 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">stdio.h</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">arr</span><span style="color: #cc241d;">[]</span> = <span style="color: #cc241d;">{</span><span style="color: #d3869b; font-weight: bold;">1</span>,<span style="color: #d3869b; font-weight: bold;">2</span>,<span style="color: #d3869b; font-weight: bold;">3</span>,<span style="color: #d3869b; font-weight: bold;">99</span>,<span style="color: #d3869b; font-weight: bold;">2389</span>,<span style="color: #d3869b; font-weight: bold;">21</span><span style="color: #cc241d;">}</span>;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span> = <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>arr<span style="color: #cc241d;">)</span> / <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">)</span>;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">target</span> = <span style="color: #d3869b; font-weight: bold;">99</span>;
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1,2,3,99,2389,21};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+    <span class="org-type">int</span> <span class="org-variable-name">target</span> = 99;
 
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">found_index</span> = -<span style="color: #d3869b; font-weight: bold;">1</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">found_index</span> = -1;
 
-    <span style="color: #fb4934;">for</span> <span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; i &lt; size; ++i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-        <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>arr<span style="color: #83a598;">[</span>i<span style="color: #83a598;">]</span> == target<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        <span class="org-keyword">if</span> (arr[i] == target) {
         found_index = i;
-        <span style="color: #b8bb26;">}</span>
-    <span style="color: #cc241d;">}</span>
+        }
+    }
 
-    <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>found_index &gt;= <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"Element %d found at index %d\n"</span>, arr<span style="color: #83a598;">[</span>found_index<span style="color: #83a598;">]</span>, found_index<span style="color: #b8bb26;">)</span>;
-    <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #cc241d;">{</span>
-        printf<span style="color: #b8bb26;">(</span><span style="color: #b8bb26;">"element not found"</span><span style="color: #b8bb26;">)</span>;
-    <span style="color: #cc241d;">}</span>
+    <span class="org-keyword">if</span> (found_index &gt;= 0) {
+        printf(<span class="org-string">"Element %d found at index %d\n"</span>, arr[found_index], found_index);
+    } <span class="org-keyword">else</span> {
+        printf(<span class="org-string">"element not found"</span>);
+    }
 
-    <span style="color: #fb4934;">return</span> <span style="color: #d3869b; font-weight: bold;">0</span>;
-<span style="color: #fe8019;">}</span>
+    <span class="org-keyword">return</span> 0;
+}
 </pre>
 </div>
 

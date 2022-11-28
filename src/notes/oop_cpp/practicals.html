@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-20 Thu 02:49 -->
+<!-- 2022-11-29 Tue 01:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
-<meta name="author" content="Siddhant Kumar" />
+<meta name="author" content="siddhant" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -197,17 +197,17 @@
 <body>
 <div id="content" class="content">
 <p>
-(practical 1) <b>Aim</b>: Write a program to print &ldquo;hello world&rdquo; in cpp.
+(practical 1) <b>Aim</b>: Write a program to print "hello world" in cpp.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    cout &lt;&lt; <span style="color: #b8bb26;">"hello world"</span>;
-<span style="color: #fe8019;">}</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    cout &lt;&lt; <span class="org-string">"hello world"</span>;
+}
 </pre>
 </div>
 
@@ -216,33 +216,33 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
-<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span>;
-  cout &lt;&lt; <span style="color: #b8bb26;">"Enter number: "</span>;
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">n</span>;
+  cout &lt;&lt; <span class="org-string">"Enter number: "</span>;
   cin &gt;&gt; n;
 
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span> = <span style="color: #d3869b; font-weight: bold;">2</span>;
-  <span style="color: #fb4934;">while</span> <span style="color: #cc241d;">(</span>i &lt; n<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
+  <span class="org-type">int</span> <span class="org-variable-name">i</span> = 2;
+  <span class="org-keyword">while</span> (i &lt; n) {
     i++;
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>n % i == <span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-      <span style="color: #fb4934;">break</span>;
-    <span style="color: #b8bb26;">}</span>
-  <span style="color: #cc241d;">}</span>
+    <span class="org-keyword">if</span> (n % i == 0) {
+      <span class="org-keyword">break</span>;
+    }
+  }
 
-  <span style="color: #fb4934;">if</span> <span style="color: #cc241d;">(</span>n == i<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-    cout &lt;&lt; n &lt;&lt; <span style="color: #b8bb26;">" is prime."</span> &lt;&lt; endl;
-  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #cc241d;">{</span>
-    cout &lt;&lt; n &lt;&lt; <span style="color: #b8bb26;">" is not prime."</span> &lt;&lt; endl;
-  <span style="color: #cc241d;">}</span>
-<span style="color: #fe8019;">}</span>
+  <span class="org-keyword">if</span> (n == i) {
+    cout &lt;&lt; n &lt;&lt; <span class="org-string">" is prime."</span> &lt;&lt; endl;
+  } <span class="org-keyword">else</span> {
+    cout &lt;&lt; n &lt;&lt; <span class="org-string">" is not prime."</span> &lt;&lt; endl;
+  }
+}
 </pre>
 </div>
 
 
-<div id="orgf372313" class="figure">
+<div id="org34fc624" class="figure">
 <p><img src="./prime_output.png" alt="prime_output.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Output</p>
@@ -253,65 +253,65 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">print_prompt</span><span style="color: #fe8019;">()</span>;
-<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">reset_choice</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">char</span> *<span style="color: #83a598;">choice</span><span style="color: #fe8019;">)</span>;
+<span class="org-type">void</span> <span class="org-function-name">print_prompt</span>();
+<span class="org-type">void</span> <span class="org-function-name">reset_choice</span>(<span class="org-type">char</span> *<span class="org-variable-name">choice</span>);
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">char</span> <span style="color: #83a598;">choice</span>;
-  <span style="color: #fb4934;">do</span> <span style="color: #cc241d;">{</span>
-    print_prompt<span style="color: #b8bb26;">()</span>;
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">char</span> <span class="org-variable-name">choice</span>;
+  <span class="org-keyword">do</span> {
+    print_prompt();
     cin &gt;&gt; choice;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span>,<span style="color: #83a598;">b</span>;
-    cout &lt;&lt; <span style="color: #b8bb26;">"Enter two numbers for "</span> &lt;&lt; choice &lt;&lt; <span style="color: #b8bb26;">" operation: "</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">a</span>,<span class="org-variable-name">b</span>;
+    cout &lt;&lt; <span class="org-string">"Enter two numbers for "</span> &lt;&lt; choice &lt;&lt; <span class="org-string">" operation: "</span>;
     cin &gt;&gt; a &gt;&gt; b;
-    <span style="color: #fb4934;">switch</span><span style="color: #b8bb26;">(</span>choice<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-      <span style="color: #fb4934;">case</span> <span style="color: #b8bb26;">'+'</span>:
-        cout &lt;&lt; <span style="color: #b8bb26;">"Sum is: "</span> &lt;&lt; a + b &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-        <span style="color: #fb4934;">break</span>;
-      <span style="color: #fb4934;">case</span> <span style="color: #b8bb26;">'-'</span>:
-        cout &lt;&lt; <span style="color: #b8bb26;">"Difference is: "</span> &lt;&lt; a - b &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-        <span style="color: #fb4934;">break</span>;
-      <span style="color: #fb4934;">case</span> <span style="color: #b8bb26;">'*'</span>:
-        cout &lt;&lt; <span style="color: #b8bb26;">"Product is: "</span> &lt;&lt; a * b &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-        <span style="color: #fb4934;">break</span>;
-      <span style="color: #fb4934;">case</span> <span style="color: #b8bb26;">'/'</span>:
-        cout &lt;&lt; <span style="color: #b8bb26;">"Quotient is: "</span> &lt;&lt; a / b &lt;&lt; endl;
-        cout &lt;&lt; <span style="color: #b8bb26;">"Remainder is: "</span> &lt;&lt; a % b &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-        <span style="color: #fb4934;">break</span>;
-      <span style="color: #fb4934;">default</span>:
-        cout &lt;&lt; <span style="color: #b8bb26;">"Invalid operation."</span> &lt;&lt; endl &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-    <span style="color: #b8bb26;">}</span>
-  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">while</span> <span style="color: #cc241d;">(</span>choice == <span style="color: #b8bb26;">'y'</span> || choice == <span style="color: #b8bb26;">'Y'</span><span style="color: #cc241d;">)</span>;
-<span style="color: #fe8019;">}</span>
+    <span class="org-keyword">switch</span>(choice) {
+      <span class="org-keyword">case</span> <span class="org-string">'+'</span>:
+        cout &lt;&lt; <span class="org-string">"Sum is: "</span> &lt;&lt; a + b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+        <span class="org-keyword">break</span>;
+      <span class="org-keyword">case</span> <span class="org-string">'-'</span>:
+        cout &lt;&lt; <span class="org-string">"Difference is: "</span> &lt;&lt; a - b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+        <span class="org-keyword">break</span>;
+      <span class="org-keyword">case</span> <span class="org-string">'*'</span>:
+        cout &lt;&lt; <span class="org-string">"Product is: "</span> &lt;&lt; a * b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+        <span class="org-keyword">break</span>;
+      <span class="org-keyword">case</span> <span class="org-string">'/'</span>:
+        cout &lt;&lt; <span class="org-string">"Quotient is: "</span> &lt;&lt; a / b &lt;&lt; endl;
+        cout &lt;&lt; <span class="org-string">"Remainder is: "</span> &lt;&lt; a % b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+        <span class="org-keyword">break</span>;
+      <span class="org-keyword">default</span>:
+        cout &lt;&lt; <span class="org-string">"Invalid operation."</span> &lt;&lt; endl &lt;&lt; endl;
+        reset_choice(&amp;choice);
+    }
+  } <span class="org-keyword">while</span> (choice == <span class="org-string">'y'</span> || choice == <span class="org-string">'Y'</span>);
+}
 
-<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">print_prompt</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-  cout &lt;&lt; <span style="color: #b8bb26;">"Enter your choice of operation: "</span> &lt;&lt; endl;
-  cout &lt;&lt; <span style="color: #b8bb26;">"+: Addition"</span> &lt;&lt; endl;
-  cout &lt;&lt; <span style="color: #b8bb26;">"-: Subtraction"</span> &lt;&lt; endl;
-  cout &lt;&lt; <span style="color: #b8bb26;">"*: Multiplication"</span> &lt;&lt; endl;
-  cout &lt;&lt; <span style="color: #b8bb26;">"/: Division"</span> &lt;&lt; endl;
+<span class="org-type">void</span> <span class="org-function-name">print_prompt</span>() {
+  cout &lt;&lt; <span class="org-string">"Enter your choice of operation: "</span> &lt;&lt; endl;
+  cout &lt;&lt; <span class="org-string">"+: Addition"</span> &lt;&lt; endl;
+  cout &lt;&lt; <span class="org-string">"-: Subtraction"</span> &lt;&lt; endl;
+  cout &lt;&lt; <span class="org-string">"*: Multiplication"</span> &lt;&lt; endl;
+  cout &lt;&lt; <span class="org-string">"/: Division"</span> &lt;&lt; endl;
 
-  cout &lt;&lt; <span style="color: #b8bb26;">"Choice (+ / - / * / /): "</span>;
-<span style="color: #fe8019;">}</span>
+  cout &lt;&lt; <span class="org-string">"Choice (+ / - / * / /): "</span>;
+}
 
-<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">reset_choice</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">char</span> *<span style="color: #83a598;">choice</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
-  cout &lt;&lt; <span style="color: #b8bb26;">"Do you want to perform more operations? (y/n): "</span>;
+<span class="org-type">void</span> <span class="org-function-name">reset_choice</span>(<span class="org-type">char</span> *<span class="org-variable-name">choice</span>) {
+  cout &lt;&lt; <span class="org-string">"Do you want to perform more operations? (y/n): "</span>;
   cin &gt;&gt; *choice;
-<span style="color: #fe8019;">}</span>
+}
 </pre>
 </div>
 
 
-<div id="orgc007a2b" class="figure">
+<div id="orge1f1eed" class="figure">
 <p><img src="./calc_output.png" alt="calc_output.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Output</p>
@@ -324,38 +324,38 @@ switch statements.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">char</span> <span style="color: #83a598;">choice</span>;
-  <span style="color: #fb4934;">do</span> <span style="color: #cc241d;">{</span>
-    print_prompt<span style="color: #b8bb26;">()</span>;
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">char</span> <span class="org-variable-name">choice</span>;
+  <span class="org-keyword">do</span> {
+    print_prompt();
     cin &gt;&gt; choice;
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span>,<span style="color: #83a598;">b</span>;
-    cout &lt;&lt; <span style="color: #b8bb26;">"Enter two numbers for "</span> &lt;&lt; choice &lt;&lt; <span style="color: #b8bb26;">" operation: "</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">a</span>,<span class="org-variable-name">b</span>;
+    cout &lt;&lt; <span class="org-string">"Enter two numbers for "</span> &lt;&lt; choice &lt;&lt; <span class="org-string">" operation: "</span>;
     cin &gt;&gt; a &gt;&gt; b;
 
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>choice == <span style="color: #b8bb26;">'+'</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-        cout &lt;&lt; <span style="color: #b8bb26;">"Sum is: "</span> &lt;&lt; a + b &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-    <span style="color: #b8bb26;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>choice == <span style="color: #b8bb26;">'-'</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-        cout &lt;&lt; <span style="color: #b8bb26;">"Difference is: "</span> &lt;&lt; a - b &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-    <span style="color: #b8bb26;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>choice == <span style="color: #b8bb26;">'*'</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-        cout &lt;&lt; <span style="color: #b8bb26;">"Product is: "</span> &lt;&lt; a * b &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-    <span style="color: #b8bb26;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>choice == <span style="color: #b8bb26;">'/'</span><span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-        cout &lt;&lt; <span style="color: #b8bb26;">"Quotient is: "</span> &lt;&lt; a / b &lt;&lt; endl;
-        cout &lt;&lt; <span style="color: #b8bb26;">"Remainder is: "</span> &lt;&lt; a % b &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-    <span style="color: #b8bb26;">}</span> <span style="color: #fb4934;">else</span> <span style="color: #b8bb26;">{</span>
-        cout &lt;&lt; <span style="color: #b8bb26;">"Invalid operation."</span> &lt;&lt; endl &lt;&lt; endl;
-        reset_choice<span style="color: #83a598;">(</span>&amp;choice<span style="color: #83a598;">)</span>;
-    <span style="color: #b8bb26;">}</span>
-  <span style="color: #cc241d;">}</span> <span style="color: #fb4934;">while</span> <span style="color: #cc241d;">(</span>choice == <span style="color: #b8bb26;">'y'</span> || choice == <span style="color: #b8bb26;">'Y'</span><span style="color: #cc241d;">)</span>;
-<span style="color: #fe8019;">}</span>
+    <span class="org-keyword">if</span> (choice == <span class="org-string">'+'</span>) {
+        cout &lt;&lt; <span class="org-string">"Sum is: "</span> &lt;&lt; a + b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (choice == <span class="org-string">'-'</span>) {
+        cout &lt;&lt; <span class="org-string">"Difference is: "</span> &lt;&lt; a - b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (choice == <span class="org-string">'*'</span>) {
+        cout &lt;&lt; <span class="org-string">"Product is: "</span> &lt;&lt; a * b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (choice == <span class="org-string">'/'</span>) {
+        cout &lt;&lt; <span class="org-string">"Quotient is: "</span> &lt;&lt; a / b &lt;&lt; endl;
+        cout &lt;&lt; <span class="org-string">"Remainder is: "</span> &lt;&lt; a % b &lt;&lt; endl;
+        reset_choice(&amp;choice);
+    } <span class="org-keyword">else</span> {
+        cout &lt;&lt; <span class="org-string">"Invalid operation."</span> &lt;&lt; endl &lt;&lt; endl;
+        reset_choice(&amp;choice);
+    }
+  } <span class="org-keyword">while</span> (choice == <span class="org-string">'y'</span> || choice == <span class="org-string">'Y'</span>);
+}
 </pre>
 </div>
 </div>

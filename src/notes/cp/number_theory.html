@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-11-29 Tue 01:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Number Theory</title>
+<meta name="author" content="siddhant" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Number Theory</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6e0b8e3">1. Introduction</a></li>
+<li><a href="#org547815d">2. Prime Number Generation (Sieve, Segmented Sieve)</a>
+<ul>
+<li><a href="#org3afc686">2.1. Prime Factorization</a></li>
+<li><a href="#org7bc768a">2.2. Divisor Finding</a></li>
+<li><a href="#org4ab1d9f">2.3. <span class="todo TODO">TODO</span> Sieve of Eratosthenes</a></li>
+<li><a href="#orgc85dda7">2.4. <span class="todo TODO">TODO</span> Segmented Sieve of Eratosthenes</a></li>
+</ul>
+</li>
+<li><a href="#orga1d6c89">3. <span class="todo TODO">TODO</span> Euler Totient Theorem</a></li>
+<li><a href="#orgf81ae6d">4. <span class="todo TODO">TODO</span> Fermat’s Theorem* TODO HCF &amp; LCM (Euclid)</a>
+<ul>
+<li><a href="#org63ee135">4.1. GCD (Greatest Common Divisor)</a></li>
+<li><a href="#orge22b878">4.2. Extended Euclidean</a></li>
+</ul>
+</li>
+<li><a href="#org998af7a">5. <span class="todo TODO">TODO</span> Linear Diophantine Equations (Extended Euclid)</a></li>
+<li><a href="#org0abc05b">6. <span class="todo TODO">TODO</span> Modulus Arithmetic (addition,multiplication,subtraction,modular Inverse)</a>
+<ul>
+<li><a href="#orga30d841">6.1. Modulo Arithmetic</a></li>
+<li><a href="#org66d0e91">6.2. Proofs</a></li>
+</ul>
+</li>
+<li><a href="#orgf87b8db">7. <span class="todo TODO">TODO</span> Cycle Finding (Floyd Algo and Brent Algo)</a></li>
+<li><a href="#org24c334c">8. <span class="todo TODO">TODO</span> Integer Factorization (Trial Division , Pollard Rho method) &#x2013;&gt; colorado.edu A Quick Tutorial on Pollard's Rho Algorithm</a></li>
+<li><a href="#org1892220">9. <span class="todo TODO">TODO</span> Lucas Theorem (Simple &amp; Advance)</a></li>
+<li><a href="#org76cefe6">10. <span class="todo TODO">TODO</span> Chinese Remainder Theorem</a></li>
+<li><a href="#org84ec5d3">11. <span class="todo TODO">TODO</span> Wilson Theorem</a></li>
+<li><a href="#orge99bdde">12. <span class="todo TODO">TODO</span> Miller - Rabin Primality Testing</a></li>
+<li><a href="#org75c056b">13. <span class="todo TODO">TODO</span> Perfect Numbers</a></li>
+<li><a href="#org3ec202a">14. <span class="todo TODO">TODO</span> Goldbach Conjecture</a></li>
+<li><a href="#orgfe2341d">15. Floor/Ceil</a></li>
+<li><a href="#org6f49f51">16. Divisors</a></li>
+<li><a href="#orgd60b0de">17. <span class="todo TODO">TODO</span> Binary Exponentiation</a></li>
+<li><a href="#orgb7f5591">18. <span class="todo TODO">TODO</span> Modular "division"</a></li>
+<li><a href="#org7ff6b98">19. Instance of Mobius</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org6e0b8e3" class="outline-2">
+<h2 id="org6e0b8e3"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Try to find an explicit equation before jumping in.</li>
+<li>With that equation, you can mess aroung (try to normalise) to make it easier to solve.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org547815d" class="outline-2">
+<h2 id="org547815d"><span class="section-number-2">2.</span> Prime Number Generation (Sieve, Segmented Sieve)</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org3afc686" class="outline-3">
+<h3 id="org3afc686"><span class="section-number-3">2.1.</span> Prime Factorization</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Breaking a number down to a product of primes.
+Example:
+</p>
+
+<p>
+\[ 10 = 2 * 5 \]
+\[ 254436 = 2^2 * 3 * 7 * 13 * 233 \]
+\( 27 = 3 * 9 \) is <b>not valid</b> as 9 isn't a prime and can be further broken down into \(3 * 3\).
+</p>
+
+<ul class="org-ul">
+<li><b>Goal</b>: break \(x\) down into product of its prime divisors.</li>
+<li><p>
+<b>Naive</b>: Try all numbers up to x.
+</p>
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">bool</span> <span class="org-function-name">is_prime</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 2; i &lt; x; ++i) {
+    <span class="org-keyword">if</span> (x % i == 0) {
+      <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+    }
+  }
+  <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">x</span> = 254436;
+  <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">res</span>;
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 2; i &lt;= x; ++i) {
+    <span class="org-keyword">if</span> (x % i == 0 &amp;&amp; is_prime(i)) {
+      res.push_back(i);
+    }
+  }
+
+  <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> &amp;<span class="org-variable-name">i</span> : res) cout &lt;&lt; i &lt;&lt; <span class="org-string">" "</span>;
+  cout &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+2 3 7 13 233
+</pre></li>
+<li><b>Less Naive</b>: Only try primes upto x.</li>
+<li><p>
+<b>Least Naive</b>: you can't have two primes larger than <code>sqrt(x)</code>. So you only have to check upto <code>sqrt(x)</code>, then you can conclude that \(x\) is prime iff it has no other prime factors.
+</p>
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;vector&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;cmath&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">bool</span> <span class="org-function-name">is_prime</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 2; i &lt;= sqrt(x); ++i) {
+    <span class="org-keyword">if</span> (x % i == 0) {
+      <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+    }
+  }
+  <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">x</span> = 254436;
+  <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">res</span>;
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 2; i &lt;= x; ++i) {
+    <span class="org-keyword">if</span> (x % i == 0 &amp;&amp; is_prime(i)) {
+      res.push_back(i);
+    }
+  }
+
+  <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> &amp;<span class="org-variable-name">i</span> : res) cout &lt;&lt; i &lt;&lt; <span class="org-string">" "</span>;
+  cout &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+2 3 7 13 233
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7bc768a" class="outline-3">
+<h3 id="org7bc768a"><span class="section-number-3">2.2.</span> Divisor Finding</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Similar to finding prime factors, but find all divisors of x.</li>
+<li>If you know \(y\) is a divisor of x, then \(x/y\) is a divisor too.</li>
+<li><p>
+Only have to check up to <code>sqrt(x)</code>, the rest will be found as \(x/y\) (\(O(sqrt(n)\))
+</p>
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;set&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;cmath&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">x</span> = 27;
+  <span class="org-type">set</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">div_sqrtn</span>;
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 2; i &lt; sqrt(x); ++i) {
+    <span class="org-keyword">if</span> (x % i == 0) {
+      div_sqrtn.insert(i);
+      div_sqrtn.insert(x / i);
+    }
+  }
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-keyword">const</span> &amp;<span class="org-variable-name">i</span> : div_sqrtn) {
+    cout &lt;&lt; i &lt;&lt; <span class="org-string">" "</span>;
+  }
+  cout &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+3 9 
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4ab1d9f" class="outline-3">
+<h3 id="org4ab1d9f"><span class="section-number-3">2.3.</span> <span class="todo TODO">TODO</span> Sieve of Eratosthenes</h3>
+</div>
+<div id="outline-container-orgc85dda7" class="outline-3">
+<h3 id="orgc85dda7"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Segmented Sieve of Eratosthenes</h3>
+</div>
+</div>
+<div id="outline-container-orga1d6c89" class="outline-2">
+<h2 id="orga1d6c89"><span class="section-number-2">3.</span> <span class="todo TODO">TODO</span> Euler Totient Theorem</h2>
+</div>
+<div id="outline-container-orgf81ae6d" class="outline-2">
+<h2 id="orgf81ae6d"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Fermat’s Theorem* TODO HCF &amp; LCM (Euclid)</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org63ee135" class="outline-3">
+<h3 id="org63ee135"><span class="section-number-3">4.1.</span> GCD (Greatest Common Divisor)</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>gcd(x,y) = largest g where g | x and g | y</li>
+<li>if x = p<sub>1</sub><sup>a</sup> * p<sub>2</sub><sup>b</sup>&#x2026; and y = p<sub>1</sub><sup>c</sup> * p<sub>2</sub><sup>d</sup>&#x2026;, then gcd(x,y) = p<sub>1</sub><sup>min(a,c)</sup> * p<sub>2</sub><sup>min(b,d)</sup>&#x2026;</li>
+<li>Uses the <a href="#orge22b878">Euclidean algorithm</a></li>
+<li>gcd(a,b,c, &#x2026;) = gcd(gcd(a,b), c, &#x2026;)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge22b878" class="outline-3">
+<h3 id="orge22b878"><span class="section-number-3">4.2.</span> Extended Euclidean</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>gcd(a,b) = gcd(a - b, b). Given a &gt;= b, if not swap them
+<ul class="org-ul">
+<li>Let the GCD be g, then g | a and g | b, so a % g = 0 and b % g = 0</li>
+<li>(a-b) % g = ((a % g) - (b % g)) % g = 0, so g | (a - b)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org998af7a" class="outline-2">
+<h2 id="org998af7a"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Linear Diophantine Equations (Extended Euclid)</h2>
+</div>
+<div id="outline-container-org0abc05b" class="outline-2">
+<h2 id="org0abc05b"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Modulus Arithmetic (addition,multiplication,subtraction,modular Inverse)</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orga30d841" class="outline-3">
+<h3 id="orga30d841"><span class="section-number-3">6.1.</span> Modulo Arithmetic</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>% gives the remainder of the division operation between x and y.</li>
+<li><code>x % y</code> subtracts y from x until x becomes smallert than y, after which, x (when smaller than y) is the result of this expression.</li>
+<li>For positive numbers, you subtract till it becomes smaller. For negative numbers you add y till it becomes larger.</li>
+<li>17 % 6 =  (\(17 - 6 - 6\)) = 5</li>
+<li>-15 % 6 = (\(-15 + 6 + 6 + 6\)) = 3</li>
+<li><code>0 &lt;= (x % m) &lt; m</code></li>
+<li><b>Another representation</b>: \(x = am + b\) [a, b are integers; 0 &lt;= b &lt; m]</li>
+<li>Since [am] is a multiple of m, we just drop it when modding.</li>
+<li>Since \(0 <= b < m\), it doesn't change when modding</li>
+<li>So am + b % m = b</li>
+<li>17 % 6 =  (\(2 * 6 + 5\)) = 5</li>
+<li>-15 % 6 = (\(-3 * 6 + 3\)) = 3</li>
+<li>C++ gives -15 % 6 as -3 but it should be 3&#x2026; be careful</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org66d0e91" class="outline-3">
+<h3 id="org66d0e91"><span class="section-number-3">6.2.</span> Proofs</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>(a + b) % m = ((a % m) + (b % m)) % m</li>
+<li>(a - b) % m = ((a % m) - (b % m)) % m</li>
+<li>(a * b) % m = ((a % m) * (b % m)) % m</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf87b8db" class="outline-2">
+<h2 id="orgf87b8db"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Cycle Finding (Floyd Algo and Brent Algo)</h2>
+</div>
+<div id="outline-container-org24c334c" class="outline-2">
+<h2 id="org24c334c"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Integer Factorization (Trial Division , Pollard Rho method) &#x2013;&gt; colorado.edu A Quick Tutorial on Pollard's Rho Algorithm</h2>
+</div>
+<div id="outline-container-org1892220" class="outline-2">
+<h2 id="org1892220"><span class="section-number-2">9.</span> <span class="todo TODO">TODO</span> Lucas Theorem (Simple &amp; Advance)</h2>
+</div>
+<div id="outline-container-org76cefe6" class="outline-2">
+<h2 id="org76cefe6"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> Chinese Remainder Theorem</h2>
+</div>
+<div id="outline-container-org84ec5d3" class="outline-2">
+<h2 id="org84ec5d3"><span class="section-number-2">11.</span> <span class="todo TODO">TODO</span> Wilson Theorem</h2>
+</div>
+<div id="outline-container-orge99bdde" class="outline-2">
+<h2 id="orge99bdde"><span class="section-number-2">12.</span> <span class="todo TODO">TODO</span> Miller - Rabin Primality Testing</h2>
+</div>
+<div id="outline-container-org75c056b" class="outline-2">
+<h2 id="org75c056b"><span class="section-number-2">13.</span> <span class="todo TODO">TODO</span> Perfect Numbers</h2>
+</div>
+<div id="outline-container-org3ec202a" class="outline-2">
+<h2 id="org3ec202a"><span class="section-number-2">14.</span> <span class="todo TODO">TODO</span> Goldbach Conjecture</h2>
+</div>
+
+<div id="outline-container-orgfe2341d" class="outline-2">
+<h2 id="orgfe2341d"><span class="section-number-2">15.</span> Floor/Ceil</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+<b>Floor</b> is just a number rounded down to the nearest int (left on the number line).
+</p>
+
+<p>
+\[ \lfloor2\rfloor = 2 \]
+\[ \lfloor2.1\rfloor = 2 \]
+\[ \lfloor2.9\rfloor = 2 \]
+</p>
+
+<p>
+<b>Ceil</b> is a number rounded up to the nearest int (right on the number line).
+</p>
+
+<p>
+\[ \lceil2\rceil = 2 \]
+\[ \lceil2.1\rceil = 3 \]
+\[ \lceil2.9\rceil = 3 \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6f49f51" class="outline-2">
+<h2 id="org6f49f51"><span class="section-number-2">16.</span> Divisors</h2>
+<div class="outline-text-2" id="text-16">
+<ul class="org-ul">
+<li>\(a | b\) &harr; "a divides b" &harr; "b is divisible by a" &harr; b % a = 0</li>
+<li>Divisor (or factor) of x: a number y where \(y | x\)</li>
+<li>Transitive: \(a | b, b | c \rightarrow a | c\)</li>
+<li>Prime: no divisors except 1 and itself</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd60b0de" class="outline-2">
+<h2 id="orgd60b0de"><span class="section-number-2">17.</span> <span class="todo TODO">TODO</span> Binary Exponentiation</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+gotta read more about this in future.
+Compute \(a^b\) % \(m\) for large numbers quickly.
+</p>
+
+<ul class="org-ul">
+<li>Write b in binary, ex: 21 -&gt; 10101</li>
+<li>So \(a^21 = a^1 * a^4 * a^16\)</li>
+<li>\(a^2x = a^x * a^x\), so we can compute \(a^1\), \(a^2\), \(a^4\), \(a^8\), etc in O(1) each</li>
+<li>Take module with each multiplication</li>
+<li>Total complexit: O(log{b})</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb7f5591" class="outline-2">
+<h2 id="orgb7f5591"><span class="section-number-2">18.</span> <span class="todo TODO">TODO</span> Modular "division"</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+I don't understand this rn
+</p>
+</div>
+</div>
+<div id="outline-container-org7ff6b98" class="outline-2">
+<h2 id="org7ff6b98"><span class="section-number-2">19.</span> Instance of Mobius</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: siddhant</p>
+<p class="date">Created: 2022-11-29 Tue 01:05</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

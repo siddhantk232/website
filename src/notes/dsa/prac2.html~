@@ -196,168 +196,196 @@
 </head>
 <body>
 <div id="content" class="content">
-<p>
-(practical 1) <b>Aim</b>: Write a program to print "hello world" in cpp.
+<ol class="org-ol">
+<li><p>
+<b>Aim</b>: Sort elements of an array using the Bubble Sort algorithm.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
 
-<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
-
-<span class="org-type">int</span> <span class="org-function-name">main</span>() {
-    cout &lt;&lt; <span class="org-string">"hello world"</span>;
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
 }
-</pre>
-</div>
-
-<p>
-(practical 2) <b>Aim</b>: Write a program to check if a given number is prime.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
-<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
 <span class="org-type">int</span> <span class="org-function-name">main</span>() {
-  <span class="org-type">int</span> <span class="org-variable-name">n</span>;
-  cout &lt;&lt; <span class="org-string">"Enter number: "</span>;
-  cin &gt;&gt; n;
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1,6,3,9,2,0};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
 
-  <span class="org-type">int</span> <span class="org-variable-name">i</span> = 2;
-  <span class="org-keyword">while</span> (i &lt; n) {
-    i++;
-    <span class="org-keyword">if</span> (n % i == 0) {
-      <span class="org-keyword">break</span>;
+    printf(<span class="org-string">"Unsorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
     }
-  }
+    printf(<span class="org-string">"\n"</span>);
 
-  <span class="org-keyword">if</span> (n == i) {
-    cout &lt;&lt; n &lt;&lt; <span class="org-string">" is prime."</span> &lt;&lt; endl;
-  } <span class="org-keyword">else</span> {
-    cout &lt;&lt; n &lt;&lt; <span class="org-string">" is not prime."</span> &lt;&lt; endl;
-  }
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">pass</span> = 0; pass &lt; (size); pass++) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; (size - 1 - pass); j++) {
+            <span class="org-keyword">if</span> (arr[j] &gt; arr[j + 1]) {
+                swap(&amp;arr[j], &amp;arr[j + 1]);
+            }
+        }
+    }
+
+    printf(<span class="org-string">"Sorted:   "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; (size); i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+
 }
 </pre>
 </div>
 
+<pre class="example">
+Unsorted: 1 6 3 9 2 0
+Sorted:   0 1 2 3 6 9
+</pre></li>
 
-<div id="org63b280c" class="figure">
-<p><img src="./prime_output.png" alt="prime_output.png" />
-</p>
-<p><span class="figure-number">Figure 1: </span>Output</p>
-</div>
-
-<p>
-(practical 3) <b>Aim</b>: Write a program to create a basic calculator.
+<li><p>
+<b>Aim</b>: Sort elements of an array using the Insertion Sort algorithm.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
 
-<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
-
-<span class="org-type">void</span> <span class="org-function-name">print_prompt</span>();
-<span class="org-type">void</span> <span class="org-function-name">reset_choice</span>(<span class="org-type">char</span> *<span class="org-variable-name">choice</span>);
+<span class="org-type">void</span> <span class="org-function-name">insertion_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; size; ++i) {
+        <span class="org-type">int</span> <span class="org-variable-name">value</span> = arr[i];
+        <span class="org-type">int</span> <span class="org-variable-name">hole</span> = i;
+        <span class="org-keyword">while</span> (hole &gt; 0 &amp;&amp; (arr[hole - 1] &gt; value)) {
+            arr[hole] = arr[hole - 1];
+            hole = hole - 1;
+        }
+        arr[hole] = value;
+    }
+}
 
 <span class="org-type">int</span> <span class="org-function-name">main</span>() {
-  <span class="org-type">char</span> <span class="org-variable-name">choice</span>;
-  <span class="org-keyword">do</span> {
-    print_prompt();
-    cin &gt;&gt; choice;
-    <span class="org-type">int</span> <span class="org-variable-name">a</span>,<span class="org-variable-name">b</span>;
-    cout &lt;&lt; <span class="org-string">"Enter two numbers for "</span> &lt;&lt; choice &lt;&lt; <span class="org-string">" operation: "</span>;
-    cin &gt;&gt; a &gt;&gt; b;
-    <span class="org-keyword">switch</span>(choice) {
-      <span class="org-keyword">case</span> <span class="org-string">'+'</span>:
-        cout &lt;&lt; <span class="org-string">"Sum is: "</span> &lt;&lt; a + b &lt;&lt; endl;
-        reset_choice(&amp;choice);
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {6, 9, 7, 3, 5, 10, 9};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"Unsorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    insertion_sort(arr, size);
+
+    printf(<span class="org-string">"Sorted:   "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example">
+Unsorted: 6 9 7 3 5 10 9
+Sorted:   3 5 6 7 9 9 10
+</pre></li>
+
+<li><p>
+<b>Aim</b>: Implement Stack using Arrays.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">push</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> *<span class="org-variable-name">top</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+  <span class="org-keyword">if</span> (*top == n) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+  *top = *top + 1;
+  stack[*top] = el;
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">pop</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> *<span class="org-variable-name">top</span>) {
+  <span class="org-keyword">if</span> (*top &lt; 0) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+
+  <span class="org-type">int</span> <span class="org-variable-name">el</span> = stack[*top];
+  *top = *top - 1;
+  <span class="org-keyword">return</span> el;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> <span class="org-variable-name">top</span>) {
+  printf(<span class="org-string">"========================\n"</span>);
+  printf(<span class="org-string">"Stack: \n"</span>);
+  <span class="org-keyword">while</span>(top &gt;= 0) {
+    printf(<span class="org-string">"%d\n"</span>, stack[top]);
+    top--;
+  }
+  printf(<span class="org-string">"========================\n"</span>);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">top</span> = -1;
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 100;
+  <span class="org-type">int</span> <span class="org-variable-name">stack</span>[n];
+
+  <span class="org-keyword">while</span>(<span class="org-constant">true</span>) {
+    printf(<span class="org-string">"Enter choice: \n"</span>);
+    printf(<span class="org-string">"1. Push element in stack\n"</span>);
+    printf(<span class="org-string">"2. Pop element in stack\n"</span>);
+    printf(<span class="org-string">"3. Display stack\n"</span>);
+    printf(<span class="org-string">"4. Exit\n"</span>);
+
+    <span class="org-type">int</span> <span class="org-variable-name">option</span>;
+    scanf(<span class="org-string">"%d"</span>, &amp;option);
+
+    <span class="org-keyword">switch</span>(option) {
+      <span class="org-keyword">case</span> 1: {
+        <span class="org-type">int</span> <span class="org-variable-name">el</span>;
+        printf(<span class="org-string">"Enter element to push: "</span>);
+        scanf(<span class="org-string">"%d"</span>, &amp;el);
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = push(stack, &amp;top, n, el);
+
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to push element in stack (overflow)\n"</span>);
+        }
         <span class="org-keyword">break</span>;
-      <span class="org-keyword">case</span> <span class="org-string">'-'</span>:
-        cout &lt;&lt; <span class="org-string">"Difference is: "</span> &lt;&lt; a - b &lt;&lt; endl;
-        reset_choice(&amp;choice);
+      }
+
+      <span class="org-keyword">case</span> 2: {
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = pop(stack, &amp;top);
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to pop element from stack (underflow)\n"</span>);
+        }
         <span class="org-keyword">break</span>;
-      <span class="org-keyword">case</span> <span class="org-string">'*'</span>:
-        cout &lt;&lt; <span class="org-string">"Product is: "</span> &lt;&lt; a * b &lt;&lt; endl;
-        reset_choice(&amp;choice);
+      }
+
+      <span class="org-keyword">case</span> 3:
+        display(stack, top);
         <span class="org-keyword">break</span>;
-      <span class="org-keyword">case</span> <span class="org-string">'/'</span>:
-        cout &lt;&lt; <span class="org-string">"Quotient is: "</span> &lt;&lt; a / b &lt;&lt; endl;
-        cout &lt;&lt; <span class="org-string">"Remainder is: "</span> &lt;&lt; a % b &lt;&lt; endl;
-        reset_choice(&amp;choice);
+
+      <span class="org-keyword">case</span> 4:
+        exit(0);
         <span class="org-keyword">break</span>;
+
       <span class="org-keyword">default</span>:
-        cout &lt;&lt; <span class="org-string">"Invalid operation."</span> &lt;&lt; endl &lt;&lt; endl;
-        reset_choice(&amp;choice);
+        exit(0);
+        <span class="org-keyword">break</span>;
     }
-  } <span class="org-keyword">while</span> (choice == <span class="org-string">'y'</span> || choice == <span class="org-string">'Y'</span>);
-}
-
-<span class="org-type">void</span> <span class="org-function-name">print_prompt</span>() {
-  cout &lt;&lt; <span class="org-string">"Enter your choice of operation: "</span> &lt;&lt; endl;
-  cout &lt;&lt; <span class="org-string">"+: Addition"</span> &lt;&lt; endl;
-  cout &lt;&lt; <span class="org-string">"-: Subtraction"</span> &lt;&lt; endl;
-  cout &lt;&lt; <span class="org-string">"*: Multiplication"</span> &lt;&lt; endl;
-  cout &lt;&lt; <span class="org-string">"/: Division"</span> &lt;&lt; endl;
-
-  cout &lt;&lt; <span class="org-string">"Choice (+ / - / * / /): "</span>;
-}
-
-<span class="org-type">void</span> <span class="org-function-name">reset_choice</span>(<span class="org-type">char</span> *<span class="org-variable-name">choice</span>) {
-  cout &lt;&lt; <span class="org-string">"Do you want to perform more operations? (y/n): "</span>;
-  cin &gt;&gt; *choice;
+  }
 }
 </pre>
 </div>
 
 
-<div id="orgc84e6be" class="figure">
-<p><img src="./calc_output.png" alt="calc_output.png" />
+<div id="orga41193a" class="figure">
+<p><img src="./stack_using_pointers.png" alt="stack_using_pointers.png" />
 </p>
-<p><span class="figure-number">Figure 2: </span>Output</p>
-</div>
-
-
-<p>
-(practical 4) <b>Aim</b>: Write a program to create a basic calculator without using
-switch statements.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
-
-<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
-
-<span class="org-type">int</span> <span class="org-function-name">main</span>() {
-  <span class="org-type">char</span> <span class="org-variable-name">choice</span>;
-  <span class="org-keyword">do</span> {
-    print_prompt();
-    cin &gt;&gt; choice;
-    <span class="org-type">int</span> <span class="org-variable-name">a</span>,<span class="org-variable-name">b</span>;
-    cout &lt;&lt; <span class="org-string">"Enter two numbers for "</span> &lt;&lt; choice &lt;&lt; <span class="org-string">" operation: "</span>;
-    cin &gt;&gt; a &gt;&gt; b;
-
-    <span class="org-keyword">if</span> (choice == <span class="org-string">'+'</span>) {
-        cout &lt;&lt; <span class="org-string">"Sum is: "</span> &lt;&lt; a + b &lt;&lt; endl;
-        reset_choice(&amp;choice);
-    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (choice == <span class="org-string">'-'</span>) {
-        cout &lt;&lt; <span class="org-string">"Difference is: "</span> &lt;&lt; a - b &lt;&lt; endl;
-        reset_choice(&amp;choice);
-    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (choice == <span class="org-string">'*'</span>) {
-        cout &lt;&lt; <span class="org-string">"Product is: "</span> &lt;&lt; a * b &lt;&lt; endl;
-        reset_choice(&amp;choice);
-    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (choice == <span class="org-string">'/'</span>) {
-        cout &lt;&lt; <span class="org-string">"Quotient is: "</span> &lt;&lt; a / b &lt;&lt; endl;
-        cout &lt;&lt; <span class="org-string">"Remainder is: "</span> &lt;&lt; a % b &lt;&lt; endl;
-        reset_choice(&amp;choice);
-    } <span class="org-keyword">else</span> {
-        cout &lt;&lt; <span class="org-string">"Invalid operation."</span> &lt;&lt; endl &lt;&lt; endl;
-        reset_choice(&amp;choice);
-    }
-  } <span class="org-keyword">while</span> (choice == <span class="org-string">'y'</span> || choice == <span class="org-string">'Y'</span>);
-}
-</pre>
-</div>
+</div></li>
+</ol>
 </div>
 </body>
 </html>

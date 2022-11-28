@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-29 Tue 01:05 -->
+<!-- 2022-11-06 Sun 20:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Index</title>
+<title>&lrm;</title>
 <meta name="author" content="siddhant" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -196,79 +196,134 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Index</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgccf49d7">1. C</a></li>
-<li><a href="#orgd1c2493">2. D</a></li>
-<li><a href="#org647ecd2">3. O</a></li>
-<li><a href="#org426db20">4. P</a></li>
+<ol class="org-ol">
+<li><p>
+<b>Aim</b>: Insert an element at position <code>n</code> in an array.
+</p>
+
+<p>
+To insert an element at position <code>n</code>:
+</p>
+
+<ul class="org-ul">
+<li>We move each element one index after its current position. Iterating from last to n (inclusive) and moving i<sub>th</sub> to (i+1)<sub>th</sub> position is one way to do it.</li>
+
+<li>we simply put a desired value (could be a user input) at index <code>n</code>.</li>
 </ul>
-</div>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">insert</span>(<span class="org-type">int</span>* <span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> <span class="org-variable-name">elem</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = size - 1; i &gt;= pos - 1; --i) {
+        arr[i + 1] = arr[i];
+    }
+
+    arr[pos - 1] = elem;
+    <span class="org-keyword">return</span> size + 1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[7] = {1,2,3,4,5};
+
+    <span class="org-type">int</span> <span class="org-variable-name">pos</span> = 3;
+    <span class="org-type">int</span> <span class="org-variable-name">elem</span> = 999;
+
+    n = insert(arr, n, pos, elem);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
 </div>
 
-<div id="outline-container-orgccf49d7" class="outline-2">
-<h2 id="orgccf49d7"><span class="section-number-2">1.</span> C</h2>
-<div class="outline-text-2" id="text-1">
+<pre class="example">
+1 2 999 3 4 5
+</pre>
+
+
 <ul class="org-ul">
-<li>CP
-<ul class="org-ul">
-<li><a href="cp/bits.html">Bit Manipulation</a></li>
-<li><a href="cp/cpp_quickstart.html">cpp quickstart</a></li>
-<li><a href="cp/cpp_stl.html">cpp STL (Standard Template Library)</a></li>
-</ul></li>
+<li>we iterate from postion <code>n</code> till the last and shift every element one index back from it's original position.</li>
+<li>The size of array (<code>n</code>) is decremented by 1 after the above operation.</li>
 </ul>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">pos</span> = 3;
+    <span class="org-type">int</span> <span class="org-variable-name">elem</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[7] = {1,2,3,4,5};
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = pos - 1; i &lt; n - 1; i++) {
+        arr[i] = arr[i+1];
+    }
+
+    n--;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
 </div>
+
+<pre class="example">
+1 2 4 5
+</pre></li>
+
+<li><p>
+<b>Aim</b>: Perform linear search for an element in an array.
+</p>
+
+<p>
+<b>Linear Search</b> is a simple search algorithm. We iterate over all the elements of an array to look for the target element.
+</p>
+
+<p>
+The below program prints the index of the found target or, exits with a failure message if no target element exists.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1,2,3,99,2389,21};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+    <span class="org-type">int</span> <span class="org-variable-name">target</span> = 99;
+
+    <span class="org-type">int</span> <span class="org-variable-name">found_index</span> = -1;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        <span class="org-keyword">if</span> (arr[i] == target) {
+        found_index = i;
+        }
+    }
+
+    <span class="org-keyword">if</span> (found_index &gt;= 0) {
+        printf(<span class="org-string">"Element %d found at index %d\n"</span>, arr[found_index], found_index);
+    } <span class="org-keyword">else</span> {
+        printf(<span class="org-string">"element not found"</span>);
+    }
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
 </div>
-<div id="outline-container-orgd1c2493" class="outline-2">
-<h2 id="orgd1c2493"><span class="section-number-2">2.</span> D</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li><a href="dsa/dsa_in_c.html">DSA in C</a>
-<ul class="org-ul">
-<li><a href="dsa/c_quickstart.html">C quickstart</a></li>
-<li><a href="dsa/prac1.html">practical 1</a></li>
-<li><a href="dsa/prac2.html">practical 2</a></li>
-<li><a href="dsa/prac3.html">practical 3</a></li>
-<li><a href="dsa/prac4.html">practical 4</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org647ecd2" class="outline-2">
-<h2 id="org647ecd2"><span class="section-number-2">3.</span> O</h2>
-<div class="outline-text-2" id="text-3">
-<ul class="org-ul">
-<li><a href="oop_cpp/oop_cpp.html">OOP in CPP</a>
-<ul class="org-ul">
-<li><a href="oop_cpp/prac1.html">prac1</a></li>
-<li><a href="oop_cpp/prac2.html">prac2</a></li>
-<li><a href="oop_cpp/prac3.html">prac3</a></li>
-<li><a href="oop_cpp/prac4.html">prac4</a></li>
-<li><a href="oop_cpp/prac5.html">prac5</a></li>
-<li><a href="oop_cpp/prac6.html">prac6</a></li>
-<li><a href="oop_cpp/prac7.html">prac7</a></li>
-<li><a href="oop_cpp/prac8.html">prac8</a></li>
-<li><a href="oop_cpp/practicals.html">practicals</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org426db20" class="outline-2">
-<h2 id="org426db20"><span class="section-number-2">4.</span> P</h2>
-<div class="outline-text-2" id="text-4">
-<ul class="org-ul">
-<li><a href="dsa/ppt.html">ppt</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-11-29 Tue 01:05</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+
+<pre class="example">
+Element 99 found at index 3
+</pre></li>
+</ol>
 </div>
 </body>
 </html>

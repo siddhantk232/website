@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-05 Mon 23:45 -->
+<!-- 2022-11-06 Sun 20:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CPP (for CP)</title>
-<meta name="author" content="Siddhant Kumar" />
+<meta name="author" content="siddhant" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,23 +201,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge51863d">1. CPP (for CP)</a></li>
-<li><a href="#orgd02d4e9">2. Tips</a></li>
-<li><a href="#org9351a0c">3. Basic data types</a>
+<li><a href="#org26af743">1. CPP (for CP)</a></li>
+<li><a href="#orga75f3b2">2. Tips</a></li>
+<li><a href="#orgcfbf6f8">3. Basic data types</a>
 <ul>
-<li><a href="#orga2d57ec">3.1. Ranges (rough estimation)</a></li>
-<li><a href="#org79958eb">3.2. Calculation precedence (increasing -&gt; decreasing)</a></li>
-<li><a href="#orgcedf664">3.3. Operator precedence and associativity</a></li>
+<li><a href="#org836fb7b">3.1. Ranges (rough estimation)</a></li>
+<li><a href="#org72567e0">3.2. Calculation precedence (increasing -&gt; decreasing)</a></li>
+<li><a href="#org3c196f7">3.3. Operator precedence and associativity</a></li>
 </ul>
 </li>
-<li><a href="#org5f3e4cf">4. CPP References</a></li>
-<li><a href="#org5942f58">5. Short long long double</a></li>
+<li><a href="#org03a1a98">4. CPP References</a></li>
+<li><a href="#orgbcce09a">5. Short long long double</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge51863d" class="outline-2">
-<h2 id="orge51863d"><span class="section-number-2">1.</span> CPP (for CP)</h2>
+<div id="outline-container-org26af743" class="outline-2">
+<h2 id="org26af743"><span class="section-number-2">1.</span> CPP (for CP)</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Basic syntax and prior C knowledge is assumed</li>
@@ -225,8 +225,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgd02d4e9" class="outline-2">
-<h2 id="orgd02d4e9"><span class="section-number-2">2.</span> Tips</h2>
+<div id="outline-container-orga75f3b2" class="outline-2">
+<h2 id="orga75f3b2"><span class="section-number-2">2.</span> Tips</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 include <code>bits/stdc++.h</code> can save time including specific header files.
@@ -234,8 +234,8 @@ include <code>bits/stdc++.h</code> can save time including specific header files
 </div>
 </div>
 
-<div id="outline-container-org9351a0c" class="outline-2">
-<h2 id="org9351a0c"><span class="section-number-2">3.</span> Basic data types</h2>
+<div id="outline-container-orgcfbf6f8" class="outline-2">
+<h2 id="orgcfbf6f8"><span class="section-number-2">3.</span> Basic data types</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>data types (int, char, float, double, bool)</li>
@@ -244,16 +244,16 @@ include <code>bits/stdc++.h</code> can save time including specific header files
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span>;
-    <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">b</span>;
-    <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">c</span>;
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>a<span style="color: #cc241d;">)</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>b<span style="color: #cc241d;">)</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>c<span style="color: #cc241d;">)</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
-<span style="color: #fe8019;">}</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">a</span>;
+    <span class="org-type">long</span> <span class="org-type">int</span> <span class="org-variable-name">b</span>;
+    <span class="org-type">long</span> <span class="org-type">long</span> <span class="org-type">int</span> <span class="org-variable-name">c</span>;
+    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-keyword">sizeof</span>(a) &lt;&lt; <span class="org-constant">std</span>::endl;
+    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-keyword">sizeof</span>(b) &lt;&lt; <span class="org-constant">std</span>::endl;
+    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-keyword">sizeof</span>(c) &lt;&lt; <span class="org-constant">std</span>::endl;
+}
 </pre>
 </div>
 
@@ -267,37 +267,37 @@ concat (+), comparison (==) and, <code>size()</code> etc.
 <li>Use arrays for storing collection of items of same data type.
 <ul class="org-ul">
 <li>Array size is limited.</li>
-<li>For CP, local array size shouldn&rsquo;t be more than 10<sup>5</sup> ~int arr[1e5].</li>
+<li>For CP, local array size shouldn't be more than 10<sup>5</sup> ~int arr[1e5].</li>
 </ul></li>
 </ul>
 </div>
 
-<div id="outline-container-orga2d57ec" class="outline-3">
-<h3 id="orga2d57ec"><span class="section-number-3">3.1.</span> Ranges (rough estimation)</h3>
+<div id="outline-container-org836fb7b" class="outline-3">
+<h3 id="org836fb7b"><span class="section-number-3">3.1.</span> Ranges (rough estimation)</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>-10<sup>9</sup> &lt; int &lt; 10<sup>9</sup></li>
 <li>-10<sup>12</sup> &lt; long int &lt; 10<sup>12</sup></li>
 <li>-10<sup>18</sup> &lt; long long int &lt; 10<sup>18</sup></li>
 <li>header file <code>climits</code> has accurate declared limits</li>
-<li>sizeof double is higher than long int but it&rsquo;s not used where precise
+<li>sizeof double is higher than long int but it's not used where precise
 calculation is required.</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
-<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">climits</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;climits&gt;</span>
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #d3869b;">INT_MIN</span> &lt;&lt; <span style="color: #b8bb26;">" &lt; int &lt; "</span> &lt;&lt; <span style="color: #d3869b;">INT_MAX</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
-<span style="color: #fe8019;">}</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-constant">std</span>::cout &lt;&lt; INT_MIN &lt;&lt; <span class="org-string">" &lt; int &lt; "</span> &lt;&lt; INT_MAX &lt;&lt; <span class="org-constant">std</span>::endl;
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org79958eb" class="outline-3">
-<h3 id="org79958eb"><span class="section-number-3">3.2.</span> Calculation precedence (increasing -&gt; decreasing)</h3>
+<div id="outline-container-org72567e0" class="outline-3">
+<h3 id="org72567e0"><span class="section-number-3">3.2.</span> Calculation precedence (increasing -&gt; decreasing)</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Types lower in this list will be converted to higher data types in expressions
@@ -314,13 +314,13 @@ and outputs.
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #d3869b; font-weight: bold;">7</span> / <span style="color: #d3869b; font-weight: bold;">2</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl; <span style="color: #928374;">// </span><span style="color: #928374;">outputs int</span>
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #d3869b; font-weight: bold;">7</span> / <span style="color: #d3869b; font-weight: bold;">2.0</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl; <span style="color: #928374;">// </span><span style="color: #928374;">outputs float</span>
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; <span style="color: #b8bb26;">'a'</span> + <span style="color: #d3869b; font-weight: bold;">1</span> &lt;&lt; <span style="color: #d3869b;">std</span>::endl; <span style="color: #928374;">// </span><span style="color: #928374;">outputs int (ascii values)</span>
-<span style="color: #fe8019;">}</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-constant">std</span>::cout &lt;&lt; 7 / 2 &lt;&lt; <span class="org-constant">std</span>::endl; <span class="org-comment-delimiter">// </span><span class="org-comment">outputs int</span>
+    <span class="org-constant">std</span>::cout &lt;&lt; 7 / 2.0 &lt;&lt; <span class="org-constant">std</span>::endl; <span class="org-comment-delimiter">// </span><span class="org-comment">outputs float</span>
+    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">'a'</span> + 1 &lt;&lt; <span class="org-constant">std</span>::endl; <span class="org-comment-delimiter">// </span><span class="org-comment">outputs int (ascii values)</span>
+}
 </pre>
 </div>
 </div>
@@ -328,8 +328,8 @@ and outputs.
 
 
 
-<div id="outline-container-orgcedf664" class="outline-3">
-<h3 id="orgcedf664"><span class="section-number-3">3.3.</span> Operator precedence and associativity</h3>
+<div id="outline-container-org3c196f7" class="outline-3">
+<h3 id="org3c196f7"><span class="section-number-3">3.3.</span> Operator precedence and associativity</h3>
 <div class="outline-text-3" id="text-3-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -443,8 +443,8 @@ and outputs.
 </div>
 </div>
 
-<div id="outline-container-org5f3e4cf" class="outline-2">
-<h2 id="org5f3e4cf"><span class="section-number-2">4.</span> CPP References</h2>
+<div id="outline-container-org03a1a98" class="outline-2">
+<h2 id="org03a1a98"><span class="section-number-2">4.</span> CPP References</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 References can be used to ignore variable copying when calling functions. This
@@ -456,60 +456,61 @@ Example:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #928374;">// </span><span style="color: #928374;">swap takes in references a and b</span>
-<span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">swap</span><span style="color: #fe8019;">(</span><span style="color: #fabd2f;">int</span> &amp;<span style="color: #83a598;">a</span>, <span style="color: #fabd2f;">int</span> &amp;<span style="color: #83a598;">b</span><span style="color: #fe8019;">)</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">temp</span> = a;
+<span class="org-comment-delimiter">// </span><span class="org-comment">swap takes in references a and b</span>
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> &amp;<span class="org-variable-name">a</span>, <span class="org-type">int</span> &amp;<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = a;
     a = b;
     b = temp;
-<span style="color: #fe8019;">}</span>
+}
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">4</span>, <span style="color: #83a598;">b</span> = <span style="color: #d3869b; font-weight: bold;">3</span>;
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; a &lt;&lt; <span style="color: #b8bb26;">" "</span> &lt;&lt; b &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
-    <span style="color: #928374;">// </span><span style="color: #928374;">this utility function is already declared in &lt;algorithm&gt; header file</span>
-    swap<span style="color: #cc241d;">(</span>a,b<span style="color: #cc241d;">)</span>;
-    <span style="color: #d3869b;">std</span>::cout &lt;&lt; a &lt;&lt; <span style="color: #b8bb26;">" "</span> &lt;&lt; b &lt;&lt; <span style="color: #d3869b;">std</span>::endl;
-<span style="color: #fe8019;">}</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">a</span> = 4, <span class="org-variable-name">b</span> = 3;
+    <span class="org-constant">std</span>::cout &lt;&lt; a &lt;&lt; <span class="org-string">" "</span> &lt;&lt; b &lt;&lt; <span class="org-constant">std</span>::endl;
+    <span class="org-comment-delimiter">// </span><span class="org-comment">this utility function is already declared in &lt;algorithm&gt; header file</span>
+    swap(a,b);
+    <span class="org-constant">std</span>::cout &lt;&lt; a &lt;&lt; <span class="org-string">" "</span> &lt;&lt; b &lt;&lt; <span class="org-constant">std</span>::endl;
+}
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org5942f58" class="outline-2">
-<h2 id="org5942f58"><span class="section-number-2">5.</span> Short long long double</h2>
+<div id="outline-container-orgbcce09a" class="outline-2">
+<h2 id="orgbcce09a"><span class="section-number-2">5.</span> Short long long double</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
-<span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">climits</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;climits&gt;</span>
 
-<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span> <span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">char</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">float</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">double</span><span style="color: #cc241d;">)</span> &lt;&lt; endl;
+<span class="org-type">int</span> <span class="org-function-name">main</span> () {
+    cout &lt;&lt; <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>) &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-keyword">sizeof</span>(<span class="org-type">char</span>) &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-keyword">sizeof</span>(<span class="org-type">float</span>) &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-keyword">sizeof</span>(<span class="org-type">double</span>) &lt;&lt; endl;
 
-    <span style="color: #fabd2f;">short</span> <span style="color: #83a598;">a</span> = <span style="color: #d3869b; font-weight: bold;">3</span>;
-    <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">b</span> = <span style="color: #d3869b; font-weight: bold;">69</span>;
-    <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">c</span> = <span style="color: #d3869b; font-weight: bold;">69</span>;
-    <span style="color: #fabd2f;">long</span> <span style="color: #fabd2f;">double</span> <span style="color: #83a598;">d</span> = <span style="color: #d3869b; font-weight: bold;">2.0</span>;
+    <span class="org-type">short</span> <span class="org-variable-name">a</span> = 3;
+    <span class="org-type">long</span> <span class="org-type">int</span> <span class="org-variable-name">b</span> = 69;
+    <span class="org-type">long</span> <span class="org-type">long</span> <span class="org-type">int</span> <span class="org-variable-name">c</span> = 69;
+    <span class="org-type">long</span> <span class="org-type">double</span> <span class="org-variable-name">d</span> = 2.0;
 
     cout &lt;&lt; a &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>a<span style="color: #cc241d;">)</span> &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>b<span style="color: #cc241d;">)</span> &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>c<span style="color: #cc241d;">)</span> &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #fb4934;">sizeof</span><span style="color: #cc241d;">(</span>d<span style="color: #cc241d;">)</span> &lt;&lt; endl;
-<span style="color: #fe8019;">}</span>
+    cout &lt;&lt; <span class="org-keyword">sizeof</span>(a) &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-keyword">sizeof</span>(b) &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-keyword">sizeof</span>(c) &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-keyword">sizeof</span>(d) &lt;&lt; endl;
+}
 </pre>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-09-05 Mon 23:45</p>
+<p class="author">Author: siddhant</p>
+<p class="date">Created: 2022-11-06 Sun 20:39</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

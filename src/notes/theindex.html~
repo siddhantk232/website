@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-09-05 Mon 23:45 -->
+<!-- 2022-11-06 Sun 20:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Index</title>
-<meta name="author" content="Siddhant Kumar" />
+<meta name="author" content="siddhant" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,51 +201,70 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5cafad9">1. C</a></li>
-<li><a href="#org0a85291">2. D</a></li>
-<li><a href="#org298ced3">3. O</a></li>
+<li><a href="#org7e73111">1. C</a></li>
+<li><a href="#org0730b97">2. D</a></li>
+<li><a href="#org6a423ec">3. O</a></li>
+<li><a href="#org5f2acf2">4. P</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5cafad9" class="outline-2">
-<h2 id="org5cafad9"><span class="section-number-2">1.</span> C</h2>
+<div id="outline-container-org7e73111" class="outline-2">
+<h2 id="org7e73111"><span class="section-number-2">1.</span> C</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>CP
 <ul class="org-ul">
+<li><a href="cp/bits.html">Bit Manipulation</a></li>
 <li><a href="cp/cpp_quickstart.html">cpp quickstart</a></li>
 <li><a href="cp/cpp_stl.html">cpp STL (Standard Template Library)</a></li>
 </ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0a85291" class="outline-2">
-<h2 id="org0a85291"><span class="section-number-2">2.</span> D</h2>
+<div id="outline-container-org0730b97" class="outline-2">
+<h2 id="org0730b97"><span class="section-number-2">2.</span> D</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><a href="dsa/dsa_in_c.html">DSA in C</a>
 <ul class="org-ul">
 <li><a href="dsa/c_quickstart.html">C quickstart</a></li>
+<li><a href="dsa/prac1.html">practical 1</a></li>
+<li><a href="dsa/prac2.html">practical 2</a></li>
+<li><a href="dsa/prac3.html">practical 3</a></li>
 </ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org298ced3" class="outline-2">
-<h2 id="org298ced3"><span class="section-number-2">3.</span> O</h2>
+<div id="outline-container-org6a423ec" class="outline-2">
+<h2 id="org6a423ec"><span class="section-number-2">3.</span> O</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><a href="oop_cpp/oop_cpp.html">OOP in CPP</a>
 <ul class="org-ul">
+<li><a href="oop_cpp/prac1.html">prac1</a></li>
+<li><a href="oop_cpp/prac2.html">prac2</a></li>
+<li><a href="oop_cpp/prac3.html">prac3</a></li>
+<li><a href="oop_cpp/prac4.html">prac4</a></li>
+<li><a href="oop_cpp/prac5.html">prac5</a></li>
 <li><a href="oop_cpp/practicals.html">practicals</a></li>
 </ul></li>
 </ul>
 </div>
 </div>
+<div id="outline-container-org5f2acf2" class="outline-2">
+<h2 id="org5f2acf2"><span class="section-number-2">4.</span> P</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="dsa/ppt.html">ppt</a></li>
+</ul>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-09-05 Mon 23:45</p>
+<p class="author">Author: siddhant</p>
+<p class="date">Created: 2022-11-06 Sun 20:39</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

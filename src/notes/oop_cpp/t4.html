@@ -196,165 +196,178 @@
 </head>
 <body>
 <div id="content" class="content">
-<p>
-(practical 15) <b>Aim</b>: WAP to demonstrate usage of a friend function.
-</p>
+<ol class="org-ol">
+<li></li>
+</ol>
 
 <div class="org-src-container">
 <pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;cmath&gt;</span>
+
 <span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span class="org-keyword">class</span> <span class="org-type">xyz</span> {
-  <span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-variable-name">b</span>;
+<span class="org-keyword">class</span> <span class="org-type">Polar</span> {
+  <span class="org-type">float</span> <span class="org-variable-name">radius</span>;
+  <span class="org-type">float</span> <span class="org-variable-name">angle</span>;
 
 <span class="org-keyword">public</span>:
-  <span class="org-function-name">xyz</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-type">int</span> <span class="org-variable-name">j</span>) : a(i), b(j) {}
-  <span class="org-type">void</span> <span class="org-function-name">display</span>() {
-    cout &lt;&lt; <span class="org-string">"a = "</span> &lt;&lt; a &lt;&lt; endl;
-    cout &lt;&lt; <span class="org-string">"b = "</span> &lt;&lt; b &lt;&lt; endl;
+  <span class="org-function-name">Polar</span>(<span class="org-type">float</span> <span class="org-variable-name">radius</span>, <span class="org-type">float</span> <span class="org-variable-name">angle</span>) : radius(radius), angle(angle) {}
+
+  <span class="org-type">Polar</span> <span class="org-keyword">operator</span> <span class="org-function-name">+</span> (<span class="org-type">Polar</span> <span class="org-variable-name">rhs</span>) {
+    <span class="org-type">float</span> <span class="org-variable-name">x1</span> = radius * cos(angle);
+    <span class="org-type">float</span> <span class="org-variable-name">y1</span> = radius * sin(angle);
+    <span class="org-type">float</span> <span class="org-variable-name">x2</span> = rhs.radius * cos(rhs.angle);
+    <span class="org-type">float</span> <span class="org-variable-name">y2</span> = rhs.radius * sin(rhs.angle);
+
+    <span class="org-type">float</span> <span class="org-variable-name">x</span> = x1 + x2;
+    <span class="org-type">float</span> <span class="org-variable-name">y</span> = y1 + y2;
+
+    <span class="org-type">float</span> <span class="org-variable-name">r</span> = sqrt(<span class="org-type">x</span>*<span class="org-variable-name">x</span> + y * y);
+    <span class="org-type">float</span> <span class="org-variable-name">a</span> = atan(y / x);
+    <span class="org-keyword">return</span> Polar(r, a);
   }
-  <span class="org-keyword">friend</span> <span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">xyz</span>);
+
+  <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    cout &lt;&lt; radius &lt;&lt; <span class="org-string">" radius, "</span> &lt;&lt; angle &lt;&lt; <span class="org-string">" degrees"</span> &lt;&lt; endl;
+  }
 };
 
-<span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">xyz</span> <span class="org-variable-name">o</span>) { <span class="org-keyword">return</span> o.a + o.b; }
-
 <span class="org-type">int</span> <span class="org-function-name">main</span>() {
-  <span class="org-type">xyz</span> <span class="org-variable-name">x</span>(10, 20);
-  x.display();
-  cout &lt;&lt; <span class="org-string">"sum =  "</span> &lt;&lt; sum(x) &lt;&lt; endl;
-  <span class="org-keyword">return</span> 0;
+  <span class="org-type">Polar</span> <span class="org-variable-name">p1</span>(1.0, 45.0), <span class="org-variable-name">p2</span>(1.0, 45.0);
+
+  <span class="org-type">Polar</span> <span class="org-variable-name">res</span> = p1 + p2;
+
+  res.show();
 }
 </pre>
 </div>
 
 <pre class="example">
-a = 10
-b = 20
-sum =  30
+2 radius, 1.0177 degrees
 </pre>
 
 
-<p>
-(practical 16) <b>Aim</b>: WAP to demonstrate usage of a friend class.
-</p>
+<ol class="org-ol">
+<li></li>
+</ol>
 
 <div class="org-src-container">
 <pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
 <span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span class="org-keyword">class</span> <span class="org-type">Min</span>;
+<span class="org-keyword">class</span> <span class="org-type">Number</span> {
+  <span class="org-type">double</span> <span class="org-variable-name">data</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Number</span>(<span class="org-type">double</span> <span class="org-variable-name">data</span>) : data(data) {}
 
-<span class="org-keyword">class</span> <span class="org-type">TwoValues</span> {
-  <span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-variable-name">b</span>;
+  <span class="org-type">Number</span> <span class="org-keyword">operator</span> <span class="org-function-name">+</span> (<span class="org-type">Number</span> <span class="org-variable-name">rhs</span>) {
+    <span class="org-keyword">return</span> Number(data + rhs.data);
+  }
+  <span class="org-type">Number</span> <span class="org-keyword">operator</span> <span class="org-function-name">-</span> (<span class="org-type">Number</span> <span class="org-variable-name">rhs</span>) {
+    <span class="org-keyword">return</span> Number(data - rhs.data);
+  }
+  <span class="org-type">Number</span> <span class="org-keyword">operator</span> <span class="org-function-name">*</span> (<span class="org-type">Number</span> <span class="org-variable-name">rhs</span>) {
+    <span class="org-keyword">return</span> Number(<span class="org-type">data</span> * <span class="org-variable-name">rhs</span>.data);
+  }
+  <span class="org-type">Number</span> <span class="org-keyword">operator</span> <span class="org-function-name">/</span> (<span class="org-type">Number</span> <span class="org-variable-name">rhs</span>) {
+    <span class="org-keyword">return</span> Number(data / rhs.data);
+  }
 
- <span class="org-keyword">public</span>:
-  <span class="org-function-name">TwoValues</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-type">int</span> <span class="org-variable-name">j</span>) : a(i), b(j) {}
-  <span class="org-keyword">friend</span> <span class="org-keyword">class</span> <span class="org-type">Min</span>;
+  <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    cout &lt;&lt; data &lt;&lt; endl;
+  }
 };
 
-<span class="org-keyword">class</span> <span class="org-type">Min</span> {
- <span class="org-keyword">public</span>:
-  <span class="org-type">int</span> <span class="org-function-name">min</span>(<span class="org-type">TwoValues</span> <span class="org-variable-name">t</span>) { <span class="org-keyword">return</span> t.a &lt; t.b ? t.a : t.b; }
-};
 
 <span class="org-type">int</span> <span class="org-function-name">main</span>() {
-  <span class="org-type">TwoValues</span> <span class="org-variable-name">t</span>(10, 5);
-  <span class="org-type">Min</span> <span class="org-variable-name">m</span>;
-  cout &lt;&lt; <span class="org-string">"Minimum value is = "</span> &lt;&lt; m.min(t) &lt;&lt; endl;
+  <span class="org-type">Number</span> <span class="org-variable-name">n1</span>(20.0), <span class="org-variable-name">n2</span>(10.0);
+  <span class="org-type">Number</span> <span class="org-variable-name">x</span> = n1 + n2;
+  x.show();
+  <span class="org-type">Number</span> <span class="org-variable-name">y</span> = n1 - n2;
+  y.show();
+  <span class="org-type">Number</span> <span class="org-variable-name">z</span> = n1 * n2;
+  z.show();
+  <span class="org-type">Number</span> <span class="org-variable-name">a</span> = n1 / n2;
+  a.show();
 }
 </pre>
 </div>
 
-<pre class="example">
-Minimum value is = 5
-</pre>
-
-
-<p>
-(practical 17) <b>Aim</b>: WAP to give access of a class to a method defined in another class.
-</p>
+<ol class="org-ol">
+<li></li>
+</ol>
 
 <div class="org-src-container">
 <pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
-<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
-
-<span class="org-keyword">class</span> <span class="org-type">beta</span>;
-
-<span class="org-keyword">class</span> <span class="org-type">alpha</span> {
-  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+<span class="org-keyword">class</span> <span class="org-type">Miles</span> {
+  <span class="org-type">double</span> <span class="org-variable-name">miles</span>;
 
 <span class="org-keyword">public</span>:
-  <span class="org-function-name">alpha</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) : data(i) {}
-  <span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">beta</span>);  <span class="org-comment-delimiter">// </span><span class="org-comment">a.sum()</span>
+  <span class="org-function-name">Miles</span>(<span class="org-type">double</span> <span class="org-variable-name">miles</span>) : miles(miles) {}
+  <span class="org-function-name">Miles</span>(<span class="org-type">Kilometers</span> <span class="org-variable-name">k</span>) {
+    miles = k.kms() / 1.609344;
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    cout &lt;&lt; miles &lt;&lt; <span class="org-string">" miles."</span> &lt;&lt; endl;
+  }
+
+  <span class="org-type">double</span> <span class="org-function-name">miles</span>() {
+    <span class="org-keyword">return</span> miles;
+  }
+
+  <span class="org-keyword">operator</span> <span class="org-type">Kilometers</span>() {
+    <span class="org-keyword">return</span> Kilometers(<span class="org-type">miles</span> * 1.609344);
+  }
 };
 
-<span class="org-keyword">class</span> <span class="org-type">beta</span> {
-  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+<span class="org-keyword">class</span> <span class="org-type">Kilometers</span> {
+  <span class="org-type">double</span> <span class="org-variable-name">kms</span>;
 
 <span class="org-keyword">public</span>:
-  <span class="org-function-name">beta</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) : data(i) {}
-  <span class="org-keyword">friend</span> <span class="org-type">int</span> <span class="org-constant">alpha</span>::<span class="org-function-name">sum</span>(<span class="org-type">beta</span>);
+  <span class="org-function-name">Kilometers</span>(<span class="org-type">double</span> <span class="org-variable-name">kms</span>) : kms(kms) {}
+  <span class="org-function-name">Kilometers</span>(<span class="org-type">Miles</span> <span class="org-variable-name">m</span>) {
+    kms = m.miles() * 1.609344;
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    cout &lt;&lt; kms &lt;&lt; <span class="org-string">" kms."</span> &lt;&lt; endl;
+  }
+
+  <span class="org-type">double</span> <span class="org-function-name">kms</span>() {
+    <span class="org-keyword">return</span> kms;
+  }
+
+  <span class="org-keyword">operator</span> <span class="org-type">Miles</span>() {
+    <span class="org-keyword">return</span> Miles(kms / 1.609344);
+  }
 };
 
-<span class="org-type">int</span> <span class="org-constant">alpha</span>::<span class="org-function-name">sum</span>(<span class="org-type">beta</span> <span class="org-variable-name">b</span>) { <span class="org-keyword">return</span> data + b.data; }
 
 <span class="org-type">int</span> <span class="org-function-name">main</span>() {
-  <span class="org-type">alpha</span> <span class="org-variable-name">a</span>(10);
-  <span class="org-type">beta</span> <span class="org-variable-name">b</span>(20);
-  cout &lt;&lt; <span class="org-string">"sum="</span> &lt;&lt; a.sum(b) &lt;&lt; endl;
-  <span class="org-keyword">return</span> 0;
+  <span class="org-type">Miles</span> <span class="org-variable-name">m</span>(1000);
+  <span class="org-type">Kilometers</span> <span class="org-variable-name">k</span>(10);
+
+  <span class="org-type">Miles</span> <span class="org-variable-name">x</span> = k;
+  <span class="org-type">Kilometers</span> <span class="org-variable-name">y</span> = m;
+
+  <span class="org-type">Miles</span> <span class="org-variable-name">a</span> = Kilometers(20);
+  <span class="org-type">Kilometers</span> <span class="org-variable-name">b</span> = Miles(1000);
+
+  x.show();
+  y.show();
+  a.show();
+  b.show();
 }
 </pre>
 </div>
-
-<pre class="example">
-sum=30
-</pre>
-
-
-<p>
-(practical 18) <b>Aim</b>: WAP for a friend function that take two different class as parameters.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
-
-<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
-
-<span class="org-keyword">class</span> <span class="org-type">beta</span>;
-
-<span class="org-keyword">class</span> <span class="org-type">alpha</span> {
-  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
-
-<span class="org-keyword">public</span>:
-  <span class="org-function-name">alpha</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) : data(i) {}
-  <span class="org-keyword">friend</span> <span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">alpha</span> <span class="org-variable-name">a</span>, <span class="org-type">beta</span> <span class="org-variable-name">b</span>);
-};
-
-<span class="org-keyword">class</span> <span class="org-type">beta</span> {
-  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
-
-<span class="org-keyword">public</span>:
-  <span class="org-function-name">beta</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) : data(i) {}
-  <span class="org-keyword">friend</span> <span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">alpha</span> <span class="org-variable-name">a</span>, <span class="org-type">beta</span> <span class="org-variable-name">b</span>);
-};
-
-<span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">alpha</span> <span class="org-variable-name">a</span>, <span class="org-type">beta</span> <span class="org-variable-name">b</span>) { <span class="org-keyword">return</span> a.data + b.data; }
-
-<span class="org-type">int</span> <span class="org-function-name">main</span>() {
-  <span class="org-type">alpha</span> <span class="org-variable-name">a</span>(10);
-  <span class="org-type">beta</span> <span class="org-variable-name">b</span>(20);
-  cout &lt;&lt; <span class="org-string">"Sum = "</span> &lt;&lt; sum(a, b) &lt;&lt; endl;
-  <span class="org-keyword">return</span> 0;
-}
-</pre>
 </div>
-
-<pre class="example">
-Sum = 30
-</pre>
+<div id="postamble" class="status">
+<p class="author">Author: siddhant</p>
+<p class="date">Created: 2022-11-29 Tue 01:05</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

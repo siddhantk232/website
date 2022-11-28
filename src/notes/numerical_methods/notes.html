@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-20 Thu 02:49 -->
+<!-- 2022-11-29 Tue 01:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
-<meta name="author" content="Siddhant Kumar" />
+<meta name="author" content="siddhant" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -196,10 +196,289 @@
 </head>
 <body>
 <div id="content" class="content">
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;iomanip&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-variable-name">j</span>, <span class="org-variable-name">k</span>, <span class="org-variable-name">n</span>;
+    <span class="org-type">float</span> <span class="org-variable-name">a</span>[10][10], <span class="org-variable-name">x</span>[10];
+    cout &lt;&lt; <span class="org-string">"Enter order of equation: "</span>;
+    cin &gt;&gt; n;
+
+    cout &lt;&lt; <span class="org-string">"Enter coefficients of equation row-wise\n"</span>;
+    <span class="org-keyword">for</span> (i = 1; i &lt;= n; ++i) {
+        <span class="org-keyword">for</span> (j = 1; j &lt;= n + 1; ++j) {
+            cin &gt;&gt; a[i][j];
+        }
+    }
+
+    <span class="org-keyword">for</span> (i = 1; i &lt;=n; ++i) {
+        <span class="org-keyword">for</span> (j = 1; j &lt;= n; ++j) {
+            <span class="org-keyword">if</span> (j &gt; i) {
+                <span class="org-type">float</span> <span class="org-variable-name">s</span> = a[j][i]/a[i][i];
+                <span class="org-keyword">for</span> (k = i; k &lt;= n + 1; ++k) {
+                    a[j][k] = a[j][k] - s * a[i][k];
+                }
+            }
+        }
+    }
+
+    setprecision(10);
+    x[n] = a[n][n + 1] / a[n][n];
+
+    <span class="org-keyword">for</span> (i = n - 1; i &gt;= 1; i--) {
+        <span class="org-type">float</span> <span class="org-variable-name">sum</span> = 0.0;
+        <span class="org-keyword">for</span> (j = i + 1; j &lt;= n; j++) {
+            sum = sum + a[i][j] * x[j];
+        }
+        x[i] = (a[i][n+1] - sum) / a[i][i];
+    }
+
+    cout &lt;&lt; <span class="org-string">"\n The Solutions are: \n\n"</span>;
+    <span class="org-keyword">for</span> (i = 1; i &lt;= n; ++i) {
+        cout &lt;&lt; <span class="org-string">"x"</span> &lt;&lt; i &lt;&lt; <span class="org-string">" = "</span> &lt;&lt; x[i] &lt;&lt; <span class="org-string">"\n"</span>;
+    }
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
 </div>
-<div id="postamble" class="status">
-<p class="author">Author: Siddhant Kumar</p>
-<p class="date">Created: 2022-10-20 Thu 02:49</p>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter order of equation: 2
+Enter coefficients of equation row-wise
+1 3
+4 5
+1 3
+
+ The Solutions are:
+
+x1 = 0.357143
+x2 = 1.21429
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;iomanip&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-variable-name">j</span>, <span class="org-variable-name">k</span>, <span class="org-variable-name">n</span>;
+    <span class="org-type">float</span> <span class="org-variable-name">a</span>[10][10], <span class="org-variable-name">x</span>[10];
+    cout &lt;&lt; <span class="org-string">"Enter order of equation: "</span>;
+    cin &gt;&gt; n;
+
+    cout &lt;&lt; <span class="org-string">"Enter coefficients of equation row-wise\n"</span>;
+    <span class="org-keyword">for</span> (i = 1; i &lt;= n; ++i) {
+        <span class="org-keyword">for</span> (j = 1; j &lt;= n + 1; ++j) {
+            cin &gt;&gt; a[i][j];
+        }
+    }
+
+    <span class="org-keyword">for</span> (i = 1; i &lt;=n; ++i) {
+        <span class="org-keyword">for</span> (j = 1; j &lt;= n; ++j) {
+            <span class="org-keyword">if</span> (j &gt; i) {
+                <span class="org-type">float</span> <span class="org-variable-name">s</span> = a[j][i]/a[i][i];
+                <span class="org-keyword">for</span> (k = i; k &lt;= n + 1; ++k) {
+                    a[j][k] = a[j][k] - s * a[i][k];
+                }
+            }
+        }
+    }
+
+    setprecision(10);
+    x[n] = a[n][n + 1] / a[n][n];
+
+    <span class="org-keyword">for</span> (i = n - 1; i &gt;= 1; i--) {
+        <span class="org-type">float</span> <span class="org-variable-name">sum</span> = 0.0;
+        <span class="org-keyword">for</span> (j = i + 1; j &lt;= n; j++) {
+            sum = sum + a[i][j] * x[j];
+        }
+        x[i] = (a[i][n+1] - sum) / a[i][i];
+    }
+
+    cout &lt;&lt; <span class="org-string">"\n The Solutions are: \n\n"</span>;
+    <span class="org-keyword">for</span> (i = 1; i &lt;= n; ++i) {
+        cout &lt;&lt; <span class="org-string">"x"</span> &lt;&lt; i &lt;&lt; <span class="org-string">" = "</span> &lt;&lt; x[i] &lt;&lt; <span class="org-string">"\n"</span>;
+    }
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter order of equation: 2
+Enter coefficients of equation row-wise
+3 5
+6 7
+3 5
+
+ The Solutions are:
+
+x1 = 0.269231
+x2 = 1.03846
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;math.h&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">f</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>) {
+    <span class="org-keyword">return</span> 1 / (1 + x * x);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-variable-name">n</span>;
+    <span class="org-type">float</span> <span class="org-variable-name">x0</span>, <span class="org-variable-name">xn</span>, <span class="org-variable-name">h</span>, <span class="org-variable-name">sum</span>;
+    cout &lt;&lt; <span class="org-string">"Enter no of Intervals: "</span>;
+    cin &gt;&gt; n;
+    cout &lt;&lt; <span class="org-string">"Enter x0 &amp; xn: "</span>;
+    cin &gt;&gt; x0 &gt;&gt; xn;
+    h = (xn - x0) / n;
+    sum = f(x0) + f(xn) + 4 * f(x0+h);
+    <span class="org-keyword">for</span> (i = 3; i &lt;= n - 1; i += 2) {
+        sum += 4 * f(x0 + i * h) + 2 * f(x0 + (i - 1) * h);
+    }
+    cout &lt;&lt; <span class="org-string">"Integral value="</span> &lt;&lt; (h/3) * sum;
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter no of Intervals: 1
+Enter x0 &amp; xn: 1 3
+Integral value=0.666667
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;math.h&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">f</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>) {
+    <span class="org-keyword">return</span> 1 / (1 + x * x);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-variable-name">n</span>;
+    <span class="org-type">float</span> <span class="org-variable-name">x0</span>, <span class="org-variable-name">xn</span>, <span class="org-variable-name">h</span>, <span class="org-variable-name">sum</span>;
+    cout &lt;&lt; <span class="org-string">"Enter no of Intervals: "</span>;
+    cin &gt;&gt; n;
+    cout &lt;&lt; <span class="org-string">"Enter x0 &amp; xn: "</span>;
+    cin &gt;&gt; x0 &gt;&gt; xn;
+    h = (xn - x0) / n;
+    sum = f(x0) + f(xn) + 4 * f(x0+h);
+    <span class="org-keyword">for</span> (i = 3; i &lt;= n - 1; i += 2) {
+        sum += 4 * f(x0 + i * h) + 2 * f(x0 + (i - 1) * h);
+    }
+    cout &lt;&lt; <span class="org-string">"Integral value="</span> &lt;&lt; (h/3) * sum;
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter no of Intervals: 1
+Enter x0 &amp; xn: 3 5
+Integral value=0.194872
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;math.h&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">f</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>) {
+    <span class="org-keyword">return</span> 1 / (1 + x * x);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-variable-name">n</span>;
+    <span class="org-type">float</span> <span class="org-variable-name">x</span>[10], <span class="org-variable-name">y</span>[10], <span class="org-variable-name">h</span>, <span class="org-variable-name">sum</span>;
+    cout &lt;&lt; <span class="org-string">"Enter no. of values in table: "</span>;
+    cin &gt;&gt; n;
+    cout &lt;&lt; <span class="org-string">"Enter x &amp; corresponding y: \n"</span>;
+    <span class="org-keyword">for</span> (i = 0; i &lt; n - 1; ++i) {
+        cin &gt;&gt; x[i] &gt;&gt; y[i];
+    }
+    h = x[1] - x[0];
+    sum = y[0] + y[n-1];
+    <span class="org-keyword">for</span> (i = 1; i &lt; n - 1; ++i) {
+        <span class="org-keyword">if</span> (i % 3 == 0) {
+            sum += 2 * y[i];
+        } <span class="org-keyword">else</span> {
+            sum += 3 * y[i];
+        }
+    }
+
+    cout &lt;&lt; <span class="org-string">"Integral value="</span> &lt;&lt; (3 * (h/8)) * sum;
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter no. of values in table: 3
+Enter x &amp; corresponding y:
+1 0 2 2 3 4
+Integral value=2.25
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;math.h&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">f</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>) {
+    <span class="org-keyword">return</span> 1 / (1 + x * x);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-variable-name">n</span>;
+    <span class="org-type">float</span> <span class="org-variable-name">x</span>[10], <span class="org-variable-name">y</span>[10], <span class="org-variable-name">h</span>, <span class="org-variable-name">sum</span>;
+    cout &lt;&lt; <span class="org-string">"Enter no. of values in table: "</span>;
+    cin &gt;&gt; n;
+    cout &lt;&lt; <span class="org-string">"Enter x &amp; corresponding y: \n"</span>;
+    <span class="org-keyword">for</span> (i = 0; i &lt; n - 1; ++i) {
+        cin &gt;&gt; x[i] &gt;&gt; y[i];
+    }
+    h = x[1] - x[0];
+    sum = y[0] + y[n-1];
+    <span class="org-keyword">for</span> (i = 1; i &lt; n - 1; ++i) {
+        <span class="org-keyword">if</span> (i % 3 == 0) {
+            sum += 2 * y[i];
+        } <span class="org-keyword">else</span> {
+            sum += 3 * y[i];
+        }
+    }
+
+    cout &lt;&lt; <span class="org-string">"Integral value="</span> &lt;&lt; (3 * (h/8)) * sum;
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter no. of values in table: 3
+Enter x &amp; corresponding y:
+1 4 2 6 3 8
+Integral value=8.25
+</pre>
+</div>
 </div>
 </body>
 </html>

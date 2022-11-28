@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-20 Thu 02:49 -->
+<!-- 2022-11-29 Tue 01:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
-<meta name="author" content="Siddhant Kumar" />
+<meta name="author" content="siddhant" />
 <meta name="generator" content="Org Mode" />
 <style>
   #content { max-width: 60em; margin: auto; }
@@ -201,65 +201,65 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Marks</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">m1</span>, <span style="color: #83a598;">m2</span>;
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">q1</span>, <span style="color: #83a598;">q2</span>;
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a1</span>, <span style="color: #83a598;">a2</span>, <span style="color: #83a598;">a3</span>;
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">em</span>;
+<span class="org-keyword">class</span> <span class="org-type">Marks</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">m1</span>, <span class="org-variable-name">m2</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">q1</span>, <span class="org-variable-name">q2</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">a1</span>, <span class="org-variable-name">a2</span>, <span class="org-variable-name">a3</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">em</span>;
 
-  <span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">calculate_cam</span><span style="color: #cc241d;">()</span> <span style="color: #cc241d;">{</span>
-      <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">m</span> = <span style="color: #b8bb26;">(</span>m1 + m2<span style="color: #b8bb26;">)</span> / <span style="color: #d3869b; font-weight: bold;">2</span>;
-      <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">q</span> = q1 &gt; q2 ? q1 : q2;
-      <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">a</span> = <span style="color: #b8bb26;">(</span><span style="color: #83a598;">(</span>a1 + a2 + a3<span style="color: #83a598;">)</span> * <span style="color: #d3869b; font-weight: bold;">2</span><span style="color: #b8bb26;">)</span> / <span style="color: #d3869b; font-weight: bold;">3</span>;
+  <span class="org-type">int</span> <span class="org-function-name">calculate_cam</span>() {
+      <span class="org-type">int</span> <span class="org-variable-name">m</span> = (m1 + m2) / 2;
+      <span class="org-type">int</span> <span class="org-variable-name">q</span> = q1 &gt; q2 ? q1 : q2;
+      <span class="org-type">int</span> <span class="org-variable-name">a</span> = ((a1 + a2 + a3) * 2) / 3;
 
-      <span style="color: #fb4934;">return</span> m + q + a;
-  <span style="color: #cc241d;">}</span>
+      <span class="org-keyword">return</span> m + q + a;
+  }
 
-  <span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">calculate_total</span><span style="color: #cc241d;">()</span> <span style="color: #cc241d;">{</span>
-      <span style="color: #fb4934;">return</span> em + calculate_cam<span style="color: #b8bb26;">()</span>;
-  <span style="color: #cc241d;">}</span>
+  <span class="org-type">int</span> <span class="org-function-name">calculate_total</span>() {
+      <span class="org-keyword">return</span> em + calculate_cam();
+  }
 
-  <span style="color: #fabd2f;">string</span> <span style="color: #b8bb26;">calculate_grade</span><span style="color: #cc241d;">()</span> <span style="color: #cc241d;">{</span>
-    <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">total</span> = calculate_total<span style="color: #b8bb26;">()</span>;
-    <span style="color: #fabd2f;">string</span> <span style="color: #83a598;">grade</span> = <span style="color: #b8bb26;">"e"</span>;
+  <span class="org-type">string</span> <span class="org-function-name">calculate_grade</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">total</span> = calculate_total();
+    <span class="org-type">string</span> <span class="org-variable-name">grade</span> = <span class="org-string">"e"</span>;
 
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>total &gt; <span style="color: #d3869b; font-weight: bold;">35</span><span style="color: #b8bb26;">)</span> grade = <span style="color: #b8bb26;">"d"</span>;
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>total &gt; <span style="color: #d3869b; font-weight: bold;">40</span><span style="color: #b8bb26;">)</span> grade = <span style="color: #b8bb26;">"c"</span>;
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>total &gt; <span style="color: #d3869b; font-weight: bold;">50</span><span style="color: #b8bb26;">)</span> grade = <span style="color: #b8bb26;">"b"</span>;
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>total &gt; <span style="color: #d3869b; font-weight: bold;">60</span><span style="color: #b8bb26;">)</span> grade = <span style="color: #b8bb26;">"B+"</span>;
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>total &gt; <span style="color: #d3869b; font-weight: bold;">70</span><span style="color: #b8bb26;">)</span> grade = <span style="color: #b8bb26;">"a"</span>;
-    <span style="color: #fb4934;">if</span> <span style="color: #b8bb26;">(</span>total &gt; <span style="color: #d3869b; font-weight: bold;">80</span><span style="color: #b8bb26;">)</span> grade = <span style="color: #b8bb26;">"A+"</span>;
+    <span class="org-keyword">if</span> (total &gt; 35) grade = <span class="org-string">"d"</span>;
+    <span class="org-keyword">if</span> (total &gt; 40) grade = <span class="org-string">"c"</span>;
+    <span class="org-keyword">if</span> (total &gt; 50) grade = <span class="org-string">"b"</span>;
+    <span class="org-keyword">if</span> (total &gt; 60) grade = <span class="org-string">"B+"</span>;
+    <span class="org-keyword">if</span> (total &gt; 70) grade = <span class="org-string">"a"</span>;
+    <span class="org-keyword">if</span> (total &gt; 80) grade = <span class="org-string">"A+"</span>;
 
-    <span style="color: #fb4934;">return</span> grade;
-  <span style="color: #cc241d;">}</span>
+    <span class="org-keyword">return</span> grade;
+  }
 
-<span style="color: #fb4934;">public</span>:
-  <span style="color: #b8bb26;">Marks</span><span style="color: #cc241d;">()</span> <span style="color: #cc241d;">{</span>
-    cout &lt;&lt; <span style="color: #b8bb26;">"Enter marks for m1 m2 q1 q2 a1 a2 a3 em (space separated): "</span> &lt;&lt; endl;
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Marks</span>() {
+    cout &lt;&lt; <span class="org-string">"Enter marks for m1 m2 q1 q2 a1 a2 a3 em (space separated): "</span> &lt;&lt; endl;
     cin &gt;&gt; m1 &gt;&gt; m2 &gt;&gt; q1 &gt;&gt; q2 &gt;&gt; a1 &gt;&gt; a2 &gt;&gt; a3 &gt;&gt; em;
-  <span style="color: #cc241d;">}</span>
+  }
 
-  <span style="color: #fabd2f;">void</span> <span style="color: #b8bb26;">display_result</span><span style="color: #cc241d;">()</span> <span style="color: #cc241d;">{</span>
-    cout &lt;&lt; <span style="color: #b8bb26;">"cam: "</span>   &lt;&lt; calculate_cam<span style="color: #b8bb26;">()</span>   &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #b8bb26;">"em: "</span>    &lt;&lt; em                &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #b8bb26;">"total: "</span> &lt;&lt; calculate_total<span style="color: #b8bb26;">()</span> &lt;&lt; endl;
-    cout &lt;&lt; <span style="color: #b8bb26;">"grade: "</span> &lt;&lt; calculate_grade<span style="color: #b8bb26;">()</span> &lt;&lt; endl;
-  <span style="color: #cc241d;">}</span>
-<span style="color: #fe8019;">}</span>;
+  <span class="org-type">void</span> <span class="org-function-name">display_result</span>() {
+    cout &lt;&lt; <span class="org-string">"cam: "</span>   &lt;&lt; calculate_cam()   &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-string">"em: "</span>    &lt;&lt; em                &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-string">"total: "</span> &lt;&lt; calculate_total() &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-string">"grade: "</span> &lt;&lt; calculate_grade() &lt;&lt; endl;
+  }
+};
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">Marks</span> <span style="color: #83a598;">m</span> = Marks<span style="color: #cc241d;">()</span>;
-  m.display_result<span style="color: #cc241d;">()</span>;
-<span style="color: #fe8019;">}</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Marks</span> <span class="org-variable-name">m</span> = Marks();
+  m.display_result();
+}
 </pre>
 </div>
 
 
-<div id="org8df405f" class="figure">
+<div id="orgac923a4" class="figure">
 <p><img src="./marks_cons_output.png" alt="marks_cons_output.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Output</p>
@@ -270,40 +270,40 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span><span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Integer</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">int</span> <span style="color: #83a598;">i</span>;
+<span class="org-keyword">class</span> <span class="org-type">Integer</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">i</span>;
 
-<span style="color: #fb4934;">public</span>:
-  <span style="color: #b8bb26;">Integer</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">val</span><span style="color: #cc241d;">)</span>: <span style="color: #b8bb26;">i</span><span style="color: #cc241d;">(</span>val<span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span> <span style="color: #cc241d;">}</span>
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Integer</span>(<span class="org-type">int</span> <span class="org-variable-name">val</span>): <span class="org-function-name">i</span>(val) { }
 
-  <span style="color: #b8bb26;">Integer</span><span style="color: #cc241d;">()</span>: i<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">0</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span> <span style="color: #cc241d;">}</span>
+  <span class="org-function-name">Integer</span>(): i(0) { }
 
-  <span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">get_value</span><span style="color: #cc241d;">()</span> <span style="color: #cc241d;">{</span>
-    <span style="color: #fb4934;">return</span> i;
-  <span style="color: #cc241d;">}</span>
+  <span class="org-type">int</span> <span class="org-function-name">get_value</span>() {
+    <span class="org-keyword">return</span> i;
+  }
 
-  <span style="color: #fabd2f;">Integer</span> <span style="color: #b8bb26;">add_integer</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">Integer</span> <span style="color: #83a598;">a</span>, <span style="color: #fabd2f;">Integer</span> <span style="color: #83a598;">b</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-    <span style="color: #fabd2f;">Integer</span> <span style="color: #83a598;">c</span>;
+  <span class="org-type">Integer</span> <span class="org-function-name">add_integer</span>(<span class="org-type">Integer</span> <span class="org-variable-name">a</span>, <span class="org-type">Integer</span> <span class="org-variable-name">b</span>) {
+    <span class="org-type">Integer</span> <span class="org-variable-name">c</span>;
     c.i = a.i + b.i;
-    <span style="color: #fb4934;">return</span> c;
-  <span style="color: #cc241d;">}</span>
-<span style="color: #fe8019;">}</span>;
+    <span class="org-keyword">return</span> c;
+  }
+};
 
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">Integer</span> <span style="color: #83a598;">ob</span><span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">100</span><span style="color: #cc241d;">)</span>;
-  <span style="color: #fabd2f;">Integer</span> <span style="color: #83a598;">ob2</span><span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">200</span><span style="color: #cc241d;">)</span>;
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Integer</span> <span class="org-variable-name">ob</span>(100);
+  <span class="org-type">Integer</span> <span class="org-variable-name">ob2</span>(200);
 
-  <span style="color: #fabd2f;">Integer</span> <span style="color: #83a598;">ob3</span>;
+  <span class="org-type">Integer</span> <span class="org-variable-name">ob3</span>;
 
-  ob3 = ob.add_integer<span style="color: #cc241d;">(</span>ob, ob2<span style="color: #cc241d;">)</span>;
+  ob3 = ob.add_integer(ob, ob2);
 
-  cout &lt;&lt; <span style="color: #b8bb26;">"sum: "</span> &lt;&lt; ob3.get_value<span style="color: #cc241d;">()</span> &lt;&lt; endl;
-<span style="color: #fe8019;">}</span>
+  cout &lt;&lt; <span class="org-string">"sum: "</span> &lt;&lt; ob3.get_value() &lt;&lt; endl;
+}
 </pre>
 </div>
 
@@ -312,47 +312,47 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-cpp"><span style="color: #ebdbb2; font-weight: bold;">#include</span> <span style="color: #fe8019;">&lt;</span><span style="color: #b8bb26;">iostream</span><span style="color: #fe8019;">&gt;</span>
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
 
-<span style="color: #fb4934;">using</span> <span style="color: #fb4934;">namespace</span> <span style="color: #d3869b;">std</span>;
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
 
-<span style="color: #fb4934;">class</span> <span style="color: #fabd2f;">Sample</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">int</span> *<span style="color: #83a598;">i</span>;
+<span class="org-keyword">class</span> <span class="org-type">Sample</span> {
+  <span class="org-type">int</span> *<span class="org-variable-name">i</span>;
 
-<span style="color: #fb4934;">public</span>:
-  <span style="color: #b8bb26;">Sample</span><span style="color: #cc241d;">()</span> <span style="color: #cc241d;">{</span>
-    i = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">int</span><span style="color: #b8bb26;">[</span><span style="color: #d3869b; font-weight: bold;">5</span><span style="color: #b8bb26;">]</span>;
-    <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; n &lt; <span style="color: #d3869b; font-weight: bold;">5</span>; ++n<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-      *<span style="color: #83a598;">(</span>i + n<span style="color: #83a598;">)</span> = n + <span style="color: #d3869b; font-weight: bold;">1</span>;
-    <span style="color: #b8bb26;">}</span>
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Sample</span>() {
+    i = <span class="org-keyword">new</span> <span class="org-type">int</span>[5];
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">n</span> = 0; n &lt; 5; ++n) {
+      *(i + n) = n + 1;
+    }
 
-    <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; n &lt; <span style="color: #d3869b; font-weight: bold;">5</span>; ++n<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-      cout &lt;&lt; <span style="color: #b8bb26;">"i at "</span> &lt;&lt; n &lt;&lt; <span style="color: #b8bb26;">" is "</span> &lt;&lt; *<span style="color: #83a598;">(</span>i + n<span style="color: #83a598;">)</span> &lt;&lt; endl;
-    <span style="color: #b8bb26;">}</span>
-  <span style="color: #cc241d;">}</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">n</span> = 0; n &lt; 5; ++n) {
+      cout &lt;&lt; <span class="org-string">"i at "</span> &lt;&lt; n &lt;&lt; <span class="org-string">" is "</span> &lt;&lt; *(i + n) &lt;&lt; endl;
+    }
+  }
 
-  <span style="color: #b8bb26;">Sample</span><span style="color: #cc241d;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">size</span><span style="color: #cc241d;">)</span> <span style="color: #cc241d;">{</span>
-    i = <span style="color: #fb4934;">new</span> <span style="color: #fabd2f;">int</span><span style="color: #b8bb26;">[</span>size<span style="color: #b8bb26;">]</span>;
-    cout &lt;&lt; <span style="color: #b8bb26;">"Enter "</span> &lt;&lt; size &lt;&lt; <span style="color: #b8bb26;">" elements: "</span>;
-    <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; n &lt; size; ++n<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-      cin &gt;&gt; i<span style="color: #83a598;">[</span>n<span style="color: #83a598;">]</span>;
-    <span style="color: #b8bb26;">}</span>
+  <span class="org-function-name">Sample</span>(<span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+    i = <span class="org-keyword">new</span> <span class="org-type">int</span>[size];
+    cout &lt;&lt; <span class="org-string">"Enter "</span> &lt;&lt; size &lt;&lt; <span class="org-string">" elements: "</span>;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">n</span> = 0; n &lt; size; ++n) {
+      cin &gt;&gt; i[n];
+    }
 
-    <span style="color: #fb4934;">for</span> <span style="color: #b8bb26;">(</span><span style="color: #fabd2f;">int</span> <span style="color: #83a598;">n</span> = <span style="color: #d3869b; font-weight: bold;">0</span>; n &lt; size; ++n<span style="color: #b8bb26;">)</span> <span style="color: #b8bb26;">{</span>
-      cout &lt;&lt; <span style="color: #b8bb26;">"i at "</span> &lt;&lt; n &lt;&lt; <span style="color: #b8bb26;">" is "</span> &lt;&lt; *<span style="color: #83a598;">(</span>i + n<span style="color: #83a598;">)</span> &lt;&lt; endl;
-    <span style="color: #b8bb26;">}</span>
-  <span style="color: #cc241d;">}</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">n</span> = 0; n &lt; size; ++n) {
+      cout &lt;&lt; <span class="org-string">"i at "</span> &lt;&lt; n &lt;&lt; <span class="org-string">" is "</span> &lt;&lt; *(i + n) &lt;&lt; endl;
+    }
+  }
 
-  ~<span style="color: #b8bb26;">Sample</span><span style="color: #cc241d;">()</span> <span style="color: #cc241d;">{</span>
-    cout &lt;&lt; <span style="color: #b8bb26;">"destructor called"</span> &lt;&lt; endl;
-    <span style="color: #fb4934;">delete</span><span style="color: #b8bb26;">[]</span> i;
-  <span style="color: #cc241d;">}</span>
-<span style="color: #fe8019;">}</span>;
+  ~<span class="org-function-name">Sample</span>() {
+    cout &lt;&lt; <span class="org-string">"destructor called"</span> &lt;&lt; endl;
+    <span class="org-keyword">delete</span>[] i;
+  }
+};
 
-<span style="color: #fabd2f;">int</span> <span style="color: #b8bb26;">main</span><span style="color: #fe8019;">()</span> <span style="color: #fe8019;">{</span>
-  <span style="color: #fabd2f;">Sample</span> <span style="color: #83a598;">s</span>  = Sample<span style="color: #cc241d;">()</span>;
-  <span style="color: #fabd2f;">Sample</span> <span style="color: #83a598;">s1</span> = Sample<span style="color: #cc241d;">(</span><span style="color: #d3869b; font-weight: bold;">3</span><span style="color: #cc241d;">)</span>;
-<span style="color: #fe8019;">}</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Sample</span> <span class="org-variable-name">s</span>  = Sample();
+  <span class="org-type">Sample</span> <span class="org-variable-name">s1</span> = Sample(3);
+}
 </pre>
 </div>
 </div>

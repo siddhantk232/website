@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-29 Tue 01:05 -->
+<!-- 2022-11-06 Sun 20:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Index</title>
+<title>Presentations</title>
 <meta name="author" content="siddhant" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -196,78 +196,14 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Index</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgccf49d7">1. C</a></li>
-<li><a href="#orgd1c2493">2. D</a></li>
-<li><a href="#org647ecd2">3. O</a></li>
-<li><a href="#org426db20">4. P</a></li>
+<h1 class="title">Presentations</h1>
+<ul class="org-ul">
+<li><a href="https://docs.google.com/presentation/d/1rFm_GRMkDxYCAfm55dgudfhBxfJBbJYQ94t6ko_PyLc/edit#slide=id.p">Queue using two stacks by Vaibhav Raj</a></li>
 </ul>
-</div>
-</div>
-
-<div id="outline-container-orgccf49d7" class="outline-2">
-<h2 id="orgccf49d7"><span class="section-number-2">1.</span> C</h2>
-<div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li>CP
-<ul class="org-ul">
-<li><a href="cp/bits.html">Bit Manipulation</a></li>
-<li><a href="cp/cpp_quickstart.html">cpp quickstart</a></li>
-<li><a href="cp/cpp_stl.html">cpp STL (Standard Template Library)</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgd1c2493" class="outline-2">
-<h2 id="orgd1c2493"><span class="section-number-2">2.</span> D</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li><a href="dsa/dsa_in_c.html">DSA in C</a>
-<ul class="org-ul">
-<li><a href="dsa/c_quickstart.html">C quickstart</a></li>
-<li><a href="dsa/prac1.html">practical 1</a></li>
-<li><a href="dsa/prac2.html">practical 2</a></li>
-<li><a href="dsa/prac3.html">practical 3</a></li>
-<li><a href="dsa/prac4.html">practical 4</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org647ecd2" class="outline-2">
-<h2 id="org647ecd2"><span class="section-number-2">3.</span> O</h2>
-<div class="outline-text-2" id="text-3">
-<ul class="org-ul">
-<li><a href="oop_cpp/oop_cpp.html">OOP in CPP</a>
-<ul class="org-ul">
-<li><a href="oop_cpp/prac1.html">prac1</a></li>
-<li><a href="oop_cpp/prac2.html">prac2</a></li>
-<li><a href="oop_cpp/prac3.html">prac3</a></li>
-<li><a href="oop_cpp/prac4.html">prac4</a></li>
-<li><a href="oop_cpp/prac5.html">prac5</a></li>
-<li><a href="oop_cpp/prac6.html">prac6</a></li>
-<li><a href="oop_cpp/prac7.html">prac7</a></li>
-<li><a href="oop_cpp/prac8.html">prac8</a></li>
-<li><a href="oop_cpp/practicals.html">practicals</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org426db20" class="outline-2">
-<h2 id="org426db20"><span class="section-number-2">4.</span> P</h2>
-<div class="outline-text-2" id="text-4">
-<ul class="org-ul">
-<li><a href="dsa/ppt.html">ppt</a></li>
-</ul>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-11-29 Tue 01:05</p>
+<p class="date">Created: 2022-11-06 Sun 20:39</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
