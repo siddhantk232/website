@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-12-28 Wed 11:20 -->
+<!-- 2022-12-28 Wed 11:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Number Theory</title>
@@ -222,48 +222,48 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgef1fcb2">1. Introduction</a></li>
-<li><a href="#org6dd49f4">2. Prime Number Generation (Sieve, Segmented Sieve)</a>
+<li><a href="#org9ca7ebb">1. Introduction</a></li>
+<li><a href="#orgcef496c">2. Prime Number Generation (Sieve, Segmented Sieve)</a>
 <ul>
-<li><a href="#org5457a3d">2.1. Prime Factorization</a></li>
-<li><a href="#org952d970">2.2. Divisor Finding</a></li>
-<li><a href="#org5128338">2.3. <span class="todo TODO">TODO</span> Sieve of Eratosthenes</a></li>
-<li><a href="#org75ad73d">2.4. <span class="todo TODO">TODO</span> Segmented Sieve of Eratosthenes</a></li>
+<li><a href="#org97b02bf">2.1. Prime Factorization</a></li>
+<li><a href="#orgdd84304">2.2. Divisor Finding</a></li>
+<li><a href="#orgc791b30">2.3. <span class="todo TODO">TODO</span> Sieve of Eratosthenes</a></li>
+<li><a href="#orgbefad30">2.4. <span class="todo TODO">TODO</span> Segmented Sieve of Eratosthenes</a></li>
 </ul>
 </li>
-<li><a href="#orge8a912a">3. <span class="todo TODO">TODO</span> Euler Totient Theorem</a></li>
-<li><a href="#org33bc7f9">4. <span class="todo TODO">TODO</span> Fermat’s Theorem* TODO HCF &amp; LCM (Euclid)</a>
+<li><a href="#orgfe99962">3. <span class="todo TODO">TODO</span> Euler Totient Theorem</a></li>
+<li><a href="#orge3ea6ee">4. <span class="todo TODO">TODO</span> Fermat’s Theorem* TODO HCF &amp; LCM (Euclid)</a>
 <ul>
-<li><a href="#orgc54e161">4.1. GCD (Greatest Common Divisor)</a></li>
-<li><a href="#orgdb013da">4.2. Extended Euclidean</a></li>
+<li><a href="#orgae9918c">4.1. GCD (Greatest Common Divisor)</a></li>
+<li><a href="#org454ec26">4.2. Extended Euclidean</a></li>
 </ul>
 </li>
-<li><a href="#org23db82c">5. <span class="todo TODO">TODO</span> Linear Diophantine Equations (Extended Euclid)</a></li>
-<li><a href="#org6f3613f">6. <span class="todo TODO">TODO</span> Modulus Arithmetic (addition,multiplication,subtraction,modular Inverse)</a>
+<li><a href="#org845ef64">5. <span class="todo TODO">TODO</span> Linear Diophantine Equations (Extended Euclid)</a></li>
+<li><a href="#org6153565">6. <span class="todo TODO">TODO</span> Modulus Arithmetic (addition,multiplication,subtraction,modular Inverse)</a>
 <ul>
-<li><a href="#org164a608">6.1. Modulo Arithmetic</a></li>
-<li><a href="#org378856f">6.2. Proofs</a></li>
+<li><a href="#orgf611c2d">6.1. Modulo Arithmetic</a></li>
+<li><a href="#org7d2ba04">6.2. Proofs</a></li>
 </ul>
 </li>
-<li><a href="#org3e5298c">7. <span class="todo TODO">TODO</span> Cycle Finding (Floyd Algo and Brent Algo)</a></li>
-<li><a href="#org6b77d93">8. <span class="todo TODO">TODO</span> Integer Factorization (Trial Division , Pollard Rho method) &#x2013;&gt; colorado.edu A Quick Tutorial on Pollard's Rho Algorithm</a></li>
-<li><a href="#org5d66f27">9. <span class="todo TODO">TODO</span> Lucas Theorem (Simple &amp; Advance)</a></li>
-<li><a href="#orgdafccca">10. <span class="todo TODO">TODO</span> Chinese Remainder Theorem</a></li>
-<li><a href="#org20a7b53">11. <span class="todo TODO">TODO</span> Wilson Theorem</a></li>
-<li><a href="#org9d17890">12. <span class="todo TODO">TODO</span> Miller - Rabin Primality Testing</a></li>
-<li><a href="#org320394d">13. <span class="todo TODO">TODO</span> Perfect Numbers</a></li>
-<li><a href="#org4ac9e27">14. <span class="todo TODO">TODO</span> Goldbach Conjecture</a></li>
-<li><a href="#org7136f46">15. Floor/Ceil</a></li>
-<li><a href="#org361ca58">16. Divisors</a></li>
-<li><a href="#org2e5091c">17. <span class="todo TODO">TODO</span> Binary Exponentiation</a></li>
-<li><a href="#org00b5451">18. <span class="todo TODO">TODO</span> Modular "division"</a></li>
-<li><a href="#org7d4a8a0">19. Instance of Mobius</a></li>
+<li><a href="#orgda36de1">7. <span class="todo TODO">TODO</span> Cycle Finding (Floyd Algo and Brent Algo)</a></li>
+<li><a href="#org4d3985b">8. <span class="todo TODO">TODO</span> Integer Factorization (Trial Division , Pollard Rho method) &#x2013;&gt; colorado.edu A Quick Tutorial on Pollard's Rho Algorithm</a></li>
+<li><a href="#org5095430">9. <span class="todo TODO">TODO</span> Lucas Theorem (Simple &amp; Advance)</a></li>
+<li><a href="#org73a0614">10. <span class="todo TODO">TODO</span> Chinese Remainder Theorem</a></li>
+<li><a href="#org4daee43">11. <span class="todo TODO">TODO</span> Wilson Theorem</a></li>
+<li><a href="#org9db90db">12. <span class="todo TODO">TODO</span> Miller - Rabin Primality Testing</a></li>
+<li><a href="#orgfd7c272">13. <span class="todo TODO">TODO</span> Perfect Numbers</a></li>
+<li><a href="#orgc51a8d7">14. <span class="todo TODO">TODO</span> Goldbach Conjecture</a></li>
+<li><a href="#org55a846b">15. Floor/Ceil</a></li>
+<li><a href="#orgab345a5">16. Divisors</a></li>
+<li><a href="#org857b3c7">17. <span class="todo TODO">TODO</span> Binary Exponentiation</a></li>
+<li><a href="#org167128d">18. <span class="todo TODO">TODO</span> Modular "division"</a></li>
+<li><a href="#org2e0bff1">19. Instance of Mobius</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgef1fcb2" class="outline-2">
-<h2 id="orgef1fcb2"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org9ca7ebb" class="outline-2">
+<h2 id="org9ca7ebb"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Try to find an explicit equation before jumping in.</li>
@@ -272,12 +272,12 @@
 </div>
 </div>
 
-<div id="outline-container-org6dd49f4" class="outline-2">
-<h2 id="org6dd49f4"><span class="section-number-2">2.</span> Prime Number Generation (Sieve, Segmented Sieve)</h2>
+<div id="outline-container-orgcef496c" class="outline-2">
+<h2 id="orgcef496c"><span class="section-number-2">2.</span> Prime Number Generation (Sieve, Segmented Sieve)</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org5457a3d" class="outline-3">
-<h3 id="org5457a3d"><span class="section-number-3">2.1.</span> Prime Factorization</h3>
+<div id="outline-container-org97b02bf" class="outline-3">
+<h3 id="org97b02bf"><span class="section-number-3">2.1.</span> Prime Factorization</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Breaking a number down to a product of primes.
@@ -372,8 +372,8 @@ Example:
 </div>
 </div>
 
-<div id="outline-container-org952d970" class="outline-3">
-<h3 id="org952d970"><span class="section-number-3">2.2.</span> Divisor Finding</h3>
+<div id="outline-container-orgdd84304" class="outline-3">
+<h3 id="orgdd84304"><span class="section-number-3">2.2.</span> Divisor Finding</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>Similar to finding prime factors, but find all divisors of x.</li>
@@ -414,34 +414,34 @@ Only have to check up to <code>sqrt(x)</code>, the rest will be found as \(x/y\)
 </div>
 </div>
 
-<div id="outline-container-org5128338" class="outline-3">
-<h3 id="org5128338"><span class="section-number-3">2.3.</span> <span class="todo TODO">TODO</span> Sieve of Eratosthenes</h3>
+<div id="outline-container-orgc791b30" class="outline-3">
+<h3 id="orgc791b30"><span class="section-number-3">2.3.</span> <span class="todo TODO">TODO</span> Sieve of Eratosthenes</h3>
 </div>
-<div id="outline-container-org75ad73d" class="outline-3">
-<h3 id="org75ad73d"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Segmented Sieve of Eratosthenes</h3>
+<div id="outline-container-orgbefad30" class="outline-3">
+<h3 id="orgbefad30"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Segmented Sieve of Eratosthenes</h3>
 </div>
 </div>
-<div id="outline-container-orge8a912a" class="outline-2">
-<h2 id="orge8a912a"><span class="section-number-2">3.</span> <span class="todo TODO">TODO</span> Euler Totient Theorem</h2>
+<div id="outline-container-orgfe99962" class="outline-2">
+<h2 id="orgfe99962"><span class="section-number-2">3.</span> <span class="todo TODO">TODO</span> Euler Totient Theorem</h2>
 </div>
-<div id="outline-container-org33bc7f9" class="outline-2">
-<h2 id="org33bc7f9"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Fermat’s Theorem* TODO HCF &amp; LCM (Euclid)</h2>
+<div id="outline-container-orge3ea6ee" class="outline-2">
+<h2 id="orge3ea6ee"><span class="section-number-2">4.</span> <span class="todo TODO">TODO</span> Fermat’s Theorem* TODO HCF &amp; LCM (Euclid)</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgc54e161" class="outline-3">
-<h3 id="orgc54e161"><span class="section-number-3">4.1.</span> GCD (Greatest Common Divisor)</h3>
+<div id="outline-container-orgae9918c" class="outline-3">
+<h3 id="orgae9918c"><span class="section-number-3">4.1.</span> GCD (Greatest Common Divisor)</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>gcd(x,y) = largest g where g | x and g | y</li>
 <li>if x = p<sub>1</sub><sup>a</sup> * p<sub>2</sub><sup>b</sup>&#x2026; and y = p<sub>1</sub><sup>c</sup> * p<sub>2</sub><sup>d</sup>&#x2026;, then gcd(x,y) = p<sub>1</sub><sup>min(a,c)</sup> * p<sub>2</sub><sup>min(b,d)</sup>&#x2026;</li>
-<li>Uses the <a href="#orgdb013da">Euclidean algorithm</a></li>
+<li>Uses the <a href="#org454ec26">Euclidean algorithm</a></li>
 <li>gcd(a,b,c, &#x2026;) = gcd(gcd(a,b), c, &#x2026;)</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdb013da" class="outline-3">
-<h3 id="orgdb013da"><span class="section-number-3">4.2.</span> Extended Euclidean</h3>
+<div id="outline-container-org454ec26" class="outline-3">
+<h3 id="org454ec26"><span class="section-number-3">4.2.</span> Extended Euclidean</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>gcd(a,b) = gcd(a - b, b). Given a &gt;= b, if not swap them
@@ -453,15 +453,15 @@ Only have to check up to <code>sqrt(x)</code>, the rest will be found as \(x/y\)
 </div>
 </div>
 </div>
-<div id="outline-container-org23db82c" class="outline-2">
-<h2 id="org23db82c"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Linear Diophantine Equations (Extended Euclid)</h2>
+<div id="outline-container-org845ef64" class="outline-2">
+<h2 id="org845ef64"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> Linear Diophantine Equations (Extended Euclid)</h2>
 </div>
-<div id="outline-container-org6f3613f" class="outline-2">
-<h2 id="org6f3613f"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Modulus Arithmetic (addition,multiplication,subtraction,modular Inverse)</h2>
+<div id="outline-container-org6153565" class="outline-2">
+<h2 id="org6153565"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> Modulus Arithmetic (addition,multiplication,subtraction,modular Inverse)</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org164a608" class="outline-3">
-<h3 id="org164a608"><span class="section-number-3">6.1.</span> Modulo Arithmetic</h3>
+<div id="outline-container-orgf611c2d" class="outline-3">
+<h3 id="orgf611c2d"><span class="section-number-3">6.1.</span> Modulo Arithmetic</h3>
 <div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>% gives the remainder of the division operation between x and y.</li>
@@ -481,8 +481,8 @@ Only have to check up to <code>sqrt(x)</code>, the rest will be found as \(x/y\)
 </div>
 </div>
 
-<div id="outline-container-org378856f" class="outline-3">
-<h3 id="org378856f"><span class="section-number-3">6.2.</span> Proofs</h3>
+<div id="outline-container-org7d2ba04" class="outline-3">
+<h3 id="org7d2ba04"><span class="section-number-3">6.2.</span> Proofs</h3>
 <div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li>(a + b) % m = ((a % m) + (b % m)) % m</li>
@@ -493,33 +493,33 @@ Only have to check up to <code>sqrt(x)</code>, the rest will be found as \(x/y\)
 </div>
 </div>
 
-<div id="outline-container-org3e5298c" class="outline-2">
-<h2 id="org3e5298c"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Cycle Finding (Floyd Algo and Brent Algo)</h2>
+<div id="outline-container-orgda36de1" class="outline-2">
+<h2 id="orgda36de1"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> Cycle Finding (Floyd Algo and Brent Algo)</h2>
 </div>
-<div id="outline-container-org6b77d93" class="outline-2">
-<h2 id="org6b77d93"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Integer Factorization (Trial Division , Pollard Rho method) &#x2013;&gt; colorado.edu A Quick Tutorial on Pollard's Rho Algorithm</h2>
+<div id="outline-container-org4d3985b" class="outline-2">
+<h2 id="org4d3985b"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> Integer Factorization (Trial Division , Pollard Rho method) &#x2013;&gt; colorado.edu A Quick Tutorial on Pollard's Rho Algorithm</h2>
 </div>
-<div id="outline-container-org5d66f27" class="outline-2">
-<h2 id="org5d66f27"><span class="section-number-2">9.</span> <span class="todo TODO">TODO</span> Lucas Theorem (Simple &amp; Advance)</h2>
+<div id="outline-container-org5095430" class="outline-2">
+<h2 id="org5095430"><span class="section-number-2">9.</span> <span class="todo TODO">TODO</span> Lucas Theorem (Simple &amp; Advance)</h2>
 </div>
-<div id="outline-container-orgdafccca" class="outline-2">
-<h2 id="orgdafccca"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> Chinese Remainder Theorem</h2>
+<div id="outline-container-org73a0614" class="outline-2">
+<h2 id="org73a0614"><span class="section-number-2">10.</span> <span class="todo TODO">TODO</span> Chinese Remainder Theorem</h2>
 </div>
-<div id="outline-container-org20a7b53" class="outline-2">
-<h2 id="org20a7b53"><span class="section-number-2">11.</span> <span class="todo TODO">TODO</span> Wilson Theorem</h2>
+<div id="outline-container-org4daee43" class="outline-2">
+<h2 id="org4daee43"><span class="section-number-2">11.</span> <span class="todo TODO">TODO</span> Wilson Theorem</h2>
 </div>
-<div id="outline-container-org9d17890" class="outline-2">
-<h2 id="org9d17890"><span class="section-number-2">12.</span> <span class="todo TODO">TODO</span> Miller - Rabin Primality Testing</h2>
+<div id="outline-container-org9db90db" class="outline-2">
+<h2 id="org9db90db"><span class="section-number-2">12.</span> <span class="todo TODO">TODO</span> Miller - Rabin Primality Testing</h2>
 </div>
-<div id="outline-container-org320394d" class="outline-2">
-<h2 id="org320394d"><span class="section-number-2">13.</span> <span class="todo TODO">TODO</span> Perfect Numbers</h2>
+<div id="outline-container-orgfd7c272" class="outline-2">
+<h2 id="orgfd7c272"><span class="section-number-2">13.</span> <span class="todo TODO">TODO</span> Perfect Numbers</h2>
 </div>
-<div id="outline-container-org4ac9e27" class="outline-2">
-<h2 id="org4ac9e27"><span class="section-number-2">14.</span> <span class="todo TODO">TODO</span> Goldbach Conjecture</h2>
+<div id="outline-container-orgc51a8d7" class="outline-2">
+<h2 id="orgc51a8d7"><span class="section-number-2">14.</span> <span class="todo TODO">TODO</span> Goldbach Conjecture</h2>
 </div>
 
-<div id="outline-container-org7136f46" class="outline-2">
-<h2 id="org7136f46"><span class="section-number-2">15.</span> Floor/Ceil</h2>
+<div id="outline-container-org55a846b" class="outline-2">
+<h2 id="org55a846b"><span class="section-number-2">15.</span> Floor/Ceil</h2>
 <div class="outline-text-2" id="text-15">
 <p>
 <b>Floor</b> is just a number rounded down to the nearest int (left on the number line).
@@ -543,8 +543,8 @@ Only have to check up to <code>sqrt(x)</code>, the rest will be found as \(x/y\)
 </div>
 </div>
 
-<div id="outline-container-org361ca58" class="outline-2">
-<h2 id="org361ca58"><span class="section-number-2">16.</span> Divisors</h2>
+<div id="outline-container-orgab345a5" class="outline-2">
+<h2 id="orgab345a5"><span class="section-number-2">16.</span> Divisors</h2>
 <div class="outline-text-2" id="text-16">
 <ul class="org-ul">
 <li>\(a | b\) &harr; "a divides b" &harr; "b is divisible by a" &harr; b % a = 0</li>
@@ -555,8 +555,8 @@ Only have to check up to <code>sqrt(x)</code>, the rest will be found as \(x/y\)
 </div>
 </div>
 
-<div id="outline-container-org2e5091c" class="outline-2">
-<h2 id="org2e5091c"><span class="section-number-2">17.</span> <span class="todo TODO">TODO</span> Binary Exponentiation</h2>
+<div id="outline-container-org857b3c7" class="outline-2">
+<h2 id="org857b3c7"><span class="section-number-2">17.</span> <span class="todo TODO">TODO</span> Binary Exponentiation</h2>
 <div class="outline-text-2" id="text-17">
 <p>
 gotta read more about this in future.
@@ -573,21 +573,21 @@ Compute \(a^b\) % \(m\) for large numbers quickly.
 </div>
 </div>
 
-<div id="outline-container-org00b5451" class="outline-2">
-<h2 id="org00b5451"><span class="section-number-2">18.</span> <span class="todo TODO">TODO</span> Modular "division"</h2>
+<div id="outline-container-org167128d" class="outline-2">
+<h2 id="org167128d"><span class="section-number-2">18.</span> <span class="todo TODO">TODO</span> Modular "division"</h2>
 <div class="outline-text-2" id="text-18">
 <p>
 I don't understand this rn
 </p>
 </div>
 </div>
-<div id="outline-container-org7d4a8a0" class="outline-2">
-<h2 id="org7d4a8a0"><span class="section-number-2">19.</span> Instance of Mobius</h2>
+<div id="outline-container-org2e0bff1" class="outline-2">
+<h2 id="org2e0bff1"><span class="section-number-2">19.</span> Instance of Mobius</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-12-28 Wed 11:20</p>
+<p class="date">Created: 2022-12-28 Wed 11:22</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
