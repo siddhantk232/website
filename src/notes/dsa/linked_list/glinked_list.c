@@ -20,42 +20,73 @@ int delete_pos(Node *head, int pos);
 void merge(Node *head, Node *head2);
 void reverse(Node **head);
 void print_ll(Node *head);
+int search(Node *head, int target);
 
 int main() {
-  Node *head = create(1);
-  Node *head2 = create(100);
+  Node *head = create(10);
 
-  // insert
-  insert_at_end(head, 2);
-  insert_at_end(head, 3);
+  insert_at_end(head, 20);
+  insert_at_end(head, 30);
+  insert_at_end(head, 40);
+  insert_at_end(head, 50);
 
-  insert_before_start(&head, -2);
-  insert_before_start(&head, -3);
+  printf("linked list after insert_end operation:\n");
+  print_ll(head);
 
-  // -3 -2 1 2 3
-  insert_after(head->next->next->next->next, 5);
+  insert_before_start(&head, 3);
+  insert_before_start(&head, 2);
 
-  insert_at_pos(head, 6, 4);
+  insert_before_start(&head, 1);
 
+  printf("linked list after insert_beginning operation:\n");
+  print_ll(head);
+
+  insert_at_pos(head, 4, 4);
+
+  printf("linked list after insert_at_pos operation:\n");
+  print_ll(head);
+
+  delete_end(head);
+  delete_end(head);
+
+  printf("linked list after delete_end operation:\n");
+  print_ll(head);
+
+  delete_start(&head);
+  delete_start(&head);
+
+  printf("linked list after delete_start operation:\n");
+  print_ll(head);
+
+  delete_pos(head, 3);
+
+  printf("linked list after delete_pos operation:\n");
   print_ll(head);
 
   reverse(&head);
+  printf("reversed linked list:\n");
   print_ll(head);
 
-  insert_at_end(head2, 200);
-  insert_at_end(head2, 300);
-  insert_at_end(head2, 400);
-  insert_at_end(head2, 500);
+  int pos = search(head, 4);
 
-  merge(head, head2);
-  print_ll(head);
-  printf("==============\n");
+  if (pos) {
+    printf("Found 4 at position %d\n", pos);
+  } else {
+    printf("Couldn't find 4 int the given linked list\n");
+  }
+}
 
-  delete_start(&head);
-  delete_end(head);
-  delete_pos(head, 3);
+int search(Node *head, int target) {
+  int pos = 0;
+  while(head != NULL) {
+    pos++;
+    if (head->data == target) {
+      break;
+    }
+    head = head->next;
+  }
 
-  print_ll(head);
+  return pos;
 }
 
 void delete_start(Node **head) {
@@ -142,6 +173,7 @@ void insert_after(Node *ll, int el) {
 }
 
 int insert_at_pos(Node *head, unsigned int pos, int el) {
+  // pos = index + 1
   assert(head != NULL);
   assert(pos > 1);
 
@@ -159,10 +191,10 @@ int insert_at_pos(Node *head, unsigned int pos, int el) {
 
 void print_ll(Node *head) {
   while(head != NULL) {
-    printf("%d ", head->data);
+    printf("%d -> ", head->data);
     head = head->next;
   }
-  printf("\n");
+  printf("NULL\n");
 }
 
 Node *create(int val) {

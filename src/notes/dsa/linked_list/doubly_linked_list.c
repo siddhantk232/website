@@ -82,6 +82,19 @@ void delete_start(Node **head) {
   free(temp);
 }
 
+void delete_pos(Node *head, int pos) {
+  Node *ptr = head;
+
+  for (int i = 1; i < pos - 1; ++i) {
+    ptr = ptr->next;
+  }
+
+  Node *temp = ptr->next;
+  ptr->next->next->prev = ptr;
+  ptr->next = ptr->next->next;
+  free(temp);
+}
+
 void display(Node *head) {
   while (head != NULL) {
     printf("%d -> ", head->data);
@@ -113,6 +126,8 @@ int main() {
 
   delete_start(&head);
   delete_start(&head);
+
+  delete_pos(head, 3);
 
   display(head);
 }

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-29 Tue 01:05 -->
+<!-- 2022-11-30 Wed 12:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -200,24 +200,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org038257d">1. Sorting</a>
+<li><a href="#org37140d4">1. Sorting</a>
 <ul>
-<li><a href="#orgd116ca5">1.1. Bubble sort</a></li>
-<li><a href="#orgbe14a42">1.2. selection sort</a></li>
-<li><a href="#orgccc8b21">1.3. insertion sort</a></li>
+<li><a href="#org3ceb637">1.1. Bubble sort</a></li>
+<li><a href="#org823098d">1.2. selection sort</a></li>
+<li><a href="#org73628ab">1.3. insertion sort</a></li>
 </ul>
 </li>
-<li><a href="#org0665501">2. Binary search using recursion</a></li>
-<li><a href="#orgad180a5">3. linked list</a></li>
+<li><a href="#org2371cec">2. Binary search using recursion</a></li>
+<li><a href="#org043aec5">3. linked list</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org038257d" class="outline-2">
-<h2 id="org038257d"><span class="section-number-2">1.</span> Sorting</h2>
+<div id="outline-container-org37140d4" class="outline-2">
+<h2 id="org37140d4"><span class="section-number-2">1.</span> Sorting</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd116ca5" class="outline-3">
-<h3 id="orgd116ca5"><span class="section-number-3">1.1.</span> Bubble sort</h3>
+<div id="outline-container-org3ceb637" class="outline-3">
+<h3 id="org3ceb637"><span class="section-number-3">1.1.</span> Bubble sort</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -256,8 +256,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgbe14a42" class="outline-3">
-<h3 id="orgbe14a42"><span class="section-number-3">1.2.</span> selection sort</h3>
+<div id="outline-container-org823098d" class="outline-3">
+<h3 id="org823098d"><span class="section-number-3">1.2.</span> selection sort</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -302,8 +302,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgccc8b21" class="outline-3">
-<h3 id="orgccc8b21"><span class="section-number-3">1.3.</span> insertion sort</h3>
+<div id="outline-container-org73628ab" class="outline-3">
+<h3 id="org73628ab"><span class="section-number-3">1.3.</span> insertion sort</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -340,8 +340,8 @@
 </div>
 </div>
 
-<div id="outline-container-org0665501" class="outline-2">
-<h2 id="org0665501"><span class="section-number-2">2.</span> Binary search using recursion</h2>
+<div id="outline-container-org2371cec" class="outline-2">
+<h2 id="org2371cec"><span class="section-number-2">2.</span> Binary search using recursion</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -412,8 +412,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgad180a5" class="outline-2">
-<h2 id="orgad180a5"><span class="section-number-2">3.</span> linked list</h2>
+<div id="outline-container-org043aec5" class="outline-2">
+<h2 id="org043aec5"><span class="section-number-2">3.</span> linked list</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -474,7 +474,7 @@
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-11-29 Tue 01:05</p>
+<p class="date">Created: 2022-11-30 Wed 12:16</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

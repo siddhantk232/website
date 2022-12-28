@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-29 Tue 01:05 -->
+<!-- 2022-11-30 Wed 12:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CP Plan</title>
@@ -201,27 +201,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge9000d8">1. Intro</a></li>
-<li><a href="#orgc77fe52">2. General Tips</a>
+<li><a href="#org9358c94">1. Intro</a></li>
+<li><a href="#org0dbeaea">2. General Tips</a>
 <ul>
-<li><a href="#org8c28b09">2.1. Focus!</a></li>
+<li><a href="#org15126bc">2.1. Focus!</a></li>
 </ul>
 </li>
-<li><a href="#org7d86d3e">3. Mistakes</a></li>
-<li><a href="#org728dbb8">4. Plan</a></li>
+<li><a href="#org6044d6b">3. Mistakes</a></li>
+<li><a href="#org7a0d7a9">4. Plan</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge9000d8" class="outline-2">
-<h2 id="orge9000d8"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-org9358c94" class="outline-2">
+<h2 id="org9358c94"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Notes (and thoughts) taken while watching <a href="https://www.youtube.com/watch?v=bSdp2WeyuJY">https://www.youtube.com/watch?v=bSdp2WeyuJY</a> and reading <a href="https://docs.google.com/document/d/1-7Co93b504uyXyMjjE8bnLJP3d3QXvp_m1UjvbvdR2Y/edit">this</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc77fe52" class="outline-2">
-<h2 id="orgc77fe52"><span class="section-number-2">2.</span> General Tips</h2>
+<div id="outline-container-org0dbeaea" class="outline-2">
+<h2 id="org0dbeaea"><span class="section-number-2">2.</span> General Tips</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
@@ -239,8 +239,8 @@ In a way these two ideas relate to <a href="https://en.wikipedia.org/wiki/Goodha
 <li><b>Don't wast time</b> on useless stuff (like this video I'm watching).</li>
 </ul>
 </div>
-<div id="outline-container-org8c28b09" class="outline-3">
-<h3 id="org8c28b09"><span class="section-number-3">2.1.</span> Focus!</h3>
+<div id="outline-container-org15126bc" class="outline-3">
+<h3 id="org15126bc"><span class="section-number-3">2.1.</span> Focus!</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 This is the most <b>important</b> thing that I want to get out of doing CP. Having a clear mind is gonna help me for sure in future in deciding side projects and keep focus until I finish them.
@@ -255,8 +255,8 @@ Ask questions like:
 </div>
 </div>
 </div>
-<div id="outline-container-org7d86d3e" class="outline-2">
-<h2 id="org7d86d3e"><span class="section-number-2">3.</span> Mistakes</h2>
+<div id="outline-container-org6044d6b" class="outline-2">
+<h2 id="org6044d6b"><span class="section-number-2">3.</span> Mistakes</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>When there's no solution hiding anywhere. Don't be super stuck.</li>
@@ -269,8 +269,8 @@ Ask questions like:
 </ul>
 </div>
 </div>
-<div id="outline-container-org728dbb8" class="outline-2">
-<h2 id="org728dbb8"><span class="section-number-2">4.</span> Plan</h2>
+<div id="outline-container-org7a0d7a9" class="outline-2">
+<h2 id="org7a0d7a9"><span class="section-number-2">4.</span> Plan</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Give contests on codechef and codeforces.
@@ -286,11 +286,11 @@ Ask questions like:
 </ul>
 </div>
 <ol class="org-ol">
-<li><a id="org9f1a834"></a>Try to doo these tasks each week (till div 4 i.e. &lt;= 1400)<br />
+<li><a id="orga4092b6"></a>Try to doo these tasks each week (till div 4 i.e. &lt;= 1400)<br />
 <div class="outline-text-5" id="text-4-0-0-1">
 <ul class="org-ul">
 <li>solve codechef starters, codeforces div 3/4 (day 0)</li>
-<li>Think hard before reading editorials of the ones that you weren't able to solve in <a href="#org9f1a834">day 0</a>. Don't view editorials of ones that were clearly out of your league. (day 1)</li>
+<li>Think hard before reading editorials of the ones that you weren't able to solve in <a href="#orga4092b6">day 0</a>. Don't view editorials of ones that were clearly out of your league. (day 1)</li>
 <li>give atcoder abc</li>
 <li>Do problem set from <a href="https://train.usaco.org/">https://train.usaco.org/</a> and atcoder abc past contests (<a href="https://kenkoooo.com/atcoder/#/table//">https://kenkoooo.com/atcoder/#/table//</a>)</li>
 </ul>
@@ -301,7 +301,7 @@ Ask questions like:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: siddhant</p>
-<p class="date">Created: 2022-11-29 Tue 01:05</p>
+<p class="date">Created: 2022-11-30 Wed 12:16</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
