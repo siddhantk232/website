@@ -8,7 +8,7 @@ const util = require("util");
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
-  const siteUrl = "https://siddhant.codes";
+  const siteUrl = "https://siddhantcodes.netlify.app";
 
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/css");
