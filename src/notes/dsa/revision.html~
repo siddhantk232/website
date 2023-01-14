@@ -15,24 +15,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga8f6db3">1. Sorting</a>
+<li><a href="#org7a2ad93">1. Sorting</a>
 <ul>
-<li><a href="#org307da2e">1.1. Bubble sort</a></li>
-<li><a href="#orgfad2546">1.2. selection sort</a></li>
-<li><a href="#org07e9101">1.3. insertion sort</a></li>
+<li><a href="#org939b433">1.1. Bubble sort</a></li>
+<li><a href="#orga554805">1.2. selection sort</a></li>
+<li><a href="#orgfc81ef7">1.3. insertion sort</a></li>
 </ul>
 </li>
-<li><a href="#org47e9609">2. Binary search using recursion</a></li>
-<li><a href="#org64111e4">3. linked list</a></li>
+<li><a href="#org4610a04">2. Binary search using recursion</a></li>
+<li><a href="#orgac1b56d">3. linked list</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga8f6db3" class="outline-2">
-<h2 id="orga8f6db3"><span class="section-number-2">1.</span> Sorting</h2>
+<div id="outline-container-org7a2ad93" class="outline-2">
+<h2 id="org7a2ad93"><span class="section-number-2">1.</span> Sorting</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org307da2e" class="outline-3">
-<h3 id="org307da2e"><span class="section-number-3">1.1.</span> Bubble sort</h3>
+<div id="outline-container-org939b433" class="outline-3">
+<h3 id="org939b433"><span class="section-number-3">1.1.</span> Bubble sort</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -71,8 +71,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgfad2546" class="outline-3">
-<h3 id="orgfad2546"><span class="section-number-3">1.2.</span> selection sort</h3>
+<div id="outline-container-orga554805" class="outline-3">
+<h3 id="orga554805"><span class="section-number-3">1.2.</span> selection sort</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -117,8 +117,8 @@
 </div>
 </div>
 
-<div id="outline-container-org07e9101" class="outline-3">
-<h3 id="org07e9101"><span class="section-number-3">1.3.</span> insertion sort</h3>
+<div id="outline-container-orgfc81ef7" class="outline-3">
+<h3 id="orgfc81ef7"><span class="section-number-3">1.3.</span> insertion sort</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -155,8 +155,8 @@
 </div>
 </div>
 
-<div id="outline-container-org47e9609" class="outline-2">
-<h2 id="org47e9609"><span class="section-number-2">2.</span> Binary search using recursion</h2>
+<div id="outline-container-org4610a04" class="outline-2">
+<h2 id="org4610a04"><span class="section-number-2">2.</span> Binary search using recursion</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
@@ -227,8 +227,8 @@
 </div>
 </div>
 
-<div id="outline-container-org64111e4" class="outline-2">
-<h2 id="org64111e4"><span class="section-number-2">3.</span> linked list</h2>
+<div id="outline-container-orgac1b56d" class="outline-2">
+<h2 id="orgac1b56d"><span class="section-number-2">3.</span> linked list</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>

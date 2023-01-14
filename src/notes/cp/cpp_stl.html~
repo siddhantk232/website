@@ -16,52 +16,52 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org236ab51">1. Containers</a>
+<li><a href="#orgcc9b6da">1. Containers</a>
 <ul>
-<li><a href="#orgf54cfbb">1.1. Nested Containers</a></li>
-<li><a href="#org9a35875">1.2. Pairs</a></li>
-<li><a href="#orgc9190ae">1.3. Vectors</a></li>
-<li><a href="#org07a9748">1.4. Maps</a>
+<li><a href="#orgb97123e">1.1. Nested Containers</a></li>
+<li><a href="#orgf8e74b5">1.2. Pairs</a></li>
+<li><a href="#orgaaddc8f">1.3. Vectors</a></li>
+<li><a href="#orgb559363">1.4. Maps</a>
 <ul>
-<li><a href="#orga985060">1.4.1. Unordered Maps</a></li>
-<li><a href="#org9a32ff4">1.4.2. Multimaps</a></li>
+<li><a href="#orgdab0be1">1.4.1. Unordered Maps</a></li>
+<li><a href="#orgf678a4d">1.4.2. Multimaps</a></li>
 </ul>
 </li>
-<li><a href="#org84455d1">1.5. Sets</a></li>
-<li><a href="#org782fedd">1.6. Stack</a>
+<li><a href="#orge0f55b8">1.5. Sets</a></li>
+<li><a href="#org2454e1b">1.6. Stack</a>
 <ul>
-<li><a href="#orge3dec11">1.6.1. Operations:</a></li>
-<li><a href="#org5330284">1.6.2. LC question (valid parens)</a></li>
+<li><a href="#org7917a72">1.6.1. Operations:</a></li>
+<li><a href="#orgfd89563">1.6.2. LC question (valid parens)</a></li>
 </ul>
 </li>
-<li><a href="#org43591ad">1.7. Queues</a>
+<li><a href="#org1c790ca">1.7. Queues</a>
 <ul>
-<li><a href="#orgb07eed2">1.7.1. Operations:</a></li>
+<li><a href="#orgc430981">1.7.1. Operations:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orga1c9457">2. Iterators</a></li>
-<li><a href="#org38095d0">3. Algorithms</a>
+<li><a href="#org0b006a1">2. Iterators</a></li>
+<li><a href="#org33448fb">3. Algorithms</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org2345c39">3.0.1. Sort (O(nlog(n)))</a></li>
-<li><a href="#orgffa1c1d">3.0.2. Lower/Upper Bound (O(log(n)))</a></li>
-<li><a href="#org38335b0">3.0.3. min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</a></li>
-<li><a href="#orgb6fbffe">3.0.4. cpp lambdas</a></li>
-<li><a href="#org1b5a903">3.0.5. <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></a></li>
+<li><a href="#org28071da">3.0.1. Sort (O(nlog(n)))</a></li>
+<li><a href="#org5576435">3.0.2. Lower/Upper Bound (O(log(n)))</a></li>
+<li><a href="#orgd837465">3.0.3. min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</a></li>
+<li><a href="#org5ea6727">3.0.4. cpp lambdas</a></li>
+<li><a href="#org763f241">3.0.5. <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4e09307">4. Functors</a></li>
+<li><a href="#org40426e7">4. Functors</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org236ab51" class="outline-2">
-<h2 id="org236ab51"><span class="section-number-2">1.</span> Containers</h2>
+<div id="outline-container-orgcc9b6da" class="outline-2">
+<h2 id="orgcc9b6da"><span class="section-number-2">1.</span> Containers</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Containers are data structures that are already implemented in STL.
@@ -98,8 +98,8 @@ Above list does <b>not</b> include all the containers but most relevant ones. Se
 </p>
 </div>
 
-<div id="outline-container-orgf54cfbb" class="outline-3">
-<h3 id="orgf54cfbb"><span class="section-number-3">1.1.</span> Nested Containers</h3>
+<div id="outline-container-orgb97123e" class="outline-3">
+<h3 id="orgb97123e"><span class="section-number-3">1.1.</span> Nested Containers</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Cotainers can be nested. Some examples are given below.
@@ -113,8 +113,8 @@ Cotainers can be nested. Some examples are given below.
 </div>
 </div>
 
-<div id="outline-container-org9a35875" class="outline-3">
-<h3 id="org9a35875"><span class="section-number-3">1.2.</span> Pairs</h3>
+<div id="outline-container-orgf8e74b5" class="outline-3">
+<h3 id="orgf8e74b5"><span class="section-number-3">1.2.</span> Pairs</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 pair is defined in the <code>utility</code> header file. Pairs are copied when passed as
@@ -151,8 +151,8 @@ refer to a pair if needed.
 </div>
 </div>
 
-<div id="outline-container-orgc9190ae" class="outline-3">
-<h3 id="orgc9190ae"><span class="section-number-3">1.3.</span> Vectors</h3>
+<div id="outline-container-orgaaddc8f" class="outline-3">
+<h3 id="orgaaddc8f"><span class="section-number-3">1.3.</span> Vectors</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Dynmaically sized contiguous memory blocks. Defined in <code>vector</code> header file.
@@ -248,8 +248,8 @@ Vectors can be nested to created multi-dimensional vectors (2d, 3d, &#x2026;). V
 </div>
 </div>
 
-<div id="outline-container-org07a9748" class="outline-3">
-<h3 id="org07a9748"><span class="section-number-3">1.4.</span> Maps</h3>
+<div id="outline-container-orgb559363" class="outline-3">
+<h3 id="orgb559363"><span class="section-number-3">1.4.</span> Maps</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 A data structure to store collection of <code>key:value</code> pairs. Pairs are stored in
@@ -309,8 +309,8 @@ Use <code>map.clear()</code> to clear the map.
 </div>
 </div>
 
-<div id="outline-container-orga985060" class="outline-4">
-<h4 id="orga985060"><span class="section-number-4">1.4.1.</span> Unordered Maps</h4>
+<div id="outline-container-orgdab0be1" class="outline-4">
+<h4 id="orgdab0be1"><span class="section-number-4">1.4.1.</span> Unordered Maps</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 Difference from normal normal maps:
@@ -349,8 +349,8 @@ standard data types (including std::string) can be used.</li>
 </div>
 </div>
 
-<div id="outline-container-org9a32ff4" class="outline-4">
-<h4 id="org9a32ff4"><span class="section-number-4">1.4.2.</span> Multimaps</h4>
+<div id="outline-container-orgf678a4d" class="outline-4">
+<h4 id="orgf678a4d"><span class="section-number-4">1.4.2.</span> Multimaps</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 Pairs with same keys can exist in a <code>multimap</code>.
@@ -359,8 +359,8 @@ Pairs with same keys can exist in a <code>multimap</code>.
 </div>
 </div>
 
-<div id="outline-container-org84455d1" class="outline-3">
-<h3 id="org84455d1"><span class="section-number-3">1.5.</span> Sets</h3>
+<div id="outline-container-orge0f55b8" class="outline-3">
+<h3 id="orge0f55b8"><span class="section-number-3">1.5.</span> Sets</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Collection of unique elements.
@@ -421,16 +421,16 @@ only delete the element that's pointed by the iterator.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org782fedd" class="outline-3">
-<h3 id="org782fedd"><span class="section-number-3">1.6.</span> Stack</h3>
+<div id="outline-container-org2454e1b" class="outline-3">
+<h3 id="org2454e1b"><span class="section-number-3">1.6.</span> Stack</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 LIFO
 </p>
 </div>
 
-<div id="outline-container-orge3dec11" class="outline-4">
-<h4 id="orge3dec11"><span class="section-number-4">1.6.1.</span> Operations:</h4>
+<div id="outline-container-org7917a72" class="outline-4">
+<h4 id="org7917a72"><span class="section-number-4">1.6.1.</span> Operations:</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <ul class="org-ul">
 <li>push (element on top of the stack)</li>
@@ -463,8 +463,8 @@ LIFO
 </div>
 </div>
 
-<div id="outline-container-org5330284" class="outline-4">
-<h4 id="org5330284"><span class="section-number-4">1.6.2.</span> LC question (valid parens)</h4>
+<div id="outline-container-orgfd89563" class="outline-4">
+<h4 id="orgfd89563"><span class="section-number-4">1.6.2.</span> LC question (valid parens)</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <p>
 <a href="https://leetcode.com/problems/valid-parentheses">https://leetcode.com/problems/valid-parentheses</a>
@@ -472,10 +472,10 @@ LIFO
 </div>
 
 <ol class="org-ol">
-<li><a id="org8d8f074"></a>Solution 1<br />
+<li><a id="org8d0dea8"></a>Solution 1<br />
 <div class="outline-text-5" id="text-1-6-2-1">
 <div class="org-src-container">
-<pre class="src src-cpp" id="org1153a54"><span class="org-keyword">class</span> <span class="org-type">Solution1</span> {
+<pre class="src src-cpp" id="org084ba0b"><span class="org-keyword">class</span> <span class="org-type">Solution1</span> {
 <span class="org-keyword">public</span>:
     <span class="org-type">bool</span> <span class="org-function-name">isValid</span>(<span class="org-type">string</span> <span class="org-variable-name">s</span>) {
         <span class="org-type">stack</span>&lt;<span class="org-type">char</span>&gt; <span class="org-variable-name">st</span>;
@@ -512,7 +512,7 @@ LIFO
 </div>
 
 <div class="org-src-container">
-<pre class="src src-cpp" id="org17edb0e"><span class="org-keyword">class</span> <span class="org-type">Solution2</span> {
+<pre class="src src-cpp" id="orgfff3bd7"><span class="org-keyword">class</span> <span class="org-type">Solution2</span> {
 <span class="org-keyword">public</span>:
     <span class="org-type">unordered_map</span>&lt;<span class="org-type">char</span>, <span class="org-type">int</span>&gt; <span class="org-variable-name">mp</span> = {{<span class="org-string">'('</span>, -1}, {<span class="org-string">'{'</span>, -2}, {<span class="org-string">'['</span>, -3}, {<span class="org-string">')'</span>, 1}, {<span class="org-string">'}'</span>, 2}, {<span class="org-string">']'</span>, 3}};
     <span class="org-type">bool</span> <span class="org-function-name">isValid</span>(<span class="org-type">string</span> <span class="org-variable-name">s</span>) {
@@ -631,15 +631,15 @@ Driver Code with both the solutions
 </div>
 </div>
 
-<div id="outline-container-org43591ad" class="outline-3">
-<h3 id="org43591ad"><span class="section-number-3">1.7.</span> Queues</h3>
+<div id="outline-container-org1c790ca" class="outline-3">
+<h3 id="org1c790ca"><span class="section-number-3">1.7.</span> Queues</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 FIFO
 </p>
 </div>
-<div id="outline-container-orgb07eed2" class="outline-4">
-<h4 id="orgb07eed2"><span class="section-number-4">1.7.1.</span> Operations:</h4>
+<div id="outline-container-orgc430981" class="outline-4">
+<h4 id="orgc430981"><span class="section-number-4">1.7.1.</span> Operations:</h4>
 <div class="outline-text-4" id="text-1-7-1">
 <ul class="org-ul">
 <li>push (element to the back of the queue)</li>
@@ -673,8 +673,8 @@ FIFO
 </div>
 </div>
 
-<div id="outline-container-orga1c9457" class="outline-2">
-<h2 id="orga1c9457"><span class="section-number-2">2.</span> Iterators</h2>
+<div id="outline-container-org0b006a1" class="outline-2">
+<h2 id="org0b006a1"><span class="section-number-2">2.</span> Iterators</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Pointer like structures. <code>.begin()</code> points at the first element of a data
@@ -740,16 +740,16 @@ syntax required for iterator usage.
 </div>
 </div>
 
-<div id="outline-container-org38095d0" class="outline-2">
-<h2 id="org38095d0"><span class="section-number-2">3.</span> Algorithms</h2>
+<div id="outline-container-org33448fb" class="outline-2">
+<h2 id="org33448fb"><span class="section-number-2">3.</span> Algorithms</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>{next,prev}<sub>permutations</sub></li>
 </ul>
 </div>
 
-<div id="outline-container-org2345c39" class="outline-4">
-<h4 id="org2345c39"><span class="section-number-4">3.0.1.</span> Sort (O(nlog(n)))</h4>
+<div id="outline-container-org28071da" class="outline-4">
+<h4 id="org28071da"><span class="section-number-4">3.0.1.</span> Sort (O(nlog(n)))</h4>
 <div class="outline-text-4" id="text-3-0-1">
 <p>
 <code>std::sort</code> takes in the first iterator (pointer to the first element) and
@@ -798,7 +798,7 @@ Usage with vectors:
 </div>
 
 <ol class="org-ol">
-<li><a id="org1d0a6f5"></a>Comparator Function in Sort<br />
+<li><a id="orgcbc3133"></a>Comparator Function in Sort<br />
 <div class="outline-text-5" id="text-3-0-1-1">
 <p>
 The default logic for sort is to rearrange container elements in ascending
@@ -839,8 +839,8 @@ Return <code>false</code> from the comparator function if you want to swap, else
 </li>
 </ol>
 </div>
-<div id="outline-container-orgffa1c1d" class="outline-4">
-<h4 id="orgffa1c1d"><span class="section-number-4">3.0.2.</span> Lower/Upper Bound (O(log(n)))</h4>
+<div id="outline-container-org5576435" class="outline-4">
+<h4 id="org5576435"><span class="section-number-4">3.0.2.</span> Lower/Upper Bound (O(log(n)))</h4>
 <div class="outline-text-4" id="text-3-0-2">
 <p>
 The input to lower/upper bound should be sorted to get O(log(n)) perf. If the
@@ -932,8 +932,8 @@ the search argument passed.
 
 
 
-<div id="outline-container-org38335b0" class="outline-4">
-<h4 id="org38335b0"><span class="section-number-4">3.0.3.</span> min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</h4>
+<div id="outline-container-orgd837465" class="outline-4">
+<h4 id="orgd837465"><span class="section-number-4">3.0.3.</span> min<sub>element</sub>, max<sub>element</sub>, accumulate, count, find and, reverse</h4>
 <div class="outline-text-4" id="text-3-0-3">
 <div class="org-src-container">
 <pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
@@ -977,8 +977,8 @@ the search argument passed.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb6fbffe" class="outline-4">
-<h4 id="orgb6fbffe"><span class="section-number-4">3.0.4.</span> cpp lambdas</h4>
+<div id="outline-container-org5ea6727" class="outline-4">
+<h4 id="org5ea6727"><span class="section-number-4">3.0.4.</span> cpp lambdas</h4>
 <div class="outline-text-4" id="text-3-0-4">
 <p>
 Lambdas in cpp can be used to create functions that are created for one time
@@ -1015,8 +1015,8 @@ use. Lambda funcs can be assigned too.
 </div>
 </div>
 
-<div id="outline-container-org1b5a903" class="outline-4">
-<h4 id="org1b5a903"><span class="section-number-4">3.0.5.</span> <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></h4>
+<div id="outline-container-org763f241" class="outline-4">
+<h4 id="org763f241"><span class="section-number-4">3.0.5.</span> <code>all_of</code>, <code>any_of</code> and, <code>none_of</code></h4>
 <div class="outline-text-4" id="text-3-0-5">
 <p>
 <b><code>all_of</code></b>: returns true if the provided function returns true for all the
@@ -1049,8 +1049,8 @@ use. Lambda funcs can be assigned too.
 </div>
 </div>
 
-<div id="outline-container-org4e09307" class="outline-2">
-<h2 id="org4e09307"><span class="section-number-2">4.</span> Functors</h2>
+<div id="outline-container-org40426e7" class="outline-2">
+<h2 id="org40426e7"><span class="section-number-2">4.</span> Functors</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 TODO look more into this topic (not important for LC)

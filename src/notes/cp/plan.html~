@@ -16,27 +16,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5d5af66">1. Intro</a></li>
-<li><a href="#org4110a5d">2. General Tips</a>
+<li><a href="#org7a7c3b3">1. Intro</a></li>
+<li><a href="#org97d49db">2. General Tips</a>
 <ul>
-<li><a href="#orgda88c57">2.1. Focus!</a></li>
+<li><a href="#orgc890bf3">2.1. Focus!</a></li>
 </ul>
 </li>
-<li><a href="#orgf7aa74c">3. Mistakes</a></li>
-<li><a href="#org4f651d8">4. Plan</a></li>
+<li><a href="#orgc47c91b">3. Mistakes</a></li>
+<li><a href="#org0bbf965">4. Plan</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5d5af66" class="outline-2">
-<h2 id="org5d5af66"><span class="section-number-2">1.</span> Intro</h2>
+<div id="outline-container-org7a7c3b3" class="outline-2">
+<h2 id="org7a7c3b3"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Notes (and thoughts) taken while watching <a href="https://www.youtube.com/watch?v=bSdp2WeyuJY">https://www.youtube.com/watch?v=bSdp2WeyuJY</a> and reading <a href="https://docs.google.com/document/d/1-7Co93b504uyXyMjjE8bnLJP3d3QXvp_m1UjvbvdR2Y/edit">this</a>.
 </p>
 </div>
 </div>
-<div id="outline-container-org4110a5d" class="outline-2">
-<h2 id="org4110a5d"><span class="section-number-2">2.</span> General Tips</h2>
+<div id="outline-container-org97d49db" class="outline-2">
+<h2 id="org97d49db"><span class="section-number-2">2.</span> General Tips</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
@@ -54,8 +54,8 @@ In a way these two ideas relate to <a href="https://en.wikipedia.org/wiki/Goodha
 <li><b>Don't wast time</b> on useless stuff (like this video I'm watching).</li>
 </ul>
 </div>
-<div id="outline-container-orgda88c57" class="outline-3">
-<h3 id="orgda88c57"><span class="section-number-3">2.1.</span> Focus!</h3>
+<div id="outline-container-orgc890bf3" class="outline-3">
+<h3 id="orgc890bf3"><span class="section-number-3">2.1.</span> Focus!</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 This is the most <b>important</b> thing that I want to get out of doing CP. Having a clear mind is gonna help me for sure in future in deciding side projects and keep focus until I finish them.
@@ -70,8 +70,8 @@ Ask questions like:
 </div>
 </div>
 </div>
-<div id="outline-container-orgf7aa74c" class="outline-2">
-<h2 id="orgf7aa74c"><span class="section-number-2">3.</span> Mistakes</h2>
+<div id="outline-container-orgc47c91b" class="outline-2">
+<h2 id="orgc47c91b"><span class="section-number-2">3.</span> Mistakes</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>When there's no solution hiding anywhere. Don't be super stuck.</li>
@@ -84,8 +84,8 @@ Ask questions like:
 </ul>
 </div>
 </div>
-<div id="outline-container-org4f651d8" class="outline-2">
-<h2 id="org4f651d8"><span class="section-number-2">4.</span> Plan</h2>
+<div id="outline-container-org0bbf965" class="outline-2">
+<h2 id="org0bbf965"><span class="section-number-2">4.</span> Plan</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Give contests on codechef and codeforces.
@@ -101,11 +101,11 @@ Ask questions like:
 </ul>
 </div>
 <ol class="org-ol">
-<li><a id="org1298599"></a>Try to doo these tasks each week (till div 4 i.e. &lt;= 1400)<br />
+<li><a id="org2bed275"></a>Try to doo these tasks each week (till div 4 i.e. &lt;= 1400)<br />
 <div class="outline-text-5" id="text-4-0-0-1">
 <ul class="org-ul">
 <li>solve codechef starters, codeforces div 3/4 (day 0)</li>
-<li>Think hard before reading editorials of the ones that you weren't able to solve in <a href="#org1298599">day 0</a>. Don't view editorials of ones that were clearly out of your league. (day 1)</li>
+<li>Think hard before reading editorials of the ones that you weren't able to solve in <a href="#org2bed275">day 0</a>. Don't view editorials of ones that were clearly out of your league. (day 1)</li>
 <li>give atcoder abc</li>
 <li>Do problem set from <a href="https://train.usaco.org/">https://train.usaco.org/</a> and atcoder abc past contests (<a href="https://kenkoooo.com/atcoder/#/table//">https://kenkoooo.com/atcoder/#/table//</a>)</li>
 </ul>
