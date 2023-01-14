@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OOP in CPP</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">OOP in CPP</h1>
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">string</span>;
+<span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">cout</span>;
+<span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">endl</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Person</span> {
+    <span class="org-type">string</span> <span class="org-variable-name">d_name</span>;
+<span class="org-keyword">public</span>:
+        <span class="org-type">void</span> <span class="org-function-name">setName</span>(<span class="org-type">string</span> <span class="org-keyword">const</span> <span class="org-variable-name">name</span>) {
+            d_name = name;
+        }
+
+        <span class="org-type">string</span> <span class="org-keyword">const</span> &amp;<span class="org-function-name">name</span>() <span class="org-keyword">const</span> {
+            <span class="org-keyword">return</span> d_name;
+        }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-keyword">auto</span> <span class="org-variable-name">p</span> = <span class="org-keyword">new</span> <span class="org-type">Person</span>();
+    p-&gt;setName(<span class="org-string">"test"</span>);
+    cout &lt;&lt; p-&gt;name() &lt;&lt; endl;
+}
+</pre>
+</div>
+</div>
+</body>
+</html>

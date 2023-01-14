@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<ol class="org-ol">
+<li><p>
+<b>Aim</b>: Perform Binary Search using recursion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">binary_search</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>, <span class="org-type">int</span> <span class="org-variable-name">target</span>) {
+    <span class="org-keyword">if</span> (left &gt; right) {
+        <span class="org-keyword">return</span> -1;
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (left + right) / 2;
+
+    <span class="org-keyword">if</span> (arr[mid] == target) {
+        <span class="org-keyword">return</span> mid;
+    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (target &gt; arr[mid]) {
+        <span class="org-keyword">return</span> binary_search(arr, mid + 1, right, target);
+    } <span class="org-keyword">else</span> {
+        <span class="org-keyword">return</span> binary_search(arr, left, mid - 1, target);
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 3, 9, 22, 29};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"found 1 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 1));
+    printf(<span class="org-string">"found 3 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 3));
+    printf(<span class="org-string">"found 9 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 9));
+    printf(<span class="org-string">"found 100 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 100));
+}
+</pre>
+</div>
+
+<pre class="example">
+found 1 at index: 0
+found 3 at index: 1
+found 9 at index: 2
+found 100 at index: -1
+</pre></li>
+
+<li><p>
+<b>Aim</b>: Write a program for the selection sort algorithm.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">selection_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size - 1; ++i) {
+        <span class="org-type">int</span> <span class="org-variable-name">min</span> = i;
+
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = i + 1; j &lt; size; ++j) {
+            <span class="org-keyword">if</span> (arr[j] &lt; arr[min]) {
+                min = j;
+            }
+        }
+
+        <span class="org-keyword">if</span> (min != i) {
+            swap(&amp;arr[min], &amp;arr[i]);
+        }
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {-2, 3, 1, 19, 12, 1, 99, 23, -99};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    selection_sort(arr, size);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+-99 -2 1 1 3 12 19 23 99 
+</pre></li>
+
+<li><p>
+<b>aim</b>: write a program to perform the following operations on a linked list:
+</p>
+
+<ul class="org-ul">
+<li>insert a node at the end.</li>
+<li>insert a node at the beginning.</li>
+<li>insert a node at a given position.</li>
+<li>delete a node at the start.</li>
+<li>delete a node at the end.</li>
+<li>delete a node at a given position.</li>
+<li>merge two linked lists.</li>
+<li>reverse a linked list.</li>
+<li>display the linked list.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;assert.h&gt;</span>
+
+<span class="org-keyword">struct</span> <span class="org-type">Node</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span> *<span class="org-variable-name">next</span>;
+};
+
+<span class="org-keyword">typedef</span> <span class="org-keyword">struct</span> <span class="org-type">Node</span> <span class="org-type">Node</span>;
+
+<span class="org-type">Node</span> *<span class="org-function-name">create</span>(<span class="org-type">int</span> <span class="org-variable-name">val</span>);
+<span class="org-type">void</span> <span class="org-function-name">insert_at_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>);
+<span class="org-type">void</span> <span class="org-function-name">insert_before_start</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>);
+<span class="org-type">void</span> <span class="org-function-name">insert_after</span>(<span class="org-type">Node</span> *<span class="org-variable-name">ll</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>);
+<span class="org-type">int</span> <span class="org-function-name">insert_at_pos</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>);
+<span class="org-type">void</span> <span class="org-function-name">delete_start</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>);
+<span class="org-type">void</span> <span class="org-function-name">delete_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>);
+<span class="org-type">int</span> <span class="org-function-name">delete_pos</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>);
+<span class="org-type">void</span> <span class="org-function-name">merge</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">Node</span> *<span class="org-variable-name">head2</span>);
+<span class="org-type">void</span> <span class="org-function-name">reverse</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>);
+<span class="org-type">void</span> <span class="org-function-name">print_ll</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>);
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">Node</span> *<span class="org-variable-name">head</span> = create(1);
+    <span class="org-type">Node</span> *<span class="org-variable-name">head2</span> = create(100);
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">insert</span>
+    insert_at_end(head, 2);
+    insert_at_end(head, 3);
+
+    insert_before_start(&amp;head, -2);
+    insert_before_start(&amp;head, -3);
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">-3 -2 1 2 3</span>
+    insert_after(head-&gt;next-&gt;next-&gt;next-&gt;next, 5);
+
+    insert_at_pos(head, 6, 4);
+
+    printf(<span class="org-string">"linked list: \n"</span>);
+    print_ll(head);
+
+    printf(<span class="org-string">"reversed linked list: \n"</span>);
+    reverse(&amp;head);
+    print_ll(head);
+
+    insert_at_end(head2, 200);
+    insert_at_end(head2, 300);
+    insert_at_end(head2, 400);
+    insert_at_end(head2, 500);
+
+    printf(<span class="org-string">"merged linked list:\n"</span>);
+    merge(head, head2);
+    print_ll(head);
+    printf(<span class="org-string">"==============\n"</span>);
+
+
+    printf(<span class="org-string">"linked list after deleting some nodes:\n"</span>);
+    delete_start(&amp;head);
+    delete_end(head);
+    delete_pos(head, 3);
+
+    print_ll(head);
+}
+
+<span class="org-type">void</span> <span class="org-function-name">delete_start</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = *head;
+    *head = (*head)-&gt;next;
+
+    free(temp);
+}
+
+<span class="org-type">void</span> <span class="org-function-name">delete_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>) {
+    <span class="org-keyword">while</span>(head-&gt;next-&gt;next != <span class="org-constant">NULL</span>) {
+        head = head-&gt;next;
+    }
+
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = head-&gt;next;
+    head-&gt;next = <span class="org-constant">NULL</span>;
+    free(temp);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">delete_pos</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>) {
+    assert(pos &gt; 1);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; pos - 1 &amp;&amp; head != <span class="org-constant">NULL</span>; ++i) {
+        head = head-&gt;next;
+    }
+
+    <span class="org-keyword">if</span> (head == <span class="org-constant">NULL</span>) {
+        <span class="org-keyword">return</span> -1;
+    }
+
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = head-&gt;next;
+    head-&gt;next = head-&gt;next-&gt;next;
+    free(temp);
+}
+
+<span class="org-type">void</span> <span class="org-function-name">merge</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">Node</span> *<span class="org-variable-name">head2</span>) {
+    <span class="org-keyword">while</span>(head-&gt;next != <span class="org-constant">NULL</span>) {
+        head = head-&gt;next;
+    }
+
+    head-&gt;next = head2;
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">O(n)</span>
+<span class="org-type">void</span> <span class="org-function-name">reverse</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">curr</span> = *head, *<span class="org-variable-name">next</span> = <span class="org-constant">NULL</span>,  *<span class="org-variable-name">prev</span> = <span class="org-constant">NULL</span>;
+
+    <span class="org-keyword">while</span> (curr != <span class="org-constant">NULL</span>) {
+        next = curr-&gt;next;
+        curr-&gt;next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    *head = prev;
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">O(n)</span>
+<span class="org-type">void</span> <span class="org-function-name">insert_at_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+    assert(head != <span class="org-constant">NULL</span>);
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">go to the end</span>
+    <span class="org-keyword">while</span>(head-&gt;next != <span class="org-constant">NULL</span>) {
+        head = head-&gt;next;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">create new Node</span>
+    <span class="org-type">Node</span> *<span class="org-variable-name">n</span> = create(el);
+    head-&gt;next = n;
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">O(1)</span>
+<span class="org-type">void</span> <span class="org-function-name">insert_before_start</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">n</span> = create(el);
+    n-&gt;next = *head;
+    *head = n;
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">O(1)</span>
+<span class="org-type">void</span> <span class="org-function-name">insert_after</span>(<span class="org-type">Node</span> *<span class="org-variable-name">ll</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+    assert(ll != <span class="org-constant">NULL</span>);
+    <span class="org-type">Node</span> *<span class="org-variable-name">n</span> = create(el);
+    n-&gt;next = ll-&gt;next;
+    ll-&gt;next = n;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">insert_at_pos</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">unsigned</span> <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+    assert(head != <span class="org-constant">NULL</span>);
+    assert(pos &gt; 1);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; pos - 1 &amp;&amp; head != <span class="org-constant">NULL</span>; ++i) {
+        head = head-&gt;next;
+    }
+
+    <span class="org-keyword">if</span> (head == <span class="org-constant">NULL</span>) {
+        <span class="org-keyword">return</span> -1;
+    }
+
+    insert_after(head, el);
+    <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">print_ll</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>) {
+    <span class="org-keyword">while</span>(head != <span class="org-constant">NULL</span>) {
+        printf(<span class="org-string">"%d "</span>, head-&gt;data);
+        head = head-&gt;next;
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+
+<span class="org-type">Node</span> *<span class="org-function-name">create</span>(<span class="org-type">int</span> <span class="org-variable-name">val</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">head</span> = malloc(<span class="org-keyword">sizeof</span>(Node));
+    head-&gt;data = val;
+    head-&gt;next = <span class="org-constant">NULL</span>;
+    <span class="org-keyword">return</span> head;
+}
+</pre>
+</div>
+
+<pre class="example">
+linked list: 
+-3 -2 1 2 3 4 5 
+reversed linked list: 
+5 4 3 2 1 -2 -3 
+merged linked list:
+5 4 3 2 1 -2 -3 100 200 300 400 500 
+==============
+linked list after deleting some nodes:
+4 3 1 -2 -3 100 200 300 400 
+</pre></li>
+
+<li><b>Aim</b>: Write a program to perform the following operations on a circular linked list:
+<ul class="org-ul">
+<li>Insert a node at the end.</li>
+<li>Insert a node at the beginning.</li>
+<li>Insert a node at a given position.</li>
+<li>Delete a node at the start.</li>
+<li>Delete a node at the end.</li>
+<li><p>
+Display the linked list.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdlib.h&gt;</span>
+
+<span class="org-keyword">struct</span> <span class="org-type">Node</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span> *<span class="org-variable-name">next</span>;
+};
+
+<span class="org-keyword">typedef</span> <span class="org-keyword">struct</span> <span class="org-type">Node</span> <span class="org-type">Node</span>;
+
+<span class="org-type">Node</span>* <span class="org-function-name">create</span>(<span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">t</span> = malloc(<span class="org-keyword">sizeof</span>(Node));
+    t-&gt;data = data;
+    t-&gt;next = <span class="org-constant">NULL</span>;
+
+    <span class="org-keyword">return</span> t;
+}
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment">  1. create a new node with data.</span>
+<span class="org-comment">  2. set the "next" of this new node to point to the head node.</span>
+<span class="org-comment">  3. Go to the last node of the circular linked list:</span>
+<span class="org-comment">  1. set temp to point to head.</span>
+<span class="org-comment">  2. loop while head-&gt;next not equal to temp.</span>
+<span class="org-comment">  4. change the "next" of the last node to point to this newly created node.</span>
+<span class="org-comment-delimiter">*/</span>
+<span class="org-type">void</span> <span class="org-function-name">insert_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">create new node</span>
+    <span class="org-type">Node</span> *<span class="org-variable-name">node</span> = create(data);
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">last node in a circular linked list points to the head</span>
+    node-&gt;next = head;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">go to the last node and point its next to this "node"</span>
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = head;
+    <span class="org-keyword">while</span> (head-&gt;next != temp) {
+        head = head-&gt;next;
+    }
+    head-&gt;next = node;
+}
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment">  1. create a new node with data.</span>
+<span class="org-comment">  2. set the "next" of this new node to point to the head node.</span>
+<span class="org-comment">  3. Go to the last node of the circular linked list:</span>
+<span class="org-comment">  1. set temp to point to head.</span>
+<span class="org-comment">  2. loop while head-&gt;next not equal to temp.</span>
+<span class="org-comment">  4. change the "next" of the last node to point to this newly created node.</span>
+<span class="org-comment">  5. change the head to point to this newly created node.</span>
+<span class="org-comment-delimiter">*/</span>
+<span class="org-type">void</span> <span class="org-function-name">insert_start</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">create new node</span>
+    <span class="org-type">Node</span> *<span class="org-variable-name">node</span> = create(data);
+    node-&gt;next = *head;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">go to the last node, store it in temp</span>
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = *head;
+    <span class="org-keyword">while</span> (temp-&gt;next != *head) {
+        temp = temp-&gt;next;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">make last node point to the new head node</span>
+    temp-&gt;next = node;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">overwrite the head to point to the new head node</span>
+    *head = node;
+}
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment">  1. move ptr to point to the node before the desired position.</span>
+<span class="org-comment">  1. loop from 1 to (pos - 1) and set ptr = ptr-&gt;next</span>
+<span class="org-comment">  2. create a new node.</span>
+<span class="org-comment">  3. create a temp node that is set to point to ptr-&gt;next</span>
+<span class="org-comment">  4. set ptr-&gt;next to point to this newly created node</span>
+<span class="org-comment">  5. set the next pointer of this newly created node to point to the temp node created in step 3.</span>
+<span class="org-comment-delimiter">*/</span>
+<span class="org-type">void</span> <span class="org-function-name">insert_pos</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; pos - 1; ++i) {
+        head = head-&gt;next;
+    }
+
+    <span class="org-type">Node</span> *<span class="org-variable-name">node</span> = create(data);
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = head-&gt;next;
+    head-&gt;next = node;
+    node-&gt;next = temp;
+}
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment">  1. Go to the second last node of the circular linked list:</span>
+<span class="org-comment">  1. set temp to point to head.</span>
+<span class="org-comment">  2. loop while head-&gt;next-&gt;next not equal to temp.</span>
+<span class="org-comment">  2. store the reference to the last node for deletion (free()).</span>
+<span class="org-comment">  3. point the "next" of the second last node to point to head.</span>
+<span class="org-comment">  4. free(the last node).</span>
+<span class="org-comment-delimiter">*/</span>
+<span class="org-type">void</span> <span class="org-function-name">delete_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = head;
+    <span class="org-comment-delimiter">// </span><span class="org-comment">go to the second last node</span>
+    <span class="org-keyword">while</span> (head-&gt;next-&gt;next != temp) {
+        head = head-&gt;next;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">store ref to last node for deletion (free)</span>
+    <span class="org-type">Node</span> *<span class="org-variable-name">tb_free</span> = head-&gt;next;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">point second last node's next to head</span>
+    head-&gt;next = temp;
+
+    free(tb_free);
+}
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment">  1. Go to the last node of the circular linked list:</span>
+<span class="org-comment">  1. set temp to point to head.</span>
+<span class="org-comment">  2. loop while head-&gt;next not equal to temp.</span>
+<span class="org-comment">  2. point last node's next to point to the second node from head.</span>
+<span class="org-comment">  3. set ptr to point to the head node.</span>
+<span class="org-comment">  4. move the head by one node:</span>
+<span class="org-comment">  1. head = ptr-&gt;next.</span>
+<span class="org-comment">  5. free(ptr).</span>
+<span class="org-comment-delimiter">*/</span>
+<span class="org-type">void</span> <span class="org-function-name">delete_start</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">go to the last node</span>
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = *head;
+    <span class="org-type">Node</span> *<span class="org-variable-name">last</span> = *head;
+    <span class="org-keyword">while</span> (last-&gt;next != temp) {
+        last = last-&gt;next;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">point last node's next to second node from head</span>
+    last-&gt;next = temp-&gt;next;
+    *head = temp-&gt;next;
+    free(temp);
+}
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment">  1. set up a temp node that points to the head node of the circular linked list.</span>
+
+<span class="org-comment">  2. iterate until we're at the last node:</span>
+<span class="org-comment">  1. loop while head-&gt;next not equal to temp.</span>
+<span class="org-comment">  2. print head-&gt;data</span>
+<span class="org-comment">  3. move head by one node (head = head-&gt;next)</span>
+
+<span class="org-comment">  3. write an additional print statemen to print the last node (whose -&gt;next was head)</span>
+<span class="org-comment-delimiter">*/</span>
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = head;
+
+    <span class="org-keyword">while</span>(head-&gt;next != temp) {
+        printf(<span class="org-string">"%d -&gt; "</span>, head-&gt;data);
+        head = head-&gt;next;
+    }
+    printf(<span class="org-string">"%d -&gt; NULL\n"</span>, head-&gt;data);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">Node</span> *<span class="org-variable-name">head</span> = create(10); <span class="org-comment-delimiter">// </span><span class="org-comment">10 -&gt; NULL</span>
+    head-&gt;next = head;
+
+    insert_end(head, 20); <span class="org-comment-delimiter">// </span><span class="org-comment">10 -&gt; 20 -&gt; 10</span>
+    insert_end(head, 30); <span class="org-comment-delimiter">// </span><span class="org-comment">10 -&gt; 20 -&gt; 30 -&gt; 10</span>
+    insert_end(head, 40); <span class="org-comment-delimiter">// </span><span class="org-comment">10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 10</span>
+    insert_end(head, 50); <span class="org-comment-delimiter">// </span><span class="org-comment">10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 10</span>
+    insert_end(head, 60); <span class="org-comment-delimiter">// </span><span class="org-comment">10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 60 -&gt; 10</span>
+    insert_end(head, 70); <span class="org-comment-delimiter">// </span><span class="org-comment">10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 60 -&gt; 70 -&gt; 10</span>
+
+    insert_start(&amp;head, 1); <span class="org-comment-delimiter">// </span><span class="org-comment">1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 60 -&gt; 70 -&gt; 1</span>
+    insert_start(&amp;head, 2); <span class="org-comment-delimiter">// </span><span class="org-comment">2 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 60 -&gt; 70 -&gt; 2</span>
+    insert_start(&amp;head, 3); <span class="org-comment-delimiter">// </span><span class="org-comment">3 -&gt; 2 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 60 -&gt; 70 -&gt; 3</span>
+
+    insert_pos(head, 3, 5); <span class="org-comment-delimiter">// </span><span class="org-comment">3 -&gt; 2 -&gt; 5 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 60 -&gt; 70 -&gt; 3</span>
+    insert_pos(head, 4, 7); <span class="org-comment-delimiter">// </span><span class="org-comment">3 -&gt; 2 -&gt; 5 -&gt; 7 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 60 -&gt; 70 -&gt; 3</span>
+
+    delete_end(head); <span class="org-comment-delimiter">// </span><span class="org-comment">3 -&gt; 2 -&gt; 5 -&gt; 7 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 60 -&gt; 3</span>
+    delete_end(head); <span class="org-comment-delimiter">// </span><span class="org-comment">3 -&gt; 2 -&gt; 5 -&gt; 7 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 50 -&gt; 3</span>
+    delete_end(head); <span class="org-comment-delimiter">// </span><span class="org-comment">3 -&gt; 2 -&gt; 5 -&gt; 7 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 3</span>
+
+    delete_start(&amp;head); <span class="org-comment-delimiter">// </span><span class="org-comment">2 -&gt; 5 -&gt; 7 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 2</span>
+    delete_start(&amp;head); <span class="org-comment-delimiter">// </span><span class="org-comment">5 -&gt; 7 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; 5</span>
+
+    display(head);
+}
+</pre>
+</div>
+
+<pre class="example">
+5 -&gt; 7 -&gt; 1 -&gt; 10 -&gt; 20 -&gt; 30 -&gt; 40 -&gt; NULL
+</pre></li>
+</ul></li>
+</ol>
+</div>
+</body>
+</html>

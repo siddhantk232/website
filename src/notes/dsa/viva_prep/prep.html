@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org9b41167">1. <span class="done DONE">DONE</span> Arrays</a></li>
+<li><a href="#orgd262dae">2. <span class="done DONE">DONE</span> Queues</a></li>
+<li><a href="#org3493ed8">3. <span class="done DONE">DONE</span> Stack</a></li>
+<li><a href="#org4f848a3">4. <span class="done DONE">DONE</span> Searching</a></li>
+<li><a href="#org2ea9d63">5. <span class="done DONE">DONE</span> Linked List</a></li>
+<li><a href="#org07b5f91">6. Sorting</a></li>
+<li><a href="#orgf035b7d">7. Read Graphs</a></li>
+<li><a href="#org785138d">8. Read trees</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9b41167" class="outline-2">
+<h2 id="org9b41167"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> Arrays</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><p>
+print diagonal elements of a 2d array (from both sides)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">mod</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+    <span class="org-keyword">return</span> x &gt;= 0 ? x : x * -1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">matrix</span>[][3] = {{1,2,3},
+                                {4,5,6},
+                                {7,8,9}};
+
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = 3;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, matrix[i][i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+      printf(<span class="org-string">"%d "</span>, matrix[i][size - 1 - i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example">
+1 5 9 
+3 5 7 
+</pre></li>
+<li><p>
+matrix multiplication
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">m1</span>[][3] = {{1,2,3}
+                ,{4,5,6}
+                ,{7,8,9}};
+
+  <span class="org-type">int</span> <span class="org-variable-name">m2</span>[][3] = {{1,0,1}
+                ,{1,1,0}
+                ,{0,0,1}};
+
+  <span class="org-type">int</span> <span class="org-variable-name">result</span>[][3] = {{0,0,0}
+                     ,{0,0,0}
+                     ,{0,0,0}};
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; 3; ++i) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; 3; ++j) {
+      <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">k</span> = 0; k &lt; 3; ++k) {
+        result[i][j] += m1[i][k] * m2[k][j];
+      }
+    }
+  }
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; 3; ++i) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; 3; ++j) {
+      printf(<span class="org-string">"%d "</span>, result[i][j]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+  }
+}
+
+</pre>
+</div>
+
+<pre class="example">
+3 2 4 
+9 5 10 
+15 8 16 
+</pre></li>
+<li><p>
+array insertion/deletion
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">insert</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> *<span class="org-variable-name">size</span>) {
+  <span class="org-keyword">if</span> (pos == *size + 1) { <span class="org-comment-delimiter">// </span><span class="org-comment">insert at end</span>
+    arr[*size] = el;
+    *size = *size + 1;
+    <span class="org-keyword">return</span>;
+  }
+  <span class="org-keyword">if</span> (pos &gt; *size) <span class="org-keyword">return</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">cant insert anywhere after the end</span>
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">shift every element from right one position right until pos</span>
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = (*size) - 1; i &gt;= pos - 1; --i) {
+    arr[i + 1] = arr[i];
+  }
+  arr[pos - 1] = el;
+  *size = *size + 1;
+  <span class="org-keyword">return</span>;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">delete</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> *<span class="org-variable-name">size</span>) {
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = pos - 1; i &lt; *size - 1; ++i) {
+    arr[i] = arr[i + 1];
+  }
+  *size = *size - 1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">cap</span> = 20;
+  <span class="org-type">int</span> <span class="org-variable-name">size</span> = 3;
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[20] = {1,2,3};
+
+  insert(arr, 4, 4, &amp;size);
+  insert(arr, -10, 1, &amp;size);
+  insert(arr, 20, 3, &amp;size);
+  insert(arr, 100, 5, &amp;size);
+  insert(arr, 300, size + 1, &amp;size);
+  insert(arr, 400, size + 1, &amp;size);
+  insert(arr, 500, size + 1, &amp;size);
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+    printf(<span class="org-string">"%d "</span>, arr[i]);
+  }
+  printf(<span class="org-string">"\n"</span>);
+
+  delete(arr, 1, &amp;size);
+  delete(arr, size, &amp;size);
+  delete(arr, 4, &amp;size);
+  delete(arr, 6, &amp;size);
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+    printf(<span class="org-string">"%d "</span>, arr[i]);
+  }
+  printf(<span class="org-string">"\n"</span>);
+
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+-10 1 20 2 100 3 4 300 400 500 
+1 20 2 3 4 400 
+</pre></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd262dae" class="outline-2">
+<h2 id="orgd262dae"><span class="section-number-2">2.</span> <span class="done DONE">DONE</span> Queues</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>impl using arrays</li>
+<li>circular queues</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3493ed8" class="outline-2">
+<h2 id="org3493ed8"><span class="section-number-2">3.</span> <span class="done DONE">DONE</span> Stack</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>impl using array</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4f848a3" class="outline-2">
+<h2 id="org4f848a3"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> Searching</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Linear search</li>
+<li>Binary search</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2ea9d63" class="outline-2">
+<h2 id="org2ea9d63"><span class="section-number-2">5.</span> <span class="done DONE">DONE</span> Linked List</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>insertion/deletion, display, reverse, search, merge a singly linked list</li>
+<li>doubly linked list</li>
+<li>circular linked list</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org07b5f91" class="outline-2">
+<h2 id="org07b5f91"><span class="section-number-2">6.</span> Sorting</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Bubble sort</li>
+<li>Selection sort</li>
+<li>Insertion sort</li>
+<li>Merge sort</li>
+<li>Quick sort</li>
+<li>[OPTIONAL] Heap sort</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf035b7d" class="outline-2">
+<h2 id="orgf035b7d"><span class="section-number-2">7.</span> Read Graphs</h2>
+</div>
+<div id="outline-container-org785138d" class="outline-2">
+<h2 id="org785138d"><span class="section-number-2">8.</span> Read trees</h2>
+</div>
+</div>
+</body>
+</html>
