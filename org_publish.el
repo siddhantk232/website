@@ -14,8 +14,15 @@
 
 ;; Install dependencies
 (package-install 'htmlize)
+(require 'htmlize)
 
 (setq org-html-htmlize-output-type 'css)
+
+(setq org-html-validation-link nil            ;; Don't show validation link
+      org-html-head-include-scripts nil       ;; Use our own scripts
+      org-html-head-include-default-style nil ;; Use our own styles
+      org-html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>")
+
 
 ;; Define the publishing project
 (setq org-publish-project-alist
@@ -26,6 +33,9 @@
              :base-directory "/home/sidd/vimwiki/studies/"
              :publishing-directory "./src/notes"
              :html-html5-fancy t
+             :with-toc t
+             :time-stamp-file nil
+             :with-author t
              :publishing-function 'org-html-publish-to-html)
        (list "static"
         :recursive t
