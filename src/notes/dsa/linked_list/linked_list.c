@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<assert.h>
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct Node {
   int data;
@@ -59,7 +59,7 @@ void delete_start(Node **head) {
 }
 
 void delete_end(Node *head) {
-  while(head->next->next != NULL) {
+  while (head->next->next != NULL) {
     head = head->next;
   }
 
@@ -81,6 +81,7 @@ int delete_pos(Node *head, int pos) {
   Node *temp = head->next;
   head->next = head->next->next;
   free(temp);
+  return 0;
 }
 
 // O(n)
@@ -88,7 +89,7 @@ void insert_at_end(Node *head, int el) {
   assert(head != NULL);
 
   // go to the end
-  while(head->next != NULL) {
+  while (head->next != NULL) {
     head = head->next;
   }
 
@@ -129,7 +130,7 @@ int insert_at_pos(Node *head, unsigned int pos, int el) {
 }
 
 void print_ll(Node *head) {
-  while(head != NULL) {
+  while (head != NULL) {
     printf("%d ", head->data);
     head = head->next;
   }
