@@ -17,48 +17,42 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7f2a4cd">1. Introduction</a>
+<li><a href="#org9228ae2">1. Introduction</a>
 <ul>
-<li><a href="#orgb9c4634">1.1. Input reduction in consequence of decision making</a></li>
-<li><a href="#org54f8261">1.2. Identify Recursion problems</a></li>
-<li><a href="#org2c017bb">1.3. Recursive Tree</a></li>
-<li><a href="#org8504122">1.4. Approaches to solve Recursion problems</a></li>
+<li><a href="#orgba049a2">1.1. Input reduction in consequence of decision making</a></li>
+<li><a href="#orgede7cf5">1.2. Identify Recursion problems</a></li>
+<li><a href="#orged8b973">1.3. Recursive Tree</a></li>
+<li><a href="#orgbd70c08">1.4. Approaches to solve Recursion problems</a></li>
 </ul>
 </li>
-<li><a href="#org7025f4b">2. Recursion Problems</a>
+<li><a href="#orgf42fa90">2. Recursion Problems</a>
 <ul>
-<li><a href="#org70c787a">2.1. <code>Hypothesis - Induction - Base</code> approach</a>
+<li><a href="#org1f5398f">2.1. <code>Hypothesis - Induction - Base</code> approach</a>
 <ul>
-<li><a href="#orgde128b4">2.1.1. Print 1 to n (and n to 1) and factorial</a></li>
-<li><a href="#org35ee8af">2.1.2. Sort an array</a></li>
-<li><a href="#org10b10f0">2.1.3. <span class="todo TODO">TODO</span> Delete middle element of stack</a></li>
-<li><a href="#org7e94096">2.1.4. <span class="todo TODO">TODO</span> Reverse a stack</a></li>
-<li><a href="#orgaf9d4c4">2.1.5. Kth Symbol in Grammar (LC)</a></li>
+<li><a href="#org58cba21">2.1.1. Print 1 to n (and n to 1) and factorial</a></li>
+<li><a href="#org61117f5">2.1.2. Sort an array</a></li>
 </ul>
 </li>
-<li><a href="#orge05b05e">2.2. <span class="todo TODO">TODO</span> Remove duplicate element from string</a></li>
-<li><a href="#org6cefdc6">2.3. <span class="todo TODO">TODO</span> Count the number of occurences</a></li>
-<li><a href="#org9ff97d5">2.4. <code>IP-OP</code> approach</a>
-<ul>
-<li><a href="#org63930e0">2.4.1. Subsets</a></li>
-<li><a href="#org211ab79">2.4.2. <span class="todo TODO">TODO</span> Permutations</a></li>
-<li><a href="#orgd12e8b5">2.4.3. <span class="todo TODO">TODO</span> Execution in circle (cyclic execution?)</a></li>
-<li><a href="#orgef44655">2.4.4. <span class="todo TODO">TODO</span> Generate binary strings where # 1s &gt; # 0s</a></li>
-<li><a href="#org946cd14">2.4.5. <span class="todo TODO">TODO</span> Generate balanced parenthesis</a></li>
-</ul>
-</li>
+<li><a href="#org95e1a69">2.2. <span class="todo TODO">TODO</span> Delete middle element of stack</a></li>
+<li><a href="#org9d5474a">2.3. <span class="todo TODO">TODO</span> Remove duplicate element from string</a></li>
+<li><a href="#org80b6fe0">2.4. <span class="todo TODO">TODO</span> Count the number of occurences</a></li>
+<li><a href="#orgecffcab">2.5. <span class="todo TODO">TODO</span> Subsets</a></li>
+<li><a href="#orgfa4d6ea">2.6. <span class="todo TODO">TODO</span> Permutations</a></li>
+<li><a href="#orgf9d94bf">2.7. <span class="todo TODO">TODO</span> Execution in circle (cyclic execution?)</a></li>
+<li><a href="#org8b04c82">2.8. <span class="todo TODO">TODO</span> Generate binary strings where # 1s &gt; # 0s</a></li>
+<li><a href="#orgfdd1087">2.9. <span class="todo TODO">TODO</span> Generate balanced parenthesis</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7f2a4cd" class="outline-2">
-<h2 id="org7f2a4cd"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org9228ae2" class="outline-2">
+<h2 id="org9228ae2"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgb9c4634" class="outline-3">
-<h3 id="orgb9c4634"><span class="section-number-3">1.1.</span> Input reduction in consequence of decision making</h3>
+<div id="outline-container-orgba049a2" class="outline-3">
+<h3 id="orgba049a2"><span class="section-number-3">1.1.</span> Input reduction in consequence of decision making</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Making the problem input small is not the goal.</li>
@@ -66,15 +60,15 @@
 </ul>
 
 
-<div id="orgd597a22" class="figure">
+<div id="org47fa6f0" class="figure">
 <p><img src="./example_recursion.png" alt="example_recursion.png" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org54f8261" class="outline-3">
-<h3 id="org54f8261"><span class="section-number-3">1.2.</span> Identify Recursion problems</h3>
+<div id="outline-container-orgede7cf5" class="outline-3">
+<h3 id="orgede7cf5"><span class="section-number-3">1.2.</span> Identify Recursion problems</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
 <li>These problems require you to make choices/decisions.</li>
@@ -82,8 +76,8 @@
 </div>
 </div>
 
-<div id="outline-container-org2c017bb" class="outline-3">
-<h3 id="org2c017bb"><span class="section-number-3">1.3.</span> Recursive Tree</h3>
+<div id="outline-container-orged8b973" class="outline-3">
+<h3 id="orged8b973"><span class="section-number-3">1.3.</span> Recursive Tree</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li><b>IP-OP method</b>: create root node with given input set and an initial output set. Number of branches
@@ -94,7 +88,7 @@ denote number of possible choices from the node. See the example problem below f
 </p>
 
 
-<div id="org2ea95fd" class="figure">
+<div id="org43423ca" class="figure">
 <p><img src="./abc_subset_tree.png" alt="abc_subset_tree.png" width="100%" />
 </p>
 </div></li>
@@ -102,8 +96,8 @@ denote number of possible choices from the node. See the example problem below f
 </div>
 </div>
 
-<div id="outline-container-org8504122" class="outline-3">
-<h3 id="org8504122"><span class="section-number-3">1.4.</span> Approaches to solve Recursion problems</h3>
+<div id="outline-container-orgbd70c08" class="outline-3">
+<h3 id="orgbd70c08"><span class="section-number-3">1.4.</span> Approaches to solve Recursion problems</h3>
 <div class="outline-text-3" id="text-1-4">
 <ol class="org-ol">
 <li>Recursive tree</li>
@@ -116,12 +110,12 @@ denote number of possible choices from the node. See the example problem below f
 
 
 
-<div id="outline-container-org7025f4b" class="outline-2">
-<h2 id="org7025f4b"><span class="section-number-2">2.</span> Recursion Problems</h2>
+<div id="outline-container-orgf42fa90" class="outline-2">
+<h2 id="orgf42fa90"><span class="section-number-2">2.</span> Recursion Problems</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org70c787a" class="outline-3">
-<h3 id="org70c787a"><span class="section-number-3">2.1.</span> <code>Hypothesis - Induction - Base</code> approach</h3>
+<div id="outline-container-org1f5398f" class="outline-3">
+<h3 id="org1f5398f"><span class="section-number-3">2.1.</span> <code>Hypothesis - Induction - Base</code> approach</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>Assume that the function exists and test it with smaller inputs.</li>
@@ -130,7 +124,7 @@ denote number of possible choices from the node. See the example problem below f
 </ul>
 
 <p>
-Example: <a href="#org35ee8af"><b>Sort an array using recursion</b></a>
+Example: <a href="#org61117f5"><b>Sort an array using recursion</b></a>
 </p>
 
 <ul class="org-ul">
@@ -146,8 +140,8 @@ For smaller input v[begin, end - 1): <code>sort({5, 1, 0})</code> -&gt; <code>{0
 </ul>
 </div>
 
-<div id="outline-container-orgde128b4" class="outline-4">
-<h4 id="orgde128b4"><span class="section-number-4">2.1.1.</span> Print 1 to n (and n to 1) and factorial</h4>
+<div id="outline-container-org58cba21" class="outline-4">
+<h4 id="org58cba21"><span class="section-number-4">2.1.1.</span> Print 1 to n (and n to 1) and factorial</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <div class="org-src-container">
 <pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
@@ -200,17 +194,11 @@ For smaller input v[begin, end - 1): <code>sort({5, 1, 0})</code> -&gt; <code>{0
 }
 </pre>
 </div>
-
-<pre class="example">
-1 to n: 1 2 3 4 5 6 7 
-n to 1: 7 6 5 4 3 2 1 
-fact(4): 24
-</pre>
 </div>
 </div>
 
-<div id="outline-container-org35ee8af" class="outline-4">
-<h4 id="org35ee8af"><span class="section-number-4">2.1.2.</span> Sort an array</h4>
+<div id="outline-container-org61117f5" class="outline-4">
+<h4 id="org61117f5"><span class="section-number-4">2.1.2.</span> Sort an array</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <div class="org-src-container">
 <pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
@@ -257,115 +245,33 @@ fact(4): 24
 }
 </pre>
 </div>
-
-<pre class="example">
--20 0 1 2 7 9 10 
-</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org10b10f0" class="outline-4">
-<h4 id="org10b10f0"><span class="section-number-4">2.1.3.</span> <span class="todo TODO">TODO</span> Delete middle element of stack</h4>
+<div id="outline-container-org95e1a69" class="outline-3">
+<h3 id="org95e1a69"><span class="section-number-3">2.2.</span> <span class="todo TODO">TODO</span> Delete middle element of stack</h3>
 </div>
-<div id="outline-container-org7e94096" class="outline-4">
-<h4 id="org7e94096"><span class="section-number-4">2.1.4.</span> <span class="todo TODO">TODO</span> Reverse a stack</h4>
+<div id="outline-container-org9d5474a" class="outline-3">
+<h3 id="org9d5474a"><span class="section-number-3">2.3.</span> <span class="todo TODO">TODO</span> Remove duplicate element from string</h3>
 </div>
-<div id="outline-container-orgaf9d4c4" class="outline-4">
-<h4 id="orgaf9d4c4"><span class="section-number-4">2.1.5.</span> <a href="https://www.youtube.com/watch?v=5P84A0YCo_Y&amp;list=PL_z_8CaSLPWeT1ffjiImo0sYTcnLzo-wY&amp;index=10">Kth Symbol in Grammar (LC)</a></h4>
+<div id="outline-container-org80b6fe0" class="outline-3">
+<h3 id="org80b6fe0"><span class="section-number-3">2.4.</span> <span class="todo TODO">TODO</span> Count the number of occurences</h3>
 </div>
+<div id="outline-container-orgecffcab" class="outline-3">
+<h3 id="orgecffcab"><span class="section-number-3">2.5.</span> <span class="todo TODO">TODO</span> Subsets</h3>
 </div>
-<div id="outline-container-orge05b05e" class="outline-3">
-<h3 id="orge05b05e"><span class="section-number-3">2.2.</span> <span class="todo TODO">TODO</span> Remove duplicate element from string</h3>
+<div id="outline-container-orgfa4d6ea" class="outline-3">
+<h3 id="orgfa4d6ea"><span class="section-number-3">2.6.</span> <span class="todo TODO">TODO</span> Permutations</h3>
 </div>
-<div id="outline-container-org6cefdc6" class="outline-3">
-<h3 id="org6cefdc6"><span class="section-number-3">2.3.</span> <span class="todo TODO">TODO</span> Count the number of occurences</h3>
+<div id="outline-container-orgf9d94bf" class="outline-3">
+<h3 id="orgf9d94bf"><span class="section-number-3">2.7.</span> <span class="todo TODO">TODO</span> Execution in circle (cyclic execution?)</h3>
 </div>
-<div id="outline-container-org9ff97d5" class="outline-3">
-<h3 id="org9ff97d5"><span class="section-number-3">2.4.</span> <code>IP-OP</code> approach</h3>
-<div class="outline-text-3" id="text-2-4">
-<p>
-The approach is already described above.
-</p>
+<div id="outline-container-org8b04c82" class="outline-3">
+<h3 id="org8b04c82"><span class="section-number-3">2.8.</span> <span class="todo TODO">TODO</span> Generate binary strings where # 1s &gt; # 0s</h3>
 </div>
-
-<div id="outline-container-org63930e0" class="outline-4">
-<h4 id="org63930e0"><span class="section-number-4">2.4.1.</span> Subsets</h4>
-<div class="outline-text-4" id="text-2-4-1">
-<ul class="org-ul">
-<li><b>substring</b>: Continuous. "abc" -&gt; <code>a b ab bc abc</code> (not <code>ac</code>)</li>
-<li><b>subsequence</b>: non contiunuous but ordered. "abc" -&gt; <code>ac</code> (not <code>ca</code>). A substring is a subsequence.</li>
-<li><b>subset</b>: non continuous and unordered. A subsequence is a subset.</li>
-<li><b>powerset</b>: All subsets of a set. "ab" -&gt; <code>a b ab ""</code></li>
-</ul>
-
-<div class="org-src-container">
-<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
-<span class="org-preprocessor">#include</span> <span class="org-string">&lt;string&gt;</span>
-
-<span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">string</span>;
-
-<span class="org-type">void</span> <span class="org-function-name">print_subsets</span>(<span class="org-type">string</span> &amp;<span class="org-variable-name">op</span>, <span class="org-type">string</span> <span class="org-variable-name">in</span>) {
-  <span class="org-keyword">if</span> (in.size() == 0) {
-    <span class="org-constant">std</span>::cout &lt;&lt; op &lt;&lt; <span class="org-constant">std</span>::endl;
-    <span class="org-keyword">return</span>;
-  }
-
-  <span class="org-keyword">auto</span> <span class="org-variable-name">t</span> = in[0];
-  <span class="org-keyword">auto</span> <span class="org-variable-name">op1</span> = op, <span class="org-variable-name">op2</span> = op;
-
-  op2.push_back(t);
-  in.erase(in.begin());
-
-  print_subsets(op1, in);
-  print_subsets(op2, in);
-}
-
-<span class="org-type">int</span> <span class="org-function-name">main</span>() {
-  <span class="org-type">string</span> <span class="org-variable-name">in</span> = <span class="org-string">"abc"</span>;
-  <span class="org-type">string</span> <span class="org-variable-name">init</span> = <span class="org-string">""</span>;
-
-  print_subsets(init, in);
-}
-</pre>
-</div>
-
-<pre class="example">
-
-c
-b
-bc
-a
-ac
-ab
-abc
-</pre>
-</div>
-
-<ol class="org-ol">
-<li><a id="orged5c222"></a>Variations<br />
-<div class="outline-text-5" id="text-2-4-1-1">
-<ul class="org-ul">
-<li>Print subsets or all subsets or powerset or subsequences (generally they mean subsequence but there is a difference).</li>
-<li>Print uniq subsets? -&gt; Use Set</li>
-<li>Print in Lexicographic order? -&gt; push results in vector then sort();</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-
-<div id="outline-container-org211ab79" class="outline-4">
-<h4 id="org211ab79"><span class="section-number-4">2.4.2.</span> <span class="todo TODO">TODO</span> Permutations</h4>
-</div>
-<div id="outline-container-orgd12e8b5" class="outline-4">
-<h4 id="orgd12e8b5"><span class="section-number-4">2.4.3.</span> <span class="todo TODO">TODO</span> Execution in circle (cyclic execution?)</h4>
-</div>
-<div id="outline-container-orgef44655" class="outline-4">
-<h4 id="orgef44655"><span class="section-number-4">2.4.4.</span> <span class="todo TODO">TODO</span> Generate binary strings where # 1s &gt; # 0s</h4>
-</div>
-<div id="outline-container-org946cd14" class="outline-4">
-<h4 id="org946cd14"><span class="section-number-4">2.4.5.</span> <span class="todo TODO">TODO</span> Generate balanced parenthesis</h4>
-</div>
+<div id="outline-container-orgfdd1087" class="outline-3">
+<h3 id="orgfdd1087"><span class="section-number-3">2.9.</span> <span class="todo TODO">TODO</span> Generate balanced parenthesis</h3>
 </div>
 </div>
 </div>

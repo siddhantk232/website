@@ -15,19 +15,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org365f665">1. <span class="done DONE">DONE</span> Arrays</a></li>
-<li><a href="#org2ae6b44">2. <span class="done DONE">DONE</span> Queues</a></li>
-<li><a href="#org5c8dd38">3. <span class="done DONE">DONE</span> Stack</a></li>
-<li><a href="#orgab406cf">4. <span class="done DONE">DONE</span> Searching</a></li>
-<li><a href="#org457ea7a">5. <span class="done DONE">DONE</span> Linked List</a></li>
-<li><a href="#org4a7d01d">6. Sorting</a></li>
-<li><a href="#orgc393e45">7. Read Graphs</a></li>
-<li><a href="#org7911d38">8. Read trees</a></li>
+<li><a href="#orgc1dbff9">1. <span class="done DONE">DONE</span> Arrays</a></li>
+<li><a href="#org91ec2cb">2. <span class="done DONE">DONE</span> Queues</a></li>
+<li><a href="#orgc2e9ae3">3. <span class="done DONE">DONE</span> Stack</a></li>
+<li><a href="#org8c94b1b">4. <span class="done DONE">DONE</span> Searching</a></li>
+<li><a href="#org5205be8">5. <span class="done DONE">DONE</span> Linked List</a></li>
+<li><a href="#org05b8675">6. Sorting</a></li>
+<li><a href="#org259cefd">7. Read Graphs</a></li>
+<li><a href="#org8d38569">8. Read trees</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org365f665" class="outline-2">
-<h2 id="org365f665"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> Arrays</h2>
+<div id="outline-container-orgc1dbff9" class="outline-2">
+<h2 id="orgc1dbff9"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> Arrays</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><p>
@@ -180,8 +180,8 @@ array insertion/deletion
 </div>
 </div>
 
-<div id="outline-container-org2ae6b44" class="outline-2">
-<h2 id="org2ae6b44"><span class="section-number-2">2.</span> <span class="done DONE">DONE</span> Queues</h2>
+<div id="outline-container-org91ec2cb" class="outline-2">
+<h2 id="org91ec2cb"><span class="section-number-2">2.</span> <span class="done DONE">DONE</span> Queues</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>impl using arrays</li>
@@ -190,8 +190,8 @@ array insertion/deletion
 </div>
 </div>
 
-<div id="outline-container-org5c8dd38" class="outline-2">
-<h2 id="org5c8dd38"><span class="section-number-2">3.</span> <span class="done DONE">DONE</span> Stack</h2>
+<div id="outline-container-orgc2e9ae3" class="outline-2">
+<h2 id="orgc2e9ae3"><span class="section-number-2">3.</span> <span class="done DONE">DONE</span> Stack</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>impl using array</li>
@@ -199,8 +199,8 @@ array insertion/deletion
 </div>
 </div>
 
-<div id="outline-container-orgab406cf" class="outline-2">
-<h2 id="orgab406cf"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> Searching</h2>
+<div id="outline-container-org8c94b1b" class="outline-2">
+<h2 id="org8c94b1b"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> Searching</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>Linear search</li>
@@ -209,8 +209,8 @@ array insertion/deletion
 </div>
 </div>
 
-<div id="outline-container-org457ea7a" class="outline-2">
-<h2 id="org457ea7a"><span class="section-number-2">5.</span> <span class="done DONE">DONE</span> Linked List</h2>
+<div id="outline-container-org5205be8" class="outline-2">
+<h2 id="org5205be8"><span class="section-number-2">5.</span> <span class="done DONE">DONE</span> Linked List</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li>insertion/deletion, display, reverse, search, merge a singly linked list</li>
@@ -220,8 +220,8 @@ array insertion/deletion
 </div>
 </div>
 
-<div id="outline-container-org4a7d01d" class="outline-2">
-<h2 id="org4a7d01d"><span class="section-number-2">6.</span> Sorting</h2>
+<div id="outline-container-org05b8675" class="outline-2">
+<h2 id="org05b8675"><span class="section-number-2">6.</span> Sorting</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>Bubble sort</li>
@@ -234,11 +234,11 @@ array insertion/deletion
 </div>
 </div>
 
-<div id="outline-container-orgc393e45" class="outline-2">
-<h2 id="orgc393e45"><span class="section-number-2">7.</span> Read Graphs</h2>
+<div id="outline-container-org259cefd" class="outline-2">
+<h2 id="org259cefd"><span class="section-number-2">7.</span> Read Graphs</h2>
 </div>
-<div id="outline-container-org7911d38" class="outline-2">
-<h2 id="org7911d38"><span class="section-number-2">8.</span> Read trees</h2>
+<div id="outline-container-org8d38569" class="outline-2">
+<h2 id="org8d38569"><span class="section-number-2">8.</span> Read trees</h2>
 </div>
 </div>
 </body>

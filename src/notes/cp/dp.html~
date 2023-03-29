@@ -17,15 +17,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org194873a">1. DP</a></li>
-<li><a href="#orgeea1a17">2. How to identify a dp problem?</a></li>
+<li><a href="#org93817e6">1. DP</a></li>
+<li><a href="#org824ec0d">2. How to identify a dp problem?</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org194873a" class="outline-2">
-<h2 id="org194873a"><span class="section-number-2">1.</span> DP</h2>
+<div id="outline-container-org93817e6" class="outline-2">
+<h2 id="org93817e6"><span class="section-number-2">1.</span> DP</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>DP -&gt; Enhanced Recursion</li>
@@ -34,8 +34,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgeea1a17" class="outline-2">
-<h2 id="orgeea1a17"><span class="section-number-2">2.</span> How to identify a dp problem?</h2>
+<div id="outline-container-org824ec0d" class="outline-2">
+<h2 id="org824ec0d"><span class="section-number-2">2.</span> How to identify a dp problem?</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><b>Choice</b>: A problem contains some choices that I have to make.</li>
