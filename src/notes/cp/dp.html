@@ -17,24 +17,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9dbbf2e">1. DP</a></li>
-<li><a href="#org8ec2903">2. How to identify a dp problem?</a></li>
-<li><a href="#org0a40186">3. <code>0/1 knapsack</code> problems</a>
+<li><a href="#org65f29b8">1. DP</a></li>
+<li><a href="#orgb9df5cb">2. How to identify a dp problem?</a></li>
+<li><a href="#orga7c7972">3. <code>0/1 knapsack</code> problems</a>
 <ul>
-<li><a href="#orgfbd3906">3.1. <span class="todo TODO">TODO</span> Subset sum</a></li>
-<li><a href="#org1981cc1">3.2. <span class="todo TODO">TODO</span> Equal sum partition</a></li>
-<li><a href="#orgb8cefdb">3.3. <span class="todo TODO">TODO</span> Count of subset sum</a></li>
-<li><a href="#org0cab895">3.4. <span class="todo TODO">TODO</span> Minimum subset sum difference</a></li>
-<li><a href="#org97ce355">3.5. <span class="todo TODO">TODO</span> Target sum</a></li>
-<li><a href="#org29fb46e">3.6. <span class="todo TODO">TODO</span> Number of subset with given difference</a></li>
+<li><a href="#orgcf44c7d">3.1. <span class="todo TODO">TODO</span> Subset sum</a></li>
+<li><a href="#org0f42352">3.2. <span class="todo TODO">TODO</span> Equal sum partition</a></li>
+<li><a href="#orgfd8e39e">3.3. <span class="todo TODO">TODO</span> Count of subset sum</a></li>
+<li><a href="#org345fc5f">3.4. <span class="todo TODO">TODO</span> Minimum subset sum difference</a></li>
+<li><a href="#org69c8461">3.5. <span class="todo TODO">TODO</span> Target sum</a></li>
+<li><a href="#org114a541">3.6. <span class="todo TODO">TODO</span> Number of subset with given difference</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9dbbf2e" class="outline-2">
-<h2 id="org9dbbf2e"><span class="section-number-2">1.</span> DP</h2>
+<div id="outline-container-org65f29b8" class="outline-2">
+<h2 id="org65f29b8"><span class="section-number-2">1.</span> DP</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>DP -&gt; Enhanced Recursion</li>
@@ -43,8 +43,8 @@
 </div>
 </div>
 
-<div id="outline-container-org8ec2903" class="outline-2">
-<h2 id="org8ec2903"><span class="section-number-2">2.</span> How to identify a dp problem?</h2>
+<div id="outline-container-orgb9df5cb" class="outline-2">
+<h2 id="orgb9df5cb"><span class="section-number-2">2.</span> How to identify a dp problem?</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><b>Choice</b>: A problem contains some choices that I have to make.</li>
@@ -53,8 +53,8 @@
 </div>
 </div>
 
-<div id="outline-container-org0a40186" class="outline-2">
-<h2 id="org0a40186"><span class="section-number-2">3.</span> <code>0/1 knapsack</code> problems</h2>
+<div id="outline-container-orga7c7972" class="outline-2">
+<h2 id="orga7c7972"><span class="section-number-2">3.</span> <code>0/1 knapsack</code> problems</h2>
 <div class="outline-text-2" id="text-3">
 <blockquote>
 <p>
@@ -95,7 +95,7 @@ Output: Max. value
 </p>
 
 
-<div id="org71ff7a5" class="figure">
+<div id="orgfb6ba4a" class="figure">
 <p><img src="./zero_one_knapsack.png" alt="zero_one_knapsack.png" />
 </p>
 </div>
@@ -107,7 +107,7 @@ Output: Max. value
 <span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">vector</span>;
 
 <span class="org-keyword">auto</span> <span class="org-function-name">knapsack</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">wt</span>, <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">val</span>, <span class="org-type">int</span> <span class="org-variable-name">w</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
-  <span class="org-keyword">if</span> (w == 0 || n == 0) <span class="org-keyword">return</span> 0;
+    <span class="org-keyword">if</span> (w == 0 || n == 0) <span class="org-keyword">return</span> 0;
 
   <span class="org-keyword">if</span> (wt[n - 1] &lt;= w) {
     <span class="org-keyword">return</span> <span class="org-constant">std</span>::max(val[n - 1] + knapsack(wt, val, w - wt[n - 1], n - 1),
@@ -150,7 +150,9 @@ Output: Max. value
 <span class="org-keyword">auto</span> <span class="org-function-name">knapsack</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">wt</span>, <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">val</span>, <span class="org-type">int</span> <span class="org-variable-name">w</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
   <span class="org-keyword">if</span> (w == 0 || n == 0) <span class="org-keyword">return</span> 0;
 
-  <span class="org-keyword">if</span> (cache[n][w] != -1) <span class="org-keyword">return</span> cache[n][w];
+  <span class="org-keyword">if</span> (cache[n][w] != -1) {
+    <span class="org-keyword">return</span> cache[n][w];
+    }
 
   <span class="org-keyword">if</span> (wt[n - 1] &lt;= w) {
     cache[n][w] = <span class="org-constant">std</span>::max(val[n- 1] + knapsack(wt, val, w - wt[n - 1], n - 1),
@@ -180,25 +182,90 @@ Output: Max. value
 <pre class="example">
 9
 </pre>
+
+
+<p>
+<b>Top-down approach</b>:
+</p>
+
+<p>
+TODO: I don't understand this 😓
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;cstring&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">vector</span>;
+
+<span class="org-keyword">auto</span> <span class="org-function-name">knapsack</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">wt</span>, <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; &amp;<span class="org-variable-name">val</span>, <span class="org-type">int</span> <span class="org-variable-name">w</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">cache</span>[n + 1][w + 1];
+    <span class="org-comment-delimiter">// </span><span class="org-comment">initialize matrix</span>
+    <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; w + 1; ++i) cache[0][i] = 0;
+    <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; n + 1; ++i) cache[i][0] = 0;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">choice diagram to code</span>
+    <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; n+1; i++){
+        <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">j</span>=1; j &lt; w+1; j++){
+            <span class="org-comment-delimiter">//</span><span class="org-comment">1. In case of choice</span>
+            <span class="org-keyword">if</span>(wt[i-1] &lt;= j){
+                cache[i][j] = <span class="org-constant">std</span>::max(val[i-1] + cache[i-1][j-wt[i-1]], 0+cache[i-1][j]);
+            }
+            <span class="org-comment-delimiter">//</span><span class="org-comment">2. No choice</span>
+            <span class="org-keyword">else</span> <span class="org-keyword">if</span>(wt[i-1] &gt; j){
+                cache[i][j] = 0+cache[i-1][j];
+            }
+        }
+    }
+
+    <span class="org-keyword">return</span> cache[n][w];
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">wt</span>  = {1, 3, 4, 5};
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">val</span> = {1, 4, 5, 7};
+    <span class="org-type">int</span> <span class="org-variable-name">W</span> = 7;
+
+    <span class="org-keyword">auto</span> <span class="org-variable-name">res</span> = knapsack(wt, val, W, val.size());
+
+    <span class="org-constant">std</span>::cout &lt;&lt; res;
+}
+</pre>
 </div>
 
-<div id="outline-container-orgfbd3906" class="outline-3">
-<h3 id="orgfbd3906"><span class="section-number-3">3.1.</span> <span class="todo TODO">TODO</span> Subset sum</h3>
+<pre class="example">
+9
+</pre>
 </div>
-<div id="outline-container-org1981cc1" class="outline-3">
-<h3 id="org1981cc1"><span class="section-number-3">3.2.</span> <span class="todo TODO">TODO</span> Equal sum partition</h3>
+
+<div id="outline-container-orgcf44c7d" class="outline-3">
+<h3 id="orgcf44c7d"><span class="section-number-3">3.1.</span> <span class="todo TODO">TODO</span> Subset sum</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<a href="https://practice.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1?utm_source=gfg&amp;utm_medium=article&amp;utm_campaign=bottom_sticky_on_article">problem statement</a>
+</p>
 </div>
-<div id="outline-container-orgb8cefdb" class="outline-3">
-<h3 id="orgb8cefdb"><span class="section-number-3">3.3.</span> <span class="todo TODO">TODO</span> Count of subset sum</h3>
 </div>
-<div id="outline-container-org0cab895" class="outline-3">
-<h3 id="org0cab895"><span class="section-number-3">3.4.</span> <span class="todo TODO">TODO</span> Minimum subset sum difference</h3>
+<div id="outline-container-org0f42352" class="outline-3">
+<h3 id="org0f42352"><span class="section-number-3">3.2.</span> <span class="todo TODO">TODO</span> Equal sum partition</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+<a href="https://leetcode.com/problems/partition-equal-subset-sum/">problem statement</a>
+</p>
 </div>
-<div id="outline-container-org97ce355" class="outline-3">
-<h3 id="org97ce355"><span class="section-number-3">3.5.</span> <span class="todo TODO">TODO</span> Target sum</h3>
 </div>
-<div id="outline-container-org29fb46e" class="outline-3">
-<h3 id="org29fb46e"><span class="section-number-3">3.6.</span> <span class="todo TODO">TODO</span> Number of subset with given difference</h3>
+<div id="outline-container-orgfd8e39e" class="outline-3">
+<h3 id="orgfd8e39e"><span class="section-number-3">3.3.</span> <span class="todo TODO">TODO</span> Count of subset sum</h3>
+</div>
+<div id="outline-container-org345fc5f" class="outline-3">
+<h3 id="org345fc5f"><span class="section-number-3">3.4.</span> <span class="todo TODO">TODO</span> Minimum subset sum difference</h3>
+</div>
+<div id="outline-container-org69c8461" class="outline-3">
+<h3 id="org69c8461"><span class="section-number-3">3.5.</span> <span class="todo TODO">TODO</span> Target sum</h3>
+</div>
+<div id="outline-container-org114a541" class="outline-3">
+<h3 id="org114a541"><span class="section-number-3">3.6.</span> <span class="todo TODO">TODO</span> Number of subset with given difference</h3>
 </div>
 </div>
 </div>

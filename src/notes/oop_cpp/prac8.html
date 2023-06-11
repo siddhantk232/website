@@ -128,7 +128,7 @@ object oriented programming
 
 <span class="org-type">int</span> <span class="org-function-name">main</span>() {
   <span class="org-type">XYZ</span> <span class="org-variable-name">x</span>;
-  <span class="org-type">int</span> <span class="org-constant">XYZ</span>::*<span class="org-variable-name">p</span> = &amp;<span class="org-constant">XYZ</span>::a;
+  <span class="org-type">int</span> <span class="org-constant">XYZ</span>::<span class="org-variable-name">*p</span> = &amp;<span class="org-constant">XYZ</span>::a;
   x.*p = 100;
 
   x.display();
@@ -138,7 +138,7 @@ object oriented programming
 
   y-&gt;display();
 
-  <span class="org-type">void</span> (<span class="org-constant">XYZ</span>::*<span class="org-type">q</span>)(<span class="org-type">void</span>) = &amp;<span class="org-constant">XYZ</span>::display;
+  <span class="org-type">void</span> (<span class="org-constant">XYZ</span>::<span class="org-variable-name">*</span><span class="org-type">q</span>)(<span class="org-type">void</span>) = &amp;<span class="org-constant">XYZ</span>::display;
 
   (x.*q)();
   (y-&gt;*q)();
