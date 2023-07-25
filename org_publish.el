@@ -30,8 +30,8 @@
        (list "studies"
              :makeindex t
              :recursive t
-             :base-directory "/home/sidd/vimwiki/studies/"
-             :publishing-directory "./src/notes"
+             :base-directory "../org_files/studies" ;; on CI
+             :publishing-directory "./site/notes"
              :html-html5-fancy t
              :with-toc t
              :time-stamp-file nil
@@ -39,9 +39,9 @@
              :publishing-function 'org-html-publish-to-html)
        (list "static"
         :recursive t
-        :base-directory "/home/sidd/vimwiki/studies/"
+        :base-directory "../org_files/studies" ;; on CI
         :base-extension "jpg\\|gif\\|png\\|c\\|cpp\\|py"
-        :publishing-directory "./src/notes"
+        :publishing-directory "./site/notes"
         :publishing-function 'org-publish-attachment)))
 
 (org-publish-all t)

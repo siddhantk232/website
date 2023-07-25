@@ -12,6 +12,9 @@ jobs:
     name: build org files and publish
 
     steps:
+      - uses: purcell/setup-emacs@master
+        with:
+          version: 27.2
       - uses: actions/checkout@v3
         name: website_repo
         with:
@@ -25,12 +28,12 @@ jobs:
           path: org_files
           sparse-checkout: |
             studies
-      - name: list contents
+      - name: compile org files
         run: |
-          ls website/
-          echo "===================================="
-          ls org_files/
-          echo "===================================="
-          ls ./
-          echo "===================================="
+          pushd website
+          emacs -Q --script org_publish.el
+          popd
+          ls website/site/
+          echo "===================="
           ls ~/
+          echo "====================="
