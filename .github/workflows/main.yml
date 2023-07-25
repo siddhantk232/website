@@ -21,7 +21,7 @@ jobs:
         with:
           repository: siddhantk232/vimwiki
           ref: main
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           path: org_files
           sparse-checkout: |
             studies
