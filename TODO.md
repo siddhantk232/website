@@ -1,0 +1,7 @@
+- [x] rename project to "website"
+- link to notes on homepage
+- write a sample blog in org mode
+- migrate styles
+- remove 11ty
+- remove/update /uses page
+- sitemap.xml
