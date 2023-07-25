@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<p>
+(practical 19) <b>Aim</b>: WAP to demonstrate usage of the <code>const</code> keyword.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">c</span>=100;
+<span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">d</span>=2;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(){
+  <span class="org-comment-delimiter">/* </span><span class="org-comment">i=j+20;</span>
+<span class="org-comment">     j=i+100;</span><span class="org-comment-delimiter">*/</span>
+  <span class="org-type">int</span> <span class="org-variable-name">a</span>=10;
+  <span class="org-type">int</span> <span class="org-variable-name">b</span>=20;
+  <span class="org-type">int</span> * <span class="org-keyword">const</span> <span class="org-variable-name">p</span> =&amp;a;
+  cout &lt;&lt; <span class="org-string">"value: "</span>&lt;&lt; *p&lt;&lt; endl;
+  <span class="org-comment-delimiter">// </span><span class="org-comment">p=&amp;b;  error</span>
+  *p=200;
+  cout &lt;&lt; <span class="org-string">"value: "</span>&lt;&lt; *p&lt;&lt; endl;
+
+  <span class="org-keyword">const</span> <span class="org-type">int</span> *<span class="org-variable-name">u</span>=&amp;c;
+  cout &lt;&lt; <span class="org-string">"value: "</span>&lt;&lt; *u&lt;&lt; endl;
+  u=&amp;d;
+  <span class="org-comment-delimiter">//</span><span class="org-comment">*u=1000; error(read only variable)</span>
+  cout &lt;&lt; <span class="org-string">"value: "</span>&lt;&lt; *u&lt;&lt; endl;
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<p>
+(practical 20) <b>Aim</b>: WAP to solve the ambiguity problem in inheritance using virtual base class.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Base</span>{
+<span class="org-keyword">public</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">i</span>;
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Derv1</span> : <span class="org-keyword">public</span> <span class="org-keyword">virtual</span> <span class="org-type">Base</span>{
+<span class="org-keyword">public</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">j</span>;
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Derv2</span> : <span class="org-keyword">public</span> <span class="org-keyword">virtual</span> <span class="org-type">Base</span>{
+<span class="org-keyword">public</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">k</span>;
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Derv3</span> : <span class="org-keyword">public</span> <span class="org-type">Derv1</span> , <span class="org-keyword">public</span> <span class="org-type">Derv2</span>{
+<span class="org-keyword">public</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">sum</span>;
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(){
+  <span class="org-type">Derv3</span> <span class="org-variable-name">obj</span>;
+  obj.i = 10;
+  obj.j = 20;
+  obj.k = 30;
+  obj.sum = obj.i + obj.j + obj.k;
+  cout &lt;&lt; obj.sum;
+}
+</pre>
+</div>
+
+<p>
+(practical 21) <b>Aim</b>: WAP to demonstrate usage of access specifier in class derivation.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Base</span> {
+<span class="org-keyword">private</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">priData</span>;
+<span class="org-keyword">protected</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">proData</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">pubData</span>;
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Derv1</span> : <span class="org-keyword">protected</span> <span class="org-type">Base</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">int</span> <span class="org-function-name">func</span>() {
+    proData = 2;
+    pubData = 2;
+    <span class="org-comment-delimiter">// </span><span class="org-comment">error: priData is a private member of Base</span>
+    <span class="org-comment-delimiter">/* </span><span class="org-comment">a = priData;</span><span class="org-comment-delimiter"> */</span>
+    <span class="org-keyword">return</span> proData + pubData;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Derv1</span> <span class="org-variable-name">d1</span>;
+  cout &lt;&lt; d1.func() &lt;&lt; endl;
+  <span class="org-comment-delimiter">// </span><span class="org-comment">error: proData is a protected member of Base</span>
+  <span class="org-comment-delimiter">/* </span><span class="org-comment">cout &lt;&lt; d1.proData &lt;&lt; endl;</span><span class="org-comment-delimiter"> */</span>
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">error: proData is a protected member of Base</span>
+  <span class="org-comment-delimiter">/* </span><span class="org-comment">cout &lt;&lt; d1.pubData &lt;&lt; endl;</span><span class="org-comment-delimiter"> */</span>
+}
+</pre>
+</div>
+
+<p>
+(practical 22) <b>Aim</b>: WAP to demonstrate usage of <code>virtual</code> functions.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">cout</span>;
+<span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">endl</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Base</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">call</span>() {
+    cout &lt;&lt; <span class="org-string">"method of Base..."</span> &lt;&lt; endl;
+  }
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Derived</span> : <span class="org-keyword">public</span> <span class="org-type">Base</span> {
+  <span class="org-type">void</span> <span class="org-function-name">call</span>() {
+    cout &lt;&lt; <span class="org-string">"method of Derived..."</span> &lt;&lt; endl;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Base</span> *<span class="org-variable-name">b</span> = <span class="org-keyword">new</span> <span class="org-type">Derived</span>();
+
+  b-&gt;call();
+}
+</pre>
+</div>
+
+<pre class="example">
+method of Derived...
+</pre>
+
+
+<p>
+(practical 23) <b>Aim</b>: WAP to demonstrate pure virtual functions and abstract classes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Base</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">call</span>() = 0;
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Derived</span> : <span class="org-keyword">public</span> <span class="org-type">Base</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-comment-delimiter">// </span><span class="org-comment">not redefining call would make Derived an abstract class</span>
+  <span class="org-type">void</span> <span class="org-function-name">call</span>() {
+    cout &lt;&lt; <span class="org-string">"method of Derived..."</span> &lt;&lt; endl;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-comment-delimiter">// </span><span class="org-comment">error: can't create object of abstract class type</span>
+  <span class="org-comment-delimiter">// </span><span class="org-comment">Base *p = new Base();</span>
+
+  <span class="org-type">Base</span> *<span class="org-variable-name">x</span> = <span class="org-keyword">new</span> <span class="org-type">Derived</span>();
+}
+</pre>
+</div>
+
+<p>
+(practical 24) <b>Aim</b>: WAP to demonstrate virtual destructors.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Base</span> {
+  <span class="org-type">int</span> *<span class="org-variable-name">x</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Base</span>(<span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+    x = <span class="org-keyword">new</span> <span class="org-type">int</span>;
+    *x = n;
+  }
+
+  <span class="org-keyword">virtual</span> ~<span class="org-function-name">Base</span>() {
+    cout &lt;&lt; <span class="org-string">"Destructor of Base called"</span> &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-string">"deleting x"</span> &lt;&lt; endl;
+    <span class="org-keyword">delete</span> x;
+  }
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Derived</span> : <span class="org-keyword">public</span> <span class="org-type">Base</span> {
+  <span class="org-type">int</span> *<span class="org-variable-name">y</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Derived</span>(<span class="org-type">int</span> <span class="org-variable-name">n</span>): <span class="org-function-name">Base</span>(n) {
+    y = <span class="org-keyword">new</span> <span class="org-type">int</span>;
+    *y = n;
+  }
+
+  ~<span class="org-function-name">Derived</span>() {
+    cout &lt;&lt; <span class="org-string">"Destructor of Derived called"</span> &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-string">"deleting y"</span> &lt;&lt; endl;
+    <span class="org-keyword">delete</span> y;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Base</span> *<span class="org-variable-name">x</span> = <span class="org-keyword">new</span> <span class="org-type">Derived</span>(20);
+  <span class="org-keyword">delete</span> x;
+}
+</pre>
+</div>
+</div>
+</body>
+</html>

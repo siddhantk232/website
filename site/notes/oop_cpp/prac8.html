@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<p>
+(practical 30) <b>Aim</b>: WAP to demonstrate pointer to a function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">f1</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-type">int</span> <span class="org-variable-name">j</span>) {
+  cout &lt;&lt; <span class="org-string">"In f1()"</span> &lt;&lt; endl;
+  <span class="org-keyword">return</span> i * j;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">f2</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>, <span class="org-type">int</span> <span class="org-variable-name">y</span>) {
+  cout &lt;&lt; <span class="org-string">"In f2()"</span> &lt;&lt; endl;
+  <span class="org-keyword">return</span> x + y;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">f3</span>(<span class="org-type">void</span> (*<span class="org-function-name">fp</span>)()) {
+  fp();
+}
+
+<span class="org-type">void</span> <span class="org-function-name">f4</span>() {
+  cout &lt;&lt; <span class="org-string">"In f1()"</span> &lt;&lt; endl;
+}
+
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> (*<span class="org-function-name">fp</span>)(<span class="org-type">int</span>, <span class="org-type">int</span>);
+  fp = f1;
+
+  cout &lt;&lt; fp(10, 20) &lt;&lt; endl;
+
+  fp = f2;
+  cout &lt;&lt; fp(10, 20) &lt;&lt; endl;
+
+  f3(f4);
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+In f1()
+200
+In f2()
+30
+In f1()
+</pre>
+
+
+<p>
+(practical 31) <b>Aim</b>: WAP to demonstrate the use of the <code>new</code> and <code>delete</code> keywords.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;cstring&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">str</span> {
+  <span class="org-type">char</span> *<span class="org-variable-name">p</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">str</span>(<span class="org-type">char</span> *<span class="org-variable-name">s</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">len</span> = strlen(s);
+    p=<span class="org-keyword">new</span> <span class="org-type">char</span>[len+1];
+    strcpy(p,s);
+  }
+
+  ~<span class="org-function-name">str</span>() {
+    <span class="org-keyword">delete</span>[]p;
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">display</span>() {
+    cout&lt;&lt;p;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">char</span> *<span class="org-variable-name">s</span> = <span class="org-string">"object oriented programming"</span>;
+  <span class="org-type">str</span> *<span class="org-variable-name">s1</span> = <span class="org-keyword">new</span> <span class="org-type">str</span>(s);
+
+  s1-&gt;display();
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+object oriented programming
+</pre>
+
+
+<p>
+(practical 32) <b>Aim</b>: WAP to demonstrate pointer to a class variable.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">XYZ</span> {
+<span class="org-keyword">public</span> :
+  <span class="org-type">int</span> <span class="org-variable-name">a</span>;
+<span class="org-keyword">public</span>:
+
+  <span class="org-type">void</span> <span class="org-function-name">display</span>() {
+    cout &lt;&lt; a &lt;&lt;endl;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">XYZ</span> <span class="org-variable-name">x</span>;
+  <span class="org-type">int</span> <span class="org-constant">XYZ</span>::<span class="org-variable-name">*p</span> = &amp;<span class="org-constant">XYZ</span>::a;
+  x.*p = 100;
+
+  x.display();
+
+  <span class="org-type">XYZ</span> *<span class="org-variable-name">y</span> = <span class="org-keyword">new</span> <span class="org-type">XYZ</span>;
+  y-&gt;*p = 200;
+
+  y-&gt;display();
+
+  <span class="org-type">void</span> (<span class="org-constant">XYZ</span>::<span class="org-variable-name">*</span><span class="org-type">q</span>)(<span class="org-type">void</span>) = &amp;<span class="org-constant">XYZ</span>::display;
+
+  (x.*q)();
+  (y-&gt;*q)();
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+100
+200
+100
+200
+</pre>
+
+
+<p>
+(practical 33) <b>Aim</b>: WAP to demonstrate self referential classes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">struct</span> <span class="org-type">node</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+    <span class="org-keyword">struct</span> <span class="org-type">node</span> *<span class="org-variable-name">ptr</span>;
+};
+
+<span class="org-keyword">class</span> <span class="org-type">LinkedList</span> {
+    <span class="org-keyword">struct</span> <span class="org-type">node</span> *<span class="org-variable-name">start</span>;
+<span class="org-keyword">public</span>:
+    <span class="org-function-name">LinkedList</span>() {
+        start = <span class="org-constant">NULL</span>;
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">addnode</span>(<span class="org-type">int</span> <span class="org-variable-name">val</span>) {
+        <span class="org-type">node</span> *<span class="org-variable-name">n</span> = <span class="org-keyword">new</span> <span class="org-type">node</span>;
+        n-&gt;data = val;
+        n-&gt;ptr = start;
+        start = n;
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">display</span>() {
+        <span class="org-type">node</span> *<span class="org-variable-name">p</span> = start;
+        <span class="org-keyword">while</span> (p != <span class="org-constant">NULL</span>) {
+            cout &lt;&lt; p -&gt; data &lt;&lt; endl;
+            p = p -&gt; ptr;
+        }
+    }
+
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(){
+    <span class="org-type">LinkedList</span> <span class="org-variable-name">ll</span>;
+    ll.addnode(10);
+    ll.addnode(20);
+    ll.addnode(30);
+    ll.display();
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+30
+20
+10
+</pre>
+
+
+<p>
+(practical 34) <b>Aim</b>: WAP to demonstrate the use of the <code>this</code> pointer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">xyz</span>{
+  <span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-variable-name">b</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-comment-delimiter">// </span><span class="org-comment">xyz(int x, int y){   // we want to use a and b as formal arguments</span>
+  <span class="org-comment-delimiter">//     </span><span class="org-comment">a = x;</span>
+  <span class="org-comment-delimiter">//     </span><span class="org-comment">b = y;</span>
+  <span class="org-comment-delimiter">// </span><span class="org-comment">}</span>
+
+  <span class="org-function-name">xyz</span>(<span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-type">int</span> <span class="org-variable-name">b</span>) {   
+    <span class="org-keyword">this</span>-&gt;a = a;
+    <span class="org-keyword">this</span>-&gt;b = b; <span class="org-comment-delimiter">// </span><span class="org-comment">to solve ambiguity we use this pointer</span>
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">display</span>() {
+    cout &lt;&lt; <span class="org-string">"a = "</span> &lt;&lt; <span class="org-keyword">this</span>-&gt;a &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-string">"b = "</span> &lt;&lt; <span class="org-keyword">this</span>-&gt;b &lt;&lt; endl;
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">address</span>() {
+    cout &lt;&lt; <span class="org-string">"Address of this object = "</span> &lt;&lt; <span class="org-keyword">this</span> &lt;&lt; endl;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(){
+  <span class="org-type">xyz</span> <span class="org-variable-name">x</span>(10, 20);
+  x.display();
+  x.address();
+  <span class="org-type">xyz</span> <span class="org-variable-name">y</span>(10, 20);
+  y.address();
+  <span class="org-type">xyz</span> <span class="org-variable-name">z</span>(10, 20);
+  z.address();
+}
+</pre>
+</div>
+
+<pre class="example">
+a = 10
+b = 20
+Address of this object = 0x7fffc5460430
+Address of this object = 0x7fffc5460438
+Address of this object = 0x7fffc5460440
+</pre>
+</div>
+</body>
+</html>
