@@ -20,6 +20,7 @@ jobs:
         name: notes_org_files
         with:
           repository: siddhantk232/vimwiki
+          ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
           path: org_files
           sparse-checkout: |
