@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Ultimate Hasura Development Setup</title>
+    <meta
+      name="description"
+      content="How I set up and use Hasura graphql engine for local development with pgadmin4 and pldebugger."
+    />
+    <meta property="og:title" content="The Ultimate Hasura Development Setup" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="Siddhant Kumar" />
+    <meta property="og:url" content="https://www.siddhant.codes/posts/the-ultimate-hasura-development-setup/" />
+    <meta property="og:image" content="https://siddhantcodes.netlify.app/assets/og/the_ultimate_hasura_development_setup.png" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    
+      <link rel="canonical" href="https://siddhantcodes.netlify.app/posts/the-ultimate-hasura-development-setup" />
+    
+    
+
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/post.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/manifest.json">
+  </head>
+  <body>
+    <header>
+      <div >
+        <a  id="home_url" href="/">home</a>
+
+        <ul class="nav">
+          <li  class='md-enable'><a  href="/">home</a></li>
+          <li><a  href="/blog">blog</a></li>
+          <li><a  href="/about">about</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main  class="post-container" >
+      <h1>The Ultimate Hasura Development Setup</h1>
+      <p class="lead">
+        <span>28 February 2021</span> ⌚ <span>2 min read</span>
+      </p>
+      <hr />
+      <br />
+      <p>In this post, we will look at how I set up and use Hasura graphql engine for local
+development with pgadmin4 and pldbgapi (pldebugger).</p>
+<h2>TLDR;</h2>
+<ul>
+<li>This setup uses <a href="https://hasura.io/docs/latest/graphql/core/hasura-cli/index.html">Hasura cli</a> to generate postgres migrations and hasura metadata.</li>
+<li>For debugging and other administrative operations, this setup uses <a href="https://www.pgadmin.org/">pgAdmin4</a> with <a href="https://github.com/soycacan/pldebugger">pldbgapi</a>.</li>
+<li>You can check this <a href="https://github.com/siddhantk232/ultimate-hasura-dev-setup">sample project</a> to get a better idea.</li>
+</ul>
+<h2>Hasura Cli setup</h2>
+<p>To create a fresh hasura project, run <code>hasura init</code>. This will create a folder with the name you provide. Inside this folder, it creates many subfolders for managing different components of your hasura server.</p>
+<p>The project structure looks like this:</p>
+<pre><code>.
+├── config.yaml                # main config file
+├── metadata                   # hasura metadata
+│   ├── actions.graphql
+│   ├── actions.yaml
+│   ├── allow_list.yaml
+│   ├── cron_triggers.yaml
+│   ├── functions.yaml
+│   ├── query_collections.yaml
+│   ├── remote_schemas.yaml
+│   ├── tables.yaml
+│   └── version.yaml
+├── migrations                 # postgres migrations
+└── seeds
+
+3 directories, 10 files
+</code></pre>
+<blockquote>
+<p>The default config assumes you are running the graphql-engine at port 8080. You can change this setting in <code>config.yml</code>.</p>
+</blockquote>
+<h2>Hasura local server with docker-compose</h2>
+<p>To easily spin up many containers for postgres, hasura and pgadmin, I am using <a href="docs.docker.com/compose/">docker-compose</a>.</p>
+<p>The <code>docker-compose.yml</code> file looks like this:</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"3.6"</span><br><span class="token key atrule">services</span><span class="token punctuation">:</span><br>  <span class="token key atrule">db</span><span class="token punctuation">:</span><br>    <span class="token key atrule">build</span><span class="token punctuation">:</span><br>      <span class="token key atrule">context</span><span class="token punctuation">:</span> .<br>      <span class="token key atrule">dockerfile</span><span class="token punctuation">:</span> Dockerfile.postgres<br>    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">13</span><br>    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always<br>    <span class="token key atrule">volumes</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> db_volume<span class="token punctuation">:</span>/var/lib/postgresql/data<br>    <span class="token key atrule">environment</span><span class="token punctuation">:</span><br>      <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> siddhant           <span class="token comment"># default postgres superuse</span><br>      <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> passwd         <span class="token comment"># password for siddhant</span><br>      <span class="token key atrule">POSTGRES_DB</span><span class="token punctuation">:</span> hasura_db<br>  <span class="token key atrule">hasura</span><span class="token punctuation">:</span><br>    <span class="token key atrule">image</span><span class="token punctuation">:</span> hasura/graphql<span class="token punctuation">-</span>engine<span class="token punctuation">:</span>latest<br>    <span class="token key atrule">ports</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> <span class="token string">"8080:8080"</span>                     <span class="token comment"># default port expected by hasura cli</span><br>    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> <span class="token string">"db"</span><br>    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always<br>    <span class="token key atrule">environment</span><span class="token punctuation">:</span><br>      <span class="token key atrule">HASURA_GRAPHQL_DATABASE_URL</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span>//siddhant<span class="token punctuation">:</span>passwd@db<span class="token punctuation">:</span>5432/hasura_db<br>      <span class="token comment">## enable the console served by server</span><br>      <span class="token key atrule">HASURA_GRAPHQL_ENABLE_CONSOLE</span><span class="token punctuation">:</span> <span class="token string">"true"</span> <span class="token comment"># set to "false" to disable console</span><br>      <span class="token comment">## enable debugging mode. It is recommended to disable this in production</span><br>      <span class="token key atrule">HASURA_GRAPHQL_DEV_MODE</span><span class="token punctuation">:</span> <span class="token string">"true"</span><br>      <span class="token key atrule">HASURA_GRAPHQL_ENABLED_LOG_TYPES</span><span class="token punctuation">:</span> startup<span class="token punctuation">,</span> http<span class="token punctuation">-</span>log<span class="token punctuation">,</span> webhook<span class="token punctuation">-</span>log<span class="token punctuation">,</span> websocket<span class="token punctuation">-</span>log<span class="token punctuation">,</span> query<span class="token punctuation">-</span>log<br>      <span class="token comment">## uncomment next line to set an admin secret</span><br>      <span class="token comment"># HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey</span><br>  <span class="token key atrule">pgadmin</span><span class="token punctuation">:</span><br>    <span class="token key atrule">image</span><span class="token punctuation">:</span> dpage/pgadmin4<br>    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always<br>    <span class="token key atrule">environment</span><span class="token punctuation">:</span><br>      <span class="token key atrule">PGADMIN_DEFAULT_EMAIL</span><span class="token punctuation">:</span> test@test.com<br>      <span class="token key atrule">PGADMIN_DEFAULT_PASSWORD</span><span class="token punctuation">:</span> passwd<br>    <span class="token key atrule">ports</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> <span class="token string">"9090:80"</span><br>    <span class="token key atrule">volumes</span><span class="token punctuation">:</span><br>      <span class="token punctuation">-</span> pgadmin_volume<span class="token punctuation">:</span>/var/lib/pgadmin<br><span class="token key atrule">volumes</span><span class="token punctuation">:</span><br>  <span class="token key atrule">db_volume</span><span class="token punctuation">:</span><br>  <span class="token key atrule">pgadmin_volume</span><span class="token punctuation">:</span></code></pre>
+<h4>Some important things in this docker-compose file:</h4>
+<ol>
+<li>
+<p>Service <code>db</code> uses postgres:13 official docker image with a custom Dockerfile to build this image.
+This custom Dockerfile.postgres installs <a href="https://github.com/soycacan/pldebugger">pldebugger</a> extension for debugging procedural code.
+The code for this Dockerfile.postgres looks like this:</p>
+<pre class="language-dockerfile"><code class="language-dockerfile"> <span class="token instruction"><span class="token keyword">FROM</span> postgres:latest</span><br><br> <span class="token instruction"><span class="token keyword">ENV</span> PG_MAJOR 13</span><br> <span class="token instruction"><span class="token keyword">ENV</span> PG_FULL 13.1</span><br><br> <span class="token comment"># Install the postgresql debugger</span><br> <span class="token instruction"><span class="token keyword">RUN</span> apt-get update <span class="token operator">\</span><br> &amp;&amp; apt-get install -y --no-install-recommends <span class="token operator">\</span><br> postgresql-<span class="token variable">$PG_MAJOR</span>-pldebugger</span><br><br> <span class="token instruction"><span class="token keyword">EXPOSE</span> 5432</span><br></code></pre>
+<p>To enable this extension you need to run <code>CREATE EXTENSION pldbgapi;</code> in your postgres instance.</p>
+</li>
+<li>
+<p>Service <code>hasura</code> uses the <a href="https://hub.docker.com/r/hasura/graphql-engine">hasura-graphql-engine</a> provided by Hasura.
+We are also exposing port 8080 so that this server is accessible by our hasura cli's console server.</p>
+</li>
+<li>
+<p>Serice <code>pgadmin</code> use the <a href="https://hub.docker.com/r/dpage/pgadmin4/">dpage/pgadmin4</a> docker image.
+To use pgadmin we are exposing port 80 as 9090 on our system.</p>
+</li>
+</ol>
+<h2>That's it :)</h2>
+<p>Now you can use this setup by running the command <code>docker-compose up -d</code> inside the project folder.
+This command will start all three services for us to use.</p>
+<p>To access the hasura, console run <code>hasura console</code> command inside the project file.
+This command will start a hasura console server that will record all your actions and update the <code>migrations</code> and other folders accordingly.</p>
+<p>To access pgadmin, you can go to <code>localhost:9090</code> on your browser.
+You can log in with the email and password you set in the docker-compose file. Also, for debugging your procedural inside pgadmin, read the docs here https://www.pgadmin.org/docs/pgadmin4/latest/debugger.html</p>
+<blockquote>
+<p>Run <code>CREATE EXTENSION pldbgapi;</code> inside your postgres instance to enable the pldebugger extension.</p>
+</blockquote>
+<pre><code></code></pre>
+
+      <br />
+      <br />
+    <h2>Comments</h2>
+    </main>
+
+    <!-- comments plugin -->
+
+    <script src="https://utteranc.es/client.js"
+        repo="siddhantk232/portfolio"
+        issue-term="title"
+        theme="dark-blue"
+        crossorigin="anonymous"
+        async>
+    </script>
+    <br />
+  </body>
+</html>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<p>
+(practical 35) <b>Aim</b>: WAP to demonstrate <code>ofstream</code> class in cpp.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;string.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;fstream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">char</span> <span class="org-variable-name">ch</span> = <span class="org-string">'s'</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">i</span> = 100;
+  <span class="org-type">double</span> <span class="org-variable-name">d</span> = 15.15;
+  <span class="org-type">string</span> <span class="org-variable-name">s1</span> = <span class="org-string">"c++"</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">s2</span> = <span class="org-string">" Programming"</span>;
+
+  <span class="org-type">ofstream</span> <span class="org-variable-name">of</span>(<span class="org-string">"test1.txt"</span>);
+
+  of &lt;&lt; ch;
+  of &lt;&lt; i;
+  of &lt;&lt; <span class="org-string">' '</span>;
+  of &lt;&lt; d;
+  of &lt;&lt; s1;
+  of &lt;&lt; <span class="org-string">' '</span>;
+  of &lt;&lt; s2;
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<p>
+contents of <code>test1.txt</code>
+(practical 36) <b>Aim</b>: WAP that reads file contents using the <code>ifstream</code> class.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;fstream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;string.h&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">char</span> <span class="org-variable-name">ch</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">i</span>;
+  <span class="org-type">double</span> <span class="org-variable-name">d</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">s1</span>,<span class="org-variable-name">s2</span>;
+
+  <span class="org-type">ifstream</span> <span class="org-variable-name">if1</span>(<span class="org-string">"test1.txt"</span>);
+
+  if1 &gt;&gt; ch;
+  if1 &gt;&gt; i;
+  if1 &gt;&gt; d;
+  if1 &gt;&gt; s1;
+  if1 &gt;&gt; s2;
+
+  cout &lt;&lt; ch &lt;&lt; endl;
+  cout &lt;&lt; i  &lt;&lt; endl;;
+  cout &lt;&lt; d  &lt;&lt; endl;
+  cout &lt;&lt; s1 &lt;&lt; endl;;
+  cout &lt;&lt; s2 &lt;&lt; endl;
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+s
+100
+15.15
+c++
+Programming
+</pre>
+
+
+<p>
+(practical 37) <b>Aim</b>: WAP to demonstrate usage of <code>ifstream</code> and <code>ofstream</code> class methods.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;fstream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">ofstream</span> <span class="org-variable-name">of</span>(<span class="org-string">"test3.txt"</span>);
+
+  <span class="org-type">string</span> <span class="org-variable-name">s</span> = <span class="org-string">"Sant longowal institute of enginneering and technology"</span>;
+
+  <span class="org-type">int</span> <span class="org-variable-name">i</span>;
+  <span class="org-keyword">for</span>(i=0; i&lt;s.size(); i++)
+    of.put(s[i]);
+
+  of.close();
+
+  <span class="org-type">ifstream</span> <span class="org-variable-name">if1</span>(<span class="org-string">"test3.txt"</span>);
+  <span class="org-type">char</span> <span class="org-variable-name">ch</span>;
+
+  <span class="org-keyword">while</span>(<span class="org-negation-char">!</span>if1.eof()) {
+    if1.get(ch);
+    cout&lt;&lt;ch;
+  }
+
+  if1.close();
+  <span class="org-keyword">return</span> 0;
+}
+
+</pre>
+</div>
+
+<pre class="example">
+Sant longowal institute of enginneering and technologyy
+</pre>
+
+
+<p>
+(practical 38) <b>Aim</b>: WAP to read lines from an <code>ifstream</code> object into a character buffer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;fstream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">ifstream</span> <span class="org-variable-name">if1</span>(<span class="org-string">"test3.txt"</span>);
+  <span class="org-type">int</span> <span class="org-variable-name">MAX</span> = 100;
+  <span class="org-type">char</span> <span class="org-variable-name">buffer</span>[MAX];
+
+  <span class="org-keyword">while</span>(<span class="org-negation-char">!</span>if1.eof()) {
+    if1.getline(buffer, MAX);
+    cout &lt;&lt; buffer &lt;&lt; endl;
+
+  }
+  <span class="org-keyword">return</span> 0;
+}
+
+</pre>
+</div>
+
+<p>
+(practical 39) <b>Aim</b>: WAP to write buffer contents into a binary file and read that binary data.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;fstream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">const</span> <span class="org-type">int</span> <span class="org-variable-name">MAX</span> = 10;
+<span class="org-type">int</span> <span class="org-variable-name">buffer</span>[MAX];
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">j</span> = 1; j &lt;= MAX; j++)
+    buffer[j] = j;
+
+  <span class="org-type">ofstream</span> <span class="org-variable-name">of</span>(<span class="org-string">"test4.dat"</span>, <span class="org-constant">ios</span>::binary);
+
+  of.write(<span class="org-keyword">reinterpret_cast</span>&lt;<span class="org-type">char</span>*&gt;(buffer), MAX * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
+
+  of.close();
+
+  <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt;MAX; j++)
+    buffer[j] = 0;
+
+  <span class="org-type">ifstream</span> <span class="org-variable-name">if1</span>(<span class="org-string">"test4.dat"</span>, <span class="org-constant">ios</span>::binary);
+
+  if1.read(<span class="org-keyword">reinterpret_cast</span>&lt;<span class="org-type">char</span>*&gt;(buffer), MAX * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
+
+  <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j&lt;MAX; j++)
+    cout&lt;&lt;buffer[j];
+
+  if1.close();
+  <span class="org-keyword">return</span> 0;
+}
+
+</pre>
+</div>
+
+<p>
+(practical 40) <b>Aim</b>: WAP to store object data into a binary data file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;fstream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;string&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">student</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">rollno</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">name</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-type">void</span> <span class="org-function-name">getdata</span>() {
+    cout &lt;&lt; <span class="org-string">"enter your roll no.:"</span>;
+    cin &gt;&gt; rollno;
+    cout &lt;&lt; <span class="org-string">"enter your name:"</span>;
+    cin &gt;&gt; name;
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">display</span>() {
+    cout &lt;&lt; <span class="org-string">"Roll no.:"</span> &lt;&lt; rollno &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-string">"Name:"</span>     &lt;&lt; name   &lt;&lt; endl;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span> () {
+  <span class="org-type">student</span> <span class="org-variable-name">s</span>;
+  s.getdata();
+
+  <span class="org-type">ofstream</span> <span class="org-variable-name">of</span>(<span class="org-string">"test5.dat"</span>,<span class="org-constant">ios</span>::binary);
+  of.write(<span class="org-keyword">reinterpret_cast</span>&lt;<span class="org-type">char</span>*&gt;(&amp;s), <span class="org-keyword">sizeof</span>(s));
+  of.close();
+  <span class="org-type">ifstream</span> <span class="org-variable-name">if1</span>(<span class="org-string">"test5.dat"</span>,<span class="org-constant">ios</span>::binary);
+  <span class="org-type">student</span> <span class="org-variable-name">s1</span>;
+  if1.read(<span class="org-keyword">reinterpret_cast</span>&lt;<span class="org-type">char</span>*&gt;(&amp;s1), <span class="org-keyword">sizeof</span>(s1));
+  if1.close();
+  s1.display();
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">enter your roll no.:10
+enter your name:Username
+Roll no.:10
+Name:Username
+</pre>
+</div>
+
+<p>
+(practical 41) <b>Aim</b>: Use the generalised <code>fstream</code> class object to read/write binary data of an object.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;fstream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;string&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">student</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">rollno</span>;
+    <span class="org-type">string</span> <span class="org-variable-name">name</span>;
+<span class="org-keyword">public</span>:
+    <span class="org-type">void</span> <span class="org-function-name">getdata</span>() {
+        cout&lt;&lt;<span class="org-string">"enter your roll no.:"</span>;
+        cin&gt;&gt;rollno;
+        cout&lt;&lt;<span class="org-string">"enter your name:"</span>;
+        cin&gt;&gt;name;
+    }
+    <span class="org-type">void</span> <span class="org-function-name">display</span>() {
+        cout&lt;&lt;<span class="org-string">"Roll no.:"</span>&lt;&lt;rollno&lt;&lt;endl;
+        cout&lt;&lt;<span class="org-string">"Name:"</span>&lt;&lt;name&lt;&lt;endl;
+    }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span> () {
+    <span class="org-type">fstream</span> <span class="org-variable-name">iost</span>;
+    iost.open(<span class="org-string">"text.8dat"</span>,<span class="org-constant">ios</span>::binary|<span class="org-constant">ios</span>::in|<span class="org-constant">ios</span>::out|<span class="org-constant">ios</span>::app);
+    <span class="org-type">char</span> <span class="org-variable-name">ch</span>;
+    <span class="org-type">student</span> <span class="org-variable-name">s</span>;
+
+    <span class="org-keyword">do</span> {
+        cout&lt;&lt;<span class="org-string">"enter data for the student: \n"</span>;
+        s.getdata();
+        iost.write(<span class="org-keyword">reinterpret_cast</span>&lt;<span class="org-type">char</span>*&gt;(&amp;s),<span class="org-keyword">sizeof</span>(s));
+        cout&lt;&lt;<span class="org-string">"do you want to enter another record? (Y/N): "</span>;
+        cin&gt;&gt;ch;
+    } <span class="org-keyword">while</span>(ch==<span class="org-string">'Y'</span>||ch==<span class="org-string">'y'</span>);
+
+    iost.seekg(0);
+
+    iost.read(<span class="org-keyword">reinterpret_cast</span>&lt;<span class="org-type">char</span> *&gt;(&amp;s), <span class="org-keyword">sizeof</span>(s));
+
+    <span class="org-keyword">while</span>(<span class="org-negation-char">!</span>iost.eof()) {
+        s.display();
+        iost.read(<span class="org-keyword">reinterpret_cast</span>&lt;<span class="org-type">char</span> *&gt;(&amp;s), <span class="org-keyword">sizeof</span>(s));
+    }
+
+    iost.close();
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">enter data for the student:
+enter your roll no.:10
+enter your name:test
+do you want to enter another record? (Y/N): y
+enter data for the student:
+enter your roll no.:20
+enter your name:test1
+do you want to enter another record? (Y/N): n
+Roll no.:10
+Name:test
+Roll no.:20
+Name:test1
+</pre>
+</div>
+</div>
+</body>
+</html>

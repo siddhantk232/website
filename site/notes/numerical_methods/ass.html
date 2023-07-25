@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;iomanip&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;math.h&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">y</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>) {
+    <span class="org-keyword">return</span> (2*x-x*x);
+}
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">float</span> <span class="org-variable-name">x0</span>,<span class="org-variable-name">xn</span>,<span class="org-variable-name">h</span>,<span class="org-variable-name">s</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>,<span class="org-variable-name">n</span>;
+    cout&lt;&lt;<span class="org-string">"enter x0,xn,no of subintervals: "</span>&lt;&lt;endl;
+    cin&gt;&gt;x0&gt;&gt;xn&gt;&gt;n;
+    cout&lt;&lt;fixed;
+    h=(xn-x0)/n;
+    s=y(x0)+y(xn);
+    <span class="org-keyword">for</span>(i=1;i&lt;=n-1;i++)
+        s+=2*y(x0+i*h);
+    cout&lt;&lt;<span class="org-string">"value of integral is"</span>&lt;&lt;setw(6)&lt;&lt;setprecision(4)&lt;&lt;(h/2)*s&lt;&lt;endl;
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">enter x0,xn,no of subintervals:
+0 5 6
+value of integral is 1.3742
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;iomanip&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">df</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>, <span class="org-type">float</span> <span class="org-variable-name">y</span>) {
+  <span class="org-keyword">return</span> x + y;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">float</span> <span class="org-variable-name">x0</span>, <span class="org-variable-name">y0</span>, <span class="org-variable-name">h</span>, <span class="org-variable-name">x</span>, <span class="org-variable-name">x1</span>, <span class="org-variable-name">y1</span>;
+  cout &lt;&lt; <span class="org-string">"Enter the values of x0, y0, h, x: "</span>;
+  cin &gt;&gt; x0 &gt;&gt; y0 &gt;&gt; h &gt;&gt; x;
+  cout &lt;&lt; fixed;
+
+  x1 = x0; y1 = y0;
+
+  <span class="org-keyword">while</span>(1) {
+    <span class="org-keyword">if</span> (x1 &gt; x) <span class="org-keyword">return</span> 0;
+    y1 += h * df(x1, y1);
+    x1 += h;
+
+    cout &lt;&lt; <span class="org-string">"When x = "</span>
+      &lt;&lt; setw(3) &lt;&lt; setprecision(1)
+      &lt;&lt; x1 &lt;&lt; <span class="org-string">" y = "</span>
+      &lt;&lt; setw(4) &lt;&lt; setprecision(2)
+      &lt;&lt; y1 &lt;&lt; endl;
+  }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter the values of x0, y0, h, x: 0 1 0.02 0.1
+When x = 0.0 y = 1.02
+When x = 0.0 y = 1.04
+When x = 0.1 y = 1.06
+When x = 0.1 y = 1.08
+When x = 0.1 y = 1.11
+When x = 0.1 y = 1.13
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;iomanip&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">f</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>, <span class="org-type">float</span> <span class="org-variable-name">y</span>) {
+  <span class="org-keyword">return</span> x + y * y;
+}
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">float</span> <span class="org-variable-name">x0</span>, <span class="org-variable-name">y0</span>, <span class="org-variable-name">h</span>, <span class="org-variable-name">xn</span>, <span class="org-variable-name">x</span>, <span class="org-variable-name">y</span>, <span class="org-variable-name">k1</span>, <span class="org-variable-name">k2</span>, <span class="org-variable-name">k3</span>, <span class="org-variable-name">k4</span>, <span class="org-variable-name">k</span>;
+  cout &lt;&lt; <span class="org-string">"Enter the values of x0, y0,"</span>
+    &lt;&lt; <span class="org-string">"h, xn: "</span>;
+  cin &gt;&gt; x0 &gt;&gt; y0 &gt;&gt; h &gt;&gt; xn;
+
+  x = x0; y = y0;
+  cout &lt;&lt; fixed;
+
+  <span class="org-keyword">while</span>(1) {
+    <span class="org-keyword">if</span> (x == xn) <span class="org-keyword">break</span>;
+    k1 = h * f(x, y);
+    k2 = h * f(x + h / 2, y + k1 / 2);
+    k3 = h * f(x + h / 2, y + k2 / 2);
+    k4 = h * f(x + h, y + k3);
+    k = (k1 + (k2 + k3) * 2 + k4) / 6;
+    x+= h; y += k;
+    cout &lt;&lt; <span class="org-string">"When x = "</span> &lt;&lt; setprecision(4) &lt;&lt; setw(8)
+      &lt;&lt; x &lt;&lt; <span class="org-string">" y = "</span> &lt;&lt; setw(8) &lt;&lt; y &lt;&lt; endl;
+  }
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter the values of x0, y0,h, xn: 0 1 0.2 0.2
+When x =   0.2000 y =   1.1960
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;iomanip&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;math.h&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">y</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>) {
+    <span class="org-keyword">return</span> (2*x-x*x);
+}
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">float</span> <span class="org-variable-name">x0</span>,<span class="org-variable-name">xn</span>,<span class="org-variable-name">h</span>,<span class="org-variable-name">s</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>,<span class="org-variable-name">n</span>;
+    cout&lt;&lt;<span class="org-string">"enter x0,xn,no of subintervals: "</span>&lt;&lt;endl;
+    cin&gt;&gt;x0&gt;&gt;xn&gt;&gt;n;
+    cout&lt;&lt;fixed;
+    h=(xn-x0)/n;
+    s=y(x0)+y(xn);
+    <span class="org-keyword">for</span>(i=1;i&lt;=n-1;i++)
+        s+=2*y(x0+i*h);
+    cout&lt;&lt;<span class="org-string">"value of integral is"</span>&lt;&lt;setw(6)&lt;&lt;setprecision(4)&lt;&lt;(h/2)*s&lt;&lt;endl;
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">enter x0,xn,no of subintervals:
+0 5 6
+value of integral is 1.3742
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;iomanip&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">df</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>, <span class="org-type">float</span> <span class="org-variable-name">y</span>) {
+  <span class="org-keyword">return</span> x + y;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">float</span> <span class="org-variable-name">x0</span>, <span class="org-variable-name">y0</span>, <span class="org-variable-name">h</span>, <span class="org-variable-name">x</span>, <span class="org-variable-name">x1</span>, <span class="org-variable-name">y1</span>;
+  cout &lt;&lt; <span class="org-string">"Enter the values of x0, y0, h, x: "</span>;
+  cin &gt;&gt; x0 &gt;&gt; y0 &gt;&gt; h &gt;&gt; x;
+  cout &lt;&lt; fixed;
+
+  x1 = x0; y1 = y0;
+
+  <span class="org-keyword">while</span>(1) {
+    <span class="org-keyword">if</span> (x1 &gt; x) <span class="org-keyword">return</span> 0;
+    y1 += h * df(x1, y1);
+    x1 += h;
+
+    cout &lt;&lt; <span class="org-string">"When x = "</span>
+      &lt;&lt; setw(3) &lt;&lt; setprecision(1)
+      &lt;&lt; x1 &lt;&lt; <span class="org-string">" y = "</span>
+      &lt;&lt; setw(4) &lt;&lt; setprecision(2)
+      &lt;&lt; y1 &lt;&lt; endl;
+  }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter the values of x0, y0, h, x: 0 1 0.02 0.1
+When x = 0.0 y = 1.02
+When x = 0.0 y = 1.04
+When x = 0.1 y = 1.06
+When x = 0.1 y = 1.08
+When x = 0.1 y = 1.11
+When x = 0.1 y = 1.13
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;iomanip&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">float</span> <span class="org-function-name">f</span>(<span class="org-type">float</span> <span class="org-variable-name">x</span>, <span class="org-type">float</span> <span class="org-variable-name">y</span>) {
+  <span class="org-keyword">return</span> x + y * y;
+}
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">float</span> <span class="org-variable-name">x0</span>, <span class="org-variable-name">y0</span>, <span class="org-variable-name">h</span>, <span class="org-variable-name">xn</span>, <span class="org-variable-name">x</span>, <span class="org-variable-name">y</span>, <span class="org-variable-name">k1</span>, <span class="org-variable-name">k2</span>, <span class="org-variable-name">k3</span>, <span class="org-variable-name">k4</span>, <span class="org-variable-name">k</span>;
+  cout &lt;&lt; <span class="org-string">"Enter the values of x0, y0,"</span>
+    &lt;&lt; <span class="org-string">"h, xn: "</span>;
+  cin &gt;&gt; x0 &gt;&gt; y0 &gt;&gt; h &gt;&gt; xn;
+
+  x = x0; y = y0;
+  cout &lt;&lt; fixed;
+
+  <span class="org-keyword">while</span>(1) {
+    <span class="org-keyword">if</span> (x == xn) <span class="org-keyword">break</span>;
+    k1 = h * f(x, y);
+    k2 = h * f(x + h / 2, y + k1 / 2);
+    k3 = h * f(x + h / 2, y + k2 / 2);
+    k4 = h * f(x + h, y + k3);
+    k = (k1 + (k2 + k3) * 2 + k4) / 6;
+    x+= h; y += k;
+    cout &lt;&lt; <span class="org-string">"When x = "</span> &lt;&lt; setprecision(4) &lt;&lt; setw(8)
+      &lt;&lt; x &lt;&lt; <span class="org-string">" y = "</span> &lt;&lt; setw(8) &lt;&lt; y &lt;&lt; endl;
+  }
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter the values of x0, y0,h, xn: 0 1 0.2 0.2
+When x =   0.2000 y =   1.1960
+</pre>
+</div>
+</div>
+</body>
+</html>

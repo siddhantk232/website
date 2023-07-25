@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bit Manipulation</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Bit Manipulation</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org915191d">1. Find ith bit</a></li>
+<li><a href="#org8d5ea73">2. Set ith bit</a>
+<ul>
+<li><a href="#org482ad77">2.1. set 2nd bit in 5 (101)</a></li>
+<li><a href="#orgd3667cb">2.2. set 4th bit in 10 (1010) (already set!)</a></li>
+</ul>
+</li>
+<li><a href="#org8cb0bd0">3. clear (or unset) ith bit</a>
+<ul>
+<li><a href="#orgb28af3e">3.1. clear 3rd bit in 5 (101)</a></li>
+<li><a href="#org18354e2">3.2. clear 4th bit in 10 (1010)</a></li>
+</ul>
+</li>
+<li><a href="#org1b079ef">4. count set bits in a number</a></li>
+<li><a href="#org3fcd760">5. Find number of bits that have to change to convert a number <code>a</code> to number <code>b</code></a></li>
+<li><a href="#org7b412c2">6. The XOR operator</a>
+<ul>
+<li><a href="#orga60e77c">6.1. Properties</a></li>
+<li><a href="#org97bfae2">6.2. Find the only non repeating element in an array where every element repeats twice</a>
+<ul>
+<li><a href="#org9c0e583">6.2.1. Approach one (O(n<sup>2</sup>) time and O(1) space)</a></li>
+<li><a href="#org5d098ea">6.2.2. Approach two (O(n) time and O(n - 1) space)</a></li>
+<li><a href="#org43c3fdf">6.2.3. Approach three: using XOR (O(n) time and O(1) space)</a></li>
+</ul>
+</li>
+<li><a href="#orgbb778bd">6.3. Find two non repeating element in an array where every element repeats twice</a></li>
+<li><a href="#org7b610a4">6.4. <span class="todo TODO">TODO</span> Find the only non repeating element in an array where every element repeats k times.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org915191d" class="outline-2">
+<h2 id="org915191d"><span class="section-number-2">1.</span> Find ith bit</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+5 -&gt; 101
+</p>
+
+<p>
+3rd bit:
+</p>
+
+<p>
+101 &amp; 100 -&gt; 100
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">print 1st bit from right</span>
+    printf(<span class="org-string">"%d\n"</span>, (n&amp;(1&lt;&lt;0)) &gt;&gt; 0);
+    <span class="org-comment-delimiter">// </span><span class="org-comment">print 2nd bit from right</span>
+    printf(<span class="org-string">"%d\n"</span>, (n&amp;(1&lt;&lt;1)) &gt;&gt; 1);
+    <span class="org-comment-delimiter">// </span><span class="org-comment">print 3rd bit</span>
+    printf(<span class="org-string">"%d\n"</span>, (n&amp;(1&lt;&lt;2)) &gt;&gt; 2);
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">or</span>
+    printf(<span class="org-string">"%d\n"</span>, (n &gt;&gt; 0) &amp; 1);
+    printf(<span class="org-string">"%d\n"</span>, (n &gt;&gt; 1) &amp; 1);
+    printf(<span class="org-string">"%d\n"</span>, (n &gt;&gt; 2) &amp; 1);
+}
+</pre>
+</div>
+
+<pre class="example">
+1
+0
+1
+1
+0
+1
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8d5ea73" class="outline-2">
+<h2 id="org8d5ea73"><span class="section-number-2">2.</span> Set ith bit</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org482ad77" class="outline-3">
+<h3 id="org482ad77"><span class="section-number-3">2.1.</span> set 2nd bit in 5 (101)</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+101 | 010 -&gt; 111 (7)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+
+    cout &lt;&lt; (n | (1 &lt;&lt; 1)) &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+7
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd3667cb" class="outline-3">
+<h3 id="orgd3667cb"><span class="section-number-3">2.2.</span> set 4th bit in 10 (1010) (already set!)</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+1010 | 1000 -&gt; 1010
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 10;
+
+    cout &lt;&lt; (n | (1 &lt;&lt; 3)) &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+10
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8cb0bd0" class="outline-2">
+<h2 id="org8cb0bd0"><span class="section-number-2">3.</span> clear (or unset) ith bit</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgb28af3e" class="outline-3">
+<h3 id="orgb28af3e"><span class="section-number-3">3.1.</span> clear 3rd bit in 5 (101)</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+101 &amp; 011 -&gt; 001 (1)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+    cout &lt;&lt; (n &amp; (~(1 &lt;&lt; 2))) &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+1
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org18354e2" class="outline-3">
+<h3 id="org18354e2"><span class="section-number-3">3.2.</span> clear 4th bit in 10 (1010)</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+1010 | 0111 -&gt; 0010
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 10;
+    cout &lt;&lt; (n &amp; (~(1 &lt;&lt; 3))) &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+2
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1b079ef" class="outline-2">
+<h2 id="org1b079ef"><span class="section-number-2">4.</span> count set bits in a number</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+101 (5) has 2 set bits
+1010 (10) has 2 set bits
+1110 (14) has 3 set bits
+</p>
+
+<p>
+To get number of bits in a binary number:
+</p>
+
+<ul class="org-ul">
+<li>log<sub>2</sub>(n)+1 (floored value)</li>
+</ul>
+
+<p>
+To get number of digits in a decimal number:
+</p>
+
+<ul class="org-ul">
+<li>log<sub>10</sub>(n)+1 (floored value)</li>
+</ul>
+
+<p>
+An iterative approach would be to loop while <code>n != 0</code> and check the last bit and
+increment a counter if it's 1. After the check, right shift <code>n</code>.
+The time complexity would be O(log<sub>2</sub>(n) + 1).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-type">int</span> <span class="org-variable-name">count</span> = 0;
+<span class="org-keyword">while</span> (n != 0) {
+    <span class="org-keyword">if</span> (n &amp; 1 == 1) count++;
+    n = n &gt;&gt; 1;
+}
+</pre>
+</div>
+
+<p>
+However, a faster approach would be:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-type">int</span> <span class="org-variable-name">count</span> = 0;
+<span class="org-keyword">while</span> (n != 0) {
+    count++;
+    n = n &amp; (n - 1);
+}
+</pre>
+</div>
+
+<p>
+The above algorithm runs only <code>n</code> times where <code>n</code> is the number of set bits.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+    <span class="org-type">int</span> <span class="org-variable-name">i</span> = 10;
+    <span class="org-type">int</span> <span class="org-variable-name">j</span> = 14;
+
+    <span class="org-type">int</span> <span class="org-variable-name">count</span> = 0;
+    <span class="org-keyword">while</span> (j != 0) {
+        count++;
+        j = j &amp; (j - 1);
+    }
+
+    cout &lt;&lt; count &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+3
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org3fcd760" class="outline-2">
+<h2 id="org3fcd760"><span class="section-number-2">5.</span> Find number of bits that have to change to convert a number <code>a</code> to number <code>b</code></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+We can simply ^(XOR) the two numbers to find out different bits in the two
+numbers that should be changed. We can then count the set bits of the result of
+the XOR operation to find the number of bits that have to be changed.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">a</span> = 10;
+    <span class="org-type">int</span> <span class="org-variable-name">b</span> = 5;
+
+    <span class="org-type">int</span> <span class="org-variable-name">x</span> = a ^ b;
+
+    <span class="org-type">int</span> <span class="org-variable-name">count</span> = 0;
+    <span class="org-keyword">while</span> (x != 0) {
+        count++;
+        x = x &amp; (x - 1);
+    }
+
+    cout &lt;&lt; count &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+4
+</pre>
+</div>
+</div>
+<div id="outline-container-org7b412c2" class="outline-2">
+<h2 id="org7b412c2"><span class="section-number-2">6.</span> The XOR operator</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orga60e77c" class="outline-3">
+<h3 id="orga60e77c"><span class="section-number-3">6.1.</span> Properties</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><code>n ^ n</code> is 0. E.g. 5 ^ 5 = 0.</li>
+<li><code>0 ^ n</code> is n. E.g. 0 ^ 5 = 5.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org97bfae2" class="outline-3">
+<h3 id="org97bfae2"><span class="section-number-3">6.2.</span> Find the only non repeating element in an array where every element repeats twice</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+Given. arr = [5, 4, 1, 3, 1, 4, 5]
+</p>
+
+<p>
+Expected answer: 3
+</p>
+</div>
+
+<div id="outline-container-org9c0e583" class="outline-4">
+<h4 id="org9c0e583"><span class="section-number-4">6.2.1.</span> Approach one (O(n<sup>2</sup>) time and O(1) space)</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<p>
+two loops (nested), for every arr[i] check if there exists another number at
+arr[j] such that <code>arr[i] == arr[j]</code> (where j != i). If there is a number move
+on, else arr[i] would be the answer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">arr</span> <span class="org-operator">=</span> [5, 4, 1, 3, 1, 4, 5]
+
+<span class="org-variable-name">ans</span> <span class="org-operator">=</span> <span class="org-operator">-</span>1
+
+<span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span>(0, <span class="org-builtin">len</span>(arr)):
+    <span class="org-variable-name">val</span> <span class="org-operator">=</span> arr[i]
+    <span class="org-variable-name">found</span> <span class="org-operator">=</span> <span class="org-constant">False</span>
+    <span class="org-keyword">for</span> j <span class="org-keyword">in</span> <span class="org-builtin">range</span>(0, <span class="org-builtin">len</span>(arr)):
+        <span class="org-keyword">if</span> (arr[i] <span class="org-operator">==</span> arr[j] <span class="org-keyword">and</span> i <span class="org-operator">!=</span> j):
+            <span class="org-variable-name">found</span> <span class="org-operator">=</span> <span class="org-constant">True</span>
+            <span class="org-keyword">break</span>
+    <span class="org-keyword">if</span> (<span class="org-keyword">not</span> found):
+        <span class="org-variable-name">ans</span> <span class="org-operator">=</span> arr[i]
+        <span class="org-keyword">break</span>
+
+<span class="org-builtin">print</span>(ans)
+</pre>
+</div>
+
+<pre class="example">
+3
+</pre>
+</div>
+</div>
+<div id="outline-container-org5d098ea" class="outline-4">
+<h4 id="org5d098ea"><span class="section-number-4">6.2.2.</span> Approach two (O(n) time and O(n - 1) space)</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<p>
+Use a hash set. Find element in set for every n. If found, remove n from set,
+else add n to the set. In the end there should be only one element in the set
+that should be the answer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;vector&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;unordered_set&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">input</span> = {5, 4, 1, 3, 1, 4, 5};
+    <span class="org-type">unordered_set</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">s</span>;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; input.size(); ++i) {
+        <span class="org-keyword">auto</span> <span class="org-variable-name">it</span> = s.find(input[i]);
+        <span class="org-keyword">if</span> (it != s.end()) {
+            s.erase(input[i]);
+        } <span class="org-keyword">else</span> {
+            s.insert(input[i]);
+        }
+    }
+
+    cout &lt;&lt; *s.begin() &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+3
+</pre>
+</div>
+</div>
+<div id="outline-container-org43c3fdf" class="outline-4">
+<h4 id="org43c3fdf"><span class="section-number-4">6.2.3.</span> Approach three: using XOR (O(n) time and O(1) space)</h4>
+<div class="outline-text-4" id="text-6-2-3">
+<p>
+arr = [5, 4, 1, 3, 1, 4, 5]
+</p>
+
+<p>
+We have:
+</p>
+<ol class="org-ol">
+<li>0 ^ n -&gt; n</li>
+<li>n ^ n -&gt; 0</li>
+</ol>
+
+<p>
+If we do:
+</p>
+
+<p>
+res = 0;
+res ^= arr[i];
+</p>
+
+<p>
+Then
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">res = 0 ^ 5 ^ 4 ^ 1 ^ 3 ^ 1 ^ 4 ^ 5;
+    = 5 ^ 4 ^ 1 ^ 3 ^ 1 ^ 4 ^ 5;
+    rearranging like numbers gives:
+    = 5 ^ 5 ^ 4 ^ 4 ^ 1 ^ 1 ^ 3;
+    =   0   ^   0   ^   0   ^ 3;
+    = 0 ^ 3;
+    = 3;
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">arr</span> = {5, 4, 1, 3, 1, 4, 5};
+        <span class="org-type">int</span> <span class="org-variable-name">res</span> = 0;
+
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> &amp;<span class="org-variable-name">i</span>:arr) {
+        res ^= i;
+    }
+
+    cout &lt;&lt; res &lt;&lt; endl;
+
+}
+</pre>
+</div>
+
+<pre class="example">
+3
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbb778bd" class="outline-3">
+<h3 id="orgbb778bd"><span class="section-number-3">6.3.</span> Find two non repeating element in an array where every element repeats twice</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Given. arr = [5, 4, 1, 4, 3, 5, 1, 2]
+</p>
+
+<p>
+Expected answer: 3, 2
+</p>
+
+<p>
+If we follow the approach from <a href="#org97bfae2">the previous question</a>, we'll get:
+</p>
+
+<p>
+temp = 3 ^ 2;
+</p>
+
+<p>
+We want to separate these two operands to the XOR op. To do that, we do:
+</p>
+
+<ol class="org-ol">
+<li>get the position of the least significant set bit of <code>temp</code>;</li>
+<li>divide the array in two subarrays where one subarray has set bit at that that position and the other has unset bit at that position.;</li>
+<li>perform XOR on all elments and <code>temp</code> of for both subarrays to get two numbers that'll be 3 and 2 in this case;</li>
+
+<li>3 ^ 2 = 0001 (0011 ^ 0010). least significant set bit's position is 1 (from right); Get it using <code>bit = temp &amp; ~(temp - 1)</code>.</li>
+<li>Two subarrays will be: [5, 1, 3, 5, 1] and [4, 4, 2]</li>
+<li>(3 ^ 2) ^ 5 ^ 1 ^ 3 ^ 5 ^ 1 = 2 and (3 ^ 2) ^ 4 ^ 4 ^ 2 = 3. The answer is 2 and 3.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-constant">std</span>::<span class="org-constant">vector</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">arr</span> = {5, 4, 1, 4, 3, 5, 1, 2};
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = 0;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> &amp;<span class="org-variable-name">i</span> : arr) {
+        temp ^= i;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">temp -&gt; 3 ^ 2;</span>
+
+    <span class="org-type">int</span> <span class="org-variable-name">set_bit</span> = temp &amp; ~(temp - 1);
+    <span class="org-type">int</span> <span class="org-variable-name">a</span> = temp, <span class="org-variable-name">b</span> = temp;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> &amp;<span class="org-variable-name">i</span> : arr) {
+        <span class="org-keyword">if</span> (<span class="org-type">i</span> &amp; <span class="org-variable-name">set_bit</span>) {
+            a ^= i;
+        } <span class="org-keyword">else</span> {
+            b ^= i;
+        }
+    }
+
+    <span class="org-constant">std</span>::cout &lt;&lt; a &lt;&lt; <span class="org-string">" "</span> &lt;&lt; b &lt;&lt; <span class="org-constant">std</span>::endl;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7b610a4" class="outline-3">
+<h3 id="org7b610a4"><span class="section-number-3">6.4.</span> <span class="todo TODO">TODO</span> Find the only non repeating element in an array where every element repeats k times.</h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+Given. arr = [2, 2, 1, 5, 1, 1, 2]
+</p>
+
+<p>
+Expected answer: 5
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

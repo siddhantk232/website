@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Postgres Triggers</title>
+    <meta
+      name="description"
+      content="Let&#39;s use postgres triggers to solve a pretty common problem of an ecommerce web service."
+    />
+    <meta property="og:title" content="Postgres Triggers" />
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="Siddhant Kumar" />
+    <meta property="og:url" content="https://www.siddhant.codes/posts/postgres-triggers/" />
+    <meta property="og:image" content="https://siddhantcodes.netlify.app/assets/og/postgres_triggers.png" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    
+      <link rel="canonical" href="https://siddhantcodes.netlify.app/posts/postgres-triggers" />
+    
+    
+
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/post.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/manifest.json">
+  </head>
+  <body>
+    <header>
+      <div >
+        <a  id="home_url" href="/">home</a>
+
+        <ul class="nav">
+          <li  class='md-enable'><a  href="/">home</a></li>
+          <li><a  href="/blog">blog</a></li>
+          <li><a  href="/about">about</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main  class="post-container" >
+      <h1>Postgres Triggers</h1>
+      <p class="lead">
+        <span>09 April 2021</span> ⌚ <span>3 min read</span>
+      </p>
+      <hr />
+      <br />
+      <p>Today in this blog, I want to talk about Postgres triggers. I will also go
+through an example use case to learn how to use it.</p>
+<h2>The Scenario</h2>
+<p>I have an e-commerce app to sell books and I am implementing the cart functionality in
+the database. So, there is a carts table that stores unique cart entries per user
+and a books table. For cart items, we have another table, <code>carts_books</code>. The <code>carts</code>
+and <code>carts_books</code> are using a many-to-many relation. So, A cart can have many books,
+and a book can be used in many carts.</p>
+<p>Whenever a row is inserted or updated in the <code>carts_books</code> table, I want to
+calculate the total price of the cart used. I also want to take the <code>multiplier</code>
+column of the <code>carts_books</code> table into account. This <code>multiplier</code> column is the
+quantity of a single book. That means I am allowing a customer to buy many copies
+of a book.</p>
+<p>Let's use Postgres triggers to solve this problem. Before that, below is the list
+of columns of every table discussed so far.</p>
+<h3>The schema</h3>
+<pre class="language-shell"><code class="language-shell">                               Table <span class="token string">"public.carts"</span><br>   Column    <span class="token operator">|</span>           Type           <span class="token operator">|</span> Collation <span class="token operator">|</span> Nullable <span class="token operator">|</span>      Default<br>-------------+--------------------------+-----------+----------+--------------------<br> created_at  <span class="token operator">|</span> timestamp with <span class="token function">time</span> zone <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span> now<span class="token punctuation">(</span><span class="token punctuation">)</span><br> updated_at  <span class="token operator">|</span> timestamp with <span class="token function">time</span> zone <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span> now<span class="token punctuation">(</span><span class="token punctuation">)</span><br> archived_at <span class="token operator">|</span> timestamp with <span class="token function">time</span> zone <span class="token operator">|</span>           <span class="token operator">|</span>          <span class="token operator">|</span><br> amount      <span class="token operator">|</span> numeric                  <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br> status      <span class="token operator">|</span> text                     <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span> <span class="token string">'ENQUEUED'</span>::text<br> user_id     <span class="token operator">|</span> text                     <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br> <span class="token function">id</span>          <span class="token operator">|</span> uuid                     <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span> gen_random_uuid<span class="token punctuation">(</span><span class="token punctuation">)</span><br><br><br>                                     Table <span class="token string">"public.books"</span><br>   Column    <span class="token operator">|</span>           Type           <span class="token operator">|</span> Collation <span class="token operator">|</span> Nullable <span class="token operator">|</span>              Default<br>-------------+--------------------------+-----------+----------+-----------------------------------<br> created_at  <span class="token operator">|</span> timestamp with <span class="token function">time</span> zone <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span> now<span class="token punctuation">(</span><span class="token punctuation">)</span><br> updated_at  <span class="token operator">|</span> timestamp with <span class="token function">time</span> zone <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span> now<span class="token punctuation">(</span><span class="token punctuation">)</span><br> archived_at <span class="token operator">|</span> timestamp with <span class="token function">time</span> zone <span class="token operator">|</span>           <span class="token operator">|</span>          <span class="token operator">|</span><br> name        <span class="token operator">|</span> text                     <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br> price       <span class="token operator">|</span> numeric                  <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br> user_id     <span class="token operator">|</span> bigint                   <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br> <span class="token function">id</span>          <span class="token operator">|</span> bigint                   <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span> nextval<span class="token punctuation">(</span><span class="token string">'books_id_seq'</span>::regclass<span class="token punctuation">)</span><br> description <span class="token operator">|</span> text                     <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br><br>              Table <span class="token string">"public.carts_books"</span><br>   Column   <span class="token operator">|</span>  Type   <span class="token operator">|</span> Collation <span class="token operator">|</span> Nullable <span class="token operator">|</span> Default<br>------------+---------+-----------+----------+---------<br> book_id    <span class="token operator">|</span> bigint  <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br> multiplier <span class="token operator">|</span> integer <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br> user_id    <span class="token operator">|</span> text    <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span><br> cart_id    <span class="token operator">|</span> uuid    <span class="token operator">|</span>           <span class="token operator">|</span> not null <span class="token operator">|</span></code></pre>
+<h2>The Solution</h2>
+<p>We want to run a procedure (also known as a function) after a row in the table
+<code>carts_books</code> is INSERTED or UPDATED.</p>
+<p>For this let's create two postgres triggers, one for UPDATE and the other for INSERT.</p>
+<pre class="language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> update_cart_price<br>  <span class="token keyword">AFTER</span> <span class="token keyword">UPDATE</span> <span class="token keyword">ON</span> <span class="token keyword">public</span><span class="token punctuation">.</span>carts_books<br>  <span class="token keyword">FOR EACH ROW</span><br>  <span class="token keyword">EXECUTE</span> <span class="token keyword">PROCEDURE</span> <span class="token keyword">public</span><span class="token punctuation">.</span>update_cart_price <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">COMMENT</span> <span class="token keyword">ON</span> <span class="token keyword">TRIGGER</span> update_cart_price <span class="token keyword">ON</span> <span class="token keyword">public</span><span class="token punctuation">.</span>carts_books <span class="token operator">IS</span> <br><span class="token string">'update the price of the related cart based on the updated cart item(s) in relation carts_books'</span><span class="token punctuation">;</span><br><br><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> calculate_cart_price<br>  <span class="token keyword">AFTER</span> <span class="token keyword">INSERT</span> <span class="token keyword">ON</span> <span class="token keyword">public</span><span class="token punctuation">.</span>carts_books<br>  <span class="token keyword">FOR EACH ROW</span><br>  <span class="token keyword">EXECUTE</span> <span class="token keyword">PROCEDURE</span> <span class="token keyword">public</span><span class="token punctuation">.</span>update_cart_price <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">COMMENT</span> <span class="token keyword">ON</span> <span class="token keyword">TRIGGER</span> calculate_cart_price <span class="token keyword">ON</span> <span class="token keyword">public</span><span class="token punctuation">.</span>carts_books <span class="token operator">IS</span> <br><span class="token string">'update the price of the related cart based on the updated cart item(s) in relation carts_books'</span><span class="token punctuation">;</span></code></pre>
+<p>Above is the code that creates two postgres triggers. Let's understand the syntax
+and what each clause used above means.</p>
+<p>To create a postgres trigger, we want to tell postgres about the following things:</p>
+<ol>
+<li>
+<p>Name of the trigger. In this case, I have used names, <code>update_cart_price</code> and
+<code>calculate_cart_price</code>.</p>
+</li>
+<li>
+<p>When you want the code to run? I want to know the values that are inserted,
+for this, I have to use the <code>AFTER INSERT</code> and the <code>AFTER UPDATE</code> clause.</p>
+</li>
+<li>
+<p>How do you want to run this trigger? There are two options, one is to run this
+trigger for each affected row. Another option is to run the trigger <code>per-statement</code>.</p>
+</li>
+<li>
+<p>What do you want to run? I have these triggers to run the procedure called
+<code>update_cart_price()</code>.</p>
+</li>
+</ol>
+<blockquote>
+<p>You must create the function before using it in a trigger.
+A function must return <code>TRIGGER</code> in order to be used in a trigger.</p>
+</blockquote>
+<p>The function that I want to run on these triggers is defined as:</p>
+<pre class="language-plsql"><code class="language-plsql"><span class="token keyword">CREATE</span> <span class="token keyword">OR</span> REPLACE <span class="token keyword">FUNCTION</span> <span class="token keyword">public</span><span class="token punctuation">.</span>update_cart_price <span class="token punctuation">(</span><span class="token punctuation">)</span><br>  RETURNS TRIGGER<br>  <span class="token keyword">AS</span> $$<br><span class="token keyword">DECLARE</span><br>  item <span class="token keyword">record</span><span class="token punctuation">;</span><br>  new_amount numeric <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span><br><span class="token keyword">BEGIN</span><br>  <span class="token keyword">FOR</span> item <span class="token keyword">IN</span><br>  <span class="token keyword">SELECT</span><br>    price<span class="token punctuation">,</span><br>    multiplier<br>  <span class="token keyword">FROM</span><br>    carts_books<br>    JOIN books <span class="token keyword">ON</span> book_id <span class="token operator">=</span> books<span class="token punctuation">.</span>id<br>  <span class="token keyword">WHERE</span><br>    cart_id <span class="token operator">=</span> <span class="token keyword">NEW</span><span class="token punctuation">.</span>cart_id <span class="token keyword">LOOP</span><br>      new_amount <span class="token operator">:=</span> new_amount <span class="token operator">+</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>price <span class="token operator">*</span> item<span class="token punctuation">.</span>multiplier<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">END</span> <span class="token keyword">LOOP</span><span class="token punctuation">;</span><br>  <span class="token keyword">UPDATE</span><br>    carts<br>  <span class="token keyword">SET</span><br>    amount <span class="token operator">=</span> new_amount<br>  <span class="token keyword">WHERE</span><br>    id <span class="token operator">=</span> <span class="token keyword">NEW</span><span class="token punctuation">.</span>cart_id<span class="token punctuation">;</span><br>  <span class="token keyword">RETURN</span> <span class="token keyword">new</span><span class="token punctuation">;</span><br><span class="token keyword">END</span><span class="token punctuation">;</span><br>$$<br><span class="token keyword">LANGUAGE</span> plpgsql<span class="token punctuation">;</span></code></pre>
+<p>This function selects the price and multiplier of all the books used inside the
+cart. It then updates the cart's amount column to reflect the updated amount.</p>
+<p>The data of the changed row is made available through the <code>new</code> record.</p>
+<p>Also, the function cannot use plain <code>SQL</code> language, you must use a procedural
+language.</p>
+<h2>The Conclusion</h2>
+<p>Postgres triggers make it easy to execute small business logic on data changes.
+Also, we do not need to care about the network latency that we would face if we
+execute the same logic in a different service (a nodejs app for example).</p>
+<h3>Good Reads</h3>
+<p>In addition to this post, I also recommend reading these to know more about postgres
+triggers.</p>
+<ul>
+<li>
+<p><a href="https://www.postgresql.org/docs/13/trigger-definition.html">Official Docs</a></p>
+</li>
+<li>
+<p><a href="https://www.postgresql.org/docs/13/trigger-datachanges.html">Data visibility in trigger functions</a></p>
+</li>
+</ul>
+
+      <br />
+      <br />
+    <h2>Comments</h2>
+    </main>
+
+    <!-- comments plugin -->
+
+    <script src="https://utteranc.es/client.js"
+        repo="siddhantk232/portfolio"
+        issue-term="title"
+        theme="dark-blue"
+        crossorigin="anonymous"
+        async>
+    </script>
+    <br />
+  </body>
+</html>
