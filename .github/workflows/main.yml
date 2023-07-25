@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: build org files and publish
+
+    steps:
+      - uses: actions/checkout@v3
+        name: website_repo
+        with:
+          path: website
+      - uses: actions/checkout@v3
+        name: notes_org_files
+        with:
+          repository: siddhantk232/vimwiki
+          token: ${{ secrets.GH_PAT }}
+          path: org_files
+          sparse-checkout: |
+            studies
+      - name: list contents
+        run: |
+          ls website/
+          echo "===================================="
+          ls org_files/
+          echo "===================================="
+          ls ./
+          echo "===================================="
+          ls ~/
