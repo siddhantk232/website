@@ -33,7 +33,12 @@ jobs:
           pushd website
           emacs -Q --script org_publish.el
           popd
-          ls website/site/
-          echo "===================="
-          ls ~/
-          echo "====================="
+      - name: Create website.zip and upload to netlify
+        run: |
+          pushd website/site
+          zip -r website.zip .
+          curl -H "Content-Type: application/zip" \
+          -H "Authorization: Bearer ${{ secrets.netlify_token }}" \
+          --data-binary "@website.zip" \
+          https://api.netlify.com/api/v1/sites/siddhantcodes.netlify.app/deploys
+          popd
