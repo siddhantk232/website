@@ -1,0 +1,5 @@
+#+TITLE: First post from org!
+#+INDEX: First post from emacs
+
+Testing out if the CI converts this file into test.html and puts this into site/posts/test.html
+

@@ -119,3 +119,5 @@ dist
 
 # eleventy build
 _site/
+
+site/notes/
