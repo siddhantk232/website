@@ -22,7 +22,7 @@
   box-sizing: border-box;
 }
 
-.content, .post-container {
+.content, .post-container, #content {
   padding: 0.5em 1em;
   max-width: 1024px;
   margin: 0 auto;
