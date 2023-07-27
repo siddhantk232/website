@@ -5,11 +5,14 @@ on:
   pull_request:
     branches:
       - main
+  repository_dispatch:
+    types: [publish_notes]
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    name: build posts org files and publish
+    name: build org files and publish
+
     steps:
       - uses: purcell/setup-emacs@master
         with:
@@ -18,19 +21,28 @@ jobs:
         name: website_repo
         with:
           path: website
+      - uses: actions/checkout@v3
+        name: notes_org_files
+        with:
+          repository: siddhantk232/vimwiki
+          ref: main
+          token: ${{ secrets.GH_PAT }}
+          path: org_files
+          sparse-checkout: |
+            studies
       - name: compile org files
         run: |
           pushd website
+          emacs -Q --script org_publish_notes.el
           emacs -Q --script org_publish_posts.el
           popd
       - name: Create website.zip and upload to netlify
         run: |
           pushd website/site
-          # mv notes/theindex.html notes/index.html ;; TODO: merge existing posts/index.html
+          mv notes/theindex.html notes/index.html
           zip -r website.zip .
           curl -H "Content-Type: application/zip" \
           -H "Authorization: Bearer ${{ secrets.netlify_token }}" \
           --data-binary "@website.zip" \
           https://api.netlify.com/api/v1/sites/siddhantcodes.netlify.app/deploys
           popd
-
