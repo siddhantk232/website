@@ -21,9 +21,10 @@
 * {
   box-sizing: border-box;
 }
-.post-container {
+
+.content, .post-container {
   padding: 0.5em 1em;
-  max-width: 650px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 
@@ -85,6 +86,63 @@ header div ul li {
   display: none;
 }
 
+/* container */
+/* images */
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* typography */
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.35rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.8rem;
+}
+
+h6 {
+  font-size: 1.5rem;
+}
+
+p,
+li {
+  font-size: 1.45rem;
+}
+
+.lead {
+  font-size: 0.95rem;
+  color: var(--lead-color);
+  margin-top: -16px;
+}
+
+a {
+  color: var(--highlight-color);
+}
+
+blockquote {
+  border-left: 6px solid var(--highlight-color);
+  padding: 0.5rem 1rem;
+  margin: 2rem 0;
+  border-radius: calc(var(--roundness) / 2 );
+  color: #ced6e0;
+}
+
 @media screen and (max-width: 1366px) {
   #home_url {
     display: none;
@@ -107,4 +165,76 @@ header div ul li {
   html {
     font-size: 12px;
   }
+
+  main {
+    width: 95vw;
+  }
+}
+
+code[class*="src"],
+pre[class*="src"],
+pre[class*="example"] {
+  font-size: 14px;
+  line-height: 1.375;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  background: #272822;
+  color: #f8f8f2;
+  border-radius: calc(var(--roundness) / 2);
+}
+pre[class*="src"],
+pre[class*="example"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+:not(pre) > code[class*="src"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+.org-comment, 
+.org-comment-delimiter {
+  color: #75715e;
+}
+.org-string {
+  color: #a1efe4;
+}
+.org-preprocessor {
+  color: #ae81ff;
+}
+.org-keyword {
+  color: #a6e22e;
+}
+.org-type {
+  color: #a1efe4;
+}
+.org-variable-name {
+  color: #66d9ef;
+}
+.org-function-name {
+  color: #f92672;
+}
+pre > code.highlight {
+  outline: 0.4em solid #f92672;
+  outline-offset: 0.4em;
+}
+
+:not(pre) > code {
+  padding: 2px 5px;
+  margin: auto 1px;
+  background: #ddd;
+  border-radius: 3px;
+  color: #333;
+  background-clip: padding-box;
+  font-size: 80%;
 }

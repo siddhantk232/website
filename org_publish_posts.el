@@ -21,7 +21,14 @@
 (setq org-html-validation-link nil            ;; Don't show validation link
       org-html-head-include-scripts nil       ;; Use our own scripts
       org-html-head-include-default-style nil ;; Use our own styles
-      org-html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://gongzhitaao.org/orgcss/org.css\"/>")
+      org-export-with-section-numbers nil     ;; remove section numbering
+      org-html-head "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/assets/favicon/apple-touch-icon.png\">
+      <link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/assets/favicon/favicon-32x32.png\">
+      <link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/assets/favicon/favicon-16x16.png\">
+      <link rel=\"manifest\" href=\"/assets/manifest.json\">
+      <link rel=\"stylesheet\" href=\"/css/base.css\" />
+      <link rel=\"stylesheet\" href=\"/css/prism-monokai.css\" />
+      ")
 
 
 ;; Define the publishing project
