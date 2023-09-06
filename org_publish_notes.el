@@ -43,6 +43,19 @@
              :html-html5-fancy t
              :with-toc t
              :time-stamp-file nil
+             :html-preamble "
+              <header>
+                  <div >
+                    <a id=\"home_url\" href=\"/\">home</a>
+                    <ul class=\"nav\">
+                      <li  class='md-enable'><a href=\"/\">home</a></li>
+                      <li><a  href=\"/posts\">posts</a></li>
+                      <li><a  class=\"active\" href=\"/notes\">notes</a></li>
+                      <li><a  href=\"/about\">about</a></li>
+                    </ul>
+                  </div>
+              </header>
+             "
              :with-author t
              :publishing-function 'org-html-publish-to-html)
        (list "static"
