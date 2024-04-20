@@ -1,7 +1,0 @@
-{
-  "editor.tabSize": 2,
-  "prettier.semi": true,
-  "prettier.printWidth": 80,
-  "prettier.arrowParens": "avoid",
-  "prettier.trailingComma": "none"
-}
