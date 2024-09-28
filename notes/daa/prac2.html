@@ -1,0 +1,1198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="content" class="content">
+<ol class="org-ol">
+<li><p>
+Given an undirected graph, use BFS to check if there's a cycle in the graph.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;bits/stdc++.h&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">void</span> <span class="org-function-name">addEdge</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">adj</span>[], <span class="org-type">int</span> <span class="org-variable-name">u</span>, <span class="org-type">int</span> <span class="org-variable-name">v</span>) {
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+<span class="org-type">bool</span> <span class="org-function-name">isCyclicConnected</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">adj</span>[], <span class="org-type">int</span> <span class="org-variable-name">s</span>, <span class="org-type">int</span> <span class="org-variable-name">V</span>, <span class="org-type">vector</span>&lt;<span class="org-type">bool</span>&gt;&amp; <span class="org-variable-name">visited</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Create a queue for BFS</span>
+    <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">q</span>;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Enqueue the current node</span>
+    q.push(s);
+
+    <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>q.empty()) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Dequeue a vertex from queue and print it</span>
+        <span class="org-type">int</span> <span class="org-variable-name">v</span> = q.front();
+        q.pop();
+
+        <span class="org-keyword">if</span> (visited[v] == 1) {
+            <span class="org-keyword">return</span> <span class="org-constant">true</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Cycle detected</span>
+        }
+
+        visited[v] = 1; <span class="org-comment-delimiter">// </span><span class="org-comment">Mark as visited</span>
+
+        <span class="org-comment-delimiter">// </span><span class="org-comment">Visit adjacent nodes</span>
+        <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">it</span> : adj[v]) {
+            <span class="org-keyword">if</span> (visited[it] == 0) {
+                q.push(it);
+            }
+        }
+    }
+    <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+}
+
+<span class="org-type">bool</span> <span class="org-function-name">isCyclicDisconnected</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">adj</span>[], <span class="org-type">int</span> <span class="org-variable-name">V</span>) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Mark all the vertices as not visited</span>
+    <span class="org-type">vector</span>&lt;<span class="org-type">bool</span>&gt; <span class="org-variable-name">visited</span>(V, <span class="org-constant">false</span>);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; V; i++) {
+        <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>visited[i]
+            &amp;&amp; isCyclicConnected(adj, i, V, visited))
+            <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+    }
+    <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Driver program to test methods of graph class</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">V</span> = 4;
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">adj</span>[V];
+    addEdge(adj, 0, 1);
+    addEdge(adj, 1, 2);
+    addEdge(adj, 2, 0);
+    addEdge(adj, 2, 3);
+
+    <span class="org-keyword">if</span> (isCyclicDisconnected(adj, V))
+        cout &lt;&lt; <span class="org-string">"Yes"</span>;
+    <span class="org-keyword">else</span>
+        cout &lt;&lt; <span class="org-string">"No"</span>;
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Yes
+</pre></li>
+
+<li><p>
+Use BFS to find all connected components in a graph and finding all vertices within a connected component.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;queue&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;unordered_set&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Function to perform BFS traversal and find connected components</span>
+<span class="org-type">vector</span>&lt;<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&gt; <span class="org-function-name">bfs_connected_components</span>(<span class="org-keyword">const</span> <span class="org-type">vector</span>&lt;<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&gt;&amp; <span class="org-variable-name">graph</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = graph.size();
+    <span class="org-type">vector</span>&lt;<span class="org-type">bool</span>&gt; <span class="org-variable-name">visited</span>(n, <span class="org-constant">false</span>);
+    <span class="org-type">vector</span>&lt;<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&gt; <span class="org-variable-name">connected_components</span>;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; ++i) {
+        <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>visited[i]) {
+            <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">connected_component</span>;
+            <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">q</span>;
+            q.push(i);
+            visited[i] = <span class="org-constant">true</span>;
+
+            <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>q.empty()) {
+                <span class="org-type">int</span> <span class="org-variable-name">current_vertex</span> = q.front();
+                q.pop();
+                connected_component.push_back(current_vertex);
+
+                <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">neighbor</span> : graph[current_vertex]) {
+                    <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>visited[neighbor]) {
+                        q.push(neighbor);
+                        visited[neighbor] = <span class="org-constant">true</span>;
+                    }
+                }
+            }
+
+            connected_components.push_back(connected_component);
+        }
+    }
+
+    <span class="org-keyword">return</span> connected_components;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Define an undirected graph as an adjacency list</span>
+    <span class="org-type">vector</span>&lt;<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&gt; <span class="org-variable-name">graph</span> = {
+        {1, 2},
+        {0, 2},
+        {0, 1},
+        {4},
+        {3}
+    };
+
+    <span class="org-type">vector</span>&lt;<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&gt; <span class="org-variable-name">connected_components</span> = bfs_connected_components(graph);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; connected_components.size(); ++i) {
+        cout &lt;&lt; <span class="org-string">"Connected Component "</span> &lt;&lt; i + 1 &lt;&lt; <span class="org-string">": "</span>;
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; connected_components[i].size(); ++j) {
+            cout &lt;&lt; connected_components[i][j] &lt;&lt; <span class="org-string">" "</span>;
+        }
+        cout &lt;&lt; endl;
+    }
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Connected Component 1: 0 1 2 
+Connected Component 2: 3 4
+</pre></li>
+
+<li><p>
+Given a directed graph, use DFS to check if there's a cycle in the graph.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;bits/stdc++.h&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Graph</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">V</span>;
+    <span class="org-type">list</span>&lt;<span class="org-type">int</span>&gt;* <span class="org-variable-name">adj</span>;
+    <span class="org-type">bool</span> <span class="org-function-name">isCyclicUtil</span>(<span class="org-type">int</span> <span class="org-variable-name">v</span>, <span class="org-type">bool</span> <span class="org-variable-name">visited</span>[], <span class="org-type">bool</span>* <span class="org-variable-name">rs</span>);
+
+<span class="org-keyword">public</span>:
+    <span class="org-function-name">Graph</span>(<span class="org-type">int</span> <span class="org-variable-name">V</span>);
+    <span class="org-type">void</span> <span class="org-function-name">addEdge</span>(<span class="org-type">int</span> <span class="org-variable-name">v</span>, <span class="org-type">int</span> <span class="org-variable-name">w</span>);
+    <span class="org-type">bool</span> <span class="org-function-name">isCyclic</span>();
+};
+
+<span class="org-constant">Graph</span>::<span class="org-function-name">Graph</span>(<span class="org-type">int</span> <span class="org-variable-name">V</span>) {
+    <span class="org-keyword">this</span>-&gt;V = V;
+    adj = <span class="org-keyword">new</span> <span class="org-type">list</span>&lt;<span class="org-type">int</span>&gt;[<span class="org-constant">V</span>];
+}
+
+<span class="org-type">void</span> <span class="org-constant">Graph</span>::<span class="org-function-name">addEdge</span>(<span class="org-type">int</span> <span class="org-variable-name">v</span>, <span class="org-type">int</span> <span class="org-variable-name">w</span>) {
+    adj[v].push_back(w);
+}
+
+<span class="org-type">bool</span> <span class="org-constant">Graph</span>::<span class="org-function-name">isCyclicUtil</span>(<span class="org-type">int</span> <span class="org-variable-name">v</span>, <span class="org-type">bool</span> <span class="org-variable-name">visited</span>[], <span class="org-type">bool</span>* <span class="org-variable-name">recStack</span>) {
+    <span class="org-keyword">if</span> (visited[v] == <span class="org-constant">false</span>) {
+        visited[v] = <span class="org-constant">true</span>;
+        recStack[v] = <span class="org-constant">true</span>;
+
+        <span class="org-constant">list</span>&lt;<span class="org-type">int</span>&gt;::<span class="org-type">iterator</span> <span class="org-variable-name">i</span>;
+        <span class="org-keyword">for</span> (i = adj[v].begin(); i != adj[v].end(); ++i) {
+            <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>visited[*i]
+                &amp;&amp; isCyclicUtil(*i, visited, recStack))
+                <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+            <span class="org-keyword">else</span> <span class="org-keyword">if</span> (recStack[*i])
+                <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+        }
+    }
+
+    recStack[v] = <span class="org-constant">false</span>;
+    <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+}
+
+<span class="org-type">bool</span> <span class="org-constant">Graph</span>::<span class="org-function-name">isCyclic</span>() {
+    <span class="org-type">bool</span>* <span class="org-variable-name">visited</span> = <span class="org-keyword">new</span> <span class="org-type">bool</span>[V];
+    <span class="org-type">bool</span>* <span class="org-variable-name">recStack</span> = <span class="org-keyword">new</span> <span class="org-type">bool</span>[V];
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; V; i++) {
+        visited[i] = <span class="org-constant">false</span>;
+        recStack[i] = <span class="org-constant">false</span>;
+    }
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; V; i++)
+        <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>visited[i]
+            &amp;&amp; isCyclicUtil(i, visited, recStack))
+            <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+
+    <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">Graph</span> <span class="org-variable-name">g</span>(4);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 2);
+    g.addEdge(2, 0);
+    g.addEdge(2, 3);
+    g.addEdge(3, 3);
+
+    <span class="org-keyword">if</span> (g.isCyclic())
+        cout &lt;&lt; <span class="org-string">"Graph contains cycle"</span>;
+    <span class="org-keyword">else</span>
+        cout &lt;&lt; <span class="org-string">"Graph doesn't contain cycle"</span>;
+    <span class="org-keyword">return</span> 0;
+}
+
+</pre>
+</div>
+
+<pre class="example">
+Graph contains cycle
+</pre></li>
+
+<li><p>
+Check whether a given graph is connected or not using the DFS method.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;bits/stdc++.h&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">N</span> 100000
+
+<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">gr1</span>[N], <span class="org-variable-name">gr2</span>[N];
+
+<span class="org-type">bool</span> <span class="org-variable-name">vis1</span>[N], <span class="org-variable-name">vis2</span>[N];
+
+<span class="org-type">void</span> <span class="org-function-name">Add_edge</span>(<span class="org-type">int</span> <span class="org-variable-name">u</span>, <span class="org-type">int</span> <span class="org-variable-name">v</span>) {
+    gr1[u].push_back(v);
+    gr2[v].push_back(u);
+}
+
+<span class="org-type">void</span> <span class="org-function-name">dfs1</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+    vis1[x] = <span class="org-constant">true</span>;
+
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> : gr1[x])
+        <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>vis1[i])
+            dfs1(i);
+}
+
+<span class="org-type">void</span> <span class="org-function-name">dfs2</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+    vis2[x] = <span class="org-constant">true</span>;
+
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">i</span> : gr2[x])
+        <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>vis2[i])
+            dfs2(i);
+}
+
+<span class="org-type">bool</span> <span class="org-function-name">Is_Connected</span>(<span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+    memset(vis1, <span class="org-constant">false</span>, <span class="org-keyword">sizeof</span> vis1);
+    dfs1(1);
+
+    memset(vis2, <span class="org-constant">false</span>, <span class="org-keyword">sizeof</span> vis2);
+    dfs2(1);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt;= n; i++) {
+
+        <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>vis1[i] <span class="org-keyword">and</span> <span class="org-negation-char">!</span>vis2[i])
+            <span class="org-keyword">return</span> <span class="org-constant">false</span>;
+    }
+
+    <span class="org-keyword">return</span> <span class="org-constant">true</span>;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>()
+{
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 4;
+
+    Add_edge(1, 2);
+    Add_edge(1, 3);
+    Add_edge(2, 3);
+    Add_edge(3, 4);
+
+    <span class="org-keyword">if</span> (Is_Connected(n))
+        cout &lt;&lt; <span class="org-string">"Yes"</span>;
+    <span class="org-keyword">else</span>
+        cout &lt;&lt; <span class="org-string">"No"</span>;
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Yes
+</pre>
+
+
+<p>
+<b>Time Complexity</b>: O(V + E)
+<b>Space Complexity</b>: O(V)
+</p></li>
+
+<li><p>
+Obtain the topological ordering of vertices in a given directed graph.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;list&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;queue&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Graph</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">V</span>;
+    <span class="org-type">list</span>&lt;<span class="org-type">int</span>&gt;* <span class="org-variable-name">adj</span>;
+
+<span class="org-keyword">public</span>:
+    <span class="org-function-name">Graph</span>(<span class="org-type">int</span> <span class="org-variable-name">V</span>);
+    <span class="org-type">void</span> <span class="org-function-name">addEdge</span>(<span class="org-type">int</span> <span class="org-variable-name">v</span>,
+                 <span class="org-type">int</span> <span class="org-variable-name">w</span>);
+    <span class="org-type">void</span> <span class="org-function-name">topologicalSort</span>();
+};
+
+<span class="org-constant">Graph</span>::<span class="org-function-name">Graph</span>(<span class="org-type">int</span> <span class="org-variable-name">V</span>) {
+    <span class="org-keyword">this</span>-&gt;V = V;
+    adj = <span class="org-keyword">new</span> <span class="org-type">list</span>&lt;<span class="org-type">int</span>&gt;[<span class="org-constant">V</span>];
+}
+
+<span class="org-type">void</span> <span class="org-constant">Graph</span>::<span class="org-function-name">addEdge</span>(<span class="org-type">int</span> <span class="org-variable-name">v</span>, <span class="org-type">int</span> <span class="org-variable-name">w</span>) {
+    adj[v].push_back(w);
+}
+
+<span class="org-type">void</span> <span class="org-constant">Graph</span>::<span class="org-function-name">topologicalSort</span>() {
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">in_degree</span>(V, 0);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">v</span> = 0; v &lt; V; ++v) {
+        <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">w</span> : adj[v])
+            in_degree[w]++;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Create a 0</span>
+    <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">q</span>;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; V; ++i) {
+        <span class="org-keyword">if</span> (in_degree[i] == 0)
+            q.push(i);
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">count</span> = 0;
+
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">top_order</span>;
+
+    <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>q.empty()) {
+        <span class="org-type">int</span> <span class="org-variable-name">u</span> = q.front();
+        q.pop();
+        top_order.push_back(u);
+
+        <span class="org-constant">list</span>&lt;<span class="org-type">int</span>&gt;::<span class="org-type">iterator</span> <span class="org-variable-name">itr</span>;
+        <span class="org-keyword">for</span> (itr = adj[u].begin(); itr != adj[u].end();
+             ++itr)
+            <span class="org-keyword">if</span> (--in_degree[*itr] == 0)
+                q.push(*itr);
+
+        count++;
+    }
+
+    <span class="org-keyword">if</span> (count != V) {
+        cout &lt;&lt; <span class="org-string">"Graph contains cycle\n"</span>;
+        <span class="org-keyword">return</span>;
+    }
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> : top_order)
+        cout &lt;&lt; i &lt;&lt; <span class="org-string">" "</span>;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">Graph</span> <span class="org-variable-name">g</span>(6);
+    g.addEdge(5, 2);
+    g.addEdge(5, 0);
+    g.addEdge(4, 0);
+    g.addEdge(4, 1);
+    g.addEdge(2, 3);
+    g.addEdge(3, 1);
+
+    cout &lt;&lt; <span class="org-string">"Following is a Topological Sort of the given "</span>
+        <span class="org-string">"graph\n"</span>;
+    g.topologicalSort();
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Following is a Topological Sort of the given graph
+4 5 2 0 3 1 
+</pre>
+
+
+<p>
+<b>Time Complexity</b>: O(V + E)
+<b>Space Complexity</b>: O(V)
+</p></li>
+
+<li><p>
+Find the median of the two sorted arrays of different sizes using divide and conquer approach.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;bits/stdc++.h&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">double</span> <span class="org-function-name">Median</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&amp; <span class="org-variable-name">A</span>, <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&amp; <span class="org-variable-name">B</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = A.size();
+    <span class="org-type">int</span> <span class="org-variable-name">m</span> = B.size();
+    <span class="org-keyword">if</span> (n &gt; m)
+        <span class="org-keyword">return</span> Median(B, A);
+
+    <span class="org-type">int</span> <span class="org-variable-name">start</span> = 0;
+    <span class="org-type">int</span> <span class="org-variable-name">end</span> = n;
+    <span class="org-type">int</span> <span class="org-variable-name">realmidinmergedarray</span> = (n + m + 1) / 2;
+
+    <span class="org-keyword">while</span> (start &lt;= end) {
+        <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (start + end) / 2;
+        <span class="org-type">int</span> <span class="org-variable-name">leftAsize</span> = mid;
+        <span class="org-type">int</span> <span class="org-variable-name">leftBsize</span> = realmidinmergedarray - mid;
+        <span class="org-type">int</span> <span class="org-variable-name">leftA</span>
+            = (leftAsize &gt; 0)
+            ? A[leftAsize - 1]
+            : INT_MIN;
+        <span class="org-type">int</span> <span class="org-variable-name">leftB</span>
+            = (leftBsize &gt; 0) ? B[leftBsize - 1] : INT_MIN;
+        <span class="org-type">int</span> <span class="org-variable-name">rightA</span>
+            = (leftAsize &lt; n) ? A[leftAsize] : INT_MAX;
+        <span class="org-type">int</span> <span class="org-variable-name">rightB</span>
+            = (leftBsize &lt; m) ? B[leftBsize] : INT_MAX;
+
+        <span class="org-keyword">if</span> (leftA &lt;= rightB <span class="org-keyword">and</span> leftB &lt;= rightA) {
+            <span class="org-keyword">if</span> ((m + n) % 2 == 0)
+                <span class="org-keyword">return</span> (max(leftA, leftB)
+                        + min(rightA, rightB))
+                    / 2.0;
+            <span class="org-keyword">return</span> max(leftA, leftB);
+        }
+        <span class="org-keyword">else</span> <span class="org-keyword">if</span> (leftA &gt; rightB) {
+            end = mid - 1;
+        }
+        <span class="org-keyword">else</span>
+            start = mid + 1;
+    }
+    <span class="org-keyword">return</span> 0.0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">arr1</span> = { -5, 3, 6, 12, 15 };
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">arr2</span> = { -12, -10, -6, -3, 4, 10 };
+    cout &lt;&lt; <span class="org-string">"Median of the two arrays are"</span> &lt;&lt; endl;
+    cout &lt;&lt; Median(arr1, arr2);
+    <span class="org-keyword">return</span> 0;
+}
+
+</pre>
+</div>
+
+<pre class="example">
+Median of the two arrays are
+3
+</pre>
+
+
+<p>
+<b>Space Complexity</b>: O(1)
+<b>Time Complexity</b>: O(m + n)
+</p></li>
+
+<li><p>
+Count the number of inversions in an array with the help of merge sort.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;bits/stdc++.h&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">_mergeSort</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">temp</span>[], <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>);
+<span class="org-type">int</span> <span class="org-function-name">merge</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">temp</span>[], <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">mid</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>);
+
+<span class="org-type">int</span> <span class="org-function-name">mergeSort</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">array_size</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span>[array_size];
+    <span class="org-keyword">return</span> _mergeSort(arr, temp, 0, array_size - 1);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">_mergeSort</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">temp</span>[], <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span>, <span class="org-variable-name">inv_count</span> = 0;
+    <span class="org-keyword">if</span> (right &gt; left) {
+        mid = (right + left) / 2;
+
+        inv_count += _mergeSort(arr, temp, left, mid);
+        inv_count += _mergeSort(arr, temp, mid + 1, right);
+
+        inv_count += merge(arr, temp, left, mid + 1, right);
+    }
+    <span class="org-keyword">return</span> inv_count;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">merge</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">temp</span>[], <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">mid</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-variable-name">j</span>, <span class="org-variable-name">k</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">inv_count</span> = 0;
+
+    i = left;
+    j = mid;
+    k = left;
+    <span class="org-keyword">while</span> ((i &lt;= mid - 1) &amp;&amp; (j &lt;= right)) {
+        <span class="org-keyword">if</span> (arr[i] &lt;= arr[j]) {
+            temp[k++] = arr[i++];
+        } <span class="org-keyword">else</span> {
+            temp[k++] = arr[j++];
+            inv_count = inv_count + (mid - i);
+        }
+    }
+
+    <span class="org-keyword">while</span> (i &lt;= mid - 1)
+        temp[k++] = arr[i++];
+
+    <span class="org-keyword">while</span> (j &lt;= right)
+        temp[k++] = arr[j++];
+
+    <span class="org-keyword">for</span> (i = left; i &lt;= right; i++)
+        arr[i] = temp[i];
+
+    <span class="org-keyword">return</span> inv_count;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = { 1, 20, 6, 4, 5 };
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(arr[0]);
+    <span class="org-type">int</span> <span class="org-variable-name">ans</span> = mergeSort(arr, n);
+    cout &lt;&lt; <span class="org-string">" Number of inversions are "</span> &lt;&lt; ans;
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Number of inversions are 5
+</pre>
+
+
+<p>
+<b>Time Complexity</b>: O(n log n)
+<b>Space Complexity</b>: O(n)
+</p></li>
+
+<li><p>
+Given a value V, find the minimum number of coins and/or notes needed to make change using denominations {1, 2, 5, 10, 20, 50, 100, 200, 2000} using a greedy algorithm.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">V</span> = 97;
+
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">coins</span>{1,2,5,10,20,50,100,200,2000};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = coins.size();
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">s</span>;
+
+    <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span> = size-1; i &gt;= 0; i--){
+        <span class="org-keyword">while</span> (V &gt;= coins[i]) {
+            s.push_back(coins[i]);
+            V -= coins[i];
+        }
+        <span class="org-keyword">if</span> (V == 0)
+        {
+            <span class="org-keyword">break</span>;
+        }
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">m</span> = s.size();
+    cout &lt;&lt; <span class="org-string">"Minimum coins needed: "</span>;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt;= m-1; i++) {
+        cout &lt;&lt; s[i] &lt;&lt; <span class="org-string">" "</span>;
+    }
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Minimum coins needed: 50 20 20 5 2
+</pre>
+
+
+<p>
+<b>Time Complexity</b>: O(n)
+<b>Space Complexity</b>: O(n)
+</p></li>
+
+<li><p>
+Find the minimum cost spanning tree of a given undirected graph using Kruskal’s algorithm.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;algorithm&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">struct</span> <span class="org-type">Edge</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">src</span>, <span class="org-variable-name">dest</span>, <span class="org-variable-name">weight</span>;
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Graph</span> {
+<span class="org-keyword">private</span>:
+    <span class="org-type">int</span> <span class="org-variable-name">V</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Number of vertices</span>
+    <span class="org-type">vector</span>&lt;<span class="org-type">Edge</span>&gt; <span class="org-variable-name">edges</span>;
+
+<span class="org-keyword">public</span>:
+    <span class="org-function-name">Graph</span>(<span class="org-type">int</span> <span class="org-variable-name">V</span>) : V(V) {}
+
+    <span class="org-type">void</span> <span class="org-function-name">addEdge</span>(<span class="org-type">int</span> <span class="org-variable-name">src</span>, <span class="org-type">int</span> <span class="org-variable-name">dest</span>, <span class="org-type">int</span> <span class="org-variable-name">weight</span>) {
+        <span class="org-type">Edge</span> <span class="org-variable-name">edge</span> = {src, dest, weight};
+        edges.push_back(edge);
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Find function of Disjoint Set</span>
+    <span class="org-type">int</span> <span class="org-function-name">find</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&amp; <span class="org-variable-name">parent</span>, <span class="org-type">int</span> <span class="org-variable-name">i</span>) {
+        <span class="org-keyword">if</span> (parent[i] == -1)
+            <span class="org-keyword">return</span> i;
+        <span class="org-keyword">return</span> find(parent, <span class="org-type">parent</span>[i]);
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Union function of Disjoint Set</span>
+    <span class="org-type">void</span> <span class="org-function-name">Union</span>(<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&amp; <span class="org-variable-name">parent</span>, <span class="org-type">int</span> <span class="org-variable-name">x</span>, <span class="org-type">int</span> <span class="org-variable-name">y</span>) {
+        <span class="org-type">int</span> <span class="org-variable-name">xset</span> = find(<span class="org-type">parent</span>, x);
+        <span class="org-type">int</span> <span class="org-variable-name">yset</span> = find(<span class="org-type">parent</span>, y);
+        parent[xset] = yset;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Comparator function to sort edges by weight</span>
+    <span class="org-keyword">static</span> <span class="org-type">bool</span> <span class="org-function-name">compare</span>(<span class="org-type">Edge</span> <span class="org-variable-name">a</span>, <span class="org-type">Edge</span> <span class="org-variable-name">b</span>) {
+        <span class="org-keyword">return</span> a.weight &lt; b.weight;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Kruskal's algorithm to find minimum spanning tree</span>
+    <span class="org-type">void</span> <span class="org-function-name">kruskalMST</span>() {
+        <span class="org-type">vector</span>&lt;<span class="org-type">Edge</span>&gt; <span class="org-variable-name">result</span>;
+        <span class="org-type">int</span> <span class="org-variable-name">i</span> = 0, <span class="org-variable-name">e</span> = 0;
+        sort(edges.begin(), edges.end(), compare);
+        <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">parent</span>(V, -1);
+
+        <span class="org-keyword">while</span> (e &lt; V - 1 &amp;&amp; i &lt; edges.size()) {
+            <span class="org-type">Edge</span> <span class="org-variable-name">next_edge</span> = edges[i++];
+            <span class="org-type">int</span> <span class="org-variable-name">x</span> = find(<span class="org-type">parent</span>, next_edge.src);
+            <span class="org-type">int</span> <span class="org-variable-name">y</span> = find(<span class="org-type">parent</span>, next_edge.dest);
+
+            <span class="org-keyword">if</span> (x != y) {
+                result.push_back(next_edge);
+                Union(<span class="org-type">parent</span>, x, y);
+                e++;
+            }
+        }
+
+        cout &lt;&lt; <span class="org-string">"Minimum Spanning Tree:\n"</span>;
+        <span class="org-keyword">for</span> (i = 0; i &lt; result.size(); ++i)
+            cout &lt;&lt; result[i].src
+              &lt;&lt; <span class="org-string">" - "</span>
+              &lt;&lt; result[i].dest
+              &lt;&lt; <span class="org-string">" : "</span>
+              &lt;&lt; result[i].weight &lt;&lt; <span class="org-string">"\n"</span>;
+    }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">Graph</span> <span class="org-variable-name">graph</span>(4);
+    graph.addEdge(0, 1, 10);
+    graph.addEdge(0, 2, 6);
+    graph.addEdge(0, 3, 5);
+    graph.addEdge(1, 3, 15);
+    graph.addEdge(2, 3, 4);
+
+    graph.kruskalMST();
+
+    <span class="org-keyword">return</span> 0;
+}
+
+</pre>
+</div>
+
+<pre class="example">
+Minimum Spanning Tree:
+2 - 3 : 4
+0 - 3 : 5
+0 - 1 : 10
+</pre>
+
+
+<p>
+<b>Space Complexity</b>: O(E + V)
+<b>Time Complexity</b>: O(E log E)
+</p></li>
+
+<li><p>
+Find the minimum cost spanning tree of a given undirected graph using Prim’s algorithm.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;queue&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;climits&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">INF</span> INT_MAX
+
+<span class="org-keyword">typedef</span> <span class="org-type">pair</span>&lt;<span class="org-type">int</span>, <span class="org-type">int</span>&gt; <span class="org-type">iPair</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">(weight, vertex)</span>
+
+<span class="org-keyword">class</span> <span class="org-type">Graph</span> {
+<span class="org-keyword">private</span>:
+    <span class="org-type">int</span> <span class="org-variable-name">V</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Number of vertices</span>
+    <span class="org-type">vector</span>&lt;<span class="org-type">vector</span>&lt;<span class="org-type">iPair</span>&gt;&gt; <span class="org-variable-name">adj</span>;
+
+<span class="org-keyword">public</span>:
+    <span class="org-function-name">Graph</span>(<span class="org-type">int</span> <span class="org-variable-name">V</span>) : V(V) {
+        adj.resize(V);
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">addEdge</span>(<span class="org-type">int</span> <span class="org-variable-name">u</span>, <span class="org-type">int</span> <span class="org-variable-name">v</span>, <span class="org-type">int</span> <span class="org-variable-name">w</span>) {
+        adj[u].push_back({w, v});
+        adj[v].push_back({w, u});
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">primMST</span>() {
+        <span class="org-type">priority_queue</span>&lt;<span class="org-type">iPair</span>, <span class="org-type">vector</span>&lt;<span class="org-type">iPair</span>&gt;, <span class="org-type">greater</span>&lt;<span class="org-type">iPair</span>&gt;&gt; <span class="org-variable-name">pq</span>;
+        <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">key</span>(V, INF);
+        <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">parent</span>(V, -1);
+        <span class="org-type">vector</span>&lt;<span class="org-type">bool</span>&gt; <span class="org-variable-name">inMST</span>(V, <span class="org-constant">false</span>);
+
+        <span class="org-type">int</span> <span class="org-variable-name">src</span> = 0; <span class="org-comment-delimiter">// </span><span class="org-comment">Assuming the source vertex is 0</span>
+        pq.push({0, src});
+        key[src] = 0;
+
+        <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>pq.empty()) {
+            <span class="org-type">int</span> <span class="org-variable-name">u</span> = pq.top().second;
+            pq.pop();
+
+            inMST[u] = <span class="org-constant">true</span>;
+
+            <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> &amp;<span class="org-variable-name">neighbor</span> : adj[u]) {
+                <span class="org-type">int</span> <span class="org-variable-name">v</span> = neighbor.second;
+                <span class="org-type">int</span> <span class="org-variable-name">weight</span> = neighbor.first;
+
+                <span class="org-keyword">if</span> (<span class="org-negation-char">!</span>inMST[v] &amp;&amp; weight &lt; key[v]) {
+                    key[v] = weight;
+                    pq.push({key[v], v});
+                    parent[v] = u;
+                }
+            }
+        }
+
+        cout &lt;&lt; <span class="org-string">"Minimum Spanning Tree:\n"</span>;
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; V; ++i)
+            cout
+              &lt;&lt; parent[i]
+              &lt;&lt; <span class="org-string">" - "</span>
+              &lt;&lt; i
+              &lt;&lt; <span class="org-string">" : "</span>
+              &lt;&lt; key[i] &lt;&lt; <span class="org-string">"\n"</span>;
+    }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">Graph</span> <span class="org-variable-name">graph</span>(5);
+    graph.addEdge(0, 1, 2);
+    graph.addEdge(0, 3, 6);
+    graph.addEdge(1, 2, 3);
+    graph.addEdge(1, 3, 8);
+    graph.addEdge(1, 4, 5);
+    graph.addEdge(2, 4, 7);
+    graph.addEdge(3, 4, 9);
+
+    graph.primMST();
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Minimum Spanning Tree:
+0 - 1 : 2
+1 - 2 : 3
+0 - 3 : 6
+1 - 4 : 5
+</pre>
+
+
+<p>
+<b>Time Complexity</b>: O(V<sup>2</sup>)
+<b>Space Complexity</b>: O(V)
+</p></li>
+
+<li><p>
+From a given vertex in a weighted connected graph, find shortest paths to other vertices using Dijkstras’s algorithm.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;queue&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;climits&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">typedef</span> <span class="org-type">pair</span>&lt;<span class="org-type">int</span>, <span class="org-type">int</span>&gt; <span class="org-type">iPair</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">(weight, vertex)</span>
+
+<span class="org-keyword">class</span> <span class="org-type">Graph</span> {
+<span class="org-keyword">private</span>:
+    <span class="org-type">int</span> <span class="org-variable-name">V</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">Number of vertices</span>
+    <span class="org-type">vector</span>&lt;<span class="org-type">vector</span>&lt;<span class="org-type">iPair</span>&gt;&gt; <span class="org-variable-name">adj</span>;
+
+<span class="org-keyword">public</span>:
+    <span class="org-function-name">Graph</span>(<span class="org-type">int</span> <span class="org-variable-name">V</span>) : V(V) {
+        adj.resize(V);
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">addEdge</span>(<span class="org-type">int</span> <span class="org-variable-name">u</span>, <span class="org-type">int</span> <span class="org-variable-name">v</span>, <span class="org-type">int</span> <span class="org-variable-name">w</span>) {
+        adj[u].push_back({w, v});
+        adj[v].push_back({w, u}); <span class="org-comment-delimiter">// </span><span class="org-comment">For undirected graph</span>
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">dijkstraShortestPath</span>(<span class="org-type">int</span> <span class="org-variable-name">src</span>) {
+        <span class="org-type">priority_queue</span>&lt;<span class="org-type">iPair</span>, <span class="org-type">vector</span>&lt;<span class="org-type">iPair</span>&gt;, <span class="org-type">greater</span>&lt;<span class="org-type">iPair</span>&gt;&gt; <span class="org-variable-name">pq</span>;
+        <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">dist</span>(V, INT_MAX);
+
+        pq.push({0, src});
+        dist[src] = 0;
+
+        <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>pq.empty()) {
+            <span class="org-type">int</span> <span class="org-variable-name">u</span> = pq.top().second;
+            pq.pop();
+
+            <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> &amp;<span class="org-variable-name">neighbor</span> : adj[u]) {
+                <span class="org-type">int</span> <span class="org-variable-name">v</span> = neighbor.second;
+                <span class="org-type">int</span> <span class="org-variable-name">weight</span> = neighbor.first;
+
+                <span class="org-keyword">if</span> (dist[v] &gt; dist[u] + weight) {
+                    dist[v] = dist[u] + weight;
+                    pq.push({dist[v], v});
+                }
+            }
+        }
+
+        cout &lt;&lt; <span class="org-string">"Shortest paths from vertex "</span> &lt;&lt; src &lt;&lt; <span class="org-string">":\n"</span>;
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; V; ++i) {
+            cout &lt;&lt; <span class="org-string">"Vertex "</span> &lt;&lt; i &lt;&lt; <span class="org-string">": "</span>;
+            <span class="org-keyword">if</span> (dist[i] == INT_MAX)
+                cout &lt;&lt; <span class="org-string">"No path"</span>;
+            <span class="org-keyword">else</span>
+                cout &lt;&lt; dist[i];
+            cout &lt;&lt; endl;
+        }
+    }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">Graph</span> <span class="org-variable-name">graph</span>(6);
+    graph.addEdge(0, 1, 5);
+    graph.addEdge(0, 2, 3);
+    graph.addEdge(1, 2, 2);
+    graph.addEdge(1, 3, 6);
+    graph.addEdge(2, 3, 7);
+    graph.addEdge(2, 4, 4);
+    graph.addEdge(3, 4, 1);
+    graph.addEdge(3, 5, 2);
+    graph.addEdge(4, 5, 5);
+
+    <span class="org-type">int</span> <span class="org-variable-name">source</span> = 0; <span class="org-comment-delimiter">// </span><span class="org-comment">Specify the source vertex</span>
+    graph.dijkstraShortestPath(source);
+
+    <span class="org-keyword">return</span> 0;
+}
+
+</pre>
+</div>
+
+<pre class="example">
+Shortest paths from vertex 0:
+Vertex 0: 0
+Vertex 1: 5
+Vertex 2: 3
+Vertex 3: 8
+Vertex 4: 7
+Vertex 5: 10
+</pre>
+
+
+<p>
+<b>Space Complexity</b>: O(V<sup>2</sup>)
+<b>Time Complexity</b>: O(V<sup>2</sup>)
+</p></li>
+
+<li><p>
+Implement the longest ascending subsequence problem using dynamic programming.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">longestAscendingSubsequence</span>(<span class="org-keyword">const</span> <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&amp; <span class="org-variable-name">nums</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = nums.size();
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">dp</span>(n, 1);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; n; ++i) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; i; ++j) {
+            <span class="org-keyword">if</span> (nums[i] &gt; nums[j]) {
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+        }
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">maxLength</span> = 0;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; ++i) {
+        maxLength = max(maxLength, dp[i]);
+    }
+
+    <span class="org-keyword">return</span> maxLength;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">nums</span> = {10, 22, 9, 33, 21, 50, 41, 60};
+
+    cout
+      &lt;&lt; <span class="org-string">"Length of the longest ascending subsequence: "</span>
+      &lt;&lt; longestAscendingSubsequence(nums)
+      &lt;&lt; endl;
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Length of the longest ascending subsequence: 5
+</pre>
+
+
+<p>
+<b>Space Complexity</b>: O(n<sup>2</sup>)
+<b>Time Complexity</b>: O(n<sup>2</sup>)
+</p></li>
+
+<li><p>
+Implement matrix chain multiplication problem using dynamic programming.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span><span class="org-string">&lt;bits/stdc++.h&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">MatrixChainOrder</span>(<span class="org-type">int</span> <span class="org-variable-name">p</span>[], <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">m</span>[n][n];
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span>=1; i&lt;n; i++)
+        m[i][i] = 0;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">L</span>=2; L&lt;n; L++) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span>=1; i&lt;n-L+1; i++) {
+            <span class="org-type">int</span> <span class="org-variable-name">j</span> = i+L-1;
+            m[i][j] = INT_MAX;
+            <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">k</span>=i; k&lt;=j-1; k++) {
+                <span class="org-type">int</span> <span class="org-variable-name">q</span> = m[i][k] + m[k+1][j] +
+                    p[i-1]*p[k]*p[j];
+                <span class="org-keyword">if</span> (q &lt; m[i][j])
+                    m[i][j] = q;
+            }
+        }
+    }
+    <span class="org-keyword">return</span> m[1][n-1];
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 4;
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[n + 1] = {10, 30, 5, 60, 50};
+
+    <span class="org-keyword">for</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>=0; i&lt;=n; i++)
+        cin &gt;&gt; arr[i];
+
+    cout
+      &lt;&lt; <span class="org-string">"Minimum number of multiplications is "</span>
+      &lt;&lt; MatrixChainOrder(arr, n+1);
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Minimum number of multiplications is 19000
+</pre>
+
+
+<p>
+<b>Space Complexity</b>: O(n<sup>2</sup>)
+<b>Time Complexity</b>: O(n<sup>3</sup>)
+</p></li>
+
+<li><p>
+Implement 0/1 Knapsack problem using dynamic programming.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Function to solve the 0/1 Knapsack problem using dynamic</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">programming</span>
+<span class="org-type">int</span> <span class="org-function-name">knapsack</span>(<span class="org-type">int</span> <span class="org-variable-name">W</span>, <span class="org-keyword">const</span> <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&amp; <span class="org-variable-name">weights</span>, <span class="org-keyword">const</span> <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&amp; <span class="org-variable-name">values</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = weights.size();
+    <span class="org-type">vector</span>&lt;<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt;&gt; <span class="org-variable-name">dp</span>(n + 1, vector&lt;<span class="org-type">int</span>&gt;(W + 1, 0));
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt;= n; ++i) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">w</span> = 1; w &lt;= W; ++w) {
+            <span class="org-keyword">if</span> (weights[i - 1] &lt;= w) {
+                <span class="org-comment-delimiter">// </span><span class="org-comment">If the current item's weight is less than or</span>
+                <span class="org-comment-delimiter">// </span><span class="org-comment">equal to the current capacity</span>
+                <span class="org-comment-delimiter">// </span><span class="org-comment">We have two choices: either include the item</span>
+                <span class="org-comment-delimiter">// </span><span class="org-comment">or exclude it</span>
+                <span class="org-comment-delimiter">// </span><span class="org-comment">We choose the maximum of the two</span>
+                dp[i][w] = max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w]);
+            } <span class="org-keyword">else</span> {
+                <span class="org-comment-delimiter">// </span><span class="org-comment">If the current item's weight is greater than</span>
+                <span class="org-comment-delimiter">// </span><span class="org-comment">the current capacity</span>
+                <span class="org-comment-delimiter">// </span><span class="org-comment">We can't include the item, so we just carry</span>
+                forward the previous <span class="org-type">value</span>
+                <span class="org-variable-name">dp</span>[i][w] = dp[i - 1][w];
+            }
+        }
+    }
+
+    <span class="org-keyword">return</span> dp[n][W];
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">W</span> = 50; <span class="org-comment-delimiter">// </span><span class="org-comment">Capacity of the knapsack</span>
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">weights</span> = {10, 20, 30}; <span class="org-comment-delimiter">// </span><span class="org-comment">Weights of the items</span>
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">values</span> = {60, 100, 120}; <span class="org-comment-delimiter">// </span><span class="org-comment">Values of the items</span>
+
+    cout
+      &lt;&lt;<span class="org-string">"Maximum value that can be obtained: "</span>
+      &lt;&lt; knapsack(W, weights, values) &lt;&lt; endl;
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Maximum value that can be obtained: 220
+</pre>
+
+
+<p>
+<b>Space Complexity</b>: O(nW)
+<b>Time Complexity</b>: O(nW
+</p></li>
+
+<li><p>
+Write a program to find the shortest path using Bellman-Ford algorithm.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;climits&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Struct to represent an edge</span>
+<span class="org-keyword">struct</span> <span class="org-type">Edge</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">src</span>, <span class="org-variable-name">dest</span>, <span class="org-variable-name">weight</span>;
+};
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Function to find the shortest path from source to all other vertices</span>
+<span class="org-type">void</span> <span class="org-function-name">bellmanFord</span>(<span class="org-type">int</span> <span class="org-variable-name">V</span>, <span class="org-type">int</span> <span class="org-variable-name">E</span>, <span class="org-keyword">const</span> <span class="org-type">vector</span>&lt;<span class="org-type">Edge</span>&gt;&amp; <span class="org-variable-name">edges</span>, <span class="org-type">int</span> <span class="org-variable-name">source</span>) {
+    <span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">dist</span>(V, INT_MAX);
+    dist[source] = 0;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Relax all edges V-1 times</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; V - 1; ++i) {
+        <span class="org-keyword">for</span> (<span class="org-keyword">const</span> <span class="org-type">Edge</span>&amp; <span class="org-variable-name">edge</span> : edges) {
+            <span class="org-keyword">if</span> (dist[edge.src] != INT_MAX
+                 &amp;&amp; dist[edge.src] + edge.weight &lt; dist[edge.dest]) {
+                dist[edge.dest] = dist[edge.src] + edge.weight;
+            }
+        }
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Check for negative cycles</span>
+    <span class="org-keyword">for</span> (<span class="org-keyword">const</span> <span class="org-type">Edge</span>&amp; <span class="org-variable-name">edge</span> : edges) {
+        <span class="org-keyword">if</span> (dist[edge.src] != INT_MAX
+              &amp;&amp; dist[edge.src] + edge.weight &lt; dist[edge.dest]) {
+            cout &lt;&lt; <span class="org-string">"Graph contains negative cycle!"</span> &lt;&lt; endl;
+            <span class="org-keyword">return</span>;
+        }
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Print the shortest distances from source to all other vertices</span>
+    cout &lt;&lt; <span class="org-string">"Shortest distances from source "</span> &lt;&lt; source &lt;&lt; <span class="org-string">":\n"</span>;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; V; ++i) {
+        cout &lt;&lt; <span class="org-string">"Vertex "</span> &lt;&lt; i &lt;&lt; <span class="org-string">": "</span>;
+        <span class="org-keyword">if</span> (dist[i] == INT_MAX)
+            cout &lt;&lt; <span class="org-string">"INF"</span>;
+        <span class="org-keyword">else</span>
+            cout &lt;&lt; dist[i];
+        cout &lt;&lt; endl;
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">V</span> = 5; <span class="org-comment-delimiter">// </span><span class="org-comment">Number of vertices</span>
+    <span class="org-type">int</span> <span class="org-variable-name">E</span> = 8; <span class="org-comment-delimiter">// </span><span class="org-comment">Number of edges</span>
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">Example graph (directed with possibly negative edge weights)</span>
+    <span class="org-type">vector</span>&lt;<span class="org-type">Edge</span>&gt; <span class="org-variable-name">edges</span> = {
+        {0, 1, -1}, {0, 2, 4}, {1, 2, 3}, {1, 3, 2}, {1, 4, 2},
+        {3, 2, 5}, {3, 1, 1}, {4, 3, -3}
+    };
+
+    <span class="org-type">int</span> <span class="org-variable-name">source</span> = 0; <span class="org-comment-delimiter">// </span><span class="org-comment">Source vertex</span>
+
+    bellmanFord(V, E, edges, source);
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Shortest distances from source 0:
+Vertex 0: 0
+Vertex 1: -1
+Vertex 2: 2
+Vertex 3: -2
+Vertex 4: 1
+</pre>
+
+
+<p>
+<b>Space Complexity</b>: O(V)
+<b>Time Complexity</b>: O(V*E)
+</p></li>
+</ol>
+</div>
+</body>
+</html>

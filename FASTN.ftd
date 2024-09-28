@@ -2,18 +2,48 @@
 
 -- fastn.package: siddhant.xyz
 
--- fastn.url-mappings:
+;; -- fastn.url-mappings:
 
 ;; TODO: add contents of this in ftd posts/index.ftd
 ;; WARN: this prevents from .ftd files loading from ./posts/ folder
 ;; /posts/* -> http+proxy://siddhantcodes.netlify.app/posts/*
 
 ;; posts from old website
-/posts/postgres-full-text-search/* -> http+proxy://siddhantcodes.netlify.app/posts/postgres-full-text-search/*
-/posts/postgres-triggers/* -> http+proxy://siddhantcodes.netlify.app/posts/postgres-triggers/*
-/posts/the-ultimate-hasura-development-setup/* -> http+proxy://siddhantcodes.netlify.app/posts/the-ultimate-hasura-development-setup/*
-/posts/introduction-testing-websites-with-cypress/* -> http+proxy://siddhantcodes.netlify.app/posts/introduction-testing-websites-with-cypress/*
-/posts/notification-service-in-webapps-using-custom-javascript-events/* -> http+proxy://siddhant.xyz/posts/notification-service-in-webapps-using-custom-javascript-events/*
+;; /posts/postgres-full-text-search/* -> http+proxy://siddhantcodes.netlify.app/posts/postgres-full-text-search/*
+;; /posts/postgres-triggers/* -> http+proxy://siddhantcodes.netlify.app/posts/postgres-triggers/*
+;; /posts/the-ultimate-hasura-development-setup/* -> http+proxy://siddhantcodes.netlify.app/posts/the-ultimate-hasura-development-setup/*
+;; /posts/introduction-testing-websites-with-cypress/* -> http+proxy://siddhantcodes.netlify.app/posts/introduction-testing-websites-with-cypress/*
+;; /posts/notification-service-in-webapps-using-custom-javascript-events/* -> http+proxy://siddhant.xyz/posts/notification-service-in-webapps-using-custom-javascript-events/*
 
 ;; emacs notes
-/notes/* -> http+proxy://siddhantcodes.netlify.app/notes/*
+;; /notes/* -> http+proxy://siddhantcodes.netlify.app/notes/*
+
+-- fastn.sitemap:
+
+;; TODO: migrate home page later. Use post page for now
+# Home: /
+document: site/index.html
+
+# About: /about/
+document: site/about/index.html
+
+# Posts: /posts/
+document: site/posts/index.html
+
+# Notes: /notes/
+document: notes/index.html
+
+# Postgres Full Text Search: /posts/postgres-full-text-search/
+document: site/posts/postgres-full-text-search/index.html
+
+# Postgres Triggers: /posts/postgres-triggers/
+document: site/posts/postgres-triggers/index.html
+
+# The Ultimate Hasura Development Setup: /posts/the-ultimate-hasura-development-setup/
+document: site/posts/the-ultimate-hasura-development-setup/index.html
+
+# Introduction - testing websites with cypress: /posts/introduction-testing-websites-with-cypress/
+document: site/posts/introduction-testing-websites-with-cypress/index.html
+
+# Notification service in webapps using custom javascript Events: /posts/notification-service-in-webapps-using-custom-javascript-events/
+document: site/posts/notification-service-in-webapps-using-custom-javascript-events/index.html

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Graphs</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+
+              <header>
+                  <div >
+                    <a id="home_url" href="/">home</a>
+                    <ul class="nav">
+                      <li  class='md-enable'><a href="/">home</a></li>
+                      <li><a  href="/posts">posts</a></li>
+                      <li><a  class="active" href="/notes">notes</a></li>
+                      <li><a  href="/about">about</a></li>
+                    </ul>
+                  </div>
+              </header>
+</div>
+<div id="content" class="content">
+<h1 class="title">Graphs</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org055cd06">Storing Graphs</a></li>
+<li><a href="#org1e913e2">BFS (O(V+E))</a></li>
+<li><a href="#orgb932a70">DFS</a></li>
+<li><a href="#org0fb1bbc">Dijkstra Algorithm</a></li>
+<li><a href="#org1ddc4ac">Topological Sort</a></li>
+<li><a href="#orgf4eee9f">MST (Prism and Kruskal)</a></li>
+</ul>
+</div>
+</div>
+<ul class="org-ul">
+<li>A <b>tree is a graph</b> where:
+<ul class="org-ul">
+<li>N nodes, N - 1 edges</li>
+<li>No cycle in graph</li>
+<li>Edges are bidirectional</li>
+</ul></li>
+
+<li><b>indegree</b>: number of edges coming towards a node</li>
+<li><b>outdegree</b>: number of edges going outwards a node</li>
+<li><b>connected components</b>: count of graphs in a forest</li>
+</ul>
+<div id="outline-container-org055cd06" class="outline-2">
+<h2 id="org055cd06">Storing Graphs</h2>
+<div class="outline-text-2" id="text-org055cd06">
+<ul class="org-ul">
+<li>A NxN bool matrix.</li>
+<li>Using cpp vectors.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1e913e2" class="outline-2">
+<h2 id="org1e913e2">BFS (O(V+E))</h2>
+<div class="outline-text-2" id="text-org1e913e2">
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;queue&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">G</span>[5];
+<span class="org-type">int</span> <span class="org-variable-name">visited</span>[5];
+
+<span class="org-type">void</span> <span class="org-function-name">bfs</span>(<span class="org-type">int</span> <span class="org-variable-name">source</span>) {
+    <span class="org-type">queue</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">q</span>;
+
+    q.push(source);
+    visited[source] = 1;
+
+    <span class="org-keyword">while</span>(<span class="org-negation-char">!</span>q.empty()) {
+        <span class="org-keyword">auto</span> <span class="org-variable-name">curr</span> = q.front();
+        q.pop();
+
+        cout &lt;&lt; curr &lt;&lt; <span class="org-string">" "</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">visite the node</span>
+
+        <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">child</span> : G[curr]) {
+            <span class="org-keyword">if</span> (<span class="org-keyword">not</span> visited[child]) {
+                q.push(child);
+                visited[child] = 1;
+            }
+        }
+
+    }
+
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb932a70" class="outline-2">
+<h2 id="orgb932a70">DFS</h2>
+<div class="outline-text-2" id="text-orgb932a70">
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;queue&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-variable-name">G</span>[5];
+<span class="org-type">int</span> <span class="org-variable-name">visited</span>[5];
+
+<span class="org-type">void</span> <span class="org-function-name">dfs</span>(<span class="org-type">int</span> <span class="org-variable-name">current</span>) {
+    cout &lt;&lt; current &lt;&lt; <span class="org-string">" "</span>;
+    visited[current] = 1;
+
+    <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">child</span> : G[current]) {
+        <span class="org-keyword">if</span> (<span class="org-keyword">not</span> visited[child]) {
+            dfs(child);
+        }
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0fb1bbc" class="outline-2">
+<h2 id="org0fb1bbc">Dijkstra Algorithm</h2>
+<div class="outline-text-2" id="text-org0fb1bbc">
+<ul class="org-ul">
+<li>BFS gives shortest path when edges have constant weights.</li>
+<li><b>Dijkstra Algorithm</b>: Find shortest from a source node to every other node</li>
+<li><p>
+Time complexity: O(E + V * logV)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;climits&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;queue&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;vector&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-preprocessor">#define</span> <span class="org-variable-name">N</span> 10
+
+<span class="org-type">vector</span>&lt;<span class="org-type">bool</span>&gt; <span class="org-variable-name">visited</span>(N, <span class="org-constant">false</span>);
+<span class="org-type">vector</span>&lt;<span class="org-type">int</span>&gt; <span class="org-function-name">dist</span>(N);
+
+<span class="org-comment-delimiter">//          </span><span class="org-comment">d    wt</span>
+<span class="org-type">vector</span>&lt;<span class="org-type">pair</span>&lt;<span class="org-type">int</span>, <span class="org-type">int</span>&gt;&gt; <span class="org-variable-name">G</span>[N];
+
+<span class="org-type">void</span> <span class="org-function-name">dijkstra</span>(<span class="org-type">int</span> <span class="org-variable-name">source</span>) {
+    dist[source] = 0;
+
+    <span class="org-comment-delimiter">//                   </span><span class="org-comment">d   s</span>
+    <span class="org-type">priority_queue</span>&lt;<span class="org-type">pair</span>&lt;<span class="org-type">int</span>, <span class="org-type">int</span>&gt;, <span class="org-type">vector</span>&lt;<span class="org-type">pair</span>&lt;<span class="org-type">int</span>, <span class="org-type">int</span>&gt;&gt;,
+                   <span class="org-type">greater</span>&lt;<span class="org-type">pair</span>&lt;<span class="org-type">int</span>, <span class="org-type">int</span>&gt;&gt;&gt;
+        <span class="org-variable-name">pq</span>;
+
+    pq.push({dist[source], source});
+
+    <span class="org-keyword">while</span> (<span class="org-keyword">not</span> pq.empty()) {
+        <span class="org-keyword">auto</span> <span class="org-variable-name">p</span> = pq.top();
+        <span class="org-type">int</span> <span class="org-variable-name">current</span> = p.second;
+
+        pq.pop();
+
+        <span class="org-keyword">if</span> (visited[current]) {
+            cout &lt;&lt; <span class="org-string">"ignoring already visited node: "</span> &lt;&lt; current &lt;&lt; endl;
+            <span class="org-keyword">continue</span>;
+        }
+        visited[current] = <span class="org-constant">true</span>;
+
+        cout &lt;&lt; <span class="org-string">"visiting : "</span> &lt;&lt; current &lt;&lt; endl;
+
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; (<span class="org-type">int</span>)G[current].size(); ++i) {
+            <span class="org-keyword">if</span> (visited[G[current][i].first] == <span class="org-constant">false</span>) {
+                <span class="org-keyword">auto</span> <span class="org-variable-name">new_d</span> = dist[current] + G[current][i].second;
+                <span class="org-keyword">if</span> (new_d &lt; dist[G[current][i].first]) {
+                    cout &lt;&lt; <span class="org-string">"from "</span> &lt;&lt; source &lt;&lt; <span class="org-string">" to "</span> &lt;&lt; G[current][i].first
+                         &lt;&lt; <span class="org-string">": "</span> &lt;&lt; new_d &lt;&lt; <span class="org-string">" is minimum."</span> &lt;&lt; endl;
+
+                    dist[G[current][i].first] = new_d;
+                    pq.push({new_d, G[current][i].first});
+                } <span class="org-keyword">else</span> {
+                    cout &lt;&lt; <span class="org-string">"from "</span> &lt;&lt; source &lt;&lt; <span class="org-string">" to "</span> &lt;&lt; G[current][i].first
+                         &lt;&lt; <span class="org-string">": "</span> &lt;&lt; new_d
+                         &lt;&lt; <span class="org-string">" is not minimum, min: "</span> &lt;&lt; dist[G[current][i].first]
+                         &lt;&lt; endl;
+                }
+            }
+        }
+
+        cout &lt;&lt; <span class="org-string">"distance after visiting : "</span> &lt;&lt; current &lt;&lt; <span class="org-string">" : "</span>;
+        <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-variable-name">di</span> : dist) cout &lt;&lt; di &lt;&lt; <span class="org-string">" "</span>;
+        cout &lt;&lt; endl;
+    }
+}
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment"> * Input:</span>
+<span class="org-comment"> * 5 7</span>
+<span class="org-comment"> * 1 4 1</span>
+<span class="org-comment"> * 1 2 6</span>
+<span class="org-comment"> * 4 2 2</span>
+<span class="org-comment"> * 4 5 1</span>
+<span class="org-comment"> * 2 5 2</span>
+<span class="org-comment"> * 2 3 5</span>
+<span class="org-comment"> * 5 3 5</span>
+<span class="org-comment-delimiter"> */</span>
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-variable-name">m</span>;
+    cin &gt;&gt; n &gt;&gt; m;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; m; ++i) {
+        <span class="org-type">int</span> <span class="org-variable-name">s</span>, <span class="org-variable-name">d</span>, <span class="org-variable-name">wt</span>;
+        cin &gt;&gt; s &gt;&gt; d &gt;&gt; wt;
+
+        <span class="org-comment-delimiter">// </span><span class="org-comment">undericted graph</span>
+        G[s].push_back({d, wt});
+        G[d].push_back({s, wt});
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">initial distance</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt;= n; ++i) dist[i] = INT_MAX;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt;= n; ++i) {
+        cout &lt;&lt; <span class="org-string">"[ "</span> &lt;&lt; i &lt;&lt; <span class="org-string">" ] = "</span>;
+        <span class="org-keyword">for</span> (<span class="org-keyword">auto</span> <span class="org-keyword">const</span> &amp;<span class="org-variable-name">v</span> : G[i]) cout &lt;&lt; v.first &lt;&lt; <span class="org-string">"-&gt;"</span>;
+        cout &lt;&lt; endl;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">find distance of every other node from node 1</span>
+    dijkstra(1);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt;= n; ++i) {
+        cout &lt;&lt; i &lt;&lt; <span class="org-string">" : "</span> &lt;&lt; dist[i] &lt;&lt; endl;
+    }
+}
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1ddc4ac" class="outline-2">
+<h2 id="org1ddc4ac">Topological Sort</h2>
+<div class="outline-text-2" id="text-org1ddc4ac">
+<ul class="org-ul">
+<li><p>
+Time complexity: O(V + E)
+</p>
+
+<p>
+#+begin<sub>src</sub> cpp
+  #include &lt;climits&gt;
+  #include &lt;iostream&gt;
+  #include &lt;queue&gt;
+  #include &lt;vector&gt;
+</p>
+
+<p>
+using namespace std;
+</p>
+
+<p>
+#define N 10
+</p>
+
+<p>
+vector&lt;bool&gt; visited(N, false);
+vector&lt;int&gt; dist(N);
+</p>
+
+<p>
+//          d    wt
+vector&lt;int&gt; G[N];
+vector&lt;int&gt; indegree(N);
+</p>
+
+<p>
+void topological(int n) {
+    queue&lt;int&gt; q;
+</p>
+
+<p>
+for (int i = 0; i &lt; n; ++i) {
+    if (indegree[i] == 0) {
+	q.push(i);
+    }
+}
+</p>
+
+<p>
+while (not q.empty()) {
+    int current = q.front();
+</p>
+
+<p>
+cout &lt;&lt; current &lt;&lt; endl;
+q.pop();
+</p>
+
+<p>
+	for (int i = 0; i &lt; G[current].size(); ++i) {
+	    indegree[G[current][i]]&#x2013;;
+	    if (indegree[G[current][i]] == 0) {
+		q.push(G[current][i]);
+	    }
+	}
+    }
+}
+</p>
+
+<p>
+<i>*
+ ,* Input:
+ ,* 5 7
+ ,* 1 4 1
+ ,* 1 2 6
+ ,* 4 2 2
+ ,* 4 5 1
+ ,* 2 5 2
+ ,* 2 3 5
+ ,* 5 3 5
+ ,*</i>
+int main() {
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+</p>
+
+<p>
+for (int i = 0; i &lt; m; ++i) {
+    int s, d, wt;
+    cin &gt;&gt; s &gt;&gt; d &gt;&gt; wt;
+</p>
+
+<p>
+    // undericted graph
+    G[s].push<sub>back</sub>(d);
+    indegree[d]++;
+}
+</p>
+
+<p>
+      topological(n);
+  }
+#+end<sub>srcIt</sub>'s a DS that keep tracks of a set of elements partitioned into a number of disjoint (non-overlapping) subsets.
+</p></li>
+</ul>
+
+<p>
+Two important functions:
+</p>
+
+<ul class="org-ul">
+<li>set union</li>
+<li>find parent</li>
+</ul>
+
+<p>
+Applications:
+</p>
+
+<ul class="org-ul">
+<li>Cycle detection</li>
+<li>Connected components</li>
+<li><p>
+Minimus Spanning Trees
+</p>
+
+<p>
+It's good to think about DSUs wherever "groups" are talked about in graphs.
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf4eee9f" class="outline-2">
+<h2 id="orgf4eee9f">MST (Prism and Kruskal)</h2>
+<div class="outline-text-2" id="text-orgf4eee9f">
+<ul class="org-ul">
+<li>Use DSU</li>
+<li>if an edge have different parents for source and destination, add them to consideration. Else ignore!</li>
+<li>Sum weights of all considered edges.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Siddhant Kumar</p>
+</div>
+</body>
+</html>

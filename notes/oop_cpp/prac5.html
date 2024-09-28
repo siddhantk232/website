@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="content" class="content">
+<p>
+(practical 15) <b>Aim</b>: WAP to demonstrate usage of a friend function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">xyz</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-variable-name">b</span>;
+
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">xyz</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-type">int</span> <span class="org-variable-name">j</span>) : a(i), b(j) {}
+  <span class="org-type">void</span> <span class="org-function-name">display</span>() {
+    cout &lt;&lt; <span class="org-string">"a = "</span> &lt;&lt; a &lt;&lt; endl;
+    cout &lt;&lt; <span class="org-string">"b = "</span> &lt;&lt; b &lt;&lt; endl;
+  }
+  <span class="org-keyword">friend</span> <span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">xyz</span>);
+};
+
+<span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">xyz</span> <span class="org-variable-name">o</span>) { <span class="org-keyword">return</span> o.a + o.b; }
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">xyz</span> <span class="org-variable-name">x</span>(10, 20);
+  x.display();
+  cout &lt;&lt; <span class="org-string">"sum =  "</span> &lt;&lt; sum(x) &lt;&lt; endl;
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+a = 10
+b = 20
+sum =  30
+</pre>
+
+
+<p>
+(practical 16) <b>Aim</b>: WAP to demonstrate usage of a friend class.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Min</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">TwoValues</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">a</span>, <span class="org-variable-name">b</span>;
+
+ <span class="org-keyword">public</span>:
+  <span class="org-function-name">TwoValues</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-type">int</span> <span class="org-variable-name">j</span>) : a(i), b(j) {}
+  <span class="org-keyword">friend</span> <span class="org-keyword">class</span> <span class="org-type">Min</span>;
+};
+
+<span class="org-keyword">class</span> <span class="org-type">Min</span> {
+ <span class="org-keyword">public</span>:
+  <span class="org-type">int</span> <span class="org-function-name">min</span>(<span class="org-type">TwoValues</span> <span class="org-variable-name">t</span>) { <span class="org-keyword">return</span> t.a &lt; t.b ? t.a : t.b; }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">TwoValues</span> <span class="org-variable-name">t</span>(10, 5);
+  <span class="org-type">Min</span> <span class="org-variable-name">m</span>;
+  cout &lt;&lt; <span class="org-string">"Minimum value is = "</span> &lt;&lt; m.min(t) &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+Minimum value is = 5
+</pre>
+
+
+<p>
+(practical 17) <b>Aim</b>: WAP to give access of a class to a method defined in another class.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">beta</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">alpha</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">alpha</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) : data(i) {}
+  <span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">beta</span>);  <span class="org-comment-delimiter">// </span><span class="org-comment">a.sum()</span>
+};
+
+<span class="org-keyword">class</span> <span class="org-type">beta</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">beta</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) : data(i) {}
+  <span class="org-keyword">friend</span> <span class="org-type">int</span> <span class="org-constant">alpha</span>::<span class="org-function-name">sum</span>(<span class="org-type">beta</span>);
+};
+
+<span class="org-type">int</span> <span class="org-constant">alpha</span>::<span class="org-function-name">sum</span>(<span class="org-type">beta</span> <span class="org-variable-name">b</span>) { <span class="org-keyword">return</span> data + b.data; }
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">alpha</span> <span class="org-variable-name">a</span>(10);
+  <span class="org-type">beta</span> <span class="org-variable-name">b</span>(20);
+  cout &lt;&lt; <span class="org-string">"sum="</span> &lt;&lt; a.sum(b) &lt;&lt; endl;
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+sum=30
+</pre>
+
+
+<p>
+(practical 18) <b>Aim</b>: WAP for a friend function that take two different class as parameters.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">beta</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">alpha</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">alpha</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) : data(i) {}
+  <span class="org-keyword">friend</span> <span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">alpha</span> <span class="org-variable-name">a</span>, <span class="org-type">beta</span> <span class="org-variable-name">b</span>);
+};
+
+<span class="org-keyword">class</span> <span class="org-type">beta</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">beta</span>(<span class="org-type">int</span> <span class="org-variable-name">i</span>) : data(i) {}
+  <span class="org-keyword">friend</span> <span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">alpha</span> <span class="org-variable-name">a</span>, <span class="org-type">beta</span> <span class="org-variable-name">b</span>);
+};
+
+<span class="org-type">int</span> <span class="org-function-name">sum</span>(<span class="org-type">alpha</span> <span class="org-variable-name">a</span>, <span class="org-type">beta</span> <span class="org-variable-name">b</span>) { <span class="org-keyword">return</span> a.data + b.data; }
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">alpha</span> <span class="org-variable-name">a</span>(10);
+  <span class="org-type">beta</span> <span class="org-variable-name">b</span>(20);
+  cout &lt;&lt; <span class="org-string">"Sum = "</span> &lt;&lt; sum(a, b) &lt;&lt; endl;
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Sum = 30
+</pre>
+</div>
+</body>
+</html>

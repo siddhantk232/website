@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+
+              <header>
+                  <div >
+                    <a id="home_url" href="/">home</a>
+                    <ul class="nav">
+                      <li  class='md-enable'><a href="/">home</a></li>
+                      <li><a  href="/posts">posts</a></li>
+                      <li><a  class="active" href="/notes">notes</a></li>
+                      <li><a  href="/about">about</a></li>
+                    </ul>
+                  </div>
+              </header>
+</div>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org9aa6be3">Sorting</a>
+<ul>
+<li><a href="#orgcb98618">Bubble sort</a></li>
+<li><a href="#orgdfefd9f">selection sort</a></li>
+<li><a href="#org3ab0940">insertion sort</a></li>
+</ul>
+</li>
+<li><a href="#org452847d">Binary search using recursion</a></li>
+<li><a href="#org7b412ab">linked list</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9aa6be3" class="outline-2">
+<h2 id="org9aa6be3">Sorting</h2>
+<div class="outline-text-2" id="text-org9aa6be3">
+</div>
+<div id="outline-container-orgcb98618" class="outline-3">
+<h3 id="orgcb98618">Bubble sort</h3>
+<div class="outline-text-3" id="text-orgcb98618">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">bubble_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">pass</span> = 0; pass &lt; size - 1; pass++) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; size - 1 - pass; j++) {
+            <span class="org-keyword">if</span> (arr[j] &gt; arr[j + 1]) {
+                swap(&amp;arr[j], &amp;arr[j + 1]);
+            }
+        }
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {-2, 3, 1, 19, 12, 1, 99, 23, -99};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    bubble_sort(arr, size);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdfefd9f" class="outline-3">
+<h3 id="orgdfefd9f">selection sort</h3>
+<div class="outline-text-3" id="text-orgdfefd9f">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">selection_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size - 1; ++i) {
+    <span class="org-type">int</span> <span class="org-variable-name">min</span> = i;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = i + 1; j &lt; size; ++j) {
+      <span class="org-keyword">if</span> (arr[j] &lt; arr[min]) {
+        min = j;
+      }
+    }
+
+    <span class="org-keyword">if</span> (min != i) {
+      swap(&amp;arr[min], &amp;arr[i]);
+    }
+  }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {-2, 3, 1, 19, 12, 1, 99, 23, -99};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    selection_sort(arr, size);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3ab0940" class="outline-3">
+<h3 id="org3ab0940">insertion sort</h3>
+<div class="outline-text-3" id="text-org3ab0940">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">insertion_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; size; ++i) {
+    <span class="org-type">int</span> <span class="org-variable-name">val</span> = arr[i];
+    <span class="org-type">int</span> <span class="org-variable-name">hole</span> = i - 1;
+
+    <span class="org-keyword">while</span> (hole &gt;= 0 &amp;&amp; (arr[hole] &gt; val)) {
+      arr[hole + 1] = arr[hole];
+      hole = hole - 1;
+    }
+    arr[hole + 1] = val;
+  }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {-2, 3, 1, 19, 12, 1, 99, 23, -99};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    insertion_sort(arr, size);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org452847d" class="outline-2">
+<h2 id="org452847d">Binary search using recursion</h2>
+<div class="outline-text-2" id="text-org452847d">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">binary_search</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>, <span class="org-type">int</span> <span class="org-variable-name">target</span>) {
+  <span class="org-keyword">if</span> (left &gt; right) {
+    <span class="org-keyword">return</span> -1;
+  }
+
+  <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (left + right) / 2;
+
+  <span class="org-keyword">if</span> (arr[mid] == target) {
+    <span class="org-keyword">return</span> mid;
+  } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (target &gt; arr[mid]) {
+    <span class="org-keyword">return</span> binary_search(arr, mid + 1, right, target);
+  } <span class="org-keyword">else</span> {
+    <span class="org-keyword">return</span> binary_search(arr, left, mid - 1, target);
+  }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 3, 9, 22, 29};
+  <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+  printf(<span class="org-string">"found 1 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 1));
+  printf(<span class="org-string">"found 3 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 3));
+  printf(<span class="org-string">"found 9 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 9));
+  printf(<span class="org-string">"found 22 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 22));
+  printf(<span class="org-string">"found 29 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 29));
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">binarySearch</span>(<span class="org-type">int</span> *<span class="org-variable-name">array</span>, <span class="org-type">int</span> <span class="org-variable-name">x</span>, <span class="org-type">int</span> <span class="org-variable-name">low</span>, <span class="org-type">int</span> <span class="org-variable-name">high</span>) {
+  <span class="org-keyword">if</span> (high &gt;= low) {
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (low + high) / 2;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">If found at mid, then return it</span>
+    <span class="org-keyword">if</span> (array[] == x) {
+      <span class="org-keyword">return</span> mid;
+    }
+
+    <span class="org-keyword">if</span> (array[mid] &gt; x) {
+      <span class="org-keyword">return</span> binarySearch(array, x, low, mid - 1);
+    } <span class="org-keyword">else</span> {
+      <span class="org-keyword">return</span> binarySearch(array, x, mid + 1, high);
+    }
+  }
+
+  <span class="org-keyword">return</span> -1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>(<span class="org-type">void</span>) {
+  <span class="org-type">int</span> <span class="org-variable-name">array</span>[] = {3, 4, 5, 6, 7, 8, 9};
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = <span class="org-keyword">sizeof</span>(array) / <span class="org-keyword">sizeof</span>(array[0]);
+  <span class="org-type">int</span> <span class="org-variable-name">x</span> = 9;
+  <span class="org-type">int</span> <span class="org-variable-name">result</span> = binarySearch(array, x, 0, n - 1);
+  <span class="org-keyword">if</span> (result == -1)
+    printf(<span class="org-string">"Not found"</span>);
+  <span class="org-keyword">else</span>
+    printf(<span class="org-string">"Element is found at index %d"</span>, result);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7b412ab" class="outline-2">
+<h2 id="org7b412ab">linked list</h2>
+<div class="outline-text-2" id="text-org7b412ab">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-keyword">struct</span> <span class="org-type">Node</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+  <span class="org-keyword">struct</span> <span class="org-type">Node</span>* <span class="org-variable-name">next</span>;
+};
+
+<span class="org-keyword">typedef</span> <span class="org-keyword">struct</span> <span class="org-type">Node</span> <span class="org-type">Node</span>;
+
+<span class="org-type">Node</span>* <span class="org-function-name">create</span>(<span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+  <span class="org-type">Node</span> *<span class="org-variable-name">temp</span> = malloc(<span class="org-keyword">sizeof</span>(Node));
+  temp-&gt;data = data;
+  temp-&gt;next = <span class="org-constant">NULL</span>;
+  <span class="org-keyword">return</span> temp;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">insert_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+  <span class="org-type">Node</span>* <span class="org-variable-name">node</span> = create(data);
+  <span class="org-keyword">while</span> (head-&gt;next != <span class="org-constant">NULL</span>) {
+    head = head-&gt;next;
+  }
+  head-&gt;next = node;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">insert_start</span>(<span class="org-type">Node</span> **<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">data</span>) {
+  <span class="org-type">Node</span>* <span class="org-variable-name">node</span> = create(data);
+  node-&gt;next = *head;
+  *head = node;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>) {
+  <span class="org-keyword">while</span> (head != <span class="org-constant">NULL</span>) {
+    printf(<span class="org-string">"%d -&gt; "</span>, head-&gt;data);
+    head = head-&gt;next;
+  }
+  printf(<span class="org-string">"\n"</span>);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Node</span>* <span class="org-variable-name">head</span> = create(10);
+  insert_end(head, 20);
+  insert_end(head, 30);
+  insert_end(head, 40);
+  insert_start(&amp;head, 3);
+  insert_start(&amp;head, 2);
+  insert_start(&amp;head, 1);
+
+  display(head);
+}
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Siddhant Kumar</p>
+</div>
+</body>
+</html>

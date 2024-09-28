@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ECS (Entities, Components, Systems)</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+
+              <header>
+                  <div >
+                    <a id="home_url" href="/">home</a>
+                    <ul class="nav">
+                      <li  class='md-enable'><a href="/">home</a></li>
+                      <li><a  href="/posts">posts</a></li>
+                      <li><a  class="active" href="/notes">notes</a></li>
+                      <li><a  href="/about">about</a></li>
+                    </ul>
+                  </div>
+              </header>
+</div>
+<div id="content" class="content">
+<h1 class="title">ECS (Entities, Components, Systems)</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org78727ed">Entities</a></li>
+<li><a href="#org7098478">Components</a></li>
+<li><a href="#org90a3e03">Systems</a></li>
+<li><a href="#org5696fa6">Tldr</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org78727ed" class="outline-2">
+<h2 id="org78727ed">Entities</h2>
+<div class="outline-text-2" id="text-org78727ed">
+<p>
+an object in the game; No unique functionality, typically just stores/composed of a number of components.
+</p>
+<ul class="org-ul">
+<li>Stores at most of 1 of each component type.</li>
+<li>Since there'll at most one of every component, store a variable for each component type.</li>
+<li><p>
+Or generalize: a single container (vector or tuple) of components. We can use methods like addComponent/getComponent
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-keyword">class</span> <span class="org-type">Entity</span>
+{
+<span class="org-keyword">public</span>:
+
+    <span class="org-type">CTransform</span> *<span class="org-variable-name">cTransform</span>;
+    <span class="org-type">CName</span> *<span class="org-variable-name">cName</span>;
+    <span class="org-type">CBBox</span> *<span class="org-variable-name">cBBox</span>;
+
+    <span class="org-function-name">Entity</span>() {}
+    ~<span class="org-function-name">Entity</span>() {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">free the memory properly RAII</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">don't need a destructor when using smart ptrs</span>
+    }
+
+};
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">OR</span>
+
+<span class="org-keyword">class</span> <span class="org-type">Entity2</span>
+{
+
+    <span class="org-constant">std</span>::<span class="org-type">vector</span>&lt;<span class="org-type">Component</span>*&gt; <span class="org-variable-name">m_components</span>;
+<span class="org-keyword">public</span>:
+
+    <span class="org-function-name">Entity</span>() {}
+    ~<span class="org-function-name">Entity</span>() {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">free the memory properly RAII</span>
+        <span class="org-comment-delimiter">// </span><span class="org-comment">don't need a destructor when using smart ptrs</span>
+    }
+
+    <span class="org-type">void</span> <span class="org-function-name">addComponent&lt;T&gt;</span>(args) {}
+    <span class="org-type">void</span> <span class="org-function-name">getComponent&lt;T&gt;</span>(args) {}
+
+};
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7098478" class="outline-2">
+<h2 id="org7098478">Components</h2>
+<div class="outline-text-2" id="text-org7098478">
+<ul class="org-ul">
+<li>Just DATA! (and maybe some logic in the constructor)</li>
+<li>No helper functionality within components</li>
+<li>A component class has some intuitive meaning to an Entity which contains it.A
+eg. Position, Gravity, Health, etc.</li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-keyword">class</span> <span class="org-type">CTransform</span>
+{
+<span class="org-keyword">public</span>:
+    <span class="org-type">Vec2</span> <span class="org-variable-name">pos</span> = {0, 0};
+    <span class="org-type">Vec2</span> <span class="org-variable-name">velocity</span> = {0, 0};
+
+    <span class="org-function-name">CTransform</span>() {}
+    <span class="org-function-name">CTransform</span>(<span class="org-keyword">const</span> <span class="org-type">Vec2</span> &amp;<span class="org-variable-name">p</span>, <span class="org-keyword">const</span> <span class="org-type">Vec2</span> &amp;<span class="org-variable-name">v</span>): pos(p), velocity(v) {}
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org90a3e03" class="outline-2">
+<h2 id="org90a3e03">Systems</h2>
+<div class="outline-text-2" id="text-org90a3e03">
+<p>
+eg. sMovement &#x2013; add some velocity to all the entities
+</p>
+
+<ul class="org-ul">
+<li>Some systems only operate on entities which contain certain components
+eg. Movement system will only work with entities that have the CTransform component</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5696fa6" class="outline-2">
+<h2 id="org5696fa6">Tldr</h2>
+<div class="outline-text-2" id="text-org5696fa6">
+<p>
+<b>Entities</b> have <b>components</b> and <b>Systems</b> work on entities
+</p>
+
+
+<div id="org4de1ac6" class="figure">
+<p><img src="./ecs_arch.jpg" alt="ecs_arch.jpg" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Siddhant Kumar</p>
+</div>
+</body>
+</html>

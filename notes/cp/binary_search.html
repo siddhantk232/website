@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Binary Search</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="description" content="Binary search problems" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+
+              <header>
+                  <div >
+                    <a id="home_url" href="/">home</a>
+                    <ul class="nav">
+                      <li  class='md-enable'><a href="/">home</a></li>
+                      <li><a  href="/posts">posts</a></li>
+                      <li><a  class="active" href="/notes">notes</a></li>
+                      <li><a  href="/about">about</a></li>
+                    </ul>
+                  </div>
+              </header>
+</div>
+<div id="content" class="content">
+<h1 class="title">Binary Search</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgcea318f">Given a sorted array, find the index of element t</a></li>
+<li><a href="#orgb2c0c9c"><span class="todo TODO">TODO</span> A note on increasing functions</a>
+<ul>
+<li><a href="#org1176b9a">Lower bound and upper bound</a></li>
+<li><a href="#org93864b3">Frequency of a number in sorted array</a></li>
+</ul>
+</li>
+<li><a href="#orgf886e70">Discrete binary search</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcea318f" class="outline-2">
+<h2 id="orgcea318f">Given a sorted array, find the index of element t</h2>
+<div class="outline-text-2" id="text-orgcea318f">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">binary_search</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">t</span>) {
+  <span class="org-type">int</span> <span class="org-variable-name">start</span> = 0;
+  <span class="org-type">int</span> <span class="org-variable-name">end</span> = size - 1;
+
+  <span class="org-keyword">while</span> (start &lt;= end) {
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (start + end) / 2;
+
+    <span class="org-keyword">if</span> (arr[mid] == t) {
+      <span class="org-keyword">return</span> mid;
+    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (arr[mid] &gt; t) {
+      end = mid - 1;
+    } <span class="org-keyword">else</span> {
+      start = mid + 1;
+    }
+  }
+
+  <span class="org-keyword">return</span> -1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 10, 69, 420, 900};
+  <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+  <span class="org-type">int</span> <span class="org-variable-name">idx</span> = binary_search(arr, size, 420);
+
+  printf(<span class="org-string">"%d"</span>, idx);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb2c0c9c" class="outline-2">
+<h2 id="orgb2c0c9c"><span class="todo TODO">TODO</span> A note on increasing functions</h2>
+<div class="outline-text-2" id="text-orgb2c0c9c">
+<ul class="org-ul">
+<li>binary search can be used not just on arrays but any increasing (or decreasing function)</li>
+<li>Use yes/no method to simplify</li>
+</ul>
+</div>
+<div id="outline-container-org1176b9a" class="outline-3">
+<h3 id="org1176b9a">Lower bound and upper bound</h3>
+<div class="outline-text-3" id="text-org1176b9a">
+<ul class="org-ul">
+<li><b>lower bound</b>: Find an element greater than or equal to <code>x</code>.-</li>
+<li><b>upper bound</b>: Find an element strictly greater than <code>x</code>.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">lower_bound</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+  <span class="org-type">int</span> <span class="org-variable-name">start</span> = 0;
+  <span class="org-type">int</span> <span class="org-variable-name">end</span> = size - 1;
+
+  <span class="org-keyword">while</span> (start &lt;= end) {
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (start + end) / 2;
+
+    <span class="org-keyword">if</span> (arr[mid] &gt;= x) {
+      end = mid - 1;
+    } <span class="org-keyword">else</span> {
+      start = mid + 1;
+    }
+  }
+
+  <span class="org-keyword">return</span> start;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">upper_bound</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+  <span class="org-type">int</span> <span class="org-variable-name">start</span> = 0;
+  <span class="org-type">int</span> <span class="org-variable-name">end</span> = size - 1;
+
+  <span class="org-keyword">while</span> (end - start &gt; 1) { <span class="org-comment-delimiter">// </span><span class="org-comment">while at least 3 elements</span>
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (start + end) / 2;
+
+    <span class="org-keyword">if</span> (arr[mid] &gt; x) {
+      end = mid;
+    } <span class="org-keyword">else</span> {
+      start = mid + 1;
+    }
+  }
+
+  <span class="org-keyword">if</span> (arr[start] &gt; x) <span class="org-keyword">return</span> start;
+  <span class="org-keyword">else</span> <span class="org-keyword">if</span> (arr[end] &gt; x) <span class="org-keyword">return</span> end;
+  <span class="org-keyword">else</span> <span class="org-keyword">return</span> size;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 4, 5, 5, 5, 6, 9, 9, 10};
+  <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+  <span class="org-type">int</span> <span class="org-variable-name">res</span> = upper_bound(arr, size, 1);
+
+  <span class="org-keyword">if</span> (res != size)
+    printf(<span class="org-string">"%d "</span>, arr[res]);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org93864b3" class="outline-3">
+<h3 id="org93864b3">Frequency of a number in sorted array</h3>
+<div class="outline-text-3" id="text-org93864b3">
+<p>
+upper<sub>bound</sub>() - lower<sub>bound</sub>()
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf886e70" class="outline-2">
+<h2 id="orgf886e70">Discrete binary search</h2>
+<div class="outline-text-2" id="text-orgf886e70">
+<p>
+Find smallest <code>x</code> such that x<sup>3</sup> &gt; v
+example: v = 100; x = 5
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">Find smallest =x= such that x^3 &gt; v</span>
+<span class="org-comment-delimiter">// </span><span class="org-comment">example: v = 100; x = 5</span>
+
+<span class="org-type">int</span> <span class="org-function-name">solve</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">v</span> = 100;
+
+  <span class="org-type">int</span> <span class="org-variable-name">lo</span> =  1;
+  <span class="org-type">int</span> <span class="org-variable-name">hi</span> = v;
+
+  <span class="org-keyword">while</span> (hi - lo &gt; 1) {
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (lo + hi) / 2;
+
+    <span class="org-keyword">if</span> (mid * mid * mid &gt; v) {
+      hi = mid;
+    } <span class="org-keyword">else</span> {
+      lo = mid + 1;
+    }
+  }
+
+
+  <span class="org-keyword">if</span> (lo * lo * lo &gt; v) <span class="org-keyword">return</span> lo;
+  <span class="org-keyword">else</span> <span class="org-keyword">if</span> (hi * hi * hi &gt; v) <span class="org-keyword">return</span> hi;
+  <span class="org-keyword">else</span> <span class="org-keyword">return</span> -1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  printf(<span class="org-string">"%d "</span>, solve());
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Siddhant Kumar</p>
+</div>
+</body>
+</html>

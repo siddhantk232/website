@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="content" class="content">
+<p>
+(practical 25) <b>Aim</b>: WAP to demonstrate operator overloading.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Dist</span> {
+  <span class="org-type">float</span> <span class="org-variable-name">f</span>;
+  <span class="org-type">float</span> <span class="org-variable-name">i</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Dist</span>() {}
+  <span class="org-function-name">Dist</span>(<span class="org-type">float</span> <span class="org-variable-name">f</span>, <span class="org-type">float</span> <span class="org-variable-name">i</span>) : f(f), i(i) { }
+
+  <span class="org-type">Dist</span> <span class="org-keyword">operator</span> <span class="org-function-name">+</span> (<span class="org-type">Dist</span> <span class="org-variable-name">b</span>) {
+    <span class="org-type">Dist</span> <span class="org-variable-name">t</span>;
+    t.i = i + b.i;
+    t.f = 0;
+    <span class="org-keyword">if</span> (t.i &gt;= 12.0) {
+      t.f++;
+      t.i -= 12.0;
+    }
+    t.f += f + b.f;
+    <span class="org-keyword">return</span> t;
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">show</span>() {
+    cout &lt;&lt; f &lt;&lt; <span class="org-string">" feet "</span> &lt;&lt; i &lt;&lt; <span class="org-string">" inches;"</span> &lt;&lt; endl;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Dist</span> <span class="org-variable-name">d1</span>(5, 8);
+  <span class="org-type">Dist</span> <span class="org-variable-name">d2</span>(6, 5);
+  <span class="org-type">Dist</span> <span class="org-variable-name">d3</span> = d1 + d2;
+  d3.show();
+}
+</pre>
+</div>
+
+<pre class="example">
+12 feet 1 inches;
+</pre>
+
+
+<p>
+(practical 26) <b>Aim</b>: WAP to overload preincrement and postincrement operators.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Counter</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">count</span>;
+
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Counter</span>() : count(0) {}
+  <span class="org-function-name">Counter</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) : count(x) {}
+  <span class="org-type">int</span> <span class="org-function-name">val</span>() { <span class="org-keyword">return</span> count; };
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">preincrement</span>
+  <span class="org-type">Counter</span> <span class="org-keyword">operator</span> <span class="org-function-name">++</span> () {
+    <span class="org-keyword">return</span> Counter(++count);
+  }
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">postincrement</span>
+  <span class="org-type">Counter</span> <span class="org-keyword">operator</span> <span class="org-function-name">++</span> (<span class="org-type">int</span>) {
+    <span class="org-keyword">return</span> Counter(count++);
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Counter</span> <span class="org-variable-name">a</span>(10);
+  ++a;
+  <span class="org-type">Counter</span> <span class="org-variable-name">b</span> = a++;
+
+  cout &lt;&lt; a.val() &lt;&lt; endl;
+  cout &lt;&lt; b.val() &lt;&lt; endl;
+}
+</pre>
+</div>
+
+<pre class="example">
+12
+11
+</pre>
+
+
+<p>
+(practical 27) <b>Aim</b>: WAP to demonstrate standard type conversion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">float</span> <span class="org-variable-name">f</span> = 10.65f;
+  <span class="org-type">int</span> <span class="org-variable-name">i</span>;
+
+  i = f;
+  cout &lt;&lt; <span class="org-string">"i = "</span> &lt;&lt; i &lt;&lt; endl;
+
+  <span class="org-type">float</span> <span class="org-variable-name">f2</span> = <span class="org-keyword">static_cast</span>&lt;<span class="org-type">float</span>&gt;(i);
+  cout &lt;&lt; <span class="org-string">"f2 = "</span> &lt;&lt; f2 &lt;&lt; endl;
+
+  i = 97;
+  <span class="org-type">char</span> <span class="org-variable-name">c</span> = i;
+  cout &lt;&lt; <span class="org-string">"c = "</span> &lt;&lt; c &lt;&lt; endl;
+
+  <span class="org-type">char</span> <span class="org-variable-name">d</span> = <span class="org-string">'E'</span>;
+  i = d;
+  cout &lt;&lt; <span class="org-string">"i = "</span> &lt;&lt; i &lt;&lt; endl;
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+i = 10
+f2 = 10
+c = a
+i = 69
+</pre>
+
+
+<p>
+(practical 28) <b>Aim</b>: WAP to demonstrate type conversion between standard type and class types.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">Dist</span> {
+<span class="org-keyword">private</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">feet</span>;
+  <span class="org-type">float</span> <span class="org-variable-name">inches</span>;
+  <span class="org-keyword">const</span> <span class="org-type">float</span> <span class="org-variable-name">MTF</span>;
+
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">Dist</span>() : feet(0), inches(0.0), MTF(3.280833F) {}
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">conversion constructor</span>
+  <span class="org-function-name">Dist</span>(<span class="org-type">float</span> <span class="org-variable-name">meters</span>) : MTF(3.280833F) {
+    <span class="org-type">float</span> <span class="org-variable-name">frac_feet</span> = meters * MTF;
+    feet = (<span class="org-type">int</span>) frac_feet;
+    inches = 12 * (frac_feet - feet);
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">get_dist</span>() {
+    cout &lt;&lt; <span class="org-string">"Enter the value in feet: "</span>;
+    cin &gt;&gt; feet;
+    cout &lt;&lt; <span class="org-string">"\nEnter the value in inches: "</span>;
+    cin &gt;&gt; inches;
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">show_dist</span>() {
+    cout &lt;&lt; feet &lt;&lt; <span class="org-string">" feet, and "</span> &lt;&lt; inches &lt;&lt; <span class="org-string">" inches.\n"</span>;
+  }
+
+  <span class="org-keyword">operator</span> <span class="org-type">float</span>() {
+    <span class="org-type">float</span> <span class="org-variable-name">frac_feet</span> = inches / 12;
+    frac_feet += <span class="org-keyword">static_cast</span>&lt;<span class="org-type">float</span>&gt;(feet);
+    <span class="org-keyword">return</span> frac_feet / MTF;
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">Dist</span> <span class="org-variable-name">d1</span> = 10.56f;
+  d1.show_dist();
+
+  <span class="org-type">float</span> <span class="org-variable-name">meters</span>;
+  <span class="org-type">Dist</span> <span class="org-variable-name">d2</span>;
+  d2.get_dist();
+  d2.show_dist();
+  <span class="org-comment-delimiter">// </span><span class="org-comment">meters = d2; or &#11015;</span>
+  meters = <span class="org-keyword">static_cast</span>&lt;<span class="org-type">float</span>&gt;(d2);
+
+  cout &lt;&lt; <span class="org-string">"d2 in meters: "</span> &lt;&lt; meters &lt;&lt; endl;
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+34 feet, and 7.74719 inches.
+Enter the value in feet: 
+Enter the value in inches: 0 feet, and 0 inches.
+d2 in meters: 0
+</pre>
+
+
+<p>
+(practical 29) <b>Aim</b>: WAP to demonstrate type conversion between two class types.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;iostream&gt;</span>
+
+<span class="org-keyword">using</span> <span class="org-keyword">namespace</span> <span class="org-constant">std</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">TimeInHours</span> {
+<span class="org-keyword">private</span>:
+  <span class="org-type">int</span> <span class="org-variable-name">hrs</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">mins</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">TimeInHours</span>() : hrs(0), mins(0) {}
+  <span class="org-function-name">TimeInHours</span>(<span class="org-type">int</span> <span class="org-variable-name">h</span>, <span class="org-type">int</span> <span class="org-variable-name">m</span>) : hrs(h), mins(m) {}
+
+  <span class="org-function-name">TimeInHours</span>(<span class="org-type">int</span> <span class="org-variable-name">x</span>) {
+    <span class="org-type">float</span> <span class="org-variable-name">h_frac</span> = (<span class="org-type">float</span>) x / 60;
+    hrs = <span class="org-keyword">static_cast</span>&lt;<span class="org-type">int</span>&gt;(h_frac);
+    mins = (h_frac - hrs) * 60;
+  }
+
+  <span class="org-type">void</span> <span class="org-function-name">get_time_in_hours</span>() {
+    cout &lt;&lt; <span class="org-string">"Enter hour: "</span>;
+    cin &gt;&gt; hrs;
+    cout &lt;&lt; <span class="org-string">"Enter mins: "</span>;
+    cin &gt;&gt; mins;
+  }
+  <span class="org-type">void</span> <span class="org-function-name">show_time_in_hours</span>() {
+    cout &lt;&lt; hrs &lt;&lt; <span class="org-string">" hours, and "</span> &lt;&lt; mins &lt;&lt; <span class="org-string">" minutes.\n"</span>;
+  }
+};
+
+
+<span class="org-keyword">class</span> <span class="org-type">TimeInMinutes</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">mins</span>;
+<span class="org-keyword">public</span>:
+  <span class="org-function-name">TimeInMinutes</span>() : mins(0) {}
+
+  <span class="org-type">void</span> <span class="org-function-name">get_time_in_mins</span>() {
+    cout &lt;&lt; <span class="org-string">"Enter mins: "</span>;
+    cin &gt;&gt; mins;
+  }
+  <span class="org-type">void</span> <span class="org-function-name">show_time_in_mins</span>() {
+    cout &lt;&lt; mins &lt;&lt; <span class="org-string">" minutes.\n"</span>;
+  }
+
+  <span class="org-keyword">operator</span> <span class="org-type">TimeInHours</span>() {
+    <span class="org-keyword">return</span> TimeInHours(mins);
+  }
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">TimeInHours</span> <span class="org-variable-name">t1</span> = 260;
+  t1.show_time_in_hours();
+
+  <span class="org-type">TimeInMinutes</span> <span class="org-variable-name">t2</span>;
+  t2.get_time_in_mins();
+  t2.show_time_in_mins();
+
+  <span class="org-type">TimeInHours</span> <span class="org-variable-name">t3</span> = t2;
+  t3.show_time_in_hours();
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+4 hours, and 20 minutes.
+Enter mins: 0 minutes.
+0 hours, and 0 minutes.
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Entity Management and 2D Math for Games</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+
+              <header>
+                  <div >
+                    <a id="home_url" href="/">home</a>
+                    <ul class="nav">
+                      <li  class='md-enable'><a href="/">home</a></li>
+                      <li><a  href="/posts">posts</a></li>
+                      <li><a  class="active" href="/notes">notes</a></li>
+                      <li><a  href="/about">about</a></li>
+                    </ul>
+                  </div>
+              </header>
+</div>
+<div id="content" class="content">
+<h1 class="title">Entity Management and 2D Math for Games</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5a48890">Entity Manager</a>
+<ul>
+<li><a href="#org5afd7fd">Entity Tags</a></li>
+<li><a href="#org253a9da">EntityManager Implementation</a></li>
+<li><a href="#org4939187">Iterator Invalidation</a>
+<ul>
+<li><a href="#org64e3985">C++ Invalidation</a></li>
+</ul>
+</li>
+<li><a href="#org8d74ff1">Entity Death / Removal</a></li>
+</ul>
+</li>
+<li><a href="#orgb4dea51"><span class="todo TODO">TODO</span> Game Math</a></li>
+</ul>
+</div>
+</div>
+<ul class="org-ul">
+<li><b>Separate logic and data</b>.</li>
+<li>Create Data structures which manage your data so your logic code doesn't worry about it.</li>
+<li>Complex algorithm shouldn't have to know whether set, vector, map impl.</li>
+<li>Let's make an <b>Entity Manager</b>.</li>
+</ul>
+<div id="outline-container-org5a48890" class="outline-2">
+<h2 id="org5a48890">Entity Manager</h2>
+<div class="outline-text-2" id="text-org5a48890">
+<ul class="org-ul">
+<li>Uses the <b>Factory</b> design pattern.</li>
+<li>It'll handle the creation, storage, and lifetime of <b>ALL</b> Entity objects.</li>
+<li>Some functions: addEntity, removeEntity, storage, bookkeeping.</li>
+<li>Factory should somehow ensure that the user cannot create its own entities.</li>
+
+<li>Will trade some memory for functionality.</li>
+<li>Will store all Entity objects in a vector
+<code>typedef std::vector&lt;shared_ptr&lt;Entity&gt;&gt; EntityVector;</code></li>
+<li>Separate vectors of Entity objects by their tag name for quick retrieval: <code>std::map&lt;std::string, EntityVector&gt;</code></li>
+</ul>
+</div>
+<div id="outline-container-org5afd7fd" class="outline-3">
+<h3 id="org5afd7fd">Entity Tags</h3>
+<div class="outline-text-3" id="text-org5afd7fd">
+<ul class="org-ul">
+<li>We want to <b>group entities</b> by functionality.</li>
+<li>Tagged by <code>string</code> (tile, player, bullet, enemy). Ints are more efficient tho.</li>
+<li>EntityManager should have smth for <b>quickly getting Entities of a given tag</b>.</li>
+<li>Ex: loop over all the bullets.</li>
+</ul>
+
+<p>
+Entity implementation
+</p>
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-keyword">class</span> <span class="org-type">Entity</span>
+{
+    <span class="org-keyword">const</span> <span class="org-type">size_t</span> <span class="org-variable-name">m_id</span>       = 1;
+    <span class="org-keyword">const</span> <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">m_tag</span> = <span class="org-string">"Default"</span>;
+    <span class="org-type">bool</span> <span class="org-variable-name">m_alive</span>            = <span class="org-constant">true</span>;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">only allow EntityManager to create/destroy entities</span>
+    <span class="org-function-name">Entity</span>(<span class="org-keyword">const</span> <span class="org-constant">std</span>::<span class="org-type">string</span> &amp;<span class="org-variable-name">tag</span>, <span class="org-type">size_t</span> <span class="org-variable-name">id</span>);
+    <span class="org-keyword">friend</span> <span class="org-keyword">class</span> <span class="org-type">EntityManager</span>; 
+<span class="org-keyword">public</span>:
+    <span class="org-constant">std</span>::<span class="org-type">shared_ptr</span>&lt;CTransform&gt; <span class="org-variable-name">cTransform</span>;
+    <span class="org-constant">std</span>::<span class="org-type">shared_ptr</span>&lt;CName&gt; <span class="org-variable-name">cName</span>;
+    <span class="org-constant">std</span>::<span class="org-type">shared_ptr</span>&lt;CShape&gt; <span class="org-variable-name">cShape</span>;
+    <span class="org-constant">std</span>::<span class="org-type">shared_ptr</span>&lt;CBBox&gt; <span class="org-variable-name">cBBox</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org253a9da" class="outline-3">
+<h3 id="org253a9da">EntityManager Implementation</h3>
+<div class="outline-text-3" id="text-org253a9da">
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-keyword">typedef</span> <span class="org-constant">std</span>::<span class="org-type">vector</span>&lt;<span class="org-constant">std</span>::<span class="org-type">shared_ptr</span>&lt;Entity&gt;&gt; <span class="org-type">EntityVec</span>;
+<span class="org-keyword">typedef</span> <span class="org-constant">std</span>::<span class="org-type">map</span>&lt;<span class="org-constant">std</span>::string, <span class="org-type">EntityVec</span>&gt; <span class="org-type">EntityMap</span>;
+
+<span class="org-keyword">class</span> <span class="org-type">EntityManager</span>
+{
+    <span class="org-type">EntityVec</span> <span class="org-variable-name">m_entities</span>;
+    <span class="org-type">EntityMap</span> <span class="org-variable-name">m_entityMap</span>;
+
+    <span class="org-type">size_t</span> <span class="org-variable-name">m_totalEntries</span> = 0;
+
+<span class="org-keyword">public</span>:
+    <span class="org-function-name">EntityManager</span>();
+    <span class="org-constant">std</span>::<span class="org-type">shared_ptr</span>&lt;Entity&gt; <span class="org-function-name">addEntity</span>(<span class="org-keyword">const</span> <span class="org-constant">std</span>::<span class="org-type">string</span> &amp;<span class="org-variable-name">tag</span>);
+    <span class="org-type">EntityVec</span>&amp; <span class="org-function-name">getEntities</span>();
+    <span class="org-type">EntityVec</span>&amp; <span class="org-function-name">getEntities</span>(<span class="org-keyword">const</span> <span class="org-constant">std</span>::<span class="org-type">string</span> &amp;<span class="org-variable-name">tag</span>);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4939187" class="outline-3">
+<h3 id="org4939187">Iterator Invalidation</h3>
+<div class="outline-text-3" id="text-org4939187">
+<ul class="org-ul">
+<li>Caused by modifying the contents of a collection as we're iterating through it.</li>
+<li>Ex: while iterating through all entities, check for collisions, an explosion happens and we spawn an explosion entity.</li>
+</ul>
+</div>
+<div id="outline-container-org64e3985" class="outline-4">
+<h4 id="org64e3985">C++ Invalidation</h4>
+<div class="outline-text-4" id="text-org64e3985">
+<ul class="org-ul">
+<li>Vector functions may cause reallocation which invalidates all pointers and iterators.</li>
+<li>Erasing elements may invalidate too: invalidates iterators and references at or after the point of erasing.</li>
+<li><p>
+We can <b>modify existing elements</b>, but we <b>can't add/remove</b> things.
+</p>
+
+<p>
+<b>Solution</b>: Delayed effects
+Delay the effects of actions that modify collections unless it's safe to do so.
+</p>
+<ul class="org-ul">
+<li>Have a <code>toAdd</code> list of entities that will be added to the main list of entities on the beginning of a new frame through <code>EntityManager::update()</code></li>
+<li><code>addEntity()</code> should add to this temporary list of entities. This temporary list will be cleared at the end of each <code>update()</code> call.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org8d74ff1" class="outline-3">
+<h3 id="org8d74ff1">Entity Death / Removal</h3>
+<div class="outline-text-3" id="text-org8d74ff1">
+<ul class="org-ul">
+<li>Entity has <code>m_alive</code> bool variable. Set it to false when we want it to die.</li>
+<li><code>EntityManager::update()</code> will remove entities based on this.</li>
+<li>Prevents removal iterator invalidation.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb4dea51" class="outline-2">
+<h2 id="orgb4dea51"><span class="todo TODO">TODO</span> Game Math</h2>
+<div class="outline-text-2" id="text-orgb4dea51">
+<p>
+have a bunch of scrots that I have to go through and do the assignments before I can move further.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Siddhant Kumar</p>
+</div>
+</body>
+</html>

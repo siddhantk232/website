@@ -38,7 +38,7 @@
        (list "studies"
              :makeindex t
              :recursive t
-             :base-directory "../org_files/studies" ;; on CI
+             :base-directory "../../vimwiki/studies" ;; on CI
              :publishing-directory "./site/notes"
              :html-html5-fancy t
              :with-toc t
@@ -60,7 +60,7 @@
              :publishing-function 'org-html-publish-to-html)
        (list "static"
         :recursive t
-        :base-directory "../org_files/studies" ;; on CI
+        :base-directory "../../vimwiki/studies" ;; on CI
         :base-extension "jpg\\|gif\\|png\\|c\\|cpp\\|py"
         :publishing-directory "./site/notes"
         :publishing-function 'org-publish-attachment)))

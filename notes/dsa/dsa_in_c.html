@@ -1,0 +1,1747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DSA in C</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="description" content="Data structures and algorithms with code examples in C" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+
+              <header>
+                  <div >
+                    <a id="home_url" href="/">home</a>
+                    <ul class="nav">
+                      <li  class='md-enable'><a href="/">home</a></li>
+                      <li><a  href="/posts">posts</a></li>
+                      <li><a  class="active" href="/notes">notes</a></li>
+                      <li><a  href="/about">about</a></li>
+                    </ul>
+                  </div>
+              </header>
+</div>
+<div id="content" class="content">
+<h1 class="title">DSA in C</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org2f62368">Arrays</a>
+<ul>
+<li><a href="#org98052e5">Array representation</a></li>
+<li><a href="#orgb4f264f">Inserting elements</a>
+<ul>
+<li><a href="#org303aada">Inserting at index <code>n</code></a></li>
+<li><a href="#org012a969">Append element</a></li>
+<li><a href="#org20a6e42">Prepend element</a></li>
+</ul>
+</li>
+<li><a href="#org90cde1e">Deleting elements</a></li>
+<li><a href="#org1df75a6">2D Arrays</a></li>
+</ul>
+</li>
+<li><a href="#orgb88f331">String as an array of characters</a></li>
+<li><a href="#orgb960513">Linked list</a>
+<ul>
+<li><a href="#org2885bb3"><span class="todo TODO">TODO</span> Searching in a linked list</a></li>
+<li><a href="#org07144d7"><span class="todo TODO">TODO</span> insertion</a></li>
+<li><a href="#org730f6e5"><span class="todo TODO">TODO</span> Deletion</a></li>
+<li><a href="#orga6270d3"><span class="todo TODO">TODO</span> Mergin two linked lists</a></li>
+<li><a href="#orgf42e1aa"><span class="todo TODO">TODO</span> Circular linked lists</a></li>
+</ul>
+</li>
+<li><a href="#org7745a6b">Stacks</a>
+<ul>
+<li><a href="#org4ef0289">Using global arrays</a></li>
+<li><a href="#orgdec4a2b">Using pointers to avoid global variables</a></li>
+</ul>
+</li>
+<li><a href="#org918d9ea">Queues</a>
+<ul>
+<li><a href="#orgcd8ca20">Queue implementation using arrays</a></li>
+<li><a href="#org744a37c">Queue using two stacks in C.</a></li>
+<li><a href="#orga5ed02e">Circular Queue</a></li>
+</ul>
+</li>
+<li><a href="#org2175086"><span class="todo TODO">TODO</span> Trees</a></li>
+<li><a href="#org158b998"><span class="todo TODO">TODO</span> Graphs</a></li>
+<li><a href="#orge731a66">Sorting</a>
+<ul>
+<li><a href="#org8de4ba3">Bubble Sort</a></li>
+<li><a href="#org3525943">Insertion Sort</a></li>
+<li><a href="#orgf198090">Quick Sort</a></li>
+<li><a href="#org797136d">Selection Sort</a></li>
+<li><a href="#org15eab75">Merge Sort</a></li>
+<li><a href="#org13b9254">Heap Sort</a></li>
+</ul>
+</li>
+<li><a href="#orgc26bfc1"><span class="todo TODO">TODO</span> Hashing Techniques</a></li>
+<li><a href="#org0e9e26b">Searching</a>
+<ul>
+<li><a href="#orgc0613fb">Linear search</a></li>
+<li><a href="#orga77b6f8">Binary Search</a></li>
+</ul>
+</li>
+<li><a href="#org9ea6c5d"><span class="todo TODO">TODO</span> File Handling</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2f62368" class="outline-2">
+<h2 id="org2f62368">Arrays</h2>
+<div class="outline-text-2" id="text-org2f62368">
+<p>
+Array is a contiguous space in memory that is meant to store elements of similar
+data types.
+</p>
+
+<p>
+Elements in an array can be accessed via a simple mathematical expression:
+<code>mem + width * offset</code>
+</p>
+
+<p>
+The <code>mem</code> is the starting memory address of the array where the first element is
+stored.
+</p>
+
+<p>
+The <code>width</code> variable represents the width of the data type that are stored as
+elements in that array. So if we are talking about an array that stores integer
+elements of size 4 bytes (size are usually taken in bytes) and its starting
+address is 1000 (say), the address of its elements will be 1000, 1004, 1008,
+1012, &#x2026;
+</p>
+
+<p>
+The <code>offset</code> (more commonly known as <code>index</code>) is the position of the element we
+want to access.
+</p>
+
+<p>
+The starting address (<code>mem</code>) points to the first element of the array. So, to
+access the first element using the above formula, we would have to set the offset
+to 0:
+</p>
+
+<p>
+<code>mem + width * 0</code> &rarr; <code>mem</code> which is the starting address that we wanted.
+</p>
+
+<p>
+To take another example let's try to access the 4<sup>th</sup> element of an array, for
+this we would have to set the offset to 3:
+</p>
+
+<p>
+<code>mem + width * 3</code>
+</p>
+
+<p>
+The <code>mem</code> represents the first element, so adding the width 3 times would give
+us the 4<sup>th</sup> element.
+</p>
+
+<ul class="org-ul">
+<li>This is why array's index start at 0 in most programming languages.</li>
+<li>This is also why accessing elements of an array happens in constant time (O(1)).</li>
+<li>Arrays are not growable (fixed in size) but can be reallocated (entire new space allocated + old values copied).</li>
+</ul>
+
+<p>
+Let's take a look at a C program in which we access array elements using
+pointers (their memory addresses)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">width</span> = <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[4] = {10, 20, 30, 40};
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">C under the hood adds (* sizeof(int)) to the offset so we just need to</span>
+    <span class="org-comment-delimiter">// </span><span class="org-comment">add the offset to the arr pointer</span>
+    printf(<span class="org-string">"1st element using C's syntax %d\n"</span>, *(arr + 0));
+    printf(<span class="org-string">"4th element using C's syntax %d"</span>, *(arr + 3));
+}
+</pre>
+</div>
+
+<pre class="example">
+1st element using C's syntax 10
+4th element using C's syntax 40
+</pre>
+</div>
+<div id="outline-container-org98052e5" class="outline-3">
+<h3 id="org98052e5">Array representation</h3>
+<div class="outline-text-3" id="text-org98052e5">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">array of size 10 initialised with first</span>
+    <span class="org-comment-delimiter">// </span><span class="org-comment">three elements set to 1, 2 and, 3 respectively.</span>
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[10] = {1,2,3};
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">rest of the elements set using a for loop</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 3; i &lt; 10; ++i) {
+        arr[i] = i + 1;
+    }
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; 10; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+}
+</pre>
+</div>
+
+<pre class="example">
+1 2 3 4 5 6 7 8 9 10
+</pre>
+
+
+
+<p>
+Arrays in C can be accessed using pointers also.
+</p>
+
+<p>
+The identifier name (<code>arr</code> in this case) is the pointer to the first element in
+the array.
+</p>
+
+<p>
+Adding (or incrementing/decrementing) pointers value can give access to the
+elements of the array. In case of integer arrays, adding 1 adds size of <code>int</code> to
+the address of first element in array to get the address of second element. So,
+to get the fourth element, we can do <code>(arr+3)</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">array of size 10 initialised with first</span>
+    <span class="org-comment-delimiter">// </span><span class="org-comment">three elements set to 1, 2 and, 3 respectively.</span>
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[10] = {1,2,3};
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">rest of the elements set using a for loop</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 3; i &lt; 10; ++i) {
+        *(arr+i) = i + 1;
+    }
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; 10; ++i) {
+        printf(<span class="org-string">"%d "</span>, *(arr+i));
+    }
+}
+</pre>
+</div>
+
+<pre class="example">
+1 2 3 4 5 6 7 8 9 10
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb4f264f" class="outline-3">
+<h3 id="orgb4f264f">Inserting elements</h3>
+<div class="outline-text-3" id="text-orgb4f264f">
+</div>
+<div id="outline-container-org303aada" class="outline-4">
+<h4 id="org303aada">Inserting at index <code>n</code></h4>
+<div class="outline-text-4" id="text-org303aada">
+<p>
+The code below initiliases an array of size 100 to ignore any resizing that may
+be required later.
+</p>
+
+<p>
+To insert an element at index <code>n</code>:
+</p>
+
+<ul class="org-ul">
+<li>We move each element one index after its current position. Iterating from last
+to n (inclusive) and moving i<sub>th</sub> to (i+1)<sub>th</sub> position is one way to do it.</li>
+
+<li>we simply put a desired value at index <code>n</code>.</li>
+</ul>
+
+<p>
+The code below shows this algorithm in action. It also prints after insertion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">insert</span>(<span class="org-type">int</span>* <span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> <span class="org-variable-name">elem</span>) {
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = size - 1; i &gt;= pos - 1; --i) {
+    arr[i + 1] = arr[i];
+  }
+
+  arr[pos - 1] = elem;
+  <span class="org-keyword">return</span> size + 1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+  <span class="org-comment-delimiter">//            </span><span class="org-comment">0 1 2 3 4</span>
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[100] = {1,2,3,4,5};
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">last position</span>
+  <span class="org-type">int</span> <span class="org-variable-name">pos</span> = 3;
+  <span class="org-type">int</span> <span class="org-variable-name">elem</span> = 999;
+
+  n = insert(arr, n, pos, elem);
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+    printf(<span class="org-string">"%d "</span>, arr[i]);
+  }
+  printf(<span class="org-string">"\n"</span>);
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+1 2 999 3 4 5
+</pre>
+
+
+<p>
+Ideally, we should not take array of size more than what we need and we should
+use <code>realloc</code> to resize the array for insertion. C++ has <a href="https://en.cppreference.com/w/cpp/container/vector">vectors</a> for this
+usecase.
+</p>
+
+<p>
+Let's look at a program that uses <code>realloc</code> to resize the array for insertion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdlib.h&gt;</span>
+
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">array of size 7</span>
+    <span class="org-type">int</span>* <span class="org-variable-name">arr</span> =  (<span class="org-type">int</span> *) malloc(7 * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 4;
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">initilalize elems</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; 7; i++) {
+      arr[i] = i + 1;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">increase size of insertion (doubling)</span>
+    *arr = *(<span class="org-type">int</span>*) realloc(arr, 2 * 7 * <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>));
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">shift elems to the right by 1</span>
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 12; i &gt;= n; --i) {
+        arr[i + 1] = arr[i];
+    }
+
+    *(arr+n) = 69;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; 14; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+}
+</pre>
+</div>
+
+<pre class="example">
+1 2 3 4 69 5 6 7 0 0 0 134465 0 0 
+</pre>
+
+
+<p>
+The programm above gets really close to the implementation of <code>vectors</code>
+(growable arrays). If we keep track of capacity (max elems a vector can store)
+and length (total elems currently in the array), we can check if we need to grow
+(double the size) the array size using <code>realloc</code>. This is more efficient the
+restricting array size to a certain number (100 in previous example).
+</p>
+
+<p>
+References:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://eddmann.com/posts/implementing-a-dynamic-vector-array-in-c/">Implementing a Dynamic Vector (Array) in C</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org012a969" class="outline-4">
+<h4 id="org012a969">Append element</h4>
+<div class="outline-text-4" id="text-org012a969">
+<p>
+Appending an element is just inserting a new element at the end of the array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">insert</span>(<span class="org-type">int</span>* <span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> <span class="org-variable-name">elem</span>) {
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = size - 1; i &gt;= pos - 1; --i) {
+    arr[i + 1] = arr[i];
+  }
+
+  arr[pos - 1] = elem;
+  <span class="org-keyword">return</span> size + 1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+  <span class="org-comment-delimiter">//            </span><span class="org-comment">0 1 2 3 4</span>
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[7] = {1,2,3,4,5};
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">last position</span>
+  <span class="org-type">int</span> <span class="org-variable-name">pos</span> = n + 1;
+  <span class="org-type">int</span> <span class="org-variable-name">elem</span> = 999;
+
+  n = insert(arr, n, pos, elem);
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+    printf(<span class="org-string">"%d "</span>, arr[i]);
+  }
+  printf(<span class="org-string">"\n"</span>);
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+1 2 3 4 5 999
+</pre>
+</div>
+</div>
+<div id="outline-container-org20a6e42" class="outline-4">
+<h4 id="org20a6e42">Prepend element</h4>
+<div class="outline-text-4" id="text-org20a6e42">
+<p>
+Prepending an element is just inserting a new element at the beginning of the
+array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">insert</span>(<span class="org-type">int</span>* <span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">pos</span>, <span class="org-type">int</span> <span class="org-variable-name">elem</span>) {
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = size - 1; i &gt;= pos - 1; --i) {
+    arr[i + 1] = arr[i];
+  }
+
+  arr[pos - 1] = elem;
+  <span class="org-keyword">return</span> size + 1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+  <span class="org-comment-delimiter">//            </span><span class="org-comment">0 1 2 3 4</span>
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[7] = {1,2,3,4,5};
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">last position</span>
+  <span class="org-type">int</span> <span class="org-variable-name">pos</span> = 1;
+  <span class="org-type">int</span> <span class="org-variable-name">elem</span> = 999;
+
+  n = insert(arr, n, pos, elem);
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+    printf(<span class="org-string">"%d "</span>, arr[i]);
+  }
+  printf(<span class="org-string">"\n"</span>);
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+999 1 2 3 4 5
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org90cde1e" class="outline-3">
+<h3 id="org90cde1e">Deleting elements</h3>
+<div class="outline-text-3" id="text-org90cde1e">
+<p>
+We do exactly the opposite of what we did in the <a href="#org303aada">Inserting at index <code>n</code></a>
+section.  Instead of iterating from the last element till the position <code>n</code>, we
+iterate from postion <code>n</code> till the last and shift every element one index back
+from it's original position.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">pos</span> = 3;
+  <span class="org-type">int</span> <span class="org-variable-name">elem</span>;
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+  <span class="org-comment-delimiter">//            </span><span class="org-comment">0 1 2 3 4</span>
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[7] = {1,2,3,4,5};
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = pos - 1; i &lt;= n - 1; i++) {
+    arr[i] = arr[i+1];
+  }
+
+  n--;
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+    printf(<span class="org-string">"%d "</span>, arr[i]);
+  }
+  printf(<span class="org-string">"\n"</span>);
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+1 2 4 5 
+</pre>
+</div>
+</div>
+<div id="outline-container-org1df75a6" class="outline-3">
+<h3 id="org1df75a6">2D Arrays</h3>
+<div class="outline-text-3" id="text-org1df75a6">
+<p>
+Square matrix multiplication using 2D arrays in c.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">matrix1</span>[][3] = {{1,2,3}
+                     ,{4,5,6}
+                     ,{7,8,9}};
+
+  <span class="org-type">int</span> <span class="org-variable-name">matrix2</span>[][3] = {{1,0,1}
+                     ,{1,1,0}
+                     ,{0,0,1}};
+
+  <span class="org-type">int</span> <span class="org-variable-name">result</span>[][3] = {{0,0,0}
+                    ,{0,0,0}
+                    ,{0,0,0}};
+
+  <span class="org-type">int</span> <span class="org-variable-name">n_matrix1</span> = <span class="org-keyword">sizeof</span>(matrix1) / <span class="org-keyword">sizeof</span>(matrix1[0]);
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n_matrix1; ++i) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; n_matrix1; ++j) {
+      <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">k</span> = 0; k &lt; n_matrix1; ++k) {
+        result[i][j] += matrix1[i][k] * matrix2[k][j];
+      }
+    }
+  }
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n_matrix1; ++i) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; n_matrix1; ++j) {
+      printf(<span class="org-string">"%d "</span>, result[i][j]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+  }
+}
+</pre>
+</div>
+
+<pre class="example">
+3 2 4 
+9 5 10 
+15 8 16 
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb88f331" class="outline-2">
+<h2 id="orgb88f331">String as an array of characters</h2>
+<div class="outline-text-2" id="text-orgb88f331">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">char *s = "this is a string!";</span>
+    <span class="org-type">char</span> <span class="org-variable-name">s</span>[] = <span class="org-string">"this is a string"</span>;
+    printf(<span class="org-string">"%s"</span>, s);
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+this is a string
+</pre>
+
+
+<p>
+Iterate through each character of a string and print it with a space afterwards.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">char</span> *<span class="org-variable-name">s</span> = <span class="org-string">"print this!"</span>;
+    <span class="org-type">int</span> <span class="org-variable-name">string_size</span> = strlen(s);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; string_size; ++i) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">*(s + i) -&gt; s[i]</span>
+        printf(<span class="org-string">"%c "</span>, *(s + i));
+    }
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+p r i n t   t h i s !
+</pre>
+
+
+<p>
+Take string input from user
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">char</span> *<span class="org-variable-name">str</span>;
+  <span class="org-type">size_t</span> <span class="org-variable-name">len</span> = 0;
+  <span class="org-type">ssize_t</span> <span class="org-variable-name">line_size</span> = 0;
+
+  getline(&amp;str, &amp;len, stdin);
+  printf(<span class="org-string">"%s"</span>, str);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb960513" class="outline-2">
+<h2 id="orgb960513">Linked list</h2>
+<div class="outline-text-2" id="text-orgb960513">
+<p>
+A simple Linked List implementation that contains integer data elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">linked list node declaration</span>
+<span class="org-keyword">struct</span> <span class="org-type">Node</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">val</span>;
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span>* <span class="org-variable-name">next</span>;
+};
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span>* <span class="org-variable-name">head</span> = malloc(<span class="org-keyword">sizeof</span>(<span class="org-keyword">struct</span> <span class="org-type">Node</span>));
+    head-&gt;val = 69;
+
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span>* <span class="org-variable-name">last</span> = head;
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 100; i &lt;= 110; ++i) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">create a node</span>
+        <span class="org-keyword">struct</span> <span class="org-type">Node</span>* <span class="org-variable-name">temp</span> = malloc(<span class="org-keyword">sizeof</span>(<span class="org-keyword">struct</span> <span class="org-type">Node</span>));
+        temp-&gt;val = i;
+
+        <span class="org-comment-delimiter">// </span><span class="org-comment">append</span>
+        last-&gt;next = temp;
+        last = last-&gt;next;
+    }
+
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span>* <span class="org-variable-name">iter</span> = head;
+
+    <span class="org-keyword">while</span>(iter != <span class="org-constant">NULL</span>) {
+        printf(<span class="org-string">"%d "</span>, iter-&gt;val);
+        iter = iter-&gt;next;
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example">
+69 100 101 102 103 104 105 106 107 108 109 110
+</pre>
+</div>
+<div id="outline-container-org2885bb3" class="outline-3">
+<h3 id="org2885bb3"><span class="todo TODO">TODO</span> Searching in a linked list</h3>
+</div>
+<div id="outline-container-org07144d7" class="outline-3">
+<h3 id="org07144d7"><span class="todo TODO">TODO</span> insertion</h3>
+</div>
+<div id="outline-container-org730f6e5" class="outline-3">
+<h3 id="org730f6e5"><span class="todo TODO">TODO</span> Deletion</h3>
+</div>
+<div id="outline-container-orga6270d3" class="outline-3">
+<h3 id="orga6270d3"><span class="todo TODO">TODO</span> Mergin two linked lists</h3>
+</div>
+<div id="outline-container-orgf42e1aa" class="outline-3">
+<h3 id="orgf42e1aa"><span class="todo TODO">TODO</span> Circular linked lists</h3>
+</div>
+</div>
+<div id="outline-container-org7745a6b" class="outline-2">
+<h2 id="org7745a6b">Stacks</h2>
+<div class="outline-text-2" id="text-org7745a6b">
+</div>
+<div id="outline-container-org4ef0289" class="outline-3">
+<h3 id="org4ef0289">Using global arrays</h3>
+<div class="outline-text-3" id="text-org4ef0289">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-variable-name">top</span> = -1;
+<span class="org-type">int</span> <span class="org-variable-name">stack</span>[100];
+<span class="org-type">int</span> <span class="org-variable-name">n</span> = 100;
+
+<span class="org-type">int</span> <span class="org-function-name">push</span>(<span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+  <span class="org-keyword">if</span> (top == n) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+  stack[++top] = el;
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">pop</span>() {
+  <span class="org-keyword">if</span> (top &lt; 0) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+
+  <span class="org-keyword">return</span> stack[top--];
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">i</span> = top;
+  printf(<span class="org-string">"========================\n"</span>);
+  printf(<span class="org-string">"Stack: \n"</span>);
+  <span class="org-keyword">while</span>(i &gt;= 0) {
+    printf(<span class="org-string">"%d\n"</span>, stack[i]);
+    i--;
+  }
+  printf(<span class="org-string">"========================\n"</span>);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-keyword">while</span>(<span class="org-constant">true</span>) {
+    printf(<span class="org-string">"Enter choice: \n"</span>);
+    printf(<span class="org-string">"1. Push element in stack\n"</span>);
+    printf(<span class="org-string">"2. Pop element in stack\n"</span>);
+    printf(<span class="org-string">"3. Display stack\n"</span>);
+    printf(<span class="org-string">"4. Exit\n"</span>);
+
+    <span class="org-type">int</span> <span class="org-variable-name">option</span>;
+    scanf(<span class="org-string">"%d"</span>, &amp;option);
+
+    <span class="org-keyword">switch</span>(option) {
+      <span class="org-keyword">case</span> 1: {
+        <span class="org-type">int</span> <span class="org-variable-name">el</span>;
+        printf(<span class="org-string">"Enter element to push: "</span>);
+        scanf(<span class="org-string">"%d"</span>, &amp;el);
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = push(el);
+
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to push element in stack (overflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 2: {
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = pop();
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to pop element from stack (underflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 3:
+        display();
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">case</span> 4:
+        exit(0);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">default</span>:
+        exit(0);
+        <span class="org-keyword">break</span>;
+    }
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdec4a2b" class="outline-3">
+<h3 id="orgdec4a2b">Using pointers to avoid global variables</h3>
+<div class="outline-text-3" id="text-orgdec4a2b">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">push</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> *<span class="org-variable-name">top</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+  <span class="org-keyword">if</span> (*top == n) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+  *top = *top + 1;
+  stack[*top] = el;
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">pop</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> *<span class="org-variable-name">top</span>) {
+  <span class="org-keyword">if</span> (*top &lt; 0) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+
+  <span class="org-type">int</span> <span class="org-variable-name">el</span> = stack[*top];
+  *top = *top - 1;
+  <span class="org-keyword">return</span> el;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> <span class="org-variable-name">top</span>) {
+  printf(<span class="org-string">"========================\n"</span>);
+  printf(<span class="org-string">"Stack: \n"</span>);
+  <span class="org-keyword">while</span>(top &gt;= 0) {
+    printf(<span class="org-string">"%d\n"</span>, stack[top]);
+    top--;
+  }
+  printf(<span class="org-string">"========================\n"</span>);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">top</span> = -1;
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 100;
+  <span class="org-type">int</span> <span class="org-variable-name">stack</span>[n];
+
+  <span class="org-keyword">while</span>(<span class="org-constant">true</span>) {
+    printf(<span class="org-string">"Enter choice: \n"</span>);
+    printf(<span class="org-string">"1. Push element in stack\n"</span>);
+    printf(<span class="org-string">"2. Pop element in stack\n"</span>);
+    printf(<span class="org-string">"3. Display stack\n"</span>);
+    printf(<span class="org-string">"4. Exit\n"</span>);
+
+    <span class="org-type">int</span> <span class="org-variable-name">option</span>;
+    scanf(<span class="org-string">"%d"</span>, &amp;option);
+
+    <span class="org-keyword">switch</span>(option) {
+      <span class="org-keyword">case</span> 1: {
+        <span class="org-type">int</span> <span class="org-variable-name">el</span>;
+        printf(<span class="org-string">"Enter element to push: "</span>);
+        scanf(<span class="org-string">"%d"</span>, &amp;el);
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = push(stack, &amp;top, n, el);
+
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to push element in stack (overflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 2: {
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = pop(stack, &amp;top);
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to pop element from stack (underflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 3:
+        display(stack, top);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">case</span> 4:
+        exit(0);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">default</span>:
+        exit(0);
+        <span class="org-keyword">break</span>;
+    }
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org918d9ea" class="outline-2">
+<h2 id="org918d9ea">Queues</h2>
+<div class="outline-text-2" id="text-org918d9ea">
+</div>
+<div id="outline-container-orgcd8ca20" class="outline-3">
+<h3 id="orgcd8ca20">Queue implementation using arrays</h3>
+<div class="outline-text-3" id="text-orgcd8ca20">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">enqueue</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> *<span class="org-variable-name">rear</span>, <span class="org-type">int</span> *<span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+  <span class="org-keyword">if</span> (*rear == (n - 1)) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+  <span class="org-keyword">if</span> (*front == -1) {
+    *front = 0;
+  }
+  arr[++(*rear)] = el;
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">dequeue</span>(<span class="org-type">int</span> *<span class="org-variable-name">rear</span>, <span class="org-type">int</span> *<span class="org-variable-name">front</span>) {
+  <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+  <span class="org-keyword">if</span> (*front == -1 || *front &gt; *rear) {
+    <span class="org-keyword">return</span> -1;
+  }
+
+  *front = *front + 1;
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">rear</span>, <span class="org-type">int</span> <span class="org-variable-name">front</span>) {
+  <span class="org-keyword">if</span> (front == -1) {
+    printf(<span class="org-string">"empty queue\n"</span>);
+    <span class="org-keyword">return</span>;
+  }
+  printf(<span class="org-string">"Queue: "</span>);
+  <span class="org-keyword">while</span> (rear &gt;= front) {
+    printf(<span class="org-string">"%d "</span>, arr[rear]);
+    rear--;
+  }
+  printf(<span class="org-string">"\n"</span>);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 100;
+  <span class="org-type">int</span> <span class="org-variable-name">queue</span>[n];
+  <span class="org-type">int</span> <span class="org-variable-name">front</span> = -1;
+  <span class="org-type">int</span> <span class="org-variable-name">rear</span> = -1;
+
+  <span class="org-keyword">while</span>(<span class="org-constant">true</span>) {
+    printf(<span class="org-string">"Enter choice: \n"</span>);
+    printf(<span class="org-string">"1. Push element in queue\n"</span>);
+    printf(<span class="org-string">"2. Pop element in queue\n"</span>);
+    printf(<span class="org-string">"3. Display queue\n"</span>);
+    printf(<span class="org-string">"4. Exit\n"</span>);
+
+    <span class="org-type">int</span> <span class="org-variable-name">option</span>;
+    scanf(<span class="org-string">"%d"</span>, &amp;option);
+
+    <span class="org-keyword">switch</span>(option) {
+      <span class="org-keyword">case</span> 1: {
+        <span class="org-type">int</span> <span class="org-variable-name">el</span>;
+        printf(<span class="org-string">"Enter element to push: "</span>);
+        scanf(<span class="org-string">"%d"</span>, &amp;el);
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = enqueue(queue, &amp;rear, &amp;front, n, el);
+
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to push element in queue (overflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 2: {
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = dequeue(&amp;rear, &amp;front);
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to pop element from queue (underflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 3:
+        display(queue, rear, front);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">case</span> 4:
+        exit(0);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">default</span>:
+        exit(0);
+        <span class="org-keyword">break</span>;
+    }
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org744a37c" class="outline-3">
+<h3 id="org744a37c">Queue using two stacks in C.</h3>
+<div class="outline-text-3" id="text-org744a37c">
+<p>
+Maintain two stacks, <code>intermediate</code> stack and a <code>final</code> stack.
+</p>
+
+<ul class="org-ul">
+<li><b>enqueue</b>: push in the <code>intermediate</code> stack.</li>
+<li><b>dequeue</b>: check if <code>final</code> stack is empty. When empty, pop every element from the <code>intermediate</code> stack and push them in the <code>final</code> stack. Then pop an element from the <code>final</code> stack.</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">s_empty</span>(<span class="org-type">int</span> *<span class="org-variable-name">top</span>);
+
+<span class="org-type">int</span> <span class="org-function-name">s_push</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> *<span class="org-variable-name">top</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+    <span class="org-keyword">if</span> (*top == n) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+        <span class="org-keyword">return</span> -1;
+    }
+    *top = *top + 1;
+    stack[*top] = el;
+    <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">s_pop</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> *<span class="org-variable-name">top</span>) {
+    <span class="org-keyword">if</span> (s_empty(top)) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+        <span class="org-keyword">return</span> -1;
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">el</span> = stack[*top];
+    *top = *top - 1;
+    <span class="org-keyword">return</span> el;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">s_empty</span>(<span class="org-type">int</span> *<span class="org-variable-name">top</span>) {
+    <span class="org-keyword">if</span> (*top &lt; 0) {
+        <span class="org-keyword">return</span> 1;
+    }
+    <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">s_display</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> <span class="org-variable-name">top</span>) {
+    <span class="org-keyword">while</span>(top &gt;= 0) {
+        printf(<span class="org-string">"%d "</span>, stack[top]);
+        top--;
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">top</span> = -1;
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 10;
+    <span class="org-type">int</span> <span class="org-variable-name">si</span>[n];
+    <span class="org-type">int</span> <span class="org-variable-name">queue</span>[n];
+    <span class="org-type">int</span> <span class="org-variable-name">q_top</span> = -1;
+
+    <span class="org-type">int</span> <span class="org-variable-name">option</span>;
+
+    <span class="org-keyword">do</span> {
+        printf(<span class="org-string">"Enter choice: \n"</span>);
+        printf(<span class="org-string">"1. Enqueue element in queue\n"</span>);
+        printf(<span class="org-string">"2. Dequeue element in queue\n"</span>);
+        printf(<span class="org-string">"3. Display queue\n"</span>);
+        printf(<span class="org-string">"4. Exit\n"</span>);
+
+        scanf(<span class="org-string">"%d"</span>, &amp;option);
+
+        <span class="org-keyword">switch</span>(option) {
+            <span class="org-keyword">case</span> 1: {
+                <span class="org-comment-delimiter">// </span><span class="org-comment">enqueue</span>
+                <span class="org-type">int</span> <span class="org-variable-name">el</span>;
+                printf(<span class="org-string">"Enter element you want to insert: "</span>);
+                scanf(<span class="org-string">"%d"</span>, &amp;el);
+                s_push(si, &amp;top, n, el);
+                <span class="org-keyword">break</span>;
+            }
+
+            <span class="org-keyword">case</span> 2: {
+                <span class="org-comment-delimiter">// </span><span class="org-comment">dequeue</span>
+                <span class="org-keyword">if</span> (s_empty(&amp;q_top)) {
+                    <span class="org-keyword">while</span> (<span class="org-negation-char">!</span>s_empty(&amp;top)) {
+                        s_push(queue, &amp;q_top, n, s_pop(si, &amp;top));
+                    }
+                }
+                <span class="org-type">int</span> <span class="org-variable-name">el</span> = s_pop(queue, &amp;q_top);
+                <span class="org-keyword">if</span> (el != -1) {
+                    printf(<span class="org-string">"dequeued %d from queue\n"</span>, el);
+                } <span class="org-keyword">else</span> {
+                    printf(<span class="org-string">"queue is empty\n"</span>);
+                }
+                <span class="org-keyword">break</span>;
+            }
+
+            <span class="org-keyword">case</span> 3: {
+                <span class="org-comment-delimiter">// </span><span class="org-comment">display</span>
+                printf(<span class="org-string">"Queue: "</span>);
+                <span class="org-comment-delimiter">// </span><span class="org-comment">display queue from top to bottom</span>
+                s_display(queue, q_top);
+                <span class="org-comment-delimiter">// </span><span class="org-comment">display si from bottom to top</span>
+                <span class="org-keyword">if</span> (top != -1) {
+                    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt;= top; i++) {
+                        printf(<span class="org-string">"%d "</span>, si[i]);
+                    }
+                }
+
+                printf(<span class="org-string">"\n"</span>);
+                <span class="org-keyword">break</span>;
+            }
+        }
+    } <span class="org-keyword">while</span>(option != 4);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga5ed02e" class="outline-3">
+<h3 id="orga5ed02e">Circular Queue</h3>
+<div class="outline-text-3" id="text-orga5ed02e">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">is_empty</span>(<span class="org-type">int</span> <span class="org-variable-name">front</span>) {
+    <span class="org-keyword">return</span> front == -1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">is_full</span>(<span class="org-type">int</span> <span class="org-variable-name">rear</span>, <span class="org-type">int</span> <span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+  <span class="org-keyword">if</span> ((front == rear + 1) || (front == 0 &amp;&amp; rear == size - 1)) {
+    <span class="org-keyword">return</span> 1;
+  }
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">enqueue</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> *<span class="org-variable-name">rear</span>, <span class="org-type">int</span> *<span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+    <span class="org-keyword">if</span> (is_full(*rear, *front, n)) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+        <span class="org-keyword">return</span> -1;
+    }
+
+    <span class="org-keyword">if</span> (*front == -1) {
+        *front = 0;
+    }
+
+    *rear = (*rear + 1) % n;
+    arr[*rear] = el;
+    <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">dequeue</span>(<span class="org-type">int</span>* <span class="org-variable-name">queue</span>, <span class="org-type">int</span> *<span class="org-variable-name">rear</span>, <span class="org-type">int</span> *<span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+    <span class="org-keyword">if</span> (is_empty(*front)) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+        <span class="org-keyword">return</span> -1;
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">el</span> = queue[*front];
+
+    <span class="org-keyword">if</span> (*front == *rear) {
+        *front = -1;
+        *rear = -1;
+    } <span class="org-keyword">else</span> {
+        *front = (*front + 1) % n;
+    }
+
+    <span class="org-keyword">return</span> el;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">rear</span>, <span class="org-type">int</span> <span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+    <span class="org-keyword">if</span> (is_empty(front)) {
+        printf(<span class="org-string">"empty queue\n"</span>);
+        <span class="org-keyword">return</span>;
+    }
+
+    printf(<span class="org-string">"arr: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    <span class="org-type">int</span> <span class="org-variable-name">i</span>;
+    <span class="org-keyword">for</span> (i = front; i != rear; i = (i + 1) % n) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"%d "</span>, arr[i]);
+
+    printf(<span class="org-string">"\n"</span>);
+
+    printf(<span class="org-string">"front = %d\nrear = %d\n"</span>, front, rear);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+    <span class="org-type">int</span> <span class="org-variable-name">queue</span>[n];
+    <span class="org-type">int</span> <span class="org-variable-name">front</span> = -1;
+    <span class="org-type">int</span> <span class="org-variable-name">rear</span> = -1;
+
+    <span class="org-keyword">while</span>(<span class="org-constant">true</span>) {
+        printf(<span class="org-string">"Enter choice: \n"</span>);
+        printf(<span class="org-string">"1. Push element in queue\n"</span>);
+        printf(<span class="org-string">"2. Pop element in queue\n"</span>);
+        printf(<span class="org-string">"3. Display queue\n"</span>);
+        printf(<span class="org-string">"4. Exit\n"</span>);
+
+        <span class="org-type">int</span> <span class="org-variable-name">option</span>;
+        scanf(<span class="org-string">"%d"</span>, &amp;option);
+
+        <span class="org-keyword">switch</span>(option) {
+        <span class="org-keyword">case</span> 1: {
+            <span class="org-type">int</span> <span class="org-variable-name">el</span>;
+            printf(<span class="org-string">"Enter element to push: "</span>);
+            scanf(<span class="org-string">"%d"</span>, &amp;el);
+            <span class="org-type">int</span> <span class="org-variable-name">st</span> = enqueue(queue, &amp;rear, &amp;front, n, el);
+
+            <span class="org-keyword">if</span> (st == -1) {
+                printf(<span class="org-string">"failed to push element in queue (overflow)\n"</span>);
+            }
+            <span class="org-keyword">break</span>;
+        }
+
+        <span class="org-keyword">case</span> 2: {
+            <span class="org-type">int</span> <span class="org-variable-name">st</span> = dequeue(queue, &amp;rear, &amp;front, n);
+            <span class="org-keyword">if</span> (st == -1) {
+                printf(<span class="org-string">"failed to pop element from queue (underflow)\n"</span>);
+            } <span class="org-keyword">else</span> {
+                printf(<span class="org-string">"dequeued %d from queue\n"</span>, st);
+            }
+            <span class="org-keyword">break</span>;
+        }
+
+        <span class="org-keyword">case</span> 3:
+            display(queue, rear, front, n);
+            <span class="org-keyword">break</span>;
+
+        <span class="org-keyword">case</span> 4:
+            exit(0);
+            <span class="org-keyword">break</span>;
+
+        <span class="org-keyword">default</span>:
+            exit(0);
+            <span class="org-keyword">break</span>;
+        }
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2175086" class="outline-2">
+<h2 id="org2175086"><span class="todo TODO">TODO</span> Trees</h2>
+<div class="outline-text-2" id="text-org2175086">
+</div>
+</div>
+<div id="outline-container-org158b998" class="outline-2">
+<h2 id="org158b998"><span class="todo TODO">TODO</span> Graphs</h2>
+<div class="outline-text-2" id="text-org158b998">
+</div>
+</div>
+<div id="outline-container-orge731a66" class="outline-2">
+<h2 id="orge731a66">Sorting</h2>
+<div class="outline-text-2" id="text-orge731a66">
+</div>
+<div id="outline-container-org8de4ba3" class="outline-3">
+<h3 id="org8de4ba3">Bubble Sort</h3>
+<div class="outline-text-3" id="text-org8de4ba3">
+<p>
+Bubble the biggest element to the end. Do it till n (size of array). The array
+is sorted.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1,6,3,9,2,0, 999, -2, -20};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">pass</span> = 0; pass &lt; (size - 1); pass++) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; size - 1 - pass; ++j) {
+            <span class="org-keyword">if</span> (arr[j] &gt; arr[j + 1]) {
+                swap(&amp;arr[j], &amp;arr[j + 1]);
+            }
+        }
+    }
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; (size); i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+}
+</pre>
+</div>
+
+<pre class="example">
+-20 -2 0 1 2 3 6 9 999 
+</pre>
+</div>
+<ul class="org-ul">
+<li><a id="org516ff55"></a><span class="todo TODO">TODO</span> draw each pass of sorting<br /></li>
+<li><a id="org3ff58a3"></a><span class="todo TODO">TODO</span> optimise (check for swap and terminate early (premature termination))<br /></li>
+</ul>
+</div>
+<div id="outline-container-org3525943" class="outline-3">
+<h3 id="org3525943">Insertion Sort</h3>
+<div class="outline-text-3" id="text-org3525943">
+<p>
+Maintain a sorted subarray inside array. Iterate over array elements and put
+elements in the sorted subarray.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">insertion_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; size; ++i) {
+        <span class="org-type">int</span> <span class="org-variable-name">value</span> = arr[i];
+        <span class="org-type">int</span> <span class="org-variable-name">hole</span> = i - 1;
+        <span class="org-keyword">while</span> (hole &gt;= 0 &amp;&amp; (arr[hole] &gt; value)) {
+            arr[hole + 1] = arr[hole];
+            hole = hole - 1;
+        }
+        arr[hole + 1] = value;
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {6, 9, 7, 3, 5, 10, 9};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"Unsorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    insertion_sort(arr, size);
+
+    printf(<span class="org-string">"Sorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example">
+Unsorted: 6 9 7 3 5 10 9 
+Sorted: 3 5 6 7 9 9 10 
+</pre>
+</div>
+</div>
+<div id="outline-container-orgf198090" class="outline-3">
+<h3 id="orgf198090">Quick Sort</h3>
+<div class="outline-text-3" id="text-orgf198090">
+<p>
+Take a pivot point. Everything smaller than pivot element goes to the left and
+bigger elements go to the right. Recursively call until the array length is 1
+and the array is sorted.
+O(nlogn)
+O(n<sup>2</sup>) in worst case
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>);
+
+<span class="org-type">int</span> <span class="org-function-name">partition</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">start</span>, <span class="org-type">int</span> <span class="org-variable-name">end</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">pi</span> = end;
+    <span class="org-type">int</span> <span class="org-variable-name">pivot</span> = arr[pi];
+    <span class="org-type">int</span> <span class="org-variable-name">pivot_place</span> = start;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = start; i &lt; end; ++i) {
+        <span class="org-keyword">if</span> (arr[i] &lt; pivot) {
+            swap(&amp;arr[i], &amp;arr[pivot_place]);
+            pivot_place++;
+        }
+    }
+
+    swap(&amp;arr[pi], &amp;arr[pivot_place]);
+    <span class="org-keyword">return</span> pivot_place;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">quick_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>) {
+    <span class="org-keyword">if</span> (left &gt;= right) <span class="org-keyword">return</span>;
+
+    <span class="org-type">int</span> <span class="org-variable-name">pivot_i</span> = partition(arr, left, right);
+    quick_sort(arr, left, pivot_i - 1);
+    quick_sort(arr, pivot_i + 1, right);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {7, 2, 6, 8, 5, 3, 4, 9, -2};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"Unsorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    quick_sort(arr, 0, size - 1);
+
+    printf(<span class="org-string">"Sorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+</pre>
+</div>
+
+<pre class="example">
+Unsorted: 7 2 6 8 5 3 4 9 -2 
+Sorted: -2 2 3 4 5 6 7 8 9 
+</pre>
+</div>
+</div>
+<div id="outline-container-org797136d" class="outline-3">
+<h3 id="org797136d">Selection Sort</h3>
+<div class="outline-text-3" id="text-org797136d">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">selection_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size - 1; ++i) {
+        <span class="org-type">int</span> <span class="org-variable-name">pos</span> = i;
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = i + 1; j &lt; size; ++j) {
+            <span class="org-keyword">if</span> (arr[j] &lt; arr[pos]) {
+                pos = j;
+            }
+        }
+
+        <span class="org-keyword">if</span> (pos != i) {
+            swap(&amp;arr[i], &amp;arr[pos]);
+        }
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 9, 10, 20, 2, 4, -2};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"Unsorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    selection_sort(arr, size);
+
+    printf(<span class="org-string">"Sorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example">
+Unsorted: 1 9 10 20 2 4 -2 
+Sorted: -2 1 2 4 9 10 20 
+</pre>
+</div>
+</div>
+<div id="outline-container-org15eab75" class="outline-3">
+<h3 id="org15eab75">Merge Sort</h3>
+<div class="outline-text-3" id="text-org15eab75">
+<p>
+Bubble sort, Insertion sort and selection sort are all O(n<sup>2</sup>). Let's take a look at a sorting algorithm that's O(nlogn) in the worst case.
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">merge</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">mid</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>) {
+  <span class="org-type">int</span> <span class="org-variable-name">n1</span> = mid - left + 1;
+  <span class="org-type">int</span> <span class="org-variable-name">n2</span> = right - mid;
+  <span class="org-type">int</span> <span class="org-variable-name">L</span>[n1], <span class="org-variable-name">R</span>[n2];
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n1; ++i) {
+    L[i] = arr[left + i];
+  }
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; n2; ++j) {
+    R[j] = arr[mid + 1 + j];
+  }
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">merge L and R back into arr</span>
+  <span class="org-type">int</span> <span class="org-variable-name">i</span> = 0;
+  <span class="org-type">int</span> <span class="org-variable-name">j</span> = 0;
+  <span class="org-type">int</span> <span class="org-variable-name">k</span> = left;
+
+  <span class="org-keyword">while</span> (i &lt; n1 &amp;&amp; j &lt; n2) {
+    <span class="org-keyword">if</span> (L[i] &lt; R[j]) {
+      arr[k] = L[i];
+      i++;
+    } <span class="org-keyword">else</span> {
+      arr[k] = R[j];
+      j++;
+    }
+    k++;
+  }
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">copy remaining L if any</span>
+  <span class="org-keyword">while</span> (i &lt; n1) {
+    arr[k] = L[i];
+    i++;
+    k++;
+  }
+
+  <span class="org-comment-delimiter">// </span><span class="org-comment">copy remaining R if any</span>
+  <span class="org-keyword">while</span> (j &lt; n2) {
+    arr[k] = R[j];
+    j++;
+    k++;
+  }
+}
+
+<span class="org-type">void</span> <span class="org-function-name">merge_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>) {
+    <span class="org-keyword">if</span> (left == right) {
+        <span class="org-keyword">return</span>;
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (left + right) / 2;
+
+    merge_sort(arr, left, mid);
+    merge_sort(arr, mid + 1, right);
+
+    merge(arr, left, mid, right);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 9, 8, 10, 20, 2, 4, -2};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"array: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) printf(<span class="org-string">"%d "</span>, arr[i]);
+    printf(<span class="org-string">"\n"</span>);
+
+    merge_sort(arr, 0, size - 1);
+
+    printf(<span class="org-string">"after merge: \n"</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) printf(<span class="org-string">"%d "</span>, arr[i]);
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example" id="org63f9503">
+array: 1 9 8 10 20 2 4 -2 
+merging: 1 9 8 10 	20 2 4 -2 
+merging: 1 9 	8 10 
+merging: 1 	9 
+merging: 8 	10 
+merging: 20 2 	4 -2 
+merging: 20 	2 
+merging: 4 	-2 
+after merge: 
+-2 1 2 4 8 9 10 20 
+</pre>
+</div>
+</div>
+<div id="outline-container-org13b9254" class="outline-3">
+<h3 id="org13b9254">Heap Sort</h3>
+</div>
+</div>
+<div id="outline-container-orgc26bfc1" class="outline-2">
+<h2 id="orgc26bfc1"><span class="todo TODO">TODO</span> Hashing Techniques</h2>
+</div>
+<div id="outline-container-org0e9e26b" class="outline-2">
+<h2 id="org0e9e26b">Searching</h2>
+<div class="outline-text-2" id="text-org0e9e26b">
+</div>
+<div id="outline-container-orgc0613fb" class="outline-3">
+<h3 id="orgc0613fb">Linear search</h3>
+<div class="outline-text-3" id="text-orgc0613fb">
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1,2,3,99,2389,21};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+    <span class="org-type">int</span> <span class="org-variable-name">target</span> = 99;
+
+    <span class="org-type">int</span> <span class="org-variable-name">found_index</span> = -1;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        <span class="org-keyword">if</span> (arr[i] == target) {
+            found_index = i;
+        }
+    }
+
+    <span class="org-keyword">if</span> (found_index &gt;= 0) {
+        printf(<span class="org-string">"Element %d found at index %d\n"</span>, arr[found_index], found_index);
+    } <span class="org-keyword">else</span> {
+        printf(<span class="org-string">"element not found"</span>);
+    }
+
+    <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+Element 99 found at index 3
+</pre>
+
+
+<p>
+Count number of occurences in an array
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">count</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">target</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">count</span> = 0;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; i++) {
+        <span class="org-keyword">if</span> (arr[i] == target) {
+            count++;
+        }
+    }
+    <span class="org-keyword">return</span> count;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 3, 4, 4, 6, 9, 4};
+    <span class="org-type">int</span> <span class="org-variable-name">target</span> = 4;
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"%d occurs %d times in the array"</span>, target, count(arr, size, target));
+}
+</pre>
+</div>
+
+<pre class="example">
+4 occurs 3 times in the array
+</pre>
+</div>
+</div>
+<div id="outline-container-orga77b6f8" class="outline-3">
+<h3 id="orga77b6f8">Binary Search</h3>
+<div class="outline-text-3" id="text-orga77b6f8">
+<p>
+Using recursion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">binary_search</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>, <span class="org-type">int</span> <span class="org-variable-name">target</span>) {
+    <span class="org-keyword">if</span> (left &gt; right) {
+        <span class="org-keyword">return</span> -1;
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (left + right) / 2;
+
+    <span class="org-keyword">if</span> (arr[mid] == target) {
+        <span class="org-keyword">return</span> mid;
+    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (target &gt; arr[mid]) {
+        <span class="org-keyword">return</span> binary_search(arr, mid + 1, right, target);
+    } <span class="org-keyword">else</span> {
+        <span class="org-keyword">return</span> binary_search(arr, left, mid - 1, target);
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 3, 9, 22, 29};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"found 1 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 1));
+    printf(<span class="org-string">"found 3 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 3));
+    printf(<span class="org-string">"found 9 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 9));
+    printf(<span class="org-string">"found 22 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 22));
+    printf(<span class="org-string">"found 29 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 29));
+}
+</pre>
+</div>
+
+<pre class="example">
+found 1 at index: 0
+found 3 at index: 1
+found 9 at index: 2
+found 22 at index: 3
+found 29 at index: 4
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">binary_search_it</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>, <span class="org-type">int</span> <span class="org-variable-name">target</span>) {
+    <span class="org-keyword">while</span> (left &lt;= right) {
+        <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (left + right) / 2;
+
+        <span class="org-keyword">if</span> (arr[mid] == target) {
+            <span class="org-keyword">return</span> mid;
+        } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (target &gt; arr[mid]) {
+            <span class="org-keyword">return</span> binary_search_it(arr, mid + 1, right, target);
+        } <span class="org-keyword">else</span> {
+            <span class="org-keyword">return</span> binary_search_it(arr, left, mid - 1, target);
+        }
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 3, 9, 22, 29};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"found 1 at index: %d\n"</span>, binary_search_it(arr, 0, size - 1, 1));
+    printf(<span class="org-string">"found 3 at index: %d\n"</span>, binary_search_it(arr, 0, size - 1, 3));
+    printf(<span class="org-string">"found 9 at index: %d\n"</span>, binary_search_it(arr, 0, size - 1, 9));
+    printf(<span class="org-string">"found 22 at index: %d\n"</span>, binary_search_it(arr, 0, size - 1, 22));
+    printf(<span class="org-string">"found 29 at index: %d\n"</span>, binary_search_it(arr, 0, size - 1, 29));
+}
+</pre>
+</div>
+
+<pre class="example">
+found 1 at index: 0
+found 3 at index: 1
+found 9 at index: 2
+found 22 at index: 3
+found 29 at index: 4
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9ea6c5d" class="outline-2">
+<h2 id="org9ea6c5d"><span class="todo TODO">TODO</span> File Handling</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Siddhant Kumar</p>
+</div>
+</body>
+</html>

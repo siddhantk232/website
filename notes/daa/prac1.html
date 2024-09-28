@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<ol class="org-ol">
+<li><p>
+Use divide and conquer method to recursively implement:
+1.1. Binary Search
+1.2. Linear Search
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-comment-delimiter">// </span><span class="org-comment">binary search using recursion</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">binary_search</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>, <span class="org-type">int</span> <span class="org-variable-name">target</span>) {
+    <span class="org-keyword">if</span> (left &gt; right) {
+        <span class="org-keyword">return</span> -1;
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (left + right) / 2;
+
+    <span class="org-keyword">if</span> (arr[mid] == target) {
+        <span class="org-keyword">return</span> mid;
+    } <span class="org-keyword">else</span> <span class="org-keyword">if</span> (target &gt; arr[mid]) {
+        <span class="org-keyword">return</span> binary_search(arr, mid + 1, right, target);
+    } <span class="org-keyword">else</span> {
+        <span class="org-keyword">return</span> binary_search(arr, left, mid - 1, target);
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 3, 9, 22, 29};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"found 1 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 1));
+    printf(<span class="org-string">"found 3 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 3));
+    printf(<span class="org-string">"found 9 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 9));
+    printf(<span class="org-string">"found 22 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 22));
+    printf(<span class="org-string">"found 29 at index: %d\n"</span>, binary_search(arr, 0, size - 1, 29));
+}
+</pre>
+</div>
+
+<pre class="example">
+found 1 at index: 0
+found 3 at index: 1
+found 9 at index: 2
+found 22 at index: 3
+found 29 at index: 4
+</pre>
+
+
+<p>
+Time Complexity:
+</p>
+
+<p>
+<b>Best Case</b>: O(1)
+</p>
+
+<p>
+<b>Average and Worst Case</b>: log<sub>2</sub>(n)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">linear_search_rec</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">size</span>, <span class="org-type">int</span> <span class="org-variable-name">element</span>) {
+    <span class="org-keyword">if</span> (size &lt;= 0)
+        <span class="org-keyword">return</span> -1;
+    <span class="org-keyword">else</span> <span class="org-keyword">if</span> (element == arr[size - 1])
+        <span class="org-keyword">return</span> size - 1;
+    <span class="org-keyword">else</span>
+        <span class="org-keyword">return</span> linear_search_rec(arr, size - 1, element);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 3, 9, 22, 29};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"found 1 at index: %d\n"</span>, linear_search_rec(arr, size, 1));
+    printf(<span class="org-string">"found 3 at index: %d\n"</span>, linear_search_rec(arr, size,  3));
+    printf(<span class="org-string">"found 9 at index: %d\n"</span>, linear_search_rec(arr, size,  9));
+    printf(<span class="org-string">"found 22 at index: %d\n"</span>, linear_search_rec(arr, size, 22));
+    printf(<span class="org-string">"found 29 at index: %d\n"</span>, linear_search_rec(arr, size, 29));
+}
+</pre>
+</div>
+
+<pre class="example">
+found 1 at index: 0
+found 3 at index: 1
+found 9 at index: 2
+found 22 at index: 3
+found 29 at index: 4
+</pre>
+
+
+<p>
+Time Complexity:
+</p>
+
+<p>
+<b>Best Case</b>: O(1)
+</p>
+
+<p>
+<b>Average and Worst Case</b>: O(n)
+</p></li>
+<li><p>
+Sort a given set of elements using the insertion sort method.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">insertion_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 1; i &lt; size; ++i) {
+        <span class="org-type">int</span> <span class="org-variable-name">value</span> = arr[i];
+        <span class="org-type">int</span> <span class="org-variable-name">hole</span> = i - 1;
+
+        <span class="org-keyword">while</span> (hole &gt;= 0 &amp;&amp; (arr[hole] &gt; value)) {
+            arr[hole + 1] = arr[hole];
+            hole = hole - 1;
+        }
+
+        arr[hole + 1] = value;
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {6, 9, 7, 3, 5, 10, 9};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"Unsorted: "</span>);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+
+    printf(<span class="org-string">"\n"</span>);
+
+    insertion_sort(arr, size);
+
+    printf(<span class="org-string">"Sorted: "</span>);
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; i++) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example">
+Unsorted: 6 9 7 3 5 10 9 
+Sorted: 3 5 6 7 9 9 10
+</pre>
+
+
+<p>
+Time Complexity:
+</p>
+
+<p>
+<b>Best Case</b>: O(n)
+</p>
+
+<p>
+<b>Average and Worst Case</b>: O(n<sup>2</sup>)
+</p></li>
+</ol>
+
+
+<ol class="org-ol">
+<li><p>
+Sort a given set of elements using the selection sort method.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">selection_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size - 1; ++i) {
+        <span class="org-type">int</span> <span class="org-variable-name">pos</span> = i;
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = i + 1; j &lt; size; ++j) {
+            <span class="org-keyword">if</span> (arr[j] &lt; arr[pos]) {
+                pos = j;
+            }
+        }
+
+        <span class="org-keyword">if</span> (pos != i) {
+            swap(&amp;arr[i], &amp;arr[pos]);
+        }
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 9, 10, 20, 2, 4, -2};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"Unsorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    selection_sort(arr, size);
+
+    printf(<span class="org-string">"Sorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example">
+Unsorted: 1 9 10 20 2 4 -2 
+Sorted: -2 1 2 4 9 10 20
+</pre>
+
+
+<p>
+Time Complexity:
+</p>
+
+<p>
+<b>Best, Average and Worst Case</b>: O(n<sup>2</sup>)
+</p></li>
+
+<li><p>
+Sort a given set of elements using the quick sort method and determine the time required to sort the elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>);
+
+<span class="org-type">int</span> <span class="org-function-name">partition</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">start</span>, <span class="org-type">int</span> <span class="org-variable-name">end</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">pi</span> = end;
+    <span class="org-type">int</span> <span class="org-variable-name">pivot</span> = arr[pi];
+    <span class="org-type">int</span> <span class="org-variable-name">pivot_place</span> = start;
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = start; i &lt; end; ++i) {
+        <span class="org-keyword">if</span> (arr[i] &lt; pivot) {
+            swap(&amp;arr[i], &amp;arr[pivot_place]);
+            pivot_place++;
+        }
+    }
+
+    swap(&amp;arr[pi], &amp;arr[pivot_place]);
+    <span class="org-keyword">return</span> pivot_place;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">quick_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>) {
+    <span class="org-keyword">if</span> (left &gt;= right) <span class="org-keyword">return</span>;
+
+    <span class="org-type">int</span> <span class="org-variable-name">pivot_i</span> = partition(arr, left, right);
+    quick_sort(arr, left, pivot_i - 1);
+    quick_sort(arr, pivot_i + 1, right);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {7, 2, 6, 8, 5, 3, 4, 9, -2};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"Unsorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+
+    quick_sort(arr, 0, size - 1);
+
+    printf(<span class="org-string">"Sorted: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        printf(<span class="org-string">"%d "</span>, arr[i]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+</pre>
+</div>
+
+<pre class="example">
+Unsorted: 7 2 6 8 5 3 4 9 -2 
+Sorted: -2 2 3 4 5 6 7 8 9
+</pre>
+
+
+<p>
+Time Complexity:
+</p>
+
+<p>
+<b>Best Case</b>: O(\(n * \log_2(n)\))
+</p>
+
+<p>
+<b>Average Case</b>: O(\(n * \log_2(n)\))
+</p>
+
+<p>
+<b>Worst Case</b>: O(n<sup>2</sup>)
+</p></li>
+</ol>
+
+
+<ol class="org-ol">
+<li><p>
+Implement a merge sort algorithm to sort a given set of elements and determine the time required to sort the elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">merge</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">mid</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">n1</span> = mid - left + 1;
+    <span class="org-type">int</span> <span class="org-variable-name">n2</span> = right - mid;
+    <span class="org-type">int</span> <span class="org-variable-name">L</span>[n1], <span class="org-variable-name">R</span>[n2];
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; n1; ++i) {
+        L[i] = arr[left + i];
+    }
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; n2; ++j) {
+        R[j] = arr[mid + 1 + j];
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">merge L and R back into arr</span>
+    <span class="org-type">int</span> <span class="org-variable-name">i</span> = 0;
+    <span class="org-type">int</span> <span class="org-variable-name">j</span> = 0;
+    <span class="org-type">int</span> <span class="org-variable-name">k</span> = left;
+
+    <span class="org-keyword">while</span> (i &lt; n1 &amp;&amp; j &lt; n2) {
+        <span class="org-keyword">if</span> (L[i] &lt; R[j]) {
+            arr[k] = L[i];
+            i++;
+        } <span class="org-keyword">else</span> {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">copy remaining L if any</span>
+    <span class="org-keyword">while</span> (i &lt; n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">copy remaining R if any</span>
+    <span class="org-keyword">while</span> (j &lt; n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+<span class="org-type">void</span> <span class="org-function-name">merge_sort</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">left</span>, <span class="org-type">int</span> <span class="org-variable-name">right</span>) {
+    <span class="org-keyword">if</span> (left == right) {
+        <span class="org-keyword">return</span>;
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">mid</span> = (left + right) / 2;
+
+    merge_sort(arr, left, mid);
+    merge_sort(arr, mid + 1, right);
+
+    merge(arr, left, mid, right);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 9, 8, 10, 20, 2, 4, -2};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"array: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) printf(<span class="org-string">"%d "</span>, arr[i]);
+    printf(<span class="org-string">"\n"</span>);
+
+    merge_sort(arr, 0, size - 1);
+
+    printf(<span class="org-string">"after merge_sort: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) printf(<span class="org-string">"%d "</span>, arr[i]);
+    printf(<span class="org-string">"\n"</span>);
+}
+</pre>
+</div>
+
+<pre class="example">
+array: 1 9 8 10 20 2 4 -2 
+after merge_sort: -2 1 2 4 8 9 10 20
+</pre>
+
+
+<p>
+Time Complexity :
+</p>
+
+<p>
+<b>Best, Average and, Worst Case</b>: O(\(n * \log_2(n)\))
+</p></li>
+</ol>
+
+
+<ol class="org-ol">
+<li><p>
+Sort a given set of elements using the heap sort method and determine the time required to sort the elements.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>);
+
+<span class="org-type">void</span> <span class="org-function-name">heapify</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">i</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">largest</span> = i;
+    <span class="org-type">int</span> <span class="org-variable-name">left</span> = 2 * i + 1;
+    <span class="org-type">int</span> <span class="org-variable-name">right</span> = 2 * i + 2;
+
+    <span class="org-keyword">if</span> (left &lt; n &amp;&amp; arr[largest] &lt; arr[left])
+        largest = left;
+    <span class="org-keyword">if</span> (right &lt; n &amp;&amp; arr[largest] &lt; arr[right])
+        largest = right;
+    <span class="org-keyword">if</span> (largest != i) {
+        swap(&amp;arr[largest], &amp;arr[i]);
+        heapify(arr, n, largest);
+    }
+}
+
+<span class="org-type">void</span> <span class="org-function-name">build_heap</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = n / 2 - 1; i &gt;= 0; i--)
+        heapify(arr, n, i);
+}
+
+<span class="org-type">void</span> <span class="org-function-name">heap_sort</span>(<span class="org-type">int</span> <span class="org-variable-name">arr</span>[], <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+    build_heap(arr, n);
+
+    <span class="org-keyword">while</span> (n &gt; 1) {
+        swap(&amp;arr[0], &amp;arr[n - 1]);
+        n--;
+        heapify(arr, n, 0);
+    }
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">arr</span>[] = {1, 9, 8, 10, 20, 2, 4, -2};
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(arr) / <span class="org-keyword">sizeof</span>(<span class="org-type">int</span>);
+
+    printf(<span class="org-string">"array: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) printf(<span class="org-string">"%d "</span>, arr[i]);
+    printf(<span class="org-string">"\n"</span>);
+
+    heap_sort(arr, size);
+
+    printf(<span class="org-string">"after merge_sort: "</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) printf(<span class="org-string">"%d "</span>, arr[i]);
+    printf(<span class="org-string">"\n"</span>);
+}
+
+
+<span class="org-type">void</span> <span class="org-function-name">swap</span>(<span class="org-type">int</span> *<span class="org-variable-name">a</span>, <span class="org-type">int</span> *<span class="org-variable-name">b</span>) {
+    <span class="org-type">int</span> <span class="org-variable-name">temp</span> = *a;
+    *a = *b;
+    *b = temp;
+}
+</pre>
+</div>
+
+<pre class="example">
+array: 1 9 8 10 20 2 4 -2 
+after merge_sort: -2 1 2 4 8 9 10 20
+</pre>
+
+
+<p>
+Time Complexity :
+</p>
+
+<p>
+<b>Best, Average and, Worst Case</b>: O(\(n * \log_2(n)\))
+</p></li>
+</ol>
+</div>
+</body>
+</html>

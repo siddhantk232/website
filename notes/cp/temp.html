@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="content" class="content">
+<ol class="org-ol">
+<li><p>
+Print 2d array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">size</span> = 3;
+  <span class="org-type">int</span> <span class="org-variable-name">arr</span>[3][3] = {{1,2,3},
+                   {4,5,6},
+                   {7,8,9}};
+
+  <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; size; ++j) {
+      printf(<span class="org-string">"%d "</span>, arr[i][j]);
+    }
+    printf(<span class="org-string">"\n"</span>);
+  }
+
+  <span class="org-keyword">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+1 2 3 
+4 5 6 
+7 8 9 
+</pre></li>
+
+<li><p>
+Sum and product of two square matrices using functions.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">matrix1</span>[][3] = {{1,2,3}
+                        ,{4,5,6}
+                        ,{7,8,9}};
+
+    <span class="org-type">int</span> <span class="org-variable-name">matrix2</span>[][3] = {{1,0,1}
+                        ,{1,1,0}
+                        ,{0,0,1}};
+
+
+    <span class="org-type">int</span> <span class="org-variable-name">size</span> = <span class="org-keyword">sizeof</span>(matrix1) / <span class="org-keyword">sizeof</span>(matrix1[0]);
+
+    <span class="org-type">int</span> <span class="org-variable-name">product</span>[][3] = {{0,0,0}
+                       ,{0,0,0}
+                       ,{0,0,0}};
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; size; ++j) {
+            <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">k</span> = 0; k &lt; size; ++k) {
+                product[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
+        }
+    }
+
+    printf(<span class="org-string">"product: \n"</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; size; ++j) {
+            printf(<span class="org-string">"%d "</span>, product[i][j]);
+        }
+        printf(<span class="org-string">"\n"</span>);
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">sum</span>[][3] = {{0,0,0}
+                       ,{0,0,0}
+                       ,{0,0,0}};
+
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; size; ++j) {
+            sum[i][j] += matrix1[i][j] + matrix2[i][j];
+        }
+    }
+
+    printf(<span class="org-string">"sum: \n"</span>);
+    <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">i</span> = 0; i &lt; size; ++i) {
+        <span class="org-keyword">for</span> (<span class="org-type">int</span> <span class="org-variable-name">j</span> = 0; j &lt; size; ++j) {
+            printf(<span class="org-string">"%d "</span>, sum[i][j]);
+        }
+        printf(<span class="org-string">"\n"</span>);
+    }
+}
+</pre>
+</div>
+
+<pre class="example">
+product: 
+3 2 4 
+9 5 10 
+15 8 16 
+sum: 
+2 2 4 
+5 6 6 
+7 8 10 
+</pre></li>
+
+<li><p>
+Create and display singly linked list.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span> <span class="org-string">&lt;assert.h&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span> <span class="org-string">&lt;stdlib.h&gt;</span>
+
+<span class="org-keyword">struct</span> <span class="org-type">Node</span> {
+    <span class="org-type">int</span> <span class="org-variable-name">data</span>;
+    <span class="org-keyword">struct</span> <span class="org-type">Node</span> *<span class="org-variable-name">next</span>;
+};
+
+<span class="org-keyword">typedef</span> <span class="org-keyword">struct</span> <span class="org-type">Node</span> <span class="org-type">Node</span>;
+
+<span class="org-type">Node</span> *<span class="org-function-name">create</span>(<span class="org-type">int</span> <span class="org-variable-name">val</span>);
+<span class="org-type">void</span> <span class="org-function-name">insert_at_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>);
+<span class="org-type">void</span> <span class="org-function-name">print_ll</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>);
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">Node</span> *<span class="org-variable-name">head</span> = create(1);
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">insert</span>
+    insert_at_end(head, 2);
+    insert_at_end(head, 3);
+    insert_at_end(head, 4);
+    insert_at_end(head, 10);
+
+    print_ll(head);
+}
+
+<span class="org-comment-delimiter">// </span><span class="org-comment">O(n)</span>
+<span class="org-type">void</span> <span class="org-function-name">insert_at_end</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+    assert(head != <span class="org-constant">NULL</span>);
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">go to the end</span>
+    <span class="org-keyword">while</span> (head-&gt;next != <span class="org-constant">NULL</span>) {
+        head = head-&gt;next;
+    }
+
+    <span class="org-comment-delimiter">// </span><span class="org-comment">create new Node</span>
+    <span class="org-type">Node</span> *<span class="org-variable-name">n</span> = create(el);
+    head-&gt;next = n;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">print_ll</span>(<span class="org-type">Node</span> *<span class="org-variable-name">head</span>) {
+    <span class="org-keyword">while</span> (head != <span class="org-constant">NULL</span>) {
+        printf(<span class="org-string">"%d "</span>, head-&gt;data);
+        head = head-&gt;next;
+    }
+    printf(<span class="org-string">"\n"</span>);
+}
+
+<span class="org-type">Node</span> *<span class="org-function-name">create</span>(<span class="org-type">int</span> <span class="org-variable-name">val</span>) {
+    <span class="org-type">Node</span> *<span class="org-variable-name">head</span> = malloc(<span class="org-keyword">sizeof</span>(Node));
+    head-&gt;data = val;
+    head-&gt;next = <span class="org-constant">NULL</span>;
+    <span class="org-keyword">return</span> head;
+}
+</pre>
+</div>
+
+<pre class="example">
+1 2 3 4 10
+</pre></li>
+
+<li><p>
+Implement stack using array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">push</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> *<span class="org-variable-name">top</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+    <span class="org-keyword">if</span> (*top == n) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+        <span class="org-keyword">return</span> -1;
+    }
+    *top = *top + 1;
+    stack[*top] = el;
+    <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">pop</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> *<span class="org-variable-name">top</span>) {
+    <span class="org-keyword">if</span> (*top &lt; 0) {
+        <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+        <span class="org-keyword">return</span> -1;
+    }
+
+    <span class="org-type">int</span> <span class="org-variable-name">el</span> = stack[*top];
+    *top = *top - 1;
+    <span class="org-keyword">return</span> el;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">int</span> *<span class="org-variable-name">stack</span>, <span class="org-type">int</span> <span class="org-variable-name">top</span>) {
+    printf(<span class="org-string">"========================\n"</span>);
+    printf(<span class="org-string">"Stack: \n"</span>);
+    <span class="org-keyword">while</span>(top &gt;= 0) {
+        printf(<span class="org-string">"%d\n"</span>, stack[top]);
+        top--;
+    }
+    printf(<span class="org-string">"========================\n"</span>);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+    <span class="org-type">int</span> <span class="org-variable-name">top</span> = -1;
+    <span class="org-type">int</span> <span class="org-variable-name">n</span> = 100;
+    <span class="org-type">int</span> <span class="org-variable-name">stack</span>[n];
+
+    push(stack, &amp;top, n, 1);
+    push(stack, &amp;top, n, 2);
+    push(stack, &amp;top, n, 3);
+
+    pop(stack, &amp;top);
+    display(stack, top);
+}
+</pre>
+</div>
+
+<pre class="example">
+========================
+Stack: 
+2
+1
+========================
+</pre></li>
+</ol>
+</div>
+</body>
+</html>

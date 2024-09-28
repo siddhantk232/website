@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Siddhant Kumar" />
+<meta name="generator" content="Org Mode" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+      <link rel="manifest" href="/assets/manifest.json">
+      <link rel="stylesheet" href="/css/base.css" />
+      <link rel="stylesheet" href="/css/prism-monokai.css" />
+</head>
+<body>
+<div id="content" class="content">
+<ol class="org-ol">
+<li><p>
+<b>Aim</b>: Implement Queue using Arrays.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">enqueue</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> *<span class="org-variable-name">rear</span>, <span class="org-type">int</span> *<span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+  <span class="org-keyword">if</span> (*rear == (n - 1)) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+  <span class="org-keyword">if</span> (*front == -1) {
+    *front = 0;
+  }
+  arr[++(*rear)] = el;
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">dequeue</span>(<span class="org-type">int</span> *<span class="org-variable-name">rear</span>, <span class="org-type">int</span> *<span class="org-variable-name">front</span>) {
+  <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+  <span class="org-keyword">if</span> (*front == -1 || *front &gt; *rear) {
+    <span class="org-keyword">return</span> -1;
+  }
+
+  *front = *front + 1;
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">rear</span>, <span class="org-type">int</span> <span class="org-variable-name">front</span>) {
+  <span class="org-keyword">if</span> (front == -1) {
+    printf(<span class="org-string">"empty queue\n"</span>);
+    <span class="org-keyword">return</span>;
+  }
+  printf(<span class="org-string">"Queue: "</span>);
+  <span class="org-keyword">while</span> (rear &gt;= front) {
+    printf(<span class="org-string">"%d "</span>, arr[rear]);
+    rear--;
+  }
+  printf(<span class="org-string">"\n"</span>);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 100;
+  <span class="org-type">int</span> <span class="org-variable-name">queue</span>[n];
+  <span class="org-type">int</span> <span class="org-variable-name">front</span> = -1;
+  <span class="org-type">int</span> <span class="org-variable-name">rear</span> = -1;
+
+  <span class="org-keyword">while</span>(<span class="org-constant">true</span>) {
+    printf(<span class="org-string">"Enter choice: \n"</span>);
+    printf(<span class="org-string">"1. Push element in queue\n"</span>);
+    printf(<span class="org-string">"2. Pop element in queue\n"</span>);
+    printf(<span class="org-string">"3. Display queue\n"</span>);
+    printf(<span class="org-string">"4. Exit\n"</span>);
+
+    <span class="org-type">int</span> <span class="org-variable-name">option</span>;
+    scanf(<span class="org-string">"%d"</span>, &amp;option);
+
+    <span class="org-keyword">switch</span>(option) {
+      <span class="org-keyword">case</span> 1: {
+        <span class="org-type">int</span> <span class="org-variable-name">el</span>;
+        printf(<span class="org-string">"Enter element to push: "</span>);
+        scanf(<span class="org-string">"%d"</span>, &amp;el);
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = enqueue(queue, &amp;rear, &amp;front, n, el);
+
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to push element in queue (overflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 2: {
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = dequeue(&amp;rear, &amp;front);
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to pop element from queue (underflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 3:
+        display(queue, rear, front);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">case</span> 4:
+        exit(0);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">default</span>:
+        exit(0);
+        <span class="org-keyword">break</span>;
+    }
+  }
+}
+</pre>
+</div>
+
+
+<div id="org9f61b44" class="figure">
+<p><img src="./queue_using_arrays.png" alt="queue_using_arrays.png" />
+</p>
+</div></li>
+
+<li><p>
+<b>Aim</b>: Implement Circular Queue using Arrays.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="org-preprocessor">#include</span><span class="org-string">&lt;stdio.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdlib.h&gt;</span>
+<span class="org-preprocessor">#include</span><span class="org-string">&lt;stdbool.h&gt;</span>
+
+<span class="org-type">int</span> <span class="org-function-name">is_empty</span>(<span class="org-type">int</span> <span class="org-variable-name">front</span>) {
+  <span class="org-keyword">return</span> front == -1;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">is_full</span>(<span class="org-type">int</span> <span class="org-variable-name">rear</span>, <span class="org-type">int</span> <span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">size</span>) {
+  <span class="org-keyword">if</span> ((front == rear + 1) || (front == 0 &amp;&amp; rear == size - 1)) {
+    <span class="org-keyword">return</span> 1;
+  }
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">enqueue</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> *<span class="org-variable-name">rear</span>, <span class="org-type">int</span> *<span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>, <span class="org-type">int</span> <span class="org-variable-name">el</span>) {
+  <span class="org-keyword">if</span> (is_full(*rear, *front, n)) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">overflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+
+  <span class="org-keyword">if</span> (*front == -1) {
+    *front = 0;
+  }
+
+  *rear = (*rear + 1) % n;
+  arr[*rear] = el;
+  <span class="org-keyword">return</span> 0;
+}
+
+<span class="org-type">int</span> <span class="org-function-name">dequeue</span>(<span class="org-type">int</span>* <span class="org-variable-name">queue</span>, <span class="org-type">int</span> *<span class="org-variable-name">rear</span>, <span class="org-type">int</span> *<span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+  <span class="org-keyword">if</span> (is_empty(*front)) {
+    <span class="org-comment-delimiter">// </span><span class="org-comment">underflow</span>
+    <span class="org-keyword">return</span> -1;
+  }
+
+  <span class="org-type">int</span> <span class="org-variable-name">el</span> = queue[*front];
+
+  <span class="org-keyword">if</span> (*front == *rear) {
+    *front = -1;
+    *rear = -1;
+  } <span class="org-keyword">else</span> {
+    *front = (*front + 1) % n;
+  }
+
+  <span class="org-keyword">return</span> el;
+}
+
+<span class="org-type">void</span> <span class="org-function-name">display</span>(<span class="org-type">int</span> *<span class="org-variable-name">arr</span>, <span class="org-type">int</span> <span class="org-variable-name">rear</span>, <span class="org-type">int</span> <span class="org-variable-name">front</span>, <span class="org-type">int</span> <span class="org-variable-name">n</span>) {
+  <span class="org-keyword">if</span> (is_empty(front)) {
+    printf(<span class="org-string">"empty queue\n"</span>);
+    <span class="org-keyword">return</span>;
+  }
+
+  <span class="org-type">int</span> <span class="org-variable-name">i</span>;
+  <span class="org-keyword">for</span> (i = front; i != rear; i = (i + 1) % n) {
+      printf(<span class="org-string">"%d "</span>, arr[i]);
+  }
+  printf(<span class="org-string">"%d "</span>, arr[i]);
+
+  printf(<span class="org-string">"\n"</span>);
+
+  printf(<span class="org-string">"front = %d\nrear = %d\n"</span>, front, rear);
+}
+
+<span class="org-type">int</span> <span class="org-function-name">main</span>() {
+  <span class="org-type">int</span> <span class="org-variable-name">n</span> = 5;
+  <span class="org-type">int</span> <span class="org-variable-name">queue</span>[n];
+  <span class="org-type">int</span> <span class="org-variable-name">front</span> = -1;
+  <span class="org-type">int</span> <span class="org-variable-name">rear</span> = -1;
+
+  <span class="org-keyword">while</span>(<span class="org-constant">true</span>) {
+    printf(<span class="org-string">"Enter choice: \n"</span>);
+    printf(<span class="org-string">"1. Push element in queue\n"</span>);
+    printf(<span class="org-string">"2. Pop element in queue\n"</span>);
+    printf(<span class="org-string">"3. Display queue\n"</span>);
+    printf(<span class="org-string">"4. Exit\n"</span>);
+
+    <span class="org-type">int</span> <span class="org-variable-name">option</span>;
+    scanf(<span class="org-string">"%d"</span>, &amp;option);
+
+    <span class="org-keyword">switch</span>(option) {
+      <span class="org-keyword">case</span> 1: {
+        <span class="org-type">int</span> <span class="org-variable-name">el</span>;
+        printf(<span class="org-string">"Enter element to push: "</span>);
+        scanf(<span class="org-string">"%d"</span>, &amp;el);
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = enqueue(queue, &amp;rear, &amp;front, n, el);
+
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to push element in queue (overflow)\n"</span>);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 2: {
+        <span class="org-type">int</span> <span class="org-variable-name">st</span> = dequeue(queue, &amp;rear, &amp;front, n);
+        <span class="org-keyword">if</span> (st == -1) {
+          printf(<span class="org-string">"failed to pop element from queue (underflow)\n"</span>);
+        } <span class="org-keyword">else</span> {
+          printf(<span class="org-string">"dequeued %d from queue\n"</span>, st);
+        }
+        <span class="org-keyword">break</span>;
+      }
+
+      <span class="org-keyword">case</span> 3:
+        display(queue, rear, front, n);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">case</span> 4:
+        exit(0);
+        <span class="org-keyword">break</span>;
+
+      <span class="org-keyword">default</span>:
+        exit(0);
+        <span class="org-keyword">break</span>;
+    }
+  }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-text">Enter choice:
+1. Push element in queue
+2. Pop element in queue
+3. Display queue
+4. Exit
+1 10 1 20 1 30 1 40 1 50
+1. Push element in queue
+2. Pop element in queue
+3. Display queue
+4. Exit
+1 60
+Enter element to push: failed to push element in queue (overflow)
+Enter choice:
+1. Push element in queue
+2. Pop element in queue
+3. Display queue
+4. Exit
+2
+dequeued 10 from queue
+Enter choice:
+1. Push element in queue
+2. Pop element in queue
+3. Display queue
+4. Exit
+1 99
+Enter element to push: Enter choice:
+1. Push element in queue
+2. Pop element in queue
+3. Display queue
+4. Exit
+3
+20 30 40 50 99
+front = 1
+rear = 0
+</pre>
+</div></li>
+</ol>
+</div>
+</body>
+</html>
