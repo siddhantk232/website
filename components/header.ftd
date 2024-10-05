@@ -1,0 +1,50 @@
+-- import: siddhant.xyz/components/colors as c
+
+-- component header:
+
+-- ftd.row:
+width: fill-container
+spacing: space-between
+background.solid: $c.accent-color
+padding.px: 12
+border-radius.px: 8
+
+-- ftd.row:
+-- link: home
+url: /
+-- end: ftd.row
+
+-- ftd.row:
+-- link: posts
+url: /posts/
+
+-- link: notes
+url: /notes/
+
+-- link: about
+url: /about/
+-- end: ftd.row
+
+-- end: ftd.row
+
+-- end: header
+
+-- component link:
+caption name:
+string url:
+private boolean $hover: false
+
+-- ftd.text: $link.name
+link: $link.url
+color if { !link.hover }: #c2cbd6
+color if { link.hover }: #17191c
+margin-horizontal.px: 8
+padding.px: 4
+role: $inherited.types.copy-large
+$on-mouse-enter$: $ftd.set-boolean($a = $link.hover, v = true)
+$on-mouse-leave$: $ftd.set-boolean($a = $link.hover, v = false)
+background.solid if { link.hover }: #2d88ff
+border-radius.px: 4
+
+
+-- end: link

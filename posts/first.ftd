@@ -1,0 +1,25 @@
+-- p.page: something
+description: smth else
+
+-- ftd.text:
+
+Hello world!
+
+Welcom to my blog page
+
+This is a [link](google.com/)
+
+This is some `emphasized` text
+
+-- ftd.code:
+lang: rust
+
+enum Something(String);
+
+fn say_hi() -> Result<(), Something> {
+    println!("hello world");
+
+    Ok(())
+}
+
+-- end: p.page

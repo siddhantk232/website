@@ -1,0 +1,53 @@
+-- import: siddhant.xyz/components/header as h
+-- import: siddhant.xyz/components/colors as c
+
+-- component page:
+caption title:
+string description:
+children content:
+
+-- ftd.document:
+title: $page.title
+description: $page.description
+
+-- ftd.column:
+width: fill-container
+height: fill-container
+background.solid: #17191c
+color: #c2cbd6
+padding.px: 16
+
+-- h.header:
+
+-- ftd.column:
+margin-vertical.px: 16
+max-width.fixed.px: 1024
+width: fill-container
+align-self: center
+padding-horizontal.px: 8
+padding-vertical.px: 16
+
+-- blog-title: $page.title
+
+-- ui:
+for: $ui in $page.content
+
+-- end: ftd.column
+
+-- end: ftd.column
+
+
+-- end: ftd.document
+
+-- end: page
+
+-- component blog-title:
+caption title:
+
+-- ftd.text: $blog-title.title
+role: $inherited.types.heading-hero
+margin-vertical.px: 32
+border-bottom-width.px: 1
+width: fill-container
+
+-- end: blog-title

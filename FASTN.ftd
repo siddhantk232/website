@@ -2,6 +2,8 @@
 
 -- fastn.package: siddhant.xyz
 
+-- fastn.auto-import: siddhant.xyz/components/page as p
+
 ;; -- fastn.url-mappings:
 
 ;; TODO: add contents of this in ftd posts/index.ftd
