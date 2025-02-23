@@ -1,0 +1,15 @@
+name: Upload siddhant.xyz to FifthTry
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  upload-to-fifthtry:
+    runs-on: ubuntu-latest
+    env:
+      FIFTHTRY_SITE_WRITE_TOKEN: ${{ secrets.FT_SIDD_XYZ_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh -c "$(curl -fsSL https://fastn.com/install.sh)"
+      - run: fastn upload sidd # sidd is the site-slug
