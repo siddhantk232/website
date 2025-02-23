@@ -1,25 +1,20 @@
--- p.page: something
+-- p.page: First post using FTD
 description: smth else
 
--- ftd.text:
 
-Hello world!
+-- ftd.text: Today, I want to talk about how easy it is to implement a full-text search in Postgres. Let's dive right into it!
 
-Welcom to my blog page
-
-This is a [link](google.com/)
-
-This is some `emphasized` text
 
 -- ftd.code:
 lang: rust
 
-enum Something(String);
-
-fn say_hi() -> Result<(), Something> {
+fn main() {
     println!("hello world");
-
-    Ok(())
 }
+
+-- ftd.text:
+
+- [hello](/)
+- world
 
 -- end: p.page

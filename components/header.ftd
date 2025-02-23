@@ -1,4 +1,5 @@
 -- import: siddhant.xyz/components/colors as c
+-- import: siddhant.xyz/typography
 
 -- component header:
 
@@ -8,6 +9,7 @@ spacing: space-between
 background.solid: $c.accent-color
 padding.px: 12
 border-radius.px: 8
+role: $typography.heading-small
 
 -- ftd.row:
 -- link: home
@@ -40,7 +42,7 @@ color if { !link.hover }: #c2cbd6
 color if { link.hover }: #17191c
 margin-horizontal.px: 8
 padding.px: 4
-role: $inherited.types.copy-large
+role: $inherited.role
 $on-mouse-enter$: $ftd.set-boolean($a = $link.hover, v = true)
 $on-mouse-leave$: $ftd.set-boolean($a = $link.hover, v = false)
 background.solid if { link.hover }: #2d88ff

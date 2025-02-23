@@ -1,5 +1,6 @@
 -- import: siddhant.xyz/components/header as h
 -- import: siddhant.xyz/components/colors as c
+-- import: siddhant.xyz/typography
 
 -- component page:
 caption title:
@@ -9,6 +10,8 @@ children content:
 -- ftd.document:
 title: $page.title
 description: $page.description
+og-description: $page.description
+og-title: $page.title
 
 -- ftd.column:
 width: fill-container
@@ -16,6 +19,7 @@ height: fill-container
 background.solid: #17191c
 color: #c2cbd6
 padding.px: 16
+role: $typography.regular
 
 -- h.header:
 
@@ -45,7 +49,7 @@ for: $ui in $page.content
 caption title:
 
 -- ftd.text: $blog-title.title
-role: $inherited.types.heading-hero
+role: $typography.heading
 margin-vertical.px: 32
 border-bottom-width.px: 1
 width: fill-container

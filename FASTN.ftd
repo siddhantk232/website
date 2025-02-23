@@ -34,3 +34,9 @@ document: site/posts/introduction-testing-websites-with-cypress/index.html
 
 # Notification service in webapps using custom javascript Events: /posts/notification-service-in-webapps-using-custom-javascript-events/
 document: site/posts/notification-service-in-webapps-using-custom-javascript-events/index.html
+
+
+-- fastn.font: Montserrat
+style: normal
+weight: 400
+woff: /assets/fonts/static/Montserrat-Regular.ttf
