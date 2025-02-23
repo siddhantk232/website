@@ -1,0 +1,151 @@
+-- import: siddhant.xyz/assets
+
+-- p.page: Google fonts with fastn
+more-title: Using Google fonts with `fastn`
+description: smth else
+
+-- p.text: 
+
+I'll use [Montserrat](https://fonts.google.com/specimen/Montserrat) as an
+example for this post. It's assumed that you've already downloaded Montserrat
+zip file from Google fonts.
+
+-- p.heading: Unzip the font 
+
+-- p.text: 
+
+I like to put them in `/assets/fonts/` directory so that it's easily
+discoverable among other type of assets. The directory structure should roughly
+look like this:
+
+-- ftd.code:
+lang: ascii
+
+    .
+    ├── FASTN.ftd
+    ├── assets
+    │   └── fonts
+    │       ├── OFL.txt
+    │       ├── README.txt
+    │       └── static
+    │           └── Montserrat-Regular.ttf
+    └── index.ftd
+    └── typography.ftd
+
+-- p.text:
+
+I have removed files from Montserrat zip that we don't need, the `static/`
+directory would have more contents. Montserrat also comes with variable font
+files but we are not using them in this post. We'll use `typography.ftd` file
+later.
+
+-- p.heading: Tell `fastn` about your font
+
+-- p.text: In `FASTN.ftd` we have to add a font declaration:
+
+-- ftd.code:
+lang: ftd
+
+\-- fastn.font: Montserrat
+style: normal
+weight: 400
+woff: /assets/fonts/static/Montserrat-Regular.ttf
+
+-- p.text:
+
+Now the symbol `Montserrat` is known to `fastn` and it can be used
+to create custom `ftd.type` definitions.
+
+-- p.heading: The `ftd.type`
+
+-- p.text:
+
+`fastn` groups font related styling like `weight`, `line-height` and, `size`
+etc in a record called `ftd.type`.
+
+I like to define a couple of types for my website in `typography.ftd` file:
+
+-- ftd.code:
+lang: ftd
+
+\-- import: <package-name>/assets
+
+\-- ftd.type heading:
+line-height.em: 1.5
+size.rem: 3
+weight: 700
+font-family: $assets.fonts.Montserrat \;; this comes from FASTN.ftd
+
+\-- ftd.type heading-small:
+line-height.em: 1.15
+size.rem: 1.7
+font-family: $assets.fonts.Montserrat
+
+\-- ftd.type regular:
+line-height.em: 1.4
+weight: 400
+size.rem: 1.45
+font-family: $assets.fonts.Montserrat
+
+-- p.text:
+
+Now you can use `heading`, `heading-small` and, `regular` in any page by
+importing `<package-name>/typography`. Here's an example `test.ftd` file:
+
+-- ftd.code:
+lang: ftd
+
+\-- import: <package-name>/typography
+
+\-- ftd.text: Hello World
+role: $typography.heading
+
+-- ftd.image:
+src: $assets.files.assets.imgs.montserrat-font-blog.png
+max-width.fixed.px: 600
+margin-top.px: 8
+margin-bottom.em: 1
+
+-- p.text:
+
+`siddhant-xyz-` in the above image comes from my fastn package name, [siddhant.xyz](https://github.com/siddhantk232/website/blob/8224b3515e82d5cc0be1badb159dc0346209e903/FASTN.ftd#L3).
+It's shown using the [WhatFont](https://chromewebstore.google.com/detail/whatfont/jabopobgcpjmedljpbcaablpmlmfcogm) chrome extension.
+
+-- p.heading: Tips
+
+-- p.text:
+
+- Using `fastn`'s [inherited](https://fastn.com/inherited-guidelines/)
+  mechanism, you can declare your `type`s somewhere on top of your component
+  tree. This avoids repetition and helps when you want to change the font in
+  future.
+
+  Read more about the `inherited` feature at https://fastn.com/blog/show-cs/
+
+- You can create custom components to enhance reusability of certain constructs
+  like heading, links, and body text. Here's an example:
+
+-- ftd.code:
+lang: ftd
+
+\-- component body-text:
+caption or body content:
+
+\-- ftd.text: $body-text.content
+role: $typography.regular
+margin-vertical.em: 1
+
+\-- end: body-text
+
+\-- component heading:
+caption content:
+
+\-- ftd.text: $heading.content
+role: $typography.heading
+
+\-- end: heading
+
+-- p.text: $ftd.empty
+
+
+-- end: p.page

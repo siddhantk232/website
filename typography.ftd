@@ -1,7 +1,7 @@
 -- import: siddhant.xyz/assets
 
 -- ftd.type heading:
-line-height.em: 1.15
+line-height.em: 1.5
 size.rem: 3
 weight: 700
 font-family: $assets.fonts.Montserrat
@@ -12,6 +12,7 @@ size.rem: 1.7
 font-family: $assets.fonts.Montserrat
 
 -- ftd.type regular:
+line-height.em: 1.4
 weight: 400
 size.rem: 1.45
 font-family: $assets.fonts.Montserrat

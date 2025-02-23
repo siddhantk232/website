@@ -4,6 +4,7 @@
 
 -- component page:
 caption title:
+optional string more-title:
 string description:
 children content:
 
@@ -31,7 +32,9 @@ align-self: center
 padding-horizontal.px: 8
 padding-vertical.px: 16
 
--- blog-title: $page.title
+-- blog-title:
+title if { page.more-title }:  $page.more-title
+title:  $page.title
 
 -- ui:
 for: $ui in $page.content
@@ -55,3 +58,21 @@ border-bottom-width.px: 1
 width: fill-container
 
 -- end: blog-title
+
+
+-- component text:
+caption or body content:
+
+-- ftd.text: $text.content
+role: $typography.regular
+margin-vertical.em: 1
+
+-- end: text
+
+-- component heading:
+caption content:
+
+-- ftd.text: $heading.content
+role: $typography.heading
+
+-- end: heading
