@@ -4,21 +4,6 @@
 
 -- fastn.auto-import: siddhant.xyz/components/page as p
 
-;; -- fastn.url-mappings:
-
-;; TODO: add contents of this in ftd posts/index.ftd
-;; WARN: this prevents from .ftd files loading from ./posts/ folder
-;; /posts/* -> http+proxy://siddhantcodes.netlify.app/posts/*
-
-;; posts from old website
-;; /posts/postgres-full-text-search/* -> http+proxy://siddhantcodes.netlify.app/posts/postgres-full-text-search/*
-;; /posts/postgres-triggers/* -> http+proxy://siddhantcodes.netlify.app/posts/postgres-triggers/*
-;; /posts/the-ultimate-hasura-development-setup/* -> http+proxy://siddhantcodes.netlify.app/posts/the-ultimate-hasura-development-setup/*
-;; /posts/introduction-testing-websites-with-cypress/* -> http+proxy://siddhantcodes.netlify.app/posts/introduction-testing-websites-with-cypress/*
-;; /posts/notification-service-in-webapps-using-custom-javascript-events/* -> http+proxy://siddhant.xyz/posts/notification-service-in-webapps-using-custom-javascript-events/*
-
-;; emacs notes
-;; /notes/* -> http+proxy://siddhantcodes.netlify.app/notes/*
 
 -- fastn.sitemap:
 

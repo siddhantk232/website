@@ -1,3 +1,5 @@
+;; WARN: This script no longer works because of the relative link to my private notes directory that
+;; is only available on my computer.
 ;; Set the package installation directory so that packages aren't stored in the
 ;; ~/.emacs.d/elpa path.
 (require 'package)
