@@ -40,8 +40,7 @@ private boolean $hover: false
 link: $link.url
 color if { !link.hover }: #c2cbd6
 color if { link.hover }: #17191c
-margin-horizontal.px: 8
-padding.px: 4
+padding.px: 8
 role: $inherited.role
 $on-mouse-enter$: $ftd.set-boolean($a = $link.hover, v = true)
 $on-mouse-leave$: $ftd.set-boolean($a = $link.hover, v = false)
